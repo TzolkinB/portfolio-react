@@ -1,12 +1,12 @@
 {
-  "name": "uix-react-template",
+  "name": "portfolio",
   "version": "0.0.1",
   "main": "app.js",
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "firebase deploy"
+    "deploy": ""
   },
   "author": "Kimberly Bell",
   "license": "UNLICENSED",

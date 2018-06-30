@@ -4,117 +4,30 @@ html {
 }
 
 body { 
-  margin-bottom: 160px;
+  margin-bottom: 100px;
   background-color: #f5f5f5;
+}
+
+#home {
+  background: url("./../img/perutrail.jpg") no-repeat fixed center center / cover rgba(0, 0, 0, 0);
 }
 
 a:hover { text-decoration: none;}
 
-/* ----- MIBrandingBar  ----- */
-.navbar {
-  box-shadow: none;
-}
-
-.mi-brand-bar {
-  background: #505060;
-  height: 44px;
-  width: 100%;
-}
-
-.nav-link {
-  font-size: small;
-  font-weight: 300;
-}
-
 /* ---- App Bar ---- */
-
-.app-dropdown-content {
-  display: none;
-  width: 280px;
-  height: fit-content;
-  justify-content: center;
-  display: flex !important;
-  flex-flow: wrap;
+.navbar {
+  background: #bdbdbd;
 }
 
-.app-dropdown-content p {
-  font-size: 14px;
-  font-weight: 400;
-  margin-left: -7px;
-  margin-right: -7px;
-  line-height: 20px;
-  margin-top: 7px;
-}
-
-.app-dropdown-content .dropdown-item {
-  display: block;
-  min-width: 4em;
-  margin-bottom: 10px;
-  padding-bottom: 0px;
-}
-
-.dropdown-open {
-  z-index: 100;
-}
-
-/* ----- App Switcher Styling ----- */
-.app-service-access-square { 
-  font-size: 24px;
-  text-align: center;
-  margin: 0 -5px -15px -5px;
-}
-
-.service-letter { 
-  padding: 12px;
-}
-
-.meg {
-  background-color: #AD1457;
-}
-
-.amar {
-  background-color: #3849AA;
-}
-
-/* ----- Profile Styling ----- */
-.profile-icon {
-  width: 2em !important;
-  height: 2em !important;
-  margin-top: -10px !important;
-}
-
-.material-icons.md-48 {
-  font-size: 48px;
-}
-
-.profile-btns {
-  display: flex;
-}
-
-.profile-btns a {
-  font-size: smaller;
-  padding: 10px 16px;
-}
-
-.profile-btns a:hover {
-  text-decoration: none;
-  border-radius: 2px;
-}
-
-
-.bg-primary { 
-  background: #ff6f00!important;
-}
 
 /* ----- Footer ----- */
 footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 140px;
-  padding: 30px;
-  text-align: center;
-  background: #505060;
+  height: 75px;
+  padding: 20px;
+  background: #bdbdbd;
 }
 
 footer a:visited {

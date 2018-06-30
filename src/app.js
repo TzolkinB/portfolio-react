@@ -1,19 +1,22 @@
 import React          from 'react'
-import { HashRouter } from 'react-router-dom'
 import { render }     from 'react-dom'
+import { 
+  HashRouter, Route, Switch,
+  Redirect
+} from 'react-router-dom'
 
 import 'Style/app.css';
 
-import MIBrandBar       from  './components/shared/MIBrandBar';
-import AppBar           from  './components/shared/AppBar';
-import Breadcrumbs      from  './components/shared/Breadcrumbs';
-import Footer           from  './components/shared/Footer';
+import AppBar from  './components/shared/AppBar';
+import Footer from  './components/shared/Footer';
+import Home   from  './components/Home';
 
 const App = () => (
   <div>
-    <MIBrandBar />
     <AppBar />
-    <Breadcrumbs />
+    <Switch>
+      <Route path="/" component={Home} />
+    </Switch>
     <Footer />
   </div>
 )
@@ -23,4 +26,4 @@ render(
     <App />
   </HashRouter>
 
-  , document.getElementById('uix-react-template'));
+  , document.getElementById('portfolio-app'));

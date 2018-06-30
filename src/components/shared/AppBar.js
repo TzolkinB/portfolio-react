@@ -24,10 +24,10 @@ const AppBar = () => {
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="#about">About</Link>
+              <a href="#about">About</a>
             </li>
             <li className="nav-item">
-              <Link to="#projects">Projects</Link>
+              <a href="#projects">Projects</a>
             </li>
           </ul>
         </div>

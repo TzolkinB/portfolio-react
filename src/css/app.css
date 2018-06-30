@@ -28,12 +28,24 @@ a:hover { text-decoration: none;}
   background-color: #E1F5FE;
 }
 
+#projects {
+  background-color: #9dabbe;
+}
+
 .padding-top {
   padding-top: 100px;
 }
 
-.about-pt {
+.section-padding {
   padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.skills-col {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 /* ----- Footer ----- */

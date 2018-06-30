@@ -38,12 +38,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|gif|eot|woff|woff2|ttf)$/,
+        test: /\.(pdf|png|jpg|gif|eot|woff|woff2|ttf)$/,
         include: paths.IMG,
         use: [{
           loader: 'file-loader',
           options: {
-            name: 'prototypes/misuite/amar/local/[path][name].[ext]' //full file path required for firebase
+            name: '[path][name].[ext]'
           }
         }],
       },

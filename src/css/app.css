@@ -42,10 +42,13 @@ a:hover { text-decoration: none;}
 }
 
 .skills-col {
-  height: 100px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+}
+
+.skills-col li {
 }
 
 /* ----- Footer ----- */
@@ -60,4 +63,9 @@ footer {
 
 footer a:visited {
   color: white;
+}
+
+@media screen and (max-width: 1180px) {
+  .skills-col li {
+  }
 }

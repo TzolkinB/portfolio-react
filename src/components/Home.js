@@ -58,10 +58,28 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div id="projects" className="container-fluid"> 
-        <div className="row section-padding">
+      <div id="projects" className="container-fluid section-padding"> 
+        <div className="row">
           <div className="col-sm-12 mb-3">
             <h2 className="text-center">Projects</h2>
+          </div>
+        </div>
+        <div className="row">
+          <div className="card card-width">
+            <div className="card-body">
+              <h5 className="card-title">Hazmat</h5>
+              <h6 className="card-subtitle mb-2 text-muted">Material Design Library</h6>
+              <p className="card-text">Library of React components based on Material Design guidelines for use by TMA.</p>
+              <a href="https://qa-tma1.works/hazmat/" className="card-link">Demo</a>
+            </div>
+          </div>
+          <div className="card card-width">
+            <div className="card-body">
+              <h5 className="card-title">React Starter Template</h5>
+              <h6 className="card-subtitle mb-2 text-muted">Uses webpack</h6>
+              <p className="card-text">Basic template for getting new applications up and running quickly.</p>
+              <a href="https://github.com/TzolkinB/react-template" className="card-link">Github Repo</a>
+            </div>
           </div>
         </div>
       </div>

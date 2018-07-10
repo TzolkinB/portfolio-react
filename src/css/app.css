@@ -51,6 +51,11 @@ a:hover { text-decoration: none;}
 .skills-col li {
 }
 
+.card-width {
+  width: 18%;
+  margin: 25px;
+}
+
 /* ----- Footer ----- */
 footer {
   position: absolute;

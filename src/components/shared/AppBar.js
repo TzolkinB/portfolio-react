@@ -27,6 +27,9 @@ const AppBar = () => {
               <a href="#about" className="text-white pr-3">About</a>
             </li>
             <li className="nav-item">
+              <a href="#skills" className="text-white pr-3">Skills</a>
+            </li>
+            <li className="nav-item">
               <a href="#projects" className="text-white pr-3">Projects</a>
             </li>
           </ul>

@@ -26,6 +26,12 @@ a:hover { text-decoration: none;}
 
 #about {
   background-color: #E1F5FE;
+  padding: 0 40px;
+}
+
+#skills {
+  background-color: #b7b19f;
+  color: white;
 }
 
 #projects {
@@ -42,7 +48,7 @@ a:hover { text-decoration: none;}
 }
 
 .skills-col {
-  height: 200px;
+  height: 95px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -64,6 +70,11 @@ footer {
   height: 75px;
   padding: 20px;
   background: #616161;
+}
+
+.copyright {
+  margin-left: 40%;
+  display: inline-block;
 }
 
 footer a:visited {

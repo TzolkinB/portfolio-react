@@ -15,6 +15,10 @@ a:hover { text-decoration: none;}
   background: #616161;
 }
 
+.nav-item {
+  font-size: large;
+}
+
 #home {
   background-image: url("./../img/perutrail.png");
   background-repeat: no-repeat;
@@ -30,12 +34,12 @@ a:hover { text-decoration: none;}
 }
 
 #skills {
-  background-color: #b7b19f;
-  color: white;
+  background-color: #9dabbe;
 }
 
 #projects {
-  background-color: #9dabbe;
+  background-color: #C1D1E7;
+  padding: 0 40px;
 }
 
 .padding-top {
@@ -52,9 +56,7 @@ a:hover { text-decoration: none;}
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-}
-
-.skills-col li {
+  font-size: large;
 }
 
 .card-width {
@@ -73,7 +75,7 @@ footer {
 }
 
 .copyright {
-  margin-left: 40%;
+  margin-left: 42%;
   display: inline-block;
 }
 

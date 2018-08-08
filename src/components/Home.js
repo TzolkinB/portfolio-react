@@ -1,5 +1,6 @@
-import React from 'react';
-import Me    from 'IMG/profile.jpg';
+import React  from 'react';
+import Card   from './shared/CardContainer';
+import Me     from 'IMG/profile.jpg';
 import Resume from 'IMG/Bell_Kim-ResumePublic.pdf';
 
 const Home = () => {
@@ -45,9 +46,9 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-2">
+            <div className="col-sm-1">
             </div>
-            <div className="col-sm-8">
+            <div className="col-sm-10">
               <ul className="skills-col mb-0">
                 <li>HTML</li>
                 <li>CSS</li>
@@ -65,33 +66,42 @@ const Home = () => {
                 <li>Adobe Pro DC</li>
               </ul>
             </div>
-            <div className="col-sm-2">
+            <div className="col-sm-1">
             </div>
           </div>
         </div>
       </div>
-      <div id="projects" className="container-fluid section-padding"> 
-        <div className="row">
-          <div className="col-sm-12 mb-3">
-            <h2 className="text-center">Projects</h2>
-          </div>
-        </div>
-        <div className="row">
-          <div className="card card-width">
-            <div className="card-body">
-              <h5 className="card-title">Hazmat</h5>
-              <h6 className="card-subtitle mb-2 text-muted">Material Design Library</h6>
-              <p className="card-text">Library of React components based on Material Design guidelines for use by TMA.</p>
-              <a href="https://qa-tma1.works/hazmat/" target="_blank" className="card-link">Demo</a>
+      <div id="projects" className="container-fluid">
+        <div className="section-padding"> 
+          <div className="row">
+            <div className="col-sm-12 mb-3">
+              <h2 className="text-center">Projects</h2>
             </div>
           </div>
-          <div className="card card-width">
-            <div className="card-body">
-              <h5 className="card-title">React Starter Template</h5>
-              <h6 className="card-subtitle mb-2 text-muted">Uses webpack</h6>
-              <p className="card-text">Basic template for getting new applications up and running quickly.</p>
-              <a href="https://github.com/TzolkinB/react-template" target="_blank" className="card-link">Github Repo</a>
-            </div>
+          <div className="row justify-content-center">
+            <Card 
+              title="Hazmat"
+              subtitle="Material Design Library"
+              text="Library of React components based on Material Design guidelines for use by Tax Management Associates, Inc."
+              url="https://qa-tma1.works/hazmat/"
+              urlText="Demo"
+            />
+            <Card
+              title="React Starter Template"
+              subtitle="Uses Webpack"
+              text="Basic template for getting new applications up and running quickly."
+              url="https://github.com/TzolkinB/react-template"
+              urlText="Github Repo"
+            />
+            <Card
+              title="Memory Game"
+              subtitle="Uses React, Webpack, Bootstrap Material Design"
+              text="Traditional memory card game for use by two players that declares a winner and can be replayed multiple times."
+              url="https://memory-game1234.firebaseapp.com/#/"
+              urlText="Demo"
+              url2="https://github.com/TzolkinB/memory"
+              url2Text="GithubRepo"
+            />
           </div>
         </div>
       </div>

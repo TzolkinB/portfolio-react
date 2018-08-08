@@ -1,7 +1,7 @@
 import React    from 'react';
 import { Link } from 'react-router-dom';
-import Github   from 'IMG/github@2x.png';
-import LinkedIn from 'IMG/linked-in@2x.png';
+import Github   from 'IMG/github.png';
+import LinkedIn from 'IMG/linked-in.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

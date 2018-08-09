@@ -1,7 +1,12 @@
 {
   "name": "portfolio",
   "version": "0.0.1",
+  "description": "New portfolio using React to replace portfolio from 2015",
   "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TzolkinB/portfolio_react"
+  },
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack",

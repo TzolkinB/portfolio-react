@@ -9,6 +9,7 @@
 # deploy
 /build
 /dist
+/public/src
 
 # misc
 .DS_Store

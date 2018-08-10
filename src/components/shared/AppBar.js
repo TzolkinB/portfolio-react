@@ -1,6 +1,7 @@
 import React    from 'react';
 import { Link } from 'react-router-dom';
-import Whiskers from 'IMG/w.png';
+import Resume   from 'IMG/Bell_Kim-ResumePublic.pdf';
+import Whiskers from 'IMG/W-white.png';
 
 const AppBar = () => {
   return(
@@ -24,13 +25,16 @@ const AppBar = () => {
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a href="#about" className="text-white pr-3">About</a>
+              <a href="#about" className="text-white px-3 py-4">About</a>
             </li>
             <li className="nav-item">
-              <a href="#skills" className="text-white pr-3">Skills</a>
+              <a href="#skills" className="text-white px-3 py-4">Skills</a>
             </li>
             <li className="nav-item">
-              <a href="#projects" className="text-white pr-3">Projects</a>
+              <a href="#projects" className="text-white px-3 py-4">Projects</a>
+            </li>
+            <li className="nav-item">
+              <a href={Resume} target="_blank" className="text-white px-3 py-4">Resume</a>
             </li>
           </ul>
         </div>

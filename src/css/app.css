@@ -24,17 +24,17 @@ a:hover {
 }
 
 #home {
-  background-image: url("./../img/perutrail.png");
+  background-image: url("./../img/perutrail2.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  height: 400px;
+  height: 350px;
 }
 
 #about {
   background-color: #E1F5FE;
-  padding: 0 40px;
+  padding: 0 175px 0 100px;
 }
 
 #skills {
@@ -47,7 +47,7 @@ a:hover {
 }
 
 .padding-top {
-  padding-top: 100px;
+  padding-top: 130px;
 }
 
 .section-padding {
@@ -64,7 +64,7 @@ a:hover {
 }
 
 .card-width {
-  width: 18%;
+  width: 20%;
   margin: 25px;
 }
 

@@ -1,7 +1,6 @@
 import React  from 'react';
 import Card   from './shared/CardContainer';
 import Me     from 'IMG/profile.jpg';
-import Resume from 'IMG/Bell_Kim-ResumePublic.pdf';
 
 const Home = () => {
   return(
@@ -9,13 +8,6 @@ const Home = () => {
       <div className="text-center padding-top" id="home">
         <h1>Kimberly Bell</h1>
         <h2>Front End Developer</h2>
-        <h3>
-          <a href="https://github.com/TzolkinB" target="_blank" className="pr-2">Github</a>
-           |
-          <a href="https://www.linkedin.com/in/kimbell4" target="_blank" className="px-2">LinkedIn</a> 
-           |
-          <a href={Resume} target="_blank" className="pl-2">Resume</a>
-        </h3>
       </div>
       <div id="about" className="container-fluid"> 
         <div className="section-padding">
@@ -26,8 +18,8 @@ const Home = () => {
           </div>
           <div className="row">
             <div className="col-sm-12">
-              <img src={Me} alt="Profile image" height="120" width="120" className="rounded-circle float-left mr-4"/>
-              <p className="pl-2">I am a front-end developer and I love using ES6 and the React ecosystem.
+              <img src={Me} alt="Profile image" height="120" width="120" className="rounded-circle float-left mr-4 mb-4"/>
+              <p className="pl-2 text-justify">I am a front-end developer and I love using ES6 and the React ecosystem.
               In my current job, I often convert html files into react components, including implementing components from the chosen
               css framework. I also add javascript to the initial prototype applications intended for client approval.
               Additional tasks include updating existing code with structure and style changes as nessessary. In

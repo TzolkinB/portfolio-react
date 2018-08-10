@@ -1,5 +1,6 @@
 import React    from 'react';
 import { Link } from 'react-router-dom';
+import Resume   from 'IMG/Bell_Kim-ResumePublic.pdf';
 import Whiskers from 'IMG/W-white.png';
 
 const AppBar = () => {
@@ -31,6 +32,9 @@ const AppBar = () => {
             </li>
             <li className="nav-item">
               <a href="#projects" className="text-white px-3 py-4">Projects</a>
+            </li>
+            <li className="nav-item">
+              <a href={Resume} target="_blank" className="text-white px-3 py-4">Resume</a>
             </li>
           </ul>
         </div>

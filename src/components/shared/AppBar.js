@@ -6,7 +6,7 @@ import Whiskers from 'IMG/W-white.png';
 const AppBar = () => {
   return(
     <div>
-      <nav className="navbar navbar-expand-lg text-white navbar-dark">
+      <nav className="navbar navbar-expand-md text-white navbar-dark">
         <a href="/" className="navbar-brand pl-2">
           <img src={Whiskers} alt="Cat whiskers" />
           <span className="text-white pl-3 font-weight-light">FierceWhiskers.me</span>

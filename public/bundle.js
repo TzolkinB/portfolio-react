@@ -2451,11 +2451,11 @@ var _AppBar = __webpack_require__(76);
 
 var _AppBar2 = _interopRequireDefault(_AppBar);
 
-var _Footer = __webpack_require__(78);
+var _Footer = __webpack_require__(79);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
-var _Home = __webpack_require__(81);
+var _Home = __webpack_require__(82);
 
 var _Home2 = _interopRequireDefault(_Home);
 
@@ -24379,7 +24379,7 @@ exports = module.exports = __webpack_require__(72)(false);
 
 
 // module
-exports.push([module.i, "html { \n  position: relative;\n  min-height: 100%;\n}\n\nbody { \n  margin-bottom: 75px;\n  background-color: #f5f5f5;\n}\n\na:hover { text-decoration: none;}\n\n/* ---- App Bar ---- */\n.navbar {\n  background: #616161;\n}\n\n.nav-item {\n  font-size: large;\n}\n\n#home {\n  background-image: url(" + escape(__webpack_require__(73)) + ");\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  background-size: cover;\n  background-position: center;\n  height: 400px;\n}\n\n#about {\n  background-color: #E1F5FE;\n  padding: 0 40px;\n}\n\n#skills {\n  background-color: #9dabbe;\n}\n\n#projects {\n  background-color: #C1D1E7;\n  padding: 0 40px;\n}\n\n.padding-top {\n  padding-top: 100px;\n}\n\n.section-padding {\n  padding-top: 50px;\n  padding-bottom: 50px;\n}\n\n.skills-col {\n  height: 95px;\n  display: flex;\n  flex-direction: column;\n  flex-wrap: wrap;\n  font-size: large;\n}\n\n.card-width {\n  width: 18%;\n  margin: 25px;\n}\n\n/* ----- Footer ----- */\nfooter {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n  padding: 20px;\n  background: #616161;\n}\n\n.copyright {\n  margin-left: 42%;\n  display: inline-block;\n}\n\nfooter a:visited {\n  color: white;\n}\n\n@media screen and (max-width: 1180px) {\n  .skills-col li {\n  }\n}\n", ""]);
+exports.push([module.i, "html { \n  position: relative;\n  min-height: 100%;\n}\n\nbody { \n  margin-bottom: 75px;\n  background-color: #f5f5f5;\n}\n\na:hover { \n  text-decoration: none;\n  background-color: white;\n  color: #616161 !important;\n}\n\n/* ---- App Bar ---- */\n.navbar {\n  background: #616161;\n}\n\n.nav-item {\n  font-size: large;\n}\n\n#home {\n  background-image: url(" + escape(__webpack_require__(73)) + ");\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  background-size: cover;\n  background-position: center;\n  height: 350px;\n}\n\n#about {\n  background-color: #E1F5FE;\n  padding: 0 175px 0 100px;\n}\n\n#skills {\n  background-color: #9dabbe;\n}\n\n#projects {\n  background-color: #C1D1E7;\n  padding: 0 40px;\n}\n\n.padding-top {\n  padding-top: 130px;\n}\n\n.section-padding {\n  padding-top: 50px;\n  padding-bottom: 50px;\n}\n\n.skills-col {\n  height: 95px;\n  display: flex;\n  flex-direction: column;\n  flex-wrap: wrap;\n  font-size: large;\n}\n\n.card-width {\n  width: 20%;\n  margin: 25px;\n}\n\n/* ----- Footer ----- */\nfooter {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n  padding: 20px;\n  background: #616161;\n}\n\n.copyright {\n  margin-left: 42%;\n  display: inline-block;\n}\n\nfooter a:visited {\n  color: white;\n}\n\n@media screen and (max-width: 1180px) {\n  .skills-col li {\n  }\n}\n", ""]);
 
 // exports
 
@@ -24492,7 +24492,7 @@ function toComment(sourceMap) {
 /* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/img/perutrail.png";
+module.exports = __webpack_require__.p + "src/img/perutrail2.png";
 
 /***/ }),
 /* 74 */
@@ -24988,9 +24988,13 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(16);
 
-var _w = __webpack_require__(77);
+var _Bell_KimResumePublic = __webpack_require__(77);
 
-var _w2 = _interopRequireDefault(_w);
+var _Bell_KimResumePublic2 = _interopRequireDefault(_Bell_KimResumePublic);
+
+var _WWhite = __webpack_require__(78);
+
+var _WWhite2 = _interopRequireDefault(_WWhite);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25004,7 +25008,7 @@ var AppBar = function AppBar() {
       _react2.default.createElement(
         'a',
         { href: '/', className: 'navbar-brand pl-2' },
-        _react2.default.createElement('img', { src: _w2.default, alt: 'Cat whiskers' }),
+        _react2.default.createElement('img', { src: _WWhite2.default, alt: 'Cat whiskers' }),
         _react2.default.createElement(
           'span',
           { className: 'text-white pl-3 font-weight-light' },
@@ -25034,7 +25038,7 @@ var AppBar = function AppBar() {
             { className: 'nav-item' },
             _react2.default.createElement(
               'a',
-              { href: '#about', className: 'text-white pr-3' },
+              { href: '#about', className: 'text-white px-3 py-4' },
               'About'
             )
           ),
@@ -25043,7 +25047,7 @@ var AppBar = function AppBar() {
             { className: 'nav-item' },
             _react2.default.createElement(
               'a',
-              { href: '#skills', className: 'text-white pr-3' },
+              { href: '#skills', className: 'text-white px-3 py-4' },
               'Skills'
             )
           ),
@@ -25052,8 +25056,17 @@ var AppBar = function AppBar() {
             { className: 'nav-item' },
             _react2.default.createElement(
               'a',
-              { href: '#projects', className: 'text-white pr-3' },
+              { href: '#projects', className: 'text-white px-3 py-4' },
               'Projects'
+            )
+          ),
+          _react2.default.createElement(
+            'li',
+            { className: 'nav-item' },
+            _react2.default.createElement(
+              'a',
+              { href: _Bell_KimResumePublic2.default, target: '_blank', className: 'text-white px-3 py-4' },
+              'Resume'
             )
           )
         )
@@ -25068,10 +25081,16 @@ exports.default = AppBar;
 /* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/img/w.png";
+module.exports = __webpack_require__.p + "src/img/Bell_Kim-ResumePublic.pdf";
 
 /***/ }),
 /* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "src/img/W-white.png";
+
+/***/ }),
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25087,11 +25106,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(16);
 
-var _github = __webpack_require__(79);
+var _github = __webpack_require__(80);
 
 var _github2 = _interopRequireDefault(_github);
 
-var _linkedIn = __webpack_require__(80);
+var _linkedIn = __webpack_require__(81);
 
 var _linkedIn2 = _interopRequireDefault(_linkedIn);
 
@@ -25142,19 +25161,19 @@ var Footer = function Footer() {
 exports.default = Footer;
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "src/img/github.png";
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "src/img/linked-in.png";
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25168,17 +25187,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _CardContainer = __webpack_require__(82);
+var _CardContainer = __webpack_require__(83);
 
 var _CardContainer2 = _interopRequireDefault(_CardContainer);
 
-var _profile = __webpack_require__(83);
+var _profile = __webpack_require__(84);
 
 var _profile2 = _interopRequireDefault(_profile);
-
-var _Bell_KimResumePublic = __webpack_require__(84);
-
-var _Bell_KimResumePublic2 = _interopRequireDefault(_Bell_KimResumePublic);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25198,27 +25213,6 @@ var Home = function Home() {
         'h2',
         null,
         'Front End Developer'
-      ),
-      _react2.default.createElement(
-        'h3',
-        null,
-        _react2.default.createElement(
-          'a',
-          { href: 'https://github.com/TzolkinB', target: '_blank', className: 'pr-2' },
-          'Github'
-        ),
-        '|',
-        _react2.default.createElement(
-          'a',
-          { href: 'https://www.linkedin.com/in/kimbell4', target: '_blank', className: 'px-2' },
-          'LinkedIn'
-        ),
-        '|',
-        _react2.default.createElement(
-          'a',
-          { href: _Bell_KimResumePublic2.default, target: '_blank', className: 'pl-2' },
-          'Resume'
-        )
       )
     ),
     _react2.default.createElement(
@@ -25246,10 +25240,10 @@ var Home = function Home() {
           _react2.default.createElement(
             'div',
             { className: 'col-sm-12' },
-            _react2.default.createElement('img', { src: _profile2.default, alt: 'Profile image', height: '120', width: '120', className: 'rounded-circle float-left mr-4' }),
+            _react2.default.createElement('img', { src: _profile2.default, alt: 'Profile image', height: '120', width: '120', className: 'rounded-circle float-left mr-4 mb-4' }),
             _react2.default.createElement(
               'p',
-              { className: 'pl-2' },
+              { className: 'pl-2 text-justify' },
               'I am a front-end developer and I love using ES6 and the React ecosystem. In my current job, I often convert html files into react components, including implementing components from the chosen css framework. I also add javascript to the initial prototype applications intended for client approval. Additional tasks include updating existing code with structure and style changes as nessessary. In my free time I continue to deepen my understanding of Javascript and learn Node. When I am not coding I love to read and be outside enjoying my backyard!'
             ),
             _react2.default.createElement(
@@ -25420,7 +25414,7 @@ var Home = function Home() {
 exports.default = Home;
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25491,16 +25485,10 @@ var CardContainer = function CardContainer(props) {
 exports.default = CardContainer;
 
 /***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "src/img/profile.jpg";
-
-/***/ }),
 /* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/img/Bell_Kim-ResumePublic.pdf";
+module.exports = __webpack_require__.p + "src/img/profile.jpg";
 
 /***/ })
 /******/ ]);

@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "New portfolio using React to replace portfolio from 2015",
   "main": "app.js",
   "repository": {

@@ -39,7 +39,7 @@ a:hover {
 
 #skills {
   background-color: #4c6392;
-  color: #B7DE69;
+  color: #fff;
 }
 
 #projects {
@@ -69,6 +69,14 @@ a:hover {
   margin: 25px;
 }
 
+.card-title {
+  font-weight: 500 !important;
+}
+
+.card-subtitle {
+  color: #7fac26 !important;
+}
+
 /* ----- Footer ----- */
 footer {
   position: absolute;
@@ -92,6 +100,10 @@ footer a:visited {
   #about {
     padding: 0 100px 0 75px;
   }
+
+  .skills-col {
+    height: 135px;
+  }
   
   .card-width {
     margin: 15px;
@@ -99,11 +111,27 @@ footer a:visited {
 }
 
 @media screen and (max-width: 800px) {
+  #home {
+    height: 290px;
+  }
+
+  .padding-top {
+    padding-top: 100px;
+  }
+
   #about {
     padding: 0 25px 0 15px;
   }
+
+  .skills-col {
+    height: 220px;
+  }
+
+  .skills-col li {
+    width: 60%;
+  }
   
   .copyright {
-    margin-left: 4%;
+    margin-left: 0%;
   }
 }

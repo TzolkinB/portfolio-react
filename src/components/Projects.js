@@ -5,7 +5,7 @@ const Projects = props => {
   const { id } = props;
 
   return(
-    <div id={id} className="container-fluid">
+    <div id={id}>
       <div className="section-padding"> 
         <div className="row">
           <div className="col-sm-12 mb-3">

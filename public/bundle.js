@@ -24379,7 +24379,7 @@ exports = module.exports = __webpack_require__(72)(false);
 
 
 // module
-exports.push([module.i, "html { \n  position: relative;\n  min-height: 100%;\n}\n\nbody { \n  margin-bottom: 75px;\n  background-color: #f5f5f5;\n}\n\na:hover { \n  text-decoration: none;\n  background-color: white;\n  color: #616161 !important;\n}\n\n/* ---- App Bar ---- */\n.navbar {\n  background: #616161;\n}\n\n.nav-item {\n  font-size: large;\n}\n\n#home {\n  background-image: url(" + escape(__webpack_require__(73)) + ");\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  background-size: cover;\n  background-position: center;\n  height: 350px;\n}\n\n#about {\n  background-color: #E1F5FE;\n  padding: 0 175px 0 100px;\n}\n\n#skills {\n  background-color: #4c6392;\n  color: #fff;\n}\n\n#projects {\n  background-color: #C1D1E7;\n  padding: 0 40px;\n}\n\n.padding-top {\n  padding-top: 130px;\n}\n\n.section-padding {\n  padding-top: 50px;\n  padding-bottom: 50px;\n}\n\n.skills-col {\n  height: 95px;\n  display: flex;\n  flex-direction: column;\n  flex-wrap: wrap;\n  font-size: large;\n}\n\n.card-width {\n  width: 300px;\n  margin: 25px;\n}\n\n.card-title {\n  font-weight: 500 !important;\n}\n\n.card-subtitle {\n  color: #7fac26 !important;\n}\n\n/* ----- Footer ----- */\nfooter {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n  padding: 20px;\n  background: #616161;\n}\n\n.copyright {\n  margin-left: 42%;\n  display: inline-block;\n}\n\nfooter a:visited {\n  color: white;\n}\n\n@media screen and (max-width: 1100px) {\n  #about {\n    padding: 0 100px 0 75px;\n  }\n\n  .skills-col {\n    height: 135px;\n  }\n  \n  .card-width {\n    margin: 15px;\n  }\n}\n\n@media screen and (max-width: 800px) {\n  #home {\n    height: 290px;\n  }\n\n  .padding-top {\n    padding-top: 100px;\n  }\n\n  #about {\n    padding: 0 25px 0 15px;\n  }\n\n  .skills-col {\n    height: 220px;\n  }\n\n  .skills-col li {\n    width: 60%;\n  }\n  \n  .copyright {\n    margin-left: 0%;\n  }\n}\n", ""]);
+exports.push([module.i, "html { \n  position: relative;\n  min-height: 100%;\n  min-width: 100%;\n}\n\nbody { \n  margin-bottom: 75px;\n  background-color: #f5f5f5;\n}\n\na:hover { \n  text-decoration: none;\n  background-color: white;\n  color: #616161 !important;\n}\n\n/* ---- App Bar ---- */\n.navbar {\n  background: #616161;\n}\n\n.nav-item {\n  font-size: large;\n}\n\n#home {\n  background-image: url(" + escape(__webpack_require__(73)) + ");\n  background-repeat: no-repeat;\n  background-attachment: local;\n  background-size: cover;\n  background-position: center;\n  height: 350px;\n}\n\n#about {\n  background-color: #E1F5FE;\n  padding: 0 175px 0 100px;\n}\n\n#skills {\n  background-color: #4c6392;\n  color: #fff;\n}\n\n#projects {\n  background-color: #C1D1E7;\n  padding: 0 40px;\n}\n\n.padding-top {\n  padding-top: 130px;\n}\n\n.section-padding {\n  padding-top: 50px;\n  padding-bottom: 50px;\n}\n\n.skills-col {\n  height: 95px;\n  display: flex;\n  flex-direction: column;\n  flex-wrap: wrap;\n  font-size: large;\n}\n\n.card-width {\n  width: 300px;\n  margin: 25px;\n}\n\n.card-title {\n  font-weight: 500 !important;\n}\n\n.card-subtitle {\n  color: #7fac26 !important;\n}\n\n/* ----- Footer ----- */\nfooter {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n  padding: 20px;\n  background: #616161;\n}\n\n.copyright {\n  margin-left: 42%;\n  display: inline-block;\n}\n\nfooter a:visited {\n  color: white;\n}\n\n@media screen and (max-width: 1100px) {\n  #about {\n    padding: 0 100px 0 75px;\n  }\n\n  .skills-col {\n    height: 135px;\n  }\n  \n  .card-width {\n    margin: 15px;\n  }\n}\n\n@media screen and (max-width: 800px) {\n  #home {\n    height: 290px;\n  }\n\n  .padding-top {\n    padding-top: 100px;\n  }\n\n  #about {\n    padding: 0 25px;\n  }\n\n  .skills-col {\n    height: 220px;\n    font-size: medium;\n  }\n\n  .skills-col li {\n    width: 60%;\n  }\n  \n  .copyright {\n    margin-left: 2%;\n    font-size: small;\n  }\n}\n", ""]);
 
 // exports
 
@@ -25000,7 +25000,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var AppBar = function AppBar() {
   return _react2.default.createElement(
-    'div',
+    'header',
     null,
     _react2.default.createElement(
       'nav',
@@ -25138,7 +25138,7 @@ var Footer = function Footer() {
       { className: 'footer-links d-inline' },
       _react2.default.createElement(
         'ul',
-        { className: 'list-inline font-weight-light float-right mr-4' },
+        { className: 'list-inline font-weight-light float-right mr-3' },
         _react2.default.createElement(
           'li',
           { className: 'list-inline-item px-2' },
@@ -25191,13 +25191,17 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _CardContainer = __webpack_require__(83);
+var _About = __webpack_require__(83);
 
-var _CardContainer2 = _interopRequireDefault(_CardContainer);
+var _About2 = _interopRequireDefault(_About);
 
-var _profile = __webpack_require__(84);
+var _Skills = __webpack_require__(85);
 
-var _profile2 = _interopRequireDefault(_profile);
+var _Skills2 = _interopRequireDefault(_Skills);
+
+var _Projects = __webpack_require__(86);
+
+var _Projects2 = _interopRequireDefault(_Projects);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25219,199 +25223,9 @@ var Home = function Home() {
         'Front End Developer'
       )
     ),
-    _react2.default.createElement(
-      'div',
-      { id: 'about', className: 'container-fluid' },
-      _react2.default.createElement(
-        'div',
-        { className: 'section-padding' },
-        _react2.default.createElement(
-          'div',
-          { className: 'row' },
-          _react2.default.createElement(
-            'div',
-            { className: 'col-sm-12 mb-3' },
-            _react2.default.createElement(
-              'h2',
-              null,
-              'About Me'
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'row' },
-          _react2.default.createElement(
-            'div',
-            { className: 'col-sm-12' },
-            _react2.default.createElement('img', { src: _profile2.default, alt: 'Profile image', height: '120', width: '120', className: 'rounded-circle float-left mr-4 mb-4' }),
-            _react2.default.createElement(
-              'p',
-              { className: 'pl-2 text-justify' },
-              'I am a front-end developer and I love using ES6 and the React ecosystem. In my current job, I often convert html files into react components, including implementing components from the chosen css framework. I also add javascript to the initial prototype applications intended for client approval. Additional tasks include updating existing code with structure and style changes as nessessary. In my free time I continue to deepen my understanding of Javascript and learn Node. When I am not coding I love to read and be outside enjoying my backyard!'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              'I am always looking for new opportunites so feel free to reach out to me: krbell4@gmail.com'
-            )
-          )
-        )
-      )
-    ),
-    _react2.default.createElement(
-      'div',
-      { id: 'skills', className: 'container-fluid' },
-      _react2.default.createElement(
-        'div',
-        { className: 'section-padding' },
-        _react2.default.createElement(
-          'div',
-          { className: 'row' },
-          _react2.default.createElement(
-            'div',
-            { className: 'col-sm-12 mb-3' },
-            _react2.default.createElement(
-              'h2',
-              { className: 'text-center' },
-              'Skills'
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'row' },
-          _react2.default.createElement('div', { className: 'col-sm-1' }),
-          _react2.default.createElement(
-            'div',
-            { className: 'col-sm-10' },
-            _react2.default.createElement(
-              'ul',
-              { className: 'skills-col mb-0' },
-              _react2.default.createElement(
-                'li',
-                null,
-                'HTML'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'CSS'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'Javascript/ES6'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'React'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'Redux'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'Webpack'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'Bootstrap/ Bootstrap Material Design'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'Zurb Foundation'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'Materialize'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'Github'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'VIM'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'Sketch'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'Adobe XD'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'Adobe Pro DC'
-              )
-            )
-          ),
-          _react2.default.createElement('div', { className: 'col-sm-1' })
-        )
-      )
-    ),
-    _react2.default.createElement(
-      'div',
-      { id: 'projects', className: 'container-fluid' },
-      _react2.default.createElement(
-        'div',
-        { className: 'section-padding' },
-        _react2.default.createElement(
-          'div',
-          { className: 'row' },
-          _react2.default.createElement(
-            'div',
-            { className: 'col-sm-12 mb-3' },
-            _react2.default.createElement(
-              'h2',
-              { className: 'text-center' },
-              'Projects'
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'row justify-content-center' },
-          _react2.default.createElement(_CardContainer2.default, {
-            title: 'Hazmat',
-            subtitle: 'Material Design Library',
-            text: 'Library of React components based on Material Design guidelines for use by Tax Management Associates, Inc.',
-            url: 'https://qa-tma1.works/hazmat/',
-            urlText: 'Demo'
-          }),
-          _react2.default.createElement(_CardContainer2.default, {
-            title: 'React Starter Template',
-            subtitle: 'Uses Webpack',
-            text: 'Basic template for getting new applications up and running quickly.',
-            url: 'https://github.com/TzolkinB/react-template',
-            urlText: 'Github Repo'
-          }),
-          _react2.default.createElement(_CardContainer2.default, {
-            title: 'Memory Game',
-            subtitle: 'Uses React, Webpack, Bootstrap Material Design',
-            text: 'Traditional memory card game for use by two players that declares a winner and can be replayed multiple times.',
-            url: 'https://memory-game1234.firebaseapp.com/#/',
-            urlText: 'Demo',
-            url2: 'https://github.com/TzolkinB/memory',
-            url2Text: 'GithubRepo'
-          })
-        )
-      )
-    )
+    _react2.default.createElement(_About2.default, { id: 'about' }),
+    _react2.default.createElement(_Skills2.default, { id: 'skills' }),
+    _react2.default.createElement(_Projects2.default, { id: 'projects' })
   );
 };
 
@@ -25419,6 +25233,288 @@ exports.default = Home;
 
 /***/ }),
 /* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _profile = __webpack_require__(84);
+
+var _profile2 = _interopRequireDefault(_profile);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var About = function About(props) {
+  var id = props.id;
+
+
+  return _react2.default.createElement(
+    'div',
+    { id: id, className: 'container-fluid' },
+    _react2.default.createElement(
+      'div',
+      { className: 'section-padding' },
+      _react2.default.createElement(
+        'div',
+        { className: 'row' },
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-12 mb-3' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'About Me'
+          )
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'row' },
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-12' },
+          _react2.default.createElement('img', { src: _profile2.default, alt: 'Profile image', height: '120', width: '120', className: 'rounded-circle float-left mr-4 mb-4' }),
+          _react2.default.createElement(
+            'p',
+            { className: 'pl-2 text-justify' },
+            'I am a front-end developer and I love using ES6 and the React ecosystem.  In my current job, I often convert html files into react components, including implementing components from the chosen css framework. I also add javascript to the initial prototype applications intended for client approval.  Additional tasks include updating existing code with structure and style changes as nessessary. In my free time I continue to deepen my understanding of Javascript and learn Node.  When I am not coding I love to read and be outside enjoying my backyard!'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'I am always looking for new opportunites so feel free to reach out to me: krbell4@gmail.com'
+          )
+        )
+      )
+    )
+  );
+};
+
+exports.default = About;
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "src/img/profile.jpg";
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Skills = function Skills(props) {
+  var id = props.id;
+
+
+  return _react2.default.createElement(
+    "div",
+    { id: id, className: "container-fluid" },
+    _react2.default.createElement(
+      "div",
+      { className: "section-padding" },
+      _react2.default.createElement(
+        "div",
+        { className: "row" },
+        _react2.default.createElement(
+          "div",
+          { className: "col-sm-12 mb-3" },
+          _react2.default.createElement(
+            "h2",
+            { className: "text-center" },
+            "Skills"
+          )
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "row" },
+        _react2.default.createElement("div", { className: "col-sm-1" }),
+        _react2.default.createElement(
+          "div",
+          { className: "col-sm-10" },
+          _react2.default.createElement(
+            "ul",
+            { className: "skills-col mb-0" },
+            _react2.default.createElement(
+              "li",
+              null,
+              "HTML"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "CSS"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "Javascript/ES6"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "React"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "Redux"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "Webpack"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "Bootstrap/ Bootstrap Material Design"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "Zurb Foundation"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "Materialize"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "Github"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "VIM"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "Sketch"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "Adobe XD"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "Adobe Pro DC"
+            )
+          )
+        ),
+        _react2.default.createElement("div", { className: "col-sm-1" })
+      )
+    )
+  );
+};
+
+exports.default = Skills;
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _CardContainer = __webpack_require__(87);
+
+var _CardContainer2 = _interopRequireDefault(_CardContainer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Projects = function Projects(props) {
+  var id = props.id;
+
+
+  return _react2.default.createElement(
+    'div',
+    { id: id, className: 'container-fluid' },
+    _react2.default.createElement(
+      'div',
+      { className: 'section-padding' },
+      _react2.default.createElement(
+        'div',
+        { className: 'row' },
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-12 mb-3' },
+          _react2.default.createElement(
+            'h2',
+            { className: 'text-center' },
+            'Projects'
+          )
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'row justify-content-center' },
+        _react2.default.createElement(_CardContainer2.default, {
+          title: 'Hazmat',
+          subtitle: 'Material Design Library',
+          text: 'Library of React components based on Material Design guidelines for use by Tax Management Associates, Inc.',
+          url: 'https://qa-tma1.works/hazmat/',
+          urlText: 'Demo'
+        }),
+        _react2.default.createElement(_CardContainer2.default, {
+          title: 'React Starter Template',
+          subtitle: 'Uses Webpack',
+          text: 'Basic template for getting new applications up and running quickly.',
+          url: 'https://github.com/TzolkinB/react-template',
+          urlText: 'Github Repo'
+        }),
+        _react2.default.createElement(_CardContainer2.default, {
+          title: 'Memory Game',
+          subtitle: 'Uses React, Webpack, Bootstrap Material Design',
+          text: 'Traditional memory card game for use by two players that declares a winner and can be replayed multiple times.',
+          url: 'https://memory-game1234.firebaseapp.com/#/',
+          urlText: 'Demo',
+          url2: 'https://github.com/TzolkinB/memory',
+          url2Text: 'GithubRepo'
+        })
+      )
+    )
+  );
+};
+
+exports.default = Projects;
+
+/***/ }),
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25487,12 +25583,6 @@ var CardContainer = function CardContainer(props) {
 };
 
 exports.default = CardContainer;
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "src/img/profile.jpg";
 
 /***/ })
 /******/ ]);

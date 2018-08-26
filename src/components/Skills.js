@@ -4,7 +4,7 @@ const Skills = props => {
   const { id } = props;
 
   return(
-    <div id={id} className="container-fluid"> 
+    <div id={id}> 
       <div className="section-padding">
         <div className="row">
           <div className="col-sm-12 mb-3">
@@ -12,27 +12,40 @@ const Skills = props => {
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-1">
+          <div className="col-md-2">
           </div>
-          <div className="col-sm-10">
-            <ul className="skills-col mb-0">
+          <div className="col-md-2">
+            <ul>
               <li>HTML</li>
               <li>CSS</li>
               <li>Javascript/ES6</li>
               <li>React</li>
+            </ul>
+          </div>
+          <div className="col-md-2">
+            <ul>
               <li>Redux</li>
               <li>Webpack</li>
+              <li>Command Line</li>
+              <li>VIM</li>
+            </ul>
+          </div>
+          <div className="col-md-2">
+            <ul>
               <li>Bootstrap/ Bootstrap Material Design</li>
               <li>Zurb Foundation</li>
               <li>Materialize</li>
+            </ul>
+          </div>
+          <div className="col-md-2">
+            <ul>
               <li>Github</li>
-              <li>VIM</li>
               <li>Sketch</li>
               <li>Adobe XD</li>
               <li>Adobe Pro DC</li>
             </ul>
           </div>
-          <div className="col-sm-1">
+          <div className="col-md-2">
           </div>
         </div>
       </div>

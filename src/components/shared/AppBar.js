@@ -5,7 +5,7 @@ import Whiskers from 'IMG/W-white.png';
 
 const AppBar = () => {
   return(
-    <div>
+    <header>
       <nav className="navbar navbar-expand-md text-white navbar-dark">
         <a href="/" className="navbar-brand pl-2">
           <img src={Whiskers} alt="Cat whiskers" />
@@ -39,7 +39,7 @@ const AppBar = () => {
           </ul>
         </div>
       </nav>
-    </div>
+    </header>
   );
 }
 

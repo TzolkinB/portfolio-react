@@ -24379,7 +24379,7 @@ exports = module.exports = __webpack_require__(72)(false);
 
 
 // module
-exports.push([module.i, "html { \n  position: relative;\n  min-height: 100%;\n}\n\nbody { \n  margin-bottom: 75px;\n  background-color: #f5f5f5;\n}\n\na:hover { \n  text-decoration: none;\n  background-color: white;\n  color: #616161 !important;\n}\n\n/* ---- App Bar ---- */\n.navbar {\n  background: #616161;\n}\n\n.nav-item {\n  font-size: large;\n}\n\n#home {\n  background-image: url(" + escape(__webpack_require__(73)) + ");\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  background-size: cover;\n  background-position: center;\n  height: 350px;\n}\n\n#about {\n  background-color: #E1F5FE;\n  padding: 0 175px 0 100px;\n}\n\n#skills {\n  background-color: #4c6392;\n  color: #B7DE69;\n}\n\n#projects {\n  background-color: #C1D1E7;\n  padding: 0 40px;\n}\n\n.padding-top {\n  padding-top: 130px;\n}\n\n.section-padding {\n  padding-top: 50px;\n  padding-bottom: 50px;\n}\n\n.skills-col {\n  height: 95px;\n  display: flex;\n  flex-direction: column;\n  flex-wrap: wrap;\n  font-size: large;\n}\n\n.card-width {\n  width: 300px;\n  margin: 25px;\n}\n\n/* ----- Footer ----- */\nfooter {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n  padding: 20px;\n  background: #616161;\n}\n\n.copyright {\n  margin-left: 42%;\n  display: inline-block;\n}\n\nfooter a:visited {\n  color: white;\n}\n\n@media screen and (max-width: 1100px) {\n  #about {\n    padding: 0 100px 0 75px;\n  }\n  \n  .card-width {\n    margin: 15px;\n  }\n}\n\n@media screen and (max-width: 800px) {\n  #about {\n    padding: 0 25px 0 15px;\n  }\n  \n  .copyright {\n    margin-left: 4%;\n  }\n}\n", ""]);
+exports.push([module.i, "html { \n  position: relative;\n  min-height: 100%;\n}\n\nbody { \n  margin-bottom: 75px;\n  background-color: #f5f5f5;\n}\n\na:hover { \n  text-decoration: none;\n  background-color: white;\n  color: #616161 !important;\n}\n\n/* ---- App Bar ---- */\n.navbar {\n  background: #616161;\n}\n\n.nav-item {\n  font-size: large;\n}\n\n#home {\n  background-image: url(" + escape(__webpack_require__(73)) + ");\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  background-size: cover;\n  background-position: center;\n  height: 350px;\n}\n\n#about {\n  background-color: #E1F5FE;\n  padding: 0 175px 0 100px;\n}\n\n#skills {\n  background-color: #4c6392;\n  color: #fff;\n}\n\n#projects {\n  background-color: #C1D1E7;\n  padding: 0 40px;\n}\n\n.padding-top {\n  padding-top: 130px;\n}\n\n.section-padding {\n  padding-top: 50px;\n  padding-bottom: 50px;\n}\n\n.skills-col {\n  height: 95px;\n  display: flex;\n  flex-direction: column;\n  flex-wrap: wrap;\n  font-size: large;\n}\n\n.card-width {\n  width: 300px;\n  margin: 25px;\n}\n\n.card-title {\n  font-weight: 500 !important;\n}\n\n.card-subtitle {\n  color: #7fac26 !important;\n}\n\n/* ----- Footer ----- */\nfooter {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n  padding: 20px;\n  background: #616161;\n}\n\n.copyright {\n  margin-left: 42%;\n  display: inline-block;\n}\n\nfooter a:visited {\n  color: white;\n}\n\n@media screen and (max-width: 1100px) {\n  #about {\n    padding: 0 100px 0 75px;\n  }\n\n  .skills-col {\n    height: 135px;\n  }\n  \n  .card-width {\n    margin: 15px;\n  }\n}\n\n@media screen and (max-width: 800px) {\n  #home {\n    height: 290px;\n  }\n\n  .padding-top {\n    padding-top: 100px;\n  }\n\n  #about {\n    padding: 0 25px 0 15px;\n  }\n\n  .skills-col {\n    height: 220px;\n  }\n\n  .skills-col li {\n    width: 60%;\n  }\n  \n  .copyright {\n    margin-left: 0%;\n  }\n}\n", ""]);
 
 // exports
 
@@ -25134,24 +25134,28 @@ var Footer = function Footer() {
       )
     ),
     _react2.default.createElement(
-      'ul',
-      { className: 'list-inline font-weight-light float-right mr-4' },
+      'div',
+      { className: 'footer-links d-inline' },
       _react2.default.createElement(
-        'li',
-        { className: 'list-inline-item px-2' },
+        'ul',
+        { className: 'list-inline font-weight-light float-right mr-4' },
         _react2.default.createElement(
-          'a',
-          { href: 'https://github.com/TzolkinB', target: '_blank' },
-          _react2.default.createElement('img', { src: _github2.default, alt: 'Github', width: '40', height: '40' })
-        )
-      ),
-      _react2.default.createElement(
-        'li',
-        { className: 'list-inline-item px-2' },
+          'li',
+          { className: 'list-inline-item px-2' },
+          _react2.default.createElement(
+            'a',
+            { href: 'https://github.com/TzolkinB', target: '_blank' },
+            _react2.default.createElement('img', { src: _github2.default, alt: 'Github', width: '40', height: '40' })
+          )
+        ),
         _react2.default.createElement(
-          'a',
-          { href: 'https://www.linkedin.com/in/kimbell4', target: '_blank' },
-          _react2.default.createElement('img', { src: _linkedIn2.default, alt: 'LinkedIn', width: '40', height: '40' })
+          'li',
+          { className: 'list-inline-item px-2' },
+          _react2.default.createElement(
+            'a',
+            { href: 'https://www.linkedin.com/in/kimbell4', target: '_blank' },
+            _react2.default.createElement('img', { src: _linkedIn2.default, alt: 'LinkedIn', width: '40', height: '40' })
+          )
         )
       )
     )

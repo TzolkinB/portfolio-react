@@ -12,7 +12,7 @@ const Footer = () => {
         <p className="text-white">Copyright &#169; {currentYear} Kimberly Bell</p>
       </div>
       <div className="footer-links d-inline">
-        <ul className="list-inline font-weight-light float-right mr-4">
+        <ul className="list-inline font-weight-light float-right mr-3">
           <li className="list-inline-item px-2">
             <a href="https://github.com/TzolkinB" target="_blank">
               <img src={Github} alt="Github" width="40" height="40" />

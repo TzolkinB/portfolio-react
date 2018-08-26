@@ -113,11 +113,11 @@ footer a:visited {
 
 @media screen and (max-width: 800px) {
   #home {
-    height: 290px;
+    height: 175px;
   }
 
   .padding-top {
-    padding-top: 100px;
+    padding-top: 40px;
   }
 
   #about {

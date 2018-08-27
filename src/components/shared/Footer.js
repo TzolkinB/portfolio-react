@@ -13,13 +13,13 @@ const Footer = () => {
       </div>
       <div className="footer-links d-inline">
         <ul className="list-inline font-weight-light float-right mr-3">
-          <li className="list-inline-item px-2">
-            <a href="https://github.com/TzolkinB" target="_blank">
+          <li className="list-inline-item">
+            <a href="https://github.com/TzolkinB" target="_blank" className="px-2 py-4">
               <img src={Github} alt="Github" width="40" height="40" />
             </a>
           </li>
-          <li className="list-inline-item px-2">
-            <a href="https://www.linkedin.com/in/kimbell4" target="_blank">
+          <li className="list-inline-item">
+            <a href="https://www.linkedin.com/in/kimbell4" target="_blank" className="px-2 py-4">
               <img src={LinkedIn} alt="LinkedIn"  width="40" height="40" />
             </a>
           </li>

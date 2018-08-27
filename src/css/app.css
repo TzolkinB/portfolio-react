@@ -104,6 +104,14 @@ footer a:visited {
 }
 
 @media screen and (max-width: 800px) {
+  .nav-item {
+    padding: 10px 0;
+  }
+
+  .nav-item > a:hover {
+    padding: 1rem !important;
+  }
+
   #home {
     height: 175px;
   }

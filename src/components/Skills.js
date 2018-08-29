@@ -32,14 +32,14 @@ const Skills = props => {
           </div>
           <div className="col-md-2">
             <ul>
+              <li>Git</li>
               <li>Bootstrap/ Bootstrap Material Design</li>
               <li>Zurb Foundation</li>
-              <li>Materialize</li>
             </ul>
           </div>
           <div className="col-md-2">
             <ul>
-              <li>Github</li>
+              <li>Materialize</li>
               <li>Sketch</li>
               <li>Adobe XD</li>
               <li>Adobe Pro DC</li>

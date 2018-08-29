@@ -24379,7 +24379,7 @@ exports = module.exports = __webpack_require__(72)(false);
 
 
 // module
-exports.push([module.i, "html { \n  position: relative;\n  min-height: 100%;\n  min-width: 100%;\n}\n\nbody { \n  margin-bottom: 75px;\n  background-color: #f5f5f5;\n}\n\na:hover { \n  text-decoration: none;\n  background-color: white;\n  color: #616161 !important;\n}\n\n/* ---- App Bar ---- */\n.navbar {\n  background: #616161;\n}\n\n.nav-item {\n  font-size: large;\n}\n\n#home {\n  background-image: url(" + escape(__webpack_require__(73)) + ");\n  background-repeat: no-repeat;\n  background-attachment: local;\n  background-size: cover;\n  background-position: center;\n  height: 350px;\n}\n\n#about {\n  background-color: #E1F5FE;\n  padding: 0 175px 0 100px;\n}\n\n#skills {\n  background-color: #4c6392;\n  color: #fff;\n}\n\n#projects {\n  background-color: #C1D1E7;\n  padding: 0 40px;\n}\n\n.padding-top {\n  padding-top: 130px;\n}\n\n.section-padding {\n  padding-top: 50px;\n  padding-bottom: 50px;\n}\n\n.skills-col {\n  height: 95px;\n  display: flex;\n  flex-direction: column;\n  flex-wrap: wrap;\n  font-size: large;\n}\n\n.card-width {\n  width: 300px;\n  margin: 25px;\n}\n\n.card-title {\n  font-weight: 500 !important;\n}\n\n.card-subtitle {\n  color: #7fac26 !important;\n}\n\n/* ----- Footer ----- */\nfooter {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n  padding: 20px;\n  background: #616161;\n}\n\n.copyright {\n  margin-left: 42%;\n  display: inline-block;\n}\n\nfooter a:visited {\n  color: white;\n}\n\n@media screen and (max-width: 1100px) {\n  #about {\n    padding: 0 100px 0 75px;\n  }\n\n  .skills-col {\n    height: 135px;\n  }\n  \n  .card-width {\n    margin: 15px;\n  }\n}\n\n@media screen and (max-width: 800px) {\n  #home {\n    height: 290px;\n  }\n\n  .padding-top {\n    padding-top: 100px;\n  }\n\n  #about {\n    padding: 0 25px;\n  }\n\n  .skills-col {\n    height: 220px;\n    font-size: medium;\n  }\n\n  .skills-col li {\n    width: 60%;\n  }\n  \n  .copyright {\n    margin-left: 2%;\n    font-size: small;\n  }\n}\n", ""]);
+exports.push([module.i, "html { \n  position: relative;\n  min-height: 100%;\n  overflow-x: hidden;\n}\n\nbody { \n  margin-bottom: 75px;\n  background-color: #f5f5f5;\n  overflow-x: hidden;\n}\n\na:hover { \n  text-decoration: none;\n  color: #616161 !important;\n}\n\n/* ---- App Bar ---- */\n.navbar {\n  background: #616161;\n}\n\n.nav-item {\n  font-size: large;\n}\n\n.nav-item > a:hover {\n  background-color: #fff;\n}\n\n#home {\n  background-image: url(" + escape(__webpack_require__(73)) + ");\n  background-repeat: no-repeat;\n  background-attachment: local;\n  background-size: cover;\n  background-position: center;\n  height: 350px;\n}\n\n#about {\n  background-color: #E1F5FE;\n  padding: 0 175px 0 100px;\n}\n\n#skills {\n  background-color: #4c6392;\n  color: #fff;\n}\n\n.skills-mobile {\n  display: none;\n}\n\n#projects {\n  background-color: #C1D1E7;\n  padding: 0 40px;\n}\n\n.padding-top {\n  padding-top: 130px;\n}\n\n.section-padding {\n  padding-top: 50px;\n  padding-bottom: 50px;\n}\n\n.card-width {\n  width: 300px;\n  margin: 25px;\n}\n\n.card-title {\n  font-weight: 500 !important;\n}\n\n.card-subtitle {\n  color: #7fac26 !important;\n}\n\n/* ----- Footer ----- */\nfooter {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n  padding: 20px;\n  background: #616161;\n}\n\n.copyright {\n  margin-left: 42%;\n  display: inline-block;\n}\n\nfooter a:visited {\n  color: white;\n}\n\n@media screen and (max-width: 1100px) {\n  #about {\n    padding: 0 100px 0 75px;\n  }\n\n  .card-width {\n    margin: 15px;\n  }\n}\n\n@media screen and (max-width: 800px) {\n  .nav-item {\n    padding: 10px 0;\n  }\n\n  .nav-item > a:hover {\n    padding: 1rem !important;\n  }\n\n  #home {\n    height: 175px;\n  }\n\n  #about {\n    padding: 0 25px;\n  }\n\n  .copyright {\n    margin-left: 2%;\n    font-size: small;\n  }\n\n  .skills-list {\n    display: none;\n  }\n\n  .skills-mobile {\n    display: inline;\n  }\n}\n", ""]);
 
 // exports
 
@@ -25141,19 +25141,19 @@ var Footer = function Footer() {
         { className: 'list-inline font-weight-light float-right mr-3' },
         _react2.default.createElement(
           'li',
-          { className: 'list-inline-item px-2' },
+          { className: 'list-inline-item' },
           _react2.default.createElement(
             'a',
-            { href: 'https://github.com/TzolkinB', target: '_blank' },
+            { href: 'https://github.com/TzolkinB', target: '_blank', className: 'px-2 py-4' },
             _react2.default.createElement('img', { src: _github2.default, alt: 'Github', width: '40', height: '40' })
           )
         ),
         _react2.default.createElement(
           'li',
-          { className: 'list-inline-item px-2' },
+          { className: 'list-inline-item' },
           _react2.default.createElement(
             'a',
-            { href: 'https://www.linkedin.com/in/kimbell4', target: '_blank' },
+            { href: 'https://www.linkedin.com/in/kimbell4', target: '_blank', className: 'px-2 py-4' },
             _react2.default.createElement('img', { src: _linkedIn2.default, alt: 'LinkedIn', width: '40', height: '40' })
           )
         )
@@ -25208,19 +25208,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Home = function Home() {
   return _react2.default.createElement(
     'div',
-    null,
+    { className: 'container-fluid px-0' },
     _react2.default.createElement(
       'div',
-      { className: 'text-center padding-top', id: 'home' },
+      { className: 'jumbotron jumbotron-fluid mb-0', id: 'home' },
       _react2.default.createElement(
-        'h1',
-        null,
-        'Kimberly Bell'
-      ),
-      _react2.default.createElement(
-        'h2',
-        null,
-        'Front End Developer'
+        'div',
+        { className: 'container text-center' },
+        _react2.default.createElement(
+          'h1',
+          { className: 'display-4' },
+          'Kimberly Bell'
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'lead' },
+          'Front End Developer'
+        )
       )
     ),
     _react2.default.createElement(_About2.default, { id: 'about' }),
@@ -25258,7 +25262,7 @@ var About = function About(props) {
 
   return _react2.default.createElement(
     'div',
-    { id: id, className: 'container-fluid' },
+    { id: id },
     _react2.default.createElement(
       'div',
       { className: 'section-padding' },
@@ -25329,7 +25333,7 @@ var Skills = function Skills(props) {
 
   return _react2.default.createElement(
     "div",
-    { id: id, className: "container-fluid" },
+    { id: id },
     _react2.default.createElement(
       "div",
       { className: "section-padding" },
@@ -25348,14 +25352,14 @@ var Skills = function Skills(props) {
       ),
       _react2.default.createElement(
         "div",
-        { className: "row" },
-        _react2.default.createElement("div", { className: "col-sm-1" }),
+        { className: "row skills-list" },
+        _react2.default.createElement("div", { className: "col-md-2" }),
         _react2.default.createElement(
           "div",
-          { className: "col-sm-10" },
+          { className: "col-md-2" },
           _react2.default.createElement(
             "ul",
-            { className: "skills-col mb-0" },
+            null,
             _react2.default.createElement(
               "li",
               null,
@@ -25375,7 +25379,15 @@ var Skills = function Skills(props) {
               "li",
               null,
               "React"
-            ),
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "col-md-2" },
+          _react2.default.createElement(
+            "ul",
+            null,
             _react2.default.createElement(
               "li",
               null,
@@ -25386,6 +25398,24 @@ var Skills = function Skills(props) {
               null,
               "Webpack"
             ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "Command Line"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "VIM"
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "col-md-2" },
+          _react2.default.createElement(
+            "ul",
+            null,
             _react2.default.createElement(
               "li",
               null,
@@ -25400,16 +25430,19 @@ var Skills = function Skills(props) {
               "li",
               null,
               "Materialize"
-            ),
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "col-md-2" },
+          _react2.default.createElement(
+            "ul",
+            null,
             _react2.default.createElement(
               "li",
               null,
               "Github"
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              "VIM"
             ),
             _react2.default.createElement(
               "li",
@@ -25428,7 +25461,108 @@ var Skills = function Skills(props) {
             )
           )
         ),
-        _react2.default.createElement("div", { className: "col-sm-1" })
+        _react2.default.createElement("div", { className: "col-md-2" })
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "skills-mobile" },
+        _react2.default.createElement(
+          "div",
+          { className: "row" },
+          _react2.default.createElement("div", { className: "col-1" }),
+          _react2.default.createElement(
+            "div",
+            { className: "col-5" },
+            _react2.default.createElement(
+              "ul",
+              null,
+              _react2.default.createElement(
+                "li",
+                null,
+                "HTML"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "CSS"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "Javascript/ES6"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "React"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "Redux"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "Webpack"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "Command Line"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "VIM"
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "col-5" },
+            _react2.default.createElement(
+              "ul",
+              null,
+              _react2.default.createElement(
+                "li",
+                null,
+                "Bootstrap/ Bootstrap Material Design"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "Zurb Foundation"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "Materialize"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "Github"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "Sketch"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "Adobe XD"
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                "Adobe Pro DC"
+              )
+            )
+          ),
+          _react2.default.createElement("div", { className: "col-1" })
+        )
       )
     )
   );
@@ -25463,7 +25597,7 @@ var Projects = function Projects(props) {
 
   return _react2.default.createElement(
     'div',
-    { id: id, className: 'container-fluid' },
+    { id: id },
     _react2.default.createElement(
       'div',
       { className: 'section-padding' },

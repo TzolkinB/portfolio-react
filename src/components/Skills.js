@@ -62,6 +62,7 @@ const Skills = props => {
               <li>Webpack</li>
               <li>Command Line</li>
               <li>VIM</li>
+              <li>Git</li>
             </ul>
           </div>
           <div className="col-5">
@@ -69,7 +70,6 @@ const Skills = props => {
               <li>Bootstrap/ Bootstrap Material Design</li>
               <li>Zurb Foundation</li>
               <li>Materialize</li>
-              <li>Github</li>
               <li>Sketch</li>
               <li>Adobe XD</li>
               <li>Adobe Pro DC</li>

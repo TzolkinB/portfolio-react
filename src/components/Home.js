@@ -6,10 +6,10 @@ import Projects from './Projects';
 const Home = () => {
   return(
     <div className="container-fluid px-0">
-      <div className="jumbotron jumbotron-fluid mb-0" id="home">
-        <div className="container text-center">
-          <h1 className="display-4">Kimberly Bell</h1>
-          <p className="lead">Front End Developer</p>
+      <div className="jumbotron jumbotron-fluid pt-5 mb-0" id="home">
+        <div className="container text-center mt-5">
+          <h1 className="display-2 text-uppercase">Kimberly Bell</h1>
+            <h2 className="display-3">Front End Developer</h2>
         </div>
       </div>
       <About id="about" />

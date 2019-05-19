@@ -17,14 +17,16 @@ const Skills = props => {
           <div className="col-md-2">
             <ul>
               <li>HTML</li>
-              <li>CSS</li>
-              <li>Javascript/ES6</li>
+              <li>Handlebars</li>
+              <li>CSS / SCSS</li>
+              <li>Javascript / ES6</li>
               <li>React</li>
             </ul>
           </div>
           <div className="col-md-2">
             <ul>
               <li>Redux</li>
+              <li>Ember</li>
               <li>Webpack</li>
               <li>Command Line</li>
               <li>VIM</li>
@@ -33,7 +35,7 @@ const Skills = props => {
           <div className="col-md-2">
             <ul>
               <li>Git</li>
-              <li>Bootstrap/ Bootstrap Material Design</li>
+              <li>Bootstrap / Bootstrap Material Design</li>
               <li>Zurb Foundation</li>
             </ul>
           </div>

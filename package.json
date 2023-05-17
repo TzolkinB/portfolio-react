@@ -5,7 +5,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TzolkinB/portfolio_react"
+    "url": "https://github.com/TzolkinB/portfolio-react"
   },
   "scripts": {
     "start": "webpack-dev-server --open",

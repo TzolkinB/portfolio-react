@@ -10,7 +10,7 @@ const Home = () => {
         <div className='container text-center mt-5'>
           <h1 className='display-2 text-uppercase'>Kim Bell</h1>
           <h2 className='display-3'>SDET | Software Engineer in Test</h2>
-          <h3>Focusing on Cypress. Previous Front End Developer.</h3>
+          <h3>Cypress Test Automation. Previous Front End Developer.</h3>
         </div>
       </div>
       <About id='about' />

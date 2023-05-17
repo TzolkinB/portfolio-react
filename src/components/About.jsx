@@ -30,7 +30,7 @@ const About = props => {
               able to gain new experiences such as adding test jobs to Gitlab's
               CI/CD pipeline with YAML, and creating a Bash script to add a
               required config for Cypress. I have also been able to use my
-              existing experience with Javasscript and Typescript to write
+              existing experience with Javascript and Typescript to write
               custom commands intended for team consumption in order to increase
               efficiency in writing tests. In my free time I continue becoming
               familiar with Gitlab, YAML, and Bash with a focus on CI/CD

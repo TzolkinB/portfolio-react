@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+// const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const paths = {
   PUB:    path.resolve(__dirname, 'public'),
@@ -12,12 +13,15 @@ module.exports = {
     'bundle': './src/app.js'
   },
   output: {
-    path: paths.PUB,
+    path: path.resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: '[name].js',
+    // filename: '[name].js',
+    filename: 'bundle.js',
   },
   devServer: {
-    contentBase: './public',
+    // contentBase: './public',
+    contentBase: path.join(__dirname, 'public'),
+    // contentBasePublicPath: '/assets',
     port: 4280,
     compress: true,
     stats: 'errors-only',
@@ -60,6 +64,9 @@ module.exports = {
     ]
   },
   plugins: [
+    // new HtmlWebpackPlugin({
+    //   template: path.join(__dirname, "public")
+    // })
   ],
   devtool: 'source-map',
   resolve: {

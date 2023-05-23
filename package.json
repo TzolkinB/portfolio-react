@@ -10,8 +10,9 @@
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": ""
+    "deploy": "aws s3 sync build/ s3://fiercewhiskers.me",
+    "prod": "npm run build && npm run deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kimberly Bell",
   "license": "UNLICENSED",

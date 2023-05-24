@@ -32,8 +32,9 @@ a:hover {
   background-repeat: no-repeat;
   background-attachment: local;
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
   height: 300px;
+  text-align: end;
 }
 
 #about {
@@ -124,12 +125,16 @@ footer a:visited {
   }
 
   #home div h1 {
-    font-size: 2.5rem;
+    font-size: 1.7rem;
     margin-bottom: 0;
   }
 
   #home div h2 {
-    font-size: 1.9rem;
+    font-size: 1.4rem;
+  }
+
+  #home div h3 {
+    font-size: 1rem;
   }
 
   #about {

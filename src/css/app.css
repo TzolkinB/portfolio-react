@@ -28,12 +28,12 @@ a:hover {
 }
 
 #home {
-  background-image: url("./../img/perutrail2.png");
+  background-image: url("./../img/perutrail3.png");
   background-repeat: no-repeat;
   background-attachment: local;
   background-size: cover;
-  background-position: center;
-  height: 350px;
+  background-position: bottom;
+  height: 300px;
 }
 
 #about {

@@ -1,6 +1,11 @@
-const webpack = require('webpack');
 const path = require('path');
-// const HtmlWebpackPlugin = require("html-webpack-plugin");
+// path: Node's built-in path module and it is prefixed with the __dirname global. https://nodejs.org/api/path.html
+  // This prevents file path issues between operating systems and allows relative paths to work as expected.
+// __direname: The directory name of the current module. https://nodejs.org/docs/latest/api/modules.html#__dirname
+  // Example: running node example.js from /Users/mjr
+  // console.log(__dirname);
+  // Prints: /Users/mjr
+// The path.resolve() method resolves a sequence of paths or path segments into an absolute path.
 
 const paths = {
   PUB:    path.resolve(__dirname, 'public'),
@@ -8,20 +13,22 @@ const paths = {
   IMG:    path.resolve(__dirname, 'src/img')
 }
 
+console.log('test-----', path.resolve(__dirname, 'build'),)
 module.exports = {
   entry: {
     'bundle': './src/app.js'
   },
   output: {
+    // path: The output directory as an absolute path.
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
-    // filename: '[name].js',
+    // filename: the name of each output bundle.
+    // The bundle is written to the directory specified by the output.path option.
     filename: 'bundle.js',
   },
   devServer: {
-    // contentBase: './public',
+    // contentBase: Tell the server where to serve content from
     contentBase: path.join(__dirname, 'public'),
-    // contentBasePublicPath: '/assets',
     port: 4280,
     compress: true,
     stats: 'errors-only',
@@ -64,9 +71,6 @@ module.exports = {
     ]
   },
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   template: path.join(__dirname, "public")
-    // })
   ],
   devtool: 'source-map',
   resolve: {

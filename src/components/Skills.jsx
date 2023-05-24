@@ -56,25 +56,30 @@ const Skills = props => {
             <div className='col-1'></div>
             <div className='col-5'>
               <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>Javascript/ES6</li>
+                <li>Cypress</li>
+                <li>Testing-Library</li>
+                <li>Javascript</li>
+                <li>Typescript</li>
                 <li>React</li>
-                <li>Redux</li>
-                <li>Webpack</li>
+                <li>Git</li>
                 <li>Command Line</li>
                 <li>VIM</li>
+                <li>Gitlab</li>
+                <li>Bitbucket</li>
               </ul>
             </div>
             <div className='col-5'>
               <ul>
-                <li>Bootstrap/ Bootstrap Material Design</li>
-                <li>Zurb Foundation</li>
-                <li>Materialize</li>
-                <li>Github</li>
+                <li>Webpack</li>
+                <li>qtest</li>
+                <li>Browserstack</li>
+                <li>VSCode</li>
+                <li>YAML</li>
+                <li>Bash</li>
+                <li>Ember</li>
+                <li>HTML</li>
+                <li>CSS / Styled Components</li>
                 <li>Sketch</li>
-                <li>Adobe XD</li>
-                <li>Adobe Pro DC</li>
               </ul>
             </div>
             <div className='col-1'></div>

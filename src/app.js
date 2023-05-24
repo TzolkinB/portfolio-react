@@ -1,8 +1,7 @@
 import React          from 'react'
 import { render }     from 'react-dom'
 import { 
-  HashRouter, Route, Switch,
-  Redirect
+  HashRouter, Route, Switch
 } from 'react-router-dom'
 
 import 'Style/app.css';

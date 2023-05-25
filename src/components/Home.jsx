@@ -5,15 +5,16 @@ import Projects from './Projects';
 
 const Home = () => {
   return (
-    <div className='container-fluid px-0'>
+    <div>
       <div id='home'>
-      <div className='mask' style={{backgroundColor:"rgba(0,0,0, 0.5)", height:"300px"}}>
-        <div className='container text-white pt-5'>
-          <h1 className='text-uppercase'>Kim Bell</h1>
-          <h2>SDET | Software Engineer in Test</h2>
-          <h3>Cypress Test Automation. Previous Front End Developer.</h3>
+        <div className='mask' style={{backgroundColor:"rgba(0,0,0, 0.5)", height:"300px"}}>
+          <div className='text-white pt-3 pt-md-5 pr-3 mr-0 mr-md-3'>
+            <h1 className='text-uppercase'>Kim Bell</h1>
+            <h2>SDET | Software Engineer in Test</h2>
+            <p className='lead mb-0'>Cypress Test Automation</p>
+            <p className='lead mb-0'>Front End Developer turned SDET</p>
+          </div>
         </div>
-      </div>
       </div>
       <About id='about' />
       <Skills id='skills' />

@@ -1,7 +1,24 @@
 import React    from 'react';
-import { Link } from 'react-router-dom';
 import Resume   from 'IMG/Bell_Kim-ResumePublic.pdf';
 import Whiskers from 'IMG/W-white.png';
+
+const menuItems = ['About', 'Skills', 'Projects', 'Resume']
+const menuList = menuItems.map((item) => {
+  if (item === 'Resume') {
+    return (
+      <li className="nav-item display-5">
+        <a href={Resume} target="_blank" className="text-white px-3 py-4">Resume</a>
+      </li>
+    )
+  }
+  else {
+    return (
+      <li className="nav-item display-5">
+        <a href={`#${item.toLowerCase()}`} className="text-white px-3 py-4">{item}</a>
+      </li>
+    )
+  }
+})
 
 const AppBar = () => {
   return(
@@ -24,18 +41,7 @@ const AppBar = () => {
 
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <a href="#about" className="text-white px-3 py-4">About</a>
-            </li>
-            <li className="nav-item">
-              <a href="#skills" className="text-white px-3 py-4">Skills</a>
-            </li>
-            <li className="nav-item">
-              <a href="#projects" className="text-white px-3 py-4">Projects</a>
-            </li>
-            <li className="nav-item">
-              <a href={Resume} target="_blank" className="text-white px-3 py-4">Resume</a>
-            </li>
+            {menuList}
           </ul>
         </div>
       </nav>

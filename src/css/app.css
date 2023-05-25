@@ -65,12 +65,9 @@ a:hover {
   margin: 25px;
 }
 
-.card-title {
-  font-weight: 500 !important;
-}
-
 .card-subtitle {
-  color: #7fac26 !important;
+  color: #7fac26;
+  font-size: medium;
 }
 
 /* ----- Footer ----- */
@@ -99,15 +96,16 @@ footer a:visited {
 }
 
 @media screen and (max-width: 800px) {
-  img {
-    width: 25%;
-  }
   .nav-item {
     padding: 10px 0;
   }
 
   .nav-item > a:hover {
     padding: 1rem !important;
+  }
+  
+  #about img {
+    width: 25%;
   }
 
   #home {

@@ -16,8 +16,8 @@ const CardContainer = props => {
   return (
     <div className="card card-width">
       <div className="card-body">
-        <p className="card-title display-5">{title}</p>
-        <h6 className="card-subtitle mb-2 text-muted">{subtitle}</h6>
+        <p className="lead"><strong>{title}</strong></p>
+        <p className="card-subtitle mb-2">{subtitle}</p>
         <p className="card-text">{text}</p>
         <a href={url} target="_blank" className="card-link">{urlText}</a>
         {multipleUrls()}

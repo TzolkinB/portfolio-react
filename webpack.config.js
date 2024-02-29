@@ -15,6 +15,7 @@ const paths = {
 
 console.log('test-----', path.resolve(__dirname, 'build'),)
 module.exports = {
+  mode: 'development',
   entry: {
     'bundle': './src/app.js'
   },
@@ -28,18 +29,30 @@ module.exports = {
   },
   devServer: {
     // contentBase: Tell the server where to serve content from
-    contentBase: path.join(__dirname, 'public'),
+    static: path.join(__dirname, 'public'),
     port: 4280,
     compress: true,
-    stats: 'errors-only',
+    client: {
+      logging: 'error',
+    },
     historyApiFallback: { index: 'index.html' },
+  },
+  performance: {
+    maxAssetSize: 400,
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: "defaults" }]
+            ]
+          }
+        }
       },
       {
         test: /\.css$/,

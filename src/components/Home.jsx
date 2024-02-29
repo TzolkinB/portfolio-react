@@ -4,6 +4,8 @@ import Skills from './Skills';
 import Projects from './Projects';
 
 const Home = () => {
+  const img = document.getElementById('home')
+  console.log('img', img)
   return (
     <div className='container-fluid px-0'>
       <div id='home'>

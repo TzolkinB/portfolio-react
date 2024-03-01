@@ -5,36 +5,28 @@ html {
 }
 
 body { 
-  margin-bottom: 75px;
-  overflow-x: hidden;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
 a:hover { 
   text-decoration: none;
   color: #243F6A !important;
+  background-color: #fff;
 }
 
 /* ---- App Bar ---- */
 .navbar {
   background: #243F6A;
+  padding: 0.7rem 1rem;
 }
 
 .nav-item {
   font-size: large;
 }
 
-.nav-item > a:hover {
-  background-color: #fff;
-}
-
 #home {
-  background-image: url("./../img/perutrail3.png");
-  background-repeat: no-repeat;
-  background-attachment: local;
-  background-size: cover;
-  background-position: center;
   height: 300px;
-  text-align: end;
+  background-color: #6890B6;
 }
 
 #about {
@@ -80,17 +72,13 @@ a:hover {
 
 /* ----- Footer ----- */
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   height: 75px;
-  padding: 20px;
   background: #243F6A;
 }
 
 .copyright {
-  margin-left: 42%;
-  display: inline-block;
+  /* margin-left: 42%; */
+  /* display: inline-block; */
 }
 
 footer a:visited {
@@ -118,6 +106,10 @@ footer a:visited {
 
   #home {
     height: 175px;
+  }
+
+  #home img {
+    height: 30;
   }
 
   #home div {

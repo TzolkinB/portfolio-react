@@ -13,13 +13,6 @@ const Projects = props => {
           </div>
         </div>
         <div className="row justify-content-center">
-          <Card 
-            title="Hazmat"
-            subtitle="Material Design Library"
-            text="Library of React components based on Material Design guidelines for use by Tax Management Associates, Inc."
-            url="https://qa-tma1.works/hazmat/"
-            urlText="Demo"
-          />
           <Card
             title="React Starter Template"
             subtitle="Uses Webpack"

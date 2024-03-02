@@ -62,7 +62,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|gif|eot|woff|woff2|ttf|pdf)$/,
+        test: /\.(png|jpg|gif|ttf|pdf|svg)$/,
         include: paths.IMG,
         use: [{
           loader: 'file-loader',

@@ -1,9 +1,3 @@
-html { 
-  position: relative;
-  min-height: 100%;
-  overflow-x: hidden;
-}
-
 body { 
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
@@ -16,26 +10,51 @@ a:hover {
 
 /* ---- App Bar ---- */
 .navbar {
-  background: #243F6A;
-  padding: 0.7rem 1rem;
+  background: #0D1A2E;
 }
 
-.nav-item {
+.nav-link {
   font-size: large;
+  color: #5DC1BE;
+}
+
+.navbar-toggler,
+.navbar-brand {
+  color: #5DC1BE;
+}
+
+.navbar-brand img {
+  filter: invert(58%) sepia(48%) saturate(1039%) hue-rotate(131deg) brightness(108%) contrast(150%);
+}
+
+.app {
+  margin-top: 4.3rem;
 }
 
 #home {
-  height: 300px;
-  background-color: #6890B6;
+  height: 235px;
+  /* background-color: #E2F0F3; */
+  /* background-color: #E1F5FE; */
+  background-color: #C7CCC4;
+  color: #3E587A; 
+}
+
+#home .name {
+ color: #0D1A2E;
 }
 
 #about {
-  background-color: #E2F0F3;
+  background-color: #6F9BC5;
   padding: 0 175px 0 100px;
 }
 
+#about p {
+  color: #fff;
+}
+
 #skills {
-  background-color: #243F6A;
+  /* background-color: #243F6A; */
+  background-color: #3E587A;
   color: #fff;
 }
 
@@ -44,7 +63,7 @@ a:hover {
 }
 
 #projects {
-  background-color: #6890B6;
+  background-color: #6F9BC5;
   padding: 0 40px;
 }
 
@@ -73,16 +92,14 @@ a:hover {
 /* ----- Footer ----- */
 footer {
   height: 75px;
-  background: #243F6A;
+  background: #0D1A2E;
 }
 
-.copyright {
-  /* margin-left: 42%; */
-  /* display: inline-block; */
+.footer-links {
+  color: #5DC1BE;
 }
-
-footer a:visited {
-  color: white;
+.footer-links a:visited {
+  color: #5DC1BE;
 }
 
 @media screen and (max-width: 1100px) {

@@ -40,7 +40,12 @@ a:hover {
 }
 
 #home .name {
- color: #0D1A2E;
+ /* color: #0D1A2E; */
+ color: #3E587A; 
+}
+
+.tech-icons img {
+  height: 80px;
 }
 
 #about {
@@ -110,6 +115,7 @@ footer {
   .card-width {
     margin: 15px;
   }
+
 }
 
 @media screen and (max-width: 800px) {
@@ -125,8 +131,8 @@ footer {
     height: 175px;
   }
 
-  #home img {
-    height: 30;
+  .tech-icons img {
+    height: 30px;
   }
 
   #home div {
@@ -145,6 +151,7 @@ footer {
   #home div h3 {
     font-size: 1rem;
   }
+
 
   #about {
     padding: 0 25px;

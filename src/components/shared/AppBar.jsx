@@ -17,7 +17,7 @@ const AppBar = () => {
 
   return(
     <header>
-      <MDBNavbar expand="lg" fixed="top">
+      <MDBNavbar expand="lg" fixed="top" className="px-3">
         <MDBContainer fluid>
           <MDBNavbarBrand href="/" className="pl-2">
             <img src={Whiskers} alt="Cat whiskers" />

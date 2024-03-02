@@ -46,7 +46,6 @@ const Skills = props => {
               <li>Ember</li>
               <li>HTML</li>
               <li>CSS / Styled Components</li>
-              <li>Sketch</li>
             </ul>
           </div>
           <div className='col-md-2'></div>

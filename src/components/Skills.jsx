@@ -1,6 +1,8 @@
 import React from 'react';
 import { MDBTypography, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import Qtest from 'IMG/qtest.svg';
+import TestingLib from 'IMG/octopus.png'
+import StyledComp from 'IMG/styled-components.png'
 
 const Skills = props => {
   const { id } = props;
@@ -27,7 +29,7 @@ const Skills = props => {
         {/* Testing Tools */}
         <MDBCol size={2}>
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original-wordmark.svg" alt="cypress" height={70}/>
-              <p>Testing-Library</p>
+              <img src={TestingLib} alt="testing library" width="40" height="40" />
               <img src={Qtest} alt="qtest" width="40" height="40" />
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/browserstack/browserstack-original-wordmark.svg" alt="browserstack" height={50}/>
         </MDBCol>
@@ -59,6 +61,7 @@ const Skills = props => {
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ember/ember-original-wordmark.svg" alt="ember" height={50}/>
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg" alt="html" height={50}/>
               <p>CSS / Styled Components</p>
+              <img src={StyledComp} alt="styled components" width="40" height="40" />
           </MDBCol>
           </MDBRow>
             <MDBRow center className="skills-mobile d-flex d-sm-none">

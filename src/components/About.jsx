@@ -38,6 +38,10 @@ const About = props => {
               I am always looking for new opportunites so feel free to reach out
               to me: krbell4@gmail.com
           </div>
+          {/* Why remote only? */}
+          {/* My Testing -- what is it from testing library? */}
+          {/* Why not BDD () Gherkin or POM (page object model)? */}
+          {/* Why Cypress? */}
         </div>
     </div>
   );

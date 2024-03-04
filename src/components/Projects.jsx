@@ -1,17 +1,18 @@
+import { MDBTypography, MDBRow, MDBCol, } from 'mdb-react-ui-kit';
 import Card   from './shared/CardContainer';
 
 const Projects = props => {
   const { id } = props;
 
   return(
-    <div id={id}>
-      <div className="section-padding"> 
-        <div className="row">
-          <div className="col-sm-12 mb-3">
-            <h2 className="text-center">Projects</h2>
-          </div>
-        </div>
-        <div className="row justify-content-center">
+    <div id={id} className="py-5 px-4 px-sm-5">
+      <MDBTypography tag="h3" className="text-center">
+        Projects
+      </MDBTypography>
+        {/* <div className="d-flex justify-content-center"> */}
+      <MDBRow>
+        <MDBCol sm={3}></MDBCol>
+        <MDBCol sm={3}>
           <Card
             title="React Starter Template"
             subtitle="Uses Webpack"
@@ -19,6 +20,8 @@ const Projects = props => {
             url="https://github.com/TzolkinB/react-template"
             urlText="Github Repo"
           />
+        </MDBCol>
+        <MDBCol sm={3}>
           <Card
             title="Memory Game"
             subtitle="Uses React, Webpack, Bootstrap Material Design"
@@ -26,11 +29,13 @@ const Projects = props => {
             url="https://memory-game1234.firebaseapp.com/#/"
             urlText="Demo"
             url2="https://github.com/TzolkinB/memory"
-            url2Text="GithubRepo"
+            url2Text="Github Repo"
           />
-        </div>
+        </MDBCol>
+        <MDBCol sm={3}></MDBCol>
+      </MDBRow>
+        {/* </div> */}
       </div>
-    </div>
   );
 }
 

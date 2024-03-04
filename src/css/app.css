@@ -43,8 +43,10 @@ a:hover {
 }
 
 #about {
-  background-color: #6F9BC5;
-  color: #0D1A2E;
+  /* background-color: #6F9BC5; */
+  background-color: #3E587A;
+  /* color: #0D1A2E; */
+  color: #C7CCC4;
 }
 
 #skills {
@@ -57,8 +59,9 @@ a:hover {
 }
 
 #projects {
-  background-color: #6F9BC5;
-  padding: 0 40px;
+  /* background-color: #6F9BC5; */
+  background-color: #3E587A;
+  color: #fff;
 }
 
 .section-padding {
@@ -66,17 +69,18 @@ a:hover {
   padding-bottom: 50px;
 }
 
-.card-width {
-  width: 300px;
-  margin: 25px;
-}
-
-.card-title {
-  font-weight: 500 !important;
+.card {
+  background-color: #C7CCC4;
+  color: #0D1A2E;;
 }
 
 .card-subtitle {
-  color: #7fac26 !important;
+  /* color: #6F9BC5; */
+  color: #fff;
+}
+
+.card a {
+  background-color: #5DC1BE;
 }
 
 /* ----- Footer ----- */
@@ -85,9 +89,8 @@ footer {
   background: #0D1A2E;
 }
 
-.footer-links {
-  color: #5DC1BE;
-}
+.footer-links,
+.copyright, 
 .footer-links a:visited {
   color: #5DC1BE;
 }

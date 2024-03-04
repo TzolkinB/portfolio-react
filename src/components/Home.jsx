@@ -9,13 +9,6 @@ const Home = () => {
     <MDBContainer fluid className="app gx-0">
       <div id="home" className="px-5 d-flex justify-content-end align-items-end align-items-sm-center">
         <div className="text-end">
-        {/* <div className="tech-icons">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-plain.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" />
-        </div> */}
         <MDBTypography tag="h1" className="text-uppercase name">
           Kim Bell
         </MDBTypography>

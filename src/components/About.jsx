@@ -1,4 +1,3 @@
-import React from 'react';
 import { MDBTypography } from 'mdb-react-ui-kit';
 import Me from 'IMG/profile.jpg';
 
@@ -10,17 +9,17 @@ const About = props => {
       <MDBTypography tag='h3'>
         About Me
       </MDBTypography>
-      <div className="d-sm-flex align-items-sm-center">
-      <div className="float-start flex-sm-shrink-0">
+      <div className="d-lg-flex align-items-lg-start">
+      <div className="float-start flex-lg-shrink-0">
         <img
           src={Me}
           alt='Profile image'
           height='120'
           width='120'
-          className='rounded-circle me-3 mb-3'
+          className='rounded-circle me-3 mb-1'
         />
       </div>
-      <div className="flex-sm-grow-1 text-justify">
+      <div className="flex-lg-grow-1">
             {/* <p className='pl-2 text-justify'> */}
               In 2022 I changed positions from a front-end developer to SDET.
               The company I worked for recently started investing in automation

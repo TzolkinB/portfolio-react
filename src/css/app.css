@@ -26,6 +26,7 @@ a:hover {
 .navbar-brand img {
   filter: invert(58%) sepia(48%) saturate(1039%) hue-rotate(131deg) brightness(108%) contrast(150%);
 }
+/* ----- */
 
 .app {
   margin-top: 4.3rem;
@@ -33,43 +34,31 @@ a:hover {
 
 #home {
   height: 235px;
-  /* background-color: #E2F0F3; */
-  /* background-color: #E1F5FE; */
   background-color: #C7CCC4;
   color: #3E587A; 
 }
 
 #home .name {
- /* color: #0D1A2E; */
  color: #3E587A; 
-}
-
-.tech-icons img {
-  height: 80px;
 }
 
 #about {
   background-color: #6F9BC5;
-  padding: 0 175px 0 100px;
-}
-
-#about p {
-  color: #fff;
+  color: #0D1A2E;
 }
 
 #skills {
-  /* background-color: #243F6A; */
   background-color: #3E587A;
   color: #fff;
+}
+
+#skills img {
+  padding: 0 5px 0 5px;
 }
 
 #projects {
   background-color: #6F9BC5;
   padding: 0 40px;
-}
-
-.padding-top {
-  padding-top: 130px;
 }
 
 .section-padding {
@@ -102,59 +91,24 @@ footer {
 .footer-links a:visited {
   color: #5DC1BE;
 }
+/* ----- */
 
 @media screen and (max-width: 1100px) {
-  #about {
-    padding: 0 100px 0 75px;
-  }
-
   .card-width {
     margin: 15px;
   }
-
 }
 
 @media screen and (max-width: 800px) {
-  .nav-item {
-    padding: 10px 0;
-  }
-
-  .nav-item > a:hover {
-    padding: 1rem !important;
-  }
-
   #home {
     height: 175px;
   }
 
-  .tech-icons img {
-    height: 30px;
-  }
-
-  #home div {
-    margin-top: -10px !important;
-  }
-
   #home div h1 {
-    font-size: 1.7rem;
     margin-bottom: 0;
-  }
-
-  #home div h2 {
-    font-size: 1.4rem;
-  }
-
-  #home div h3 {
-    font-size: 1rem;
-  }
-
-
-  #about {
-    padding: 0 25px;
   }
 
   .copyright {
     margin-left: 2%;
-    font-size: small;
   }
 }

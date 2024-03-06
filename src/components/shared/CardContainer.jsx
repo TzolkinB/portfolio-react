@@ -15,7 +15,7 @@ const CardContainer = props => {
 
   const multipleUrls = () => {
     if(url2) {
-      return <MDBBtn href={url2} target="_blank">{url2Text}</MDBBtn>
+      return <MDBBtn href={url2} target="_blank" className="ms-3">{url2Text}</MDBBtn>
 
     }
     return;

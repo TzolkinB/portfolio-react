@@ -33,7 +33,6 @@ a:hover {
 }
 
 #home {
-  height: 235px;
   background-color: #C7CCC4;
   color: #3E587A; 
 }
@@ -43,15 +42,22 @@ a:hover {
 }
 
 #about {
-  /* background-color: #6F9BC5; */
   background-color: #3E587A;
-  /* color: #0D1A2E; */
   color: #C7CCC4;
+  clip-path: polygon(0 0%, 100% 5%, 100% 95%, 0% 100%);
+  -webkit-clip-path: polygon(0 0%, 100% 5%, 100% 95%, 0% 100%);
+}
+
+#about,
+#skills {
+  margin-top: -40px;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 #skills {
-  background-color: #3E587A;
-  color: #fff;
+  background-color: #C7CCC4;;
+  color: #3E587A;;
 }
 
 #skills img {
@@ -59,7 +65,6 @@ a:hover {
 }
 
 #projects {
-  /* background-color: #6F9BC5; */
   background-color: #3E587A;
   color: #fff;
 }
@@ -70,7 +75,6 @@ a:hover {
 }
 
 .card-subtitle {
-  /* color: #6F9BC5; */
   color: #fff;
 }
 
@@ -91,17 +95,16 @@ footer {
 }
 /* ----- */
 
-@media screen and (max-width: 1100px) {
-  .card-width {
-    margin: 15px;
+@media screen and (min-width: 1100px) {
+  #about,
+  #skills {
+    padding-left: 15rem;
+    padding-right: 15rem;
+    margin-top: -18px;
   }
 }
 
 @media screen and (max-width: 800px) {
-  #home {
-    height: 175px;
-  }
-
   #home div h1 {
     margin-bottom: 0;
   }

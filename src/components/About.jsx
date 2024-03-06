@@ -1,25 +1,17 @@
 import { MDBTypography } from 'mdb-react-ui-kit';
-import Me from 'IMG/profile.jpg';
+// import Me from 'IMG/profile.jpg';
 
 const About = props => {
   const { id } = props;
 
   return (
-    <div id={id} className="py-5 px-4 px-sm-5">
-      <MDBTypography tag='h3'>
+    <div id={id} className="py-5 d-flex flex-column align-items-center">
+      <div>
+      <MDBTypography tag='h3' className="text-white">
         About Me
       </MDBTypography>
-      <div className="d-lg-flex align-items-lg-start">
-      <div className="float-start flex-lg-shrink-0">
-        <img
-          src={Me}
-          alt='Profile image'
-          height='120'
-          width='120'
-          className='rounded-circle me-3 mb-1'
-        />
       </div>
-      <div className="flex-lg-grow-1">
+      <div>
             {/* <p className='pl-2 text-justify'> */}
               In 2022 I changed positions from a front-end developer to SDET.
               The company I worked for recently started investing in automation
@@ -42,7 +34,6 @@ const About = props => {
           {/* My Testing -- what is it from testing library? */}
           {/* Why not BDD () Gherkin or POM (page object model)? */}
           {/* Why Cypress? */}
-        </div>
     </div>
   );
 };

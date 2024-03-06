@@ -5,7 +5,7 @@ const Skills = props => {
   const { id } = props;
 
   return (
-    <div id={id} className="py-5 px-4 px-sm-5">
+    <div id={id} className="py-5">
       <MDBTypography tag="h3" className="text-center">
         Skills
       </MDBTypography>

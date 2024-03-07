@@ -4,12 +4,15 @@ import { cloudHosting, testingTools, terminalTools, webDevTools, getImage } from
 const Skills = props => {
   const { id } = props;
 
+  const mobileCol1 = ["Cypress","Testing Library", "Javascrpt", "Typescrpt", "React", "Git", "VIM", "Gitlab", "Bitbucket", "Github"]
+  const mobileCol2 =["Webpack", "qtest", "Browsertack", "VSCode", "YAML", "Bash", "Ember", "HTML", "CSS", "Styled Components"]
+
   return (
     <div id={id} className="py-5">
       <MDBTypography tag="h3" className="text-center">
         Skills
       </MDBTypography>
-      <div className="skills-list d-none d-sm-flex flex-sm-wrap justify-content-evenly align-items-center">
+      <div className="skills-list d-none d-sm-flex flex-sm-wrap justify-content-center align-items-center">
         <div>
           {testingTools.map(tool => {
             return getImage(tool)
@@ -32,31 +35,20 @@ const Skills = props => {
         </div>
         </div>
         <MDBRow center className="skills-mobile d-flex d-sm-none">
-          <MDBCol size={4}>
+          <MDBCol size={6}>
               <ul>
-                <li>Cypress</li>
-                <li>Testing-Library</li>
-                <li>Javascript</li>
-                <li>Typescript</li>
-                <li>React</li>
-                <li>Git</li>
-                <li>Command Line</li>
-                <li>VIM</li>
-                <li>Gitlab</li>
-                <li>Bitbucket</li>
+                {mobileCol1.map(item => {
+                  return <li key={item}>{item}</li>
+                })
+              }
               </ul>
               </MDBCol>
-              <MDBCol size={4}>
+              <MDBCol size={6}>
               <ul>
-                <li>Webpack</li>
-                <li>qtest</li>
-                <li>Browserstack</li>
-                <li>VSCode</li>
-                <li>YAML</li>
-                <li>Bash</li>
-                <li>Ember</li>
-                <li>HTML</li>
-                <li>CSS / Styled Components</li>
+              {mobileCol2.map(item => {
+                  return <li key={item}>{item}</li>
+                })
+              } 
               </ul>
               </MDBCol>
               </MDBRow>

@@ -5,8 +5,19 @@ import Skills from './Skills';
 import Projects from './Projects';
 import Me from 'IMG/profile.jpg';
 
+let msg = "%c👋 Thank you for visiting my website!";
+let styles= [ 
+    "font-size: 12px", 
+    "font-family: monospace", 
+    "background: black", 
+    "display: inline-block", 
+    "color: #5DC1BE", 
+    "padding: 8px 15px", 
+    "border: 3px solid;" 
+].join(";")
+
 const Home = () => {
-  console.log("Hello world")
+  console.log(msg, styles);
   return (
     <MDBContainer fluid className="app gx-0">
       <div id="home" className="px-4 px-sm-5 pt-4 pb-5 d-flex flex-column justify-content-center align-items-center">

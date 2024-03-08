@@ -33,7 +33,7 @@ a:hover {
 }
 
 #home {
-  background-color: #C7CCC4;
+  background-color: #E0E3DE;
   color: #3E587A; 
 }
 
@@ -43,7 +43,7 @@ a:hover {
 
 #about {
   background-color: #3E587A;
-  color: #C7CCC4;
+  color: #E0E3DE;
   clip-path: polygon(0 0%, 100% 5%, 100% 95%, 0% 100%);
   -webkit-clip-path: polygon(0 0%, 100% 5%, 100% 95%, 0% 100%);
 }
@@ -56,8 +56,8 @@ a:hover {
 }
 
 #skills {
-  background-color: #C7CCC4;;
-  color: #3E587A;;
+  background-color: #E0E3DE;
+  color: #3E587A;
 }
 
 #skills img {
@@ -70,16 +70,19 @@ a:hover {
 }
 
 .card {
-  background-color: #C7CCC4;
-  color: #0D1A2E;;
+  background-color: #E0E3DE;
+  color: #0D1A2E;
 }
 
 .card-subtitle {
-  color: #fff;
+  /* color: #6F9BC5; */
+  color: #3B6893;
+  /* color: #3E587A; */
 }
 
 .card a {
-  background-color: #5DC1BE;
+  background-color: #0D1A2E;
+  color: #5DC1BE;
 }
 
 /* ----- Footer ----- */
@@ -90,6 +93,7 @@ footer {
 
 .footer-links,
 .copyright, 
+.footer-links a,
 .footer-links a:visited {
   color: #5DC1BE;
 }

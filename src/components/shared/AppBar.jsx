@@ -9,7 +9,7 @@ import {
   MDBIcon,
   MDBCollapse
 } from 'mdb-react-ui-kit';
-import Resume   from 'IMG/Bell_Kim-ResumePublic.pdf';
+import Resume   from 'IMG/Bell_Kim-Resume.pdf';
 import Whiskers from 'IMG/W-white.png';
 
 const AppBar = () => {

@@ -104,13 +104,17 @@ footer {
   #skills {
     padding-left: 15rem;
     padding-right: 15rem;
-    margin-top: -18px;
   }
 }
 
 @media screen and (max-width: 800px) {
   #home div h1 {
     margin-bottom: 0;
+  }
+
+  #about,
+  #skills {
+    margin-top: -53px;
   }
 
   .copyright {

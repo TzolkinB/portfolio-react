@@ -112,6 +112,11 @@ footer {
     margin-bottom: 0;
   }
 
+  #about {
+    clip-path: polygon(0 0%, 100% 3%, 100% 97%, 0% 100%);
+    -webkit-clip-path: polygon(0 0%, 100% 3%, 100% 97%, 0% 100%);
+  }
+
   #about,
   #skills {
     margin-top: -53px;

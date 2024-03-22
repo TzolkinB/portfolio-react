@@ -24,7 +24,7 @@ module.exports = {
   },
   output: {
     // path: The output directory as an absolute path.
-    path: path.resolve(__dirname, '/build'),
+    path: path.resolve(__dirname, 'build'),
     publicPath: '/',
     // filename: the name of each output bundle.
     // The bundle is written to the directory specified by the output.path option.
@@ -63,7 +63,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif|ttf|pdf|svg)$/,
-        include: paths.IMG,
+        include: [paths.IMG, paths.PUB],
         use: [{
           loader: 'file-loader',
           options: {

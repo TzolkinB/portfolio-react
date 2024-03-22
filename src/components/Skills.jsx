@@ -13,46 +13,46 @@ const Skills = props => {
         Skills
       </MDBTypography>
       <div className="skills-list d-none d-sm-flex flex-sm-wrap justify-content-center align-items-center">
-        <div>
+        <>
           {testingTools.map(tool => {
             return getImage(tool)
           })}
-          </div>
-        <div>
+        </>
+        <>
           {webDevTools.map(tool => {
             return getImage(tool)
           })}
-        </div>
-        <div>
+        </>
+        <>
           {terminalTools.map(tool => {
             return getImage(tool)
           })}
-        </div>
-        <div>
+        </>
+        <>
           {cloudHosting.map(cloud => {
             return getImage(cloud)
           })}
-        </div>
-        </div>
-        <MDBRow center className="skills-mobile d-flex d-sm-none">
-          <MDBCol size={6}>
-              <ul>
-                {mobileCol1.map(item => {
-                  return <li key={item}>{item}</li>
-                })
-              }
-              </ul>
-              </MDBCol>
-              <MDBCol size={6}>
-              <ul>
-              {mobileCol2.map(item => {
-                  return <li key={item}>{item}</li>
-                })
-              } 
-              </ul>
-              </MDBCol>
-              </MDBRow>
-        </div>
+        </>
+      </div>
+      <MDBRow center className="skills-mobile d-flex d-sm-none">
+        <MDBCol size={6}>
+          <ul>
+            {mobileCol1.map(item => {
+              return <li key={item}>{item}</li>
+              })
+            }
+          </ul>
+        </MDBCol>
+        <MDBCol size={6}>
+        <ul>
+          {mobileCol2.map(item => {
+              return <li key={item}>{item}</li>
+            })
+          } 
+        </ul>
+        </MDBCol>
+      </MDBRow>
+    </div>
   );
 };
 

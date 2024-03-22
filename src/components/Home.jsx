@@ -36,7 +36,7 @@ const Home = () => {
         </MDBTypography>
         <MDBTypography className="fs-4 mb-0">
           Specializing in Cypress Test Automation.
-          Previous Software Engineer.
+          Software Engineer in React.
         </MDBTypography>
         </div>
       </div>

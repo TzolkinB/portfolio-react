@@ -1,4 +1,4 @@
-import { MDBTypography, MDBListGroup, MDBListGroupItem, MDBBadge, MDBIcon } from 'mdb-react-ui-kit';
+import { MDBTypography, MDBBadge, MDBIcon } from 'mdb-react-ui-kit';
 
 const About = props => {
   const { id } = props;
@@ -20,15 +20,15 @@ const About = props => {
       </MDBTypography>
       </div>
       <MDBTypography className="fw-light align-self-start">
-        I have 7+ years experience in web devepment and 2+ years in test automation.
+        I have 7+ years experience in web development and 2+ years in test automation.
       </MDBTypography>
       <MDBTypography className="fw-light">
         In 2022 I changed positions from a Senior Software Engineer working on Web UI to an SDET for automation testing. I used <span className="fw-bold">Cypress</span> in conjunction with  <span className="fw-bold">Testing-Library</span>, which made queries incredibly human readable and added some accessibility coverage as well. In this role I:
       </MDBTypography>
       <MDBTypography listUnStyled className="mb-0 px-5" style={{ minWidth: '22rem' }}>
-        {accomplishments.map(accomplishment => {
+        {accomplishments.map((accomplishment, i) => {
           return (
-            <li className="mb-2 fw-light">
+            <li className="mb-2 fw-light" key={i}>
               <MDBIcon icon='check-circle' className='me-2 text-success' />
               {accomplishment}
             </li> 
@@ -45,7 +45,10 @@ const About = props => {
         When I am not coding, I love to read and be outside. In fact, I often use lunch breaks as an opportunity to get away from the computer and take a walk. Since remote positions allow me to be closer to family, I also enjoy spending time with my nieces and nephews on the weekends now that I am able to live closer to them.
       </MDBTypography>
       <MDBTypography className="fw-light align-self-start pt-1">
-        I am always looking for new opportunites so feel free to reach out
+        <span className="fw-bold">Why am I using the domain name "Fierce Whiskers"?</span> Long story short, when I was originally buying domains, I was looking for ".com" and variations on my name were taken. Therefore, I bought "Fierce Whiskers" because it reminds me of my oldest cat who puts up a good front but really is just a lap kitty who wants cuddles. 
+      </MDBTypography>
+      <MDBTypography className="fw-light align-self-start pt-1">
+        I am always looking for new opportunites and challenges so feel free to reach out
         to me: krbell4@gmail.com
       </MDBTypography>
       {/* TODO: */}

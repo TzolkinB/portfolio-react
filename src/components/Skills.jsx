@@ -9,7 +9,7 @@ const Skills = props => {
 
   return (
     <div id={id} className="py-5">
-      <MDBTypography tag="h3" className="text-center">
+      <MDBTypography tag="h3" className="text-center py-3">
         Skills
       </MDBTypography>
       <div className="skills-list d-none d-sm-flex flex-sm-wrap justify-content-center align-items-center">

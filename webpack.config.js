@@ -63,7 +63,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif|ttf|pdf|svg)$/,
-        include: paths.IMG,
+        include: [paths.IMG, paths.PUB],
         use: [{
           loader: 'file-loader',
           options: {

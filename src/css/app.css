@@ -1,156 +1,123 @@
-html { 
-  position: relative;
-  min-height: 100%;
-  overflow-x: hidden;
-}
-
 body { 
-  margin-bottom: 75px;
-  overflow-x: hidden;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
 a:hover { 
   text-decoration: none;
-  color: #4c6392 !important;
+  color: #243F6A !important;
+  background-color: #fff;
 }
 
 /* ---- App Bar ---- */
 .navbar {
-  background: #4c6392;
+  background: #0D1A2E;
 }
 
-.nav-item {
+.nav-link {
   font-size: large;
+  color: #5DC1BE;
 }
 
-.nav-item > a:hover {
-  background-color: #fff;
+.navbar-toggler,
+.navbar-brand {
+  color: #5DC1BE;
+}
+
+.navbar-brand img {
+  filter: invert(58%) sepia(48%) saturate(1039%) hue-rotate(131deg) brightness(108%) contrast(150%);
+}
+/* ----- */
+
+.app {
+  margin-top: 4.3rem;
 }
 
 #home {
-  background-image: url("./../img/perutrail3.png");
-  background-repeat: no-repeat;
-  background-attachment: local;
-  background-size: cover;
-  background-position: center;
-  height: 300px;
-  text-align: end;
+  background-color: #E0E3DE;
+  color: #3E587A; 
+}
+
+#home .name {
+ color: #3E587A; 
 }
 
 #about {
-  background-color: #E1F5FE;
-  padding: 0 175px 0 100px;
+  background-color: #3E587A;
+  color: #E0E3DE;
+  clip-path: polygon(0 0%, 100% 5%, 100% 95%, 0% 100%);
+  -webkit-clip-path: polygon(0 0%, 100% 5%, 100% 95%, 0% 100%);
+}
+
+#about,
+#skills {
+  margin-top: -40px;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 #skills {
-  background-color: #4c6392;
-  color: #fff;
+  background-color: #E0E3DE;
+  color: #3E587A;
 }
 
-.skills-mobile {
-  display: none;
+#skills img {
+  padding: 0 5px 0 5px;
 }
 
 #projects {
-  background-color: #C1D1E7;
-  padding: 0 40px;
+  background-color: #3E587A;
+  color: #fff;
 }
 
-.padding-top {
-  padding-top: 130px;
-}
-
-.section-padding {
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
-.card-width {
-  width: 300px;
-  margin: 25px;
-}
-
-.card-title {
-  font-weight: 500 !important;
+.card {
+  background-color: #E0E3DE;
+  color: #0D1A2E;
 }
 
 .card-subtitle {
-  color: #7fac26 !important;
+  /* color: #6F9BC5; */
+  color: #3B6893;
+  /* color: #3E587A; */
+}
+
+.card a {
+  background-color: #0D1A2E;
+  color: #5DC1BE;
 }
 
 /* ----- Footer ----- */
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   height: 75px;
-  padding: 20px;
-  background: #4c6392;
+  background: #0D1A2E;
 }
 
-.copyright {
-  margin-left: 42%;
-  display: inline-block;
+.footer-links,
+.copyright, 
+.footer-links a,
+.footer-links a:visited {
+  color: #5DC1BE;
 }
+/* ----- */
 
-footer a:visited {
-  color: white;
-}
-
-@media screen and (max-width: 1100px) {
-  #about {
-    padding: 0 100px 0 75px;
-  }
-
-  .card-width {
-    margin: 15px;
+@media screen and (min-width: 1100px) {
+  #about,
+  #skills {
+    padding-left: 15rem;
+    padding-right: 15rem;
   }
 }
 
 @media screen and (max-width: 800px) {
-  .nav-item {
-    padding: 10px 0;
-  }
-
-  .nav-item > a:hover {
-    padding: 1rem !important;
-  }
-
-  #home {
-    height: 175px;
-  }
-
-  #home div {
-    margin-top: -10px !important;
-  }
-
   #home div h1 {
-    font-size: 1.7rem;
     margin-bottom: 0;
   }
 
-  #home div h2 {
-    font-size: 1.4rem;
-  }
-
-  #home div h3 {
-    font-size: 1rem;
-  }
-
-  #about {
-    padding: 0 25px;
+  #about,
+  #skills {
+    margin-top: -53px;
   }
 
   .copyright {
     margin-left: 2%;
-    font-size: small;
-  }
-
-  .skills-list {
-    display: none;
-  }
-
-  .skills-mobile {
-    display: inline;
   }
 }

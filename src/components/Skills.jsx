@@ -1,92 +1,58 @@
-import React from 'react';
+import { MDBTypography, MDBRow, MDBCol } from 'mdb-react-ui-kit';
+import { cloudHosting, testingTools, terminalTools, webDevTools, getImage } from '../tech-icons';
 
 const Skills = props => {
   const { id } = props;
 
+  const mobileCol1 = ["Cypress","Testing Library", "Javascrpt", "Typescrpt", "React", "Git", "VIM", "Gitlab", "Bitbucket", "Github"]
+  const mobileCol2 =["Webpack", "qtest", "Browsertack", "VSCode", "YAML", "Bash", "Ember", "HTML", "CSS", "Styled Components"]
+
   return (
-    <div id={id}>
-      <div className='section-padding'>
-        <div className='row'>
-          <div className='col-sm-12 mb-3'>
-            <h2 className='text-center'>Skills</h2>
+    <div id={id} className="py-5">
+      <MDBTypography tag="h3" className="text-center">
+        Skills
+      </MDBTypography>
+      <div className="skills-list d-none d-sm-flex flex-sm-wrap justify-content-center align-items-center">
+        <div>
+          {testingTools.map(tool => {
+            return getImage(tool)
+          })}
           </div>
+        <div>
+          {webDevTools.map(tool => {
+            return getImage(tool)
+          })}
         </div>
-        <div className='row skills-list'>
-          <div className='col-md-2'></div>
-          <div className='col-md-2'>
-            <ul>
-              <li>Cypress</li>
-              <li>Testing-Library</li>
-              <li>Javascript</li>
-              <li>Typescript</li>
-              <li>React</li>
-            </ul>
-          </div>
-          <div className='col-md-2'>
-            <ul>
-              <li>Gitlab</li>
-              <li>Bitbucket</li>
-              <li>qtest</li>
-              <li>Browserstack</li>
-              <li>VSCode</li>
-            </ul>
-          </div>
-          <div className='col-md-2'>
-            <ul>
-              <li>Git</li>
-              <li>Command Line</li>
-              <li>Webpack</li>
-              <li>VIM</li>
-              <li>YAML</li>
-            </ul>
-          </div>
-          <div className='col-md-2'>
-            <ul>
-              <li>Bash</li>
-              <li>Ember</li>
-              <li>HTML</li>
-              <li>CSS / Styled Components</li>
-              <li>Sketch</li>
-            </ul>
-          </div>
-          <div className='col-md-2'></div>
+        <div>
+          {terminalTools.map(tool => {
+            return getImage(tool)
+          })}
         </div>
-        <div className='skills-mobile'>
-          <div className='row'>
-            <div className='col-1'></div>
-            <div className='col-5'>
+        <div>
+          {cloudHosting.map(cloud => {
+            return getImage(cloud)
+          })}
+        </div>
+        </div>
+        <MDBRow center className="skills-mobile d-flex d-sm-none">
+          <MDBCol size={6}>
               <ul>
-                <li>Cypress</li>
-                <li>Testing-Library</li>
-                <li>Javascript</li>
-                <li>Typescript</li>
-                <li>React</li>
-                <li>Git</li>
-                <li>Command Line</li>
-                <li>VIM</li>
-                <li>Gitlab</li>
-                <li>Bitbucket</li>
+                {mobileCol1.map(item => {
+                  return <li key={item}>{item}</li>
+                })
+              }
               </ul>
-            </div>
-            <div className='col-5'>
+              </MDBCol>
+              <MDBCol size={6}>
               <ul>
-                <li>Webpack</li>
-                <li>qtest</li>
-                <li>Browserstack</li>
-                <li>VSCode</li>
-                <li>YAML</li>
-                <li>Bash</li>
-                <li>Ember</li>
-                <li>HTML</li>
-                <li>CSS / Styled Components</li>
-                <li>Sketch</li>
+              {mobileCol2.map(item => {
+                  return <li key={item}>{item}</li>
+                })
+              } 
               </ul>
-            </div>
-            <div className='col-1'></div>
-          </div>
+              </MDBCol>
+              </MDBRow>
         </div>
-      </div>
-    </div>
   );
 };
 

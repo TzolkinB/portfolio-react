@@ -1,4 +1,11 @@
-import React from 'react';
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardSubTitle,
+  MDBCardText,
+  MDBBtn
+} from 'mdb-react-ui-kit';
 
 const CardContainer = props => {
   const { 
@@ -8,21 +15,22 @@ const CardContainer = props => {
 
   const multipleUrls = () => {
     if(url2) {
-      return <a href={url2} target="_blank" className="card-link">{url2Text}</a>;
+      return <MDBBtn href={url2} target="_blank" className="ms-3">{url2Text}</MDBBtn>
+
     }
     return;
   }
 
   return (
-    <div className="card card-width">
-      <div className="card-body">
-        <h5 className="card-title">{title}</h5>
-        <h6 className="card-subtitle mb-2 text-muted">{subtitle}</h6>
-        <p className="card-text">{text}</p>
-        <a href={url} target="_blank" className="card-link">{urlText}</a>
+    <MDBCard>
+      <MDBCardBody>
+        <MDBCardTitle>{title}</MDBCardTitle>
+        <MDBCardSubTitle>{subtitle}</MDBCardSubTitle>
+        <MDBCardText>{text}</MDBCardText>
+        <MDBBtn href={url} target="_blank">{urlText}</MDBBtn>
         {multipleUrls()}
-      </div>
-    </div>
+      </MDBCardBody>
+    </MDBCard>
   );
 }
 

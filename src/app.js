@@ -1,9 +1,7 @@
 import React          from 'react'
-import { render }     from 'react-dom'
-import { 
-  HashRouter, Route, Switch
-} from 'react-router-dom'
-
+import { createRoot } from 'react-dom/client'
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import 'Style/app.css';
 
 import AppBar from  './components/shared/AppBar';
@@ -13,16 +11,13 @@ import Home   from  './components/Home';
 const App = () => (
   <div>
     <AppBar />
-    <Switch>
-      <Route path="/" component={Home} />
-    </Switch>
+    <Home />
     <Footer />
   </div>
 )
 
-render(
-  <HashRouter basename="/">
-    <App />
-  </HashRouter>
-
-  , document.getElementById('portfolio-app'));
+createRoot(document.getElementById('portfolio-app')).render(
+  <React.StrictMode>
+      <App />
+  </React.StrictMode>
+)

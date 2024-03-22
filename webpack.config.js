@@ -11,7 +11,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // The path.resolve() method resolves a sequence of paths or path segments into an absolute path.
 
 const paths = {
-  PUB:    path.resolve(__dirname, 'public'),
+  PUB:    path.resolve(__dirname, 'build'),
   CSS:    path.resolve(__dirname, 'src/css'),
   IMG:    path.resolve(__dirname, 'src/img')
 }
@@ -24,7 +24,7 @@ module.exports = {
   },
   output: {
     // path: The output directory as an absolute path.
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, '/build'),
     publicPath: '/',
     // filename: the name of each output bundle.
     // The bundle is written to the directory specified by the output.path option.
@@ -32,7 +32,7 @@ module.exports = {
   },
   devServer: {
     // contentBase: Tell the server where to serve content from
-    static: path.join(__dirname, 'public'),
+    static: path.join(__dirname, 'build'),
     port: 4280,
     compress: true,
     client: {

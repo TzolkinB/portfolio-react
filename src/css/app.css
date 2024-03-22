@@ -14,7 +14,7 @@ a:hover {
 }
 
 .nav-link {
-  font-size: large;
+  font-size: large !important;
   color: #5DC1BE;
 }
 
@@ -70,19 +70,19 @@ a:hover {
 }
 
 .card {
-  background-color: #E0E3DE;
-  color: #0D1A2E;
+  background-color: #E0E3DE !important;
+  color: #0D1A2E !important;
 }
 
 .card-subtitle {
   /* color: #6F9BC5; */
-  color: #3B6893;
+  color: #3B6893 !important;
   /* color: #3E587A; */
 }
 
 .card a {
-  background-color: #0D1A2E;
-  color: #5DC1BE;
+  background-color: #0D1A2E !important;
+  color: #5DC1BE !important;
 }
 
 /* ----- Footer ----- */
@@ -95,7 +95,7 @@ footer {
 .copyright, 
 .footer-links a,
 .footer-links a:visited {
-  color: #5DC1BE;
+  color: #5DC1BE !important;
 }
 /* ----- */
 

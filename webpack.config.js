@@ -1,4 +1,7 @@
 const path = require('path');
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 // path: Node's built-in path module and it is prefixed with the __dirname global. https://nodejs.org/api/path.html
   // This prevents file path issues between operating systems and allows relative paths to work as expected.
 // __direname: The directory name of the current module. https://nodejs.org/docs/latest/api/modules.html#__dirname
@@ -56,10 +59,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' }
-        ]
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|jpg|gif|ttf|pdf|svg)$/,
@@ -84,6 +84,10 @@ module.exports = {
     ]
   },
   plugins: [
+    // new HtmlWebpackPlugin({
+      // title: 'Fierce Whiskers - Kim Bell',
+      // favicon: './public/favicon.png',
+    // })
   ],
   devtool: 'source-map',
   resolve: {

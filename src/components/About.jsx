@@ -27,7 +27,6 @@ const About = props => {
       </MDBTypography>
       <MDBTypography listUnStyled className="mb-0 px-5" style={{ minWidth: '22rem' }}>
         {accomplishments.map(accomplishment => {
-          console.log(accomplishment)
           return (
             <li className="mb-2 fw-light">
               <MDBIcon icon='check-circle' className='me-2 text-success' />

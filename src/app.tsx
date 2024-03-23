@@ -8,16 +8,20 @@ import AppBar from  './components/shared/AppBar';
 import Footer from  './components/shared/Footer';
 import Home   from  './components/Home';
 
-const App = () => (
-  <div>
-    <AppBar />
-    <Home />
-    <Footer />
-  </div>
-)
+function App() {
+  return (
+    <>
+      <AppBar />
+      <Home />
+      <Footer />
+    </>
+  )
+}
 
-createRoot(document.getElementById('portfolio-app')).render(
+const container = document.getElementById("portfolio-app")
+const root = createRoot(container!)
+root.render(
   <React.StrictMode>
-      <App />
+    <App />
   </React.StrictMode>
 )

@@ -35,17 +35,17 @@ const mapImages = {
   "webpack": <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original.svg" key="webpack" alt="webpack" height={60} style={{backgroundColor: "rgba(0, 0, 0, 0.7)"}} />, 
 }
 
-export const getImage = (tool) => {
-  if (!!mapSrc[tool]) {
+export const getImage = (tool: string) => {
+  if (!!mapSrc[tool as keyof typeof mapSrc]) {
     return (
       <MDBTooltip tag='span' title={`${tool.toLocaleUpperCase()}`} key={tool}>
-        <img src={mapSrc[tool]} alt={tool} height={60} />
+        <img src={mapSrc[tool as keyof typeof mapSrc]} alt={tool} height={60} />
       </MDBTooltip>
     )
   } else {
     return (
       <MDBTooltip tag='span' title={`${tool.toLocaleUpperCase()}`} key={tool}>
-        {mapImages[tool]}
+        {mapImages[tool as keyof typeof mapImages]}
       </MDBTooltip>
     )
   }

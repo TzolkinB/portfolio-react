@@ -7,7 +7,7 @@ import {
   MDBBtn
 } from 'mdb-react-ui-kit';
 
-const CardContainer = props => {
+const CardContainer = (props: { title: string; subtitle: string; text: string; url: string; urlText: string; url2?: string; url2Text?: string; }) => {
   const { 
     title, subtitle, text,
     url, urlText, url2, url2Text

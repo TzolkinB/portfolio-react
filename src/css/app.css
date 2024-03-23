@@ -75,9 +75,7 @@ a:hover {
 }
 
 .card-subtitle {
-  /* color: #6F9BC5; */
   color: #3B6893 !important;
-  /* color: #3E587A; */
 }
 
 .card a {
@@ -119,7 +117,7 @@ footer {
 
   #about,
   #skills {
-    margin-top: -53px;
+    margin-top: -4rem;
   }
 
   .copyright {

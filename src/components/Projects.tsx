@@ -1,8 +1,8 @@
-import { MDBTypography, MDBRow, MDBCol, } from 'mdb-react-ui-kit';
-import Card   from './shared/CardContainer';
+import { MDBTypography, MDBRow, MDBCol } from "mdb-react-ui-kit"
+import Card from "./shared/CardContainer"
 
-const Projects = (props: { id: string}) => {
-  const { id } = props;
+function Projects(props: { id: string }) {
+  const { id } = props
 
   const reactStarterTemplate = (
     <Card
@@ -26,28 +26,28 @@ const Projects = (props: { id: string}) => {
     />
   )
 
-  return(
+  return (
     <div id={id} className="py-5 px-4 px-sm-5">
       <MDBTypography tag="h3" className="text-center">
         Projects
       </MDBTypography>
       <div className="d-flex flex-column d-sm-none">
-          {reactStarterTemplate}
-        <div className="py-2"></div>
-          {memoryGame}
+        {reactStarterTemplate}
+        <div className="py-2" />
+        {memoryGame}
       </div>
       <MDBRow className="d-none d-sm-flex">
-        <MDBCol size={1} lg={2} xl={3}></MDBCol>
+        <MDBCol size={1} lg={2} xl={3} />
         <MDBCol size={5} lg={4} xl={3}>
           {reactStarterTemplate}
         </MDBCol>
         <MDBCol size={5} lg={4} xl={3}>
           {memoryGame}
         </MDBCol>
-        <MDBCol size={1} lg={2} xl={3}></MDBCol>
+        <MDBCol size={1} lg={2} xl={3} />
       </MDBRow>
-      </div>
-  );
+    </div>
+  )
 }
 
-export default Projects;
+export default Projects

@@ -1,10 +1,18 @@
-import { MDBTypography, MDBRow, MDBCol } from 'mdb-react-ui-kit';
-import { cloudHosting, testingTools, terminalTools, webDevTools, getImage } from '../tech-icons';
+import { MDBTypography, MDBRow, MDBCol } from "mdb-react-ui-kit"
+import {
+  cloudHosting,
+  testingTools,
+  terminalTools,
+  webDevTools,
+  getImage,
+} from "../tech-icons"
 
-const Skills = (props: { id: string}) => {
-  const { id } = props;
+function Skills(props: { id: string }) {
+  const { id } = props
 
+  // eslint-disable-next-line prettier/prettier
   const mobileCol1 = ["Cypress","Testing Library", "Javascrpt", "Typescrpt", "React", "Git", "VIM", "Gitlab", "Bitbucket", "Github"]
+  // eslint-disable-next-line prettier/prettier
   const mobileCol2 =["Webpack", "qtest", "Browsertack", "VSCode", "YAML", "Bash", "Ember", "HTML", "CSS", "Styled Components"]
 
   return (
@@ -13,47 +21,37 @@ const Skills = (props: { id: string}) => {
         Skills
       </MDBTypography>
       <div className="skills-list d-none d-sm-flex flex-sm-wrap justify-content-center align-items-center">
-        <>
-          {testingTools.map(tool => {
-            return getImage(tool)
-          })}
-        </>
-        <>
-          {webDevTools.map(tool => {
-            return getImage(tool)
-          })}
-        </>
-        <>
-          {terminalTools.map(tool => {
-            return getImage(tool)
-          })}
-        </>
-        <>
-          {cloudHosting.map(cloud => {
-            return getImage(cloud)
-          })}
-        </>
+        {testingTools.map((tool) => {
+          return getImage(tool)
+        })}
+        {webDevTools.map((tool) => {
+          return getImage(tool)
+        })}
+        {terminalTools.map((tool) => {
+          return getImage(tool)
+        })}
+        {cloudHosting.map((cloud) => {
+          return getImage(cloud)
+        })}
       </div>
       <MDBRow center className="skills-mobile d-flex d-sm-none">
         <MDBCol size={6}>
           <ul>
-            {mobileCol1.map(item => {
+            {mobileCol1.map((item) => {
               return <li key={item}>{item}</li>
-              })
-            }
+            })}
           </ul>
         </MDBCol>
         <MDBCol size={6}>
-        <ul>
-          {mobileCol2.map(item => {
+          <ul>
+            {mobileCol2.map((item) => {
               return <li key={item}>{item}</li>
-            })
-          } 
-        </ul>
+            })}
+          </ul>
         </MDBCol>
       </MDBRow>
     </div>
-  );
-};
+  )
+}
 
-export default Skills;
+export default Skills

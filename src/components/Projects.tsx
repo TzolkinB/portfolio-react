@@ -1,7 +1,7 @@
 import { MDBTypography, MDBRow, MDBCol, } from 'mdb-react-ui-kit';
 import Card   from './shared/CardContainer';
 
-const Projects = props => {
+const Projects = (props: { id: string}) => {
   const { id } = props;
 
   const reactStarterTemplate = (

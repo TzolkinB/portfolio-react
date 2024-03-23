@@ -1,6 +1,6 @@
 import { MDBTypography, MDBBadge, MDBIcon } from 'mdb-react-ui-kit';
 
-const About = props => {
+const About = (props: { id: string}) => {
   const { id } = props;
 
   const accomplishments = [

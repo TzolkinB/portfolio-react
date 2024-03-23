@@ -1,4 +1,3 @@
-import React from 'react';
 import { MDBContainer, MDBTypography } from 'mdb-react-ui-kit';
 import About from './About';
 import Skills from './Skills';

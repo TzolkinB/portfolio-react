@@ -1,7 +1,7 @@
 import { MDBTypography, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import { cloudHosting, testingTools, terminalTools, webDevTools, getImage } from '../tech-icons';
 
-const Skills = props => {
+const Skills = (props: { id: string}) => {
   const { id } = props;
 
   const mobileCol1 = ["Cypress","Testing Library", "Javascrpt", "Typescrpt", "React", "Git", "VIM", "Gitlab", "Bitbucket", "Github"]

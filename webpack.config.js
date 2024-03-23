@@ -1,7 +1,5 @@
 const path = require('path');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 // path: Node's built-in path module and it is prefixed with the __dirname global. https://nodejs.org/api/path.html
   // This prevents file path issues between operating systems and allows relative paths to work as expected.
 // __direname: The directory name of the current module. https://nodejs.org/docs/latest/api/modules.html#__dirname
@@ -20,7 +18,7 @@ console.log('test-----', path.resolve(__dirname, 'build'),)
 module.exports = {
   mode: 'development',
   entry: {
-    'bundle': './src/app.js'
+    'bundle': './src/app.tsx'
   },
   output: {
     // path: The output directory as an absolute path.
@@ -46,16 +44,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
-        use: {
+        use: [{
           loader: 'babel-loader',
           options: {
             presets: [
               ['@babel/preset-env', { targets: "defaults" }]
             ]
           }
-        }
+        },
+        'ts-loader',
+        ],
       },
       {
         test: /\.css$/,
@@ -84,14 +84,10 @@ module.exports = {
     ]
   },
   plugins: [
-    // new HtmlWebpackPlugin({
-      // title: 'Fierce Whiskers - Kim Bell',
-      // favicon: './public/favicon.png',
-    // })
   ],
   devtool: 'source-map',
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['.*', '.js', '.jsx', '.tsx', '.ts'],
     alias: {
       PUB: paths.PUB,
       Style: paths.CSS,

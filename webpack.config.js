@@ -1,42 +1,43 @@
-const path = require('path');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require("path")
 
 // path: Node's built-in path module and it is prefixed with the __dirname global. https://nodejs.org/api/path.html
-  // This prevents file path issues between operating systems and allows relative paths to work as expected.
+// This prevents file path issues between operating systems and allows relative paths to work as expected.
 // __direname: The directory name of the current module. https://nodejs.org/docs/latest/api/modules.html#__dirname
-  // Example: running node example.js from /Users/mjr
-  // console.log(__dirname);
-  // Prints: /Users/mjr
+// Example: running node example.js from /Users/mjr
+// console.log(__dirname);
+// Prints: /Users/mjr
 // The path.resolve() method resolves a sequence of paths or path segments into an absolute path.
 
 const paths = {
-  PUB:    path.resolve(__dirname, 'build'),
-  CSS:    path.resolve(__dirname, 'src/css'),
-  IMG:    path.resolve(__dirname, 'src/img')
+  PUB: path.resolve(__dirname, "build"),
+  CSS: path.resolve(__dirname, "src/css"),
+  IMG: path.resolve(__dirname, "src/img"),
 }
 
-console.log('test-----', path.resolve(__dirname, 'build'),)
+console.log("test-----", path.resolve(__dirname, "build"))
 module.exports = {
-  mode: 'development',
+  mode: "development",
   entry: {
-    'bundle': './src/app.tsx'
+    bundle: "./src/app.tsx",
   },
   output: {
     // path: The output directory as an absolute path.
-    path: path.resolve(__dirname, 'build'),
-    publicPath: '/',
+    path: path.resolve(__dirname, "build"),
+    publicPath: "/",
     // filename: the name of each output bundle.
     // The bundle is written to the directory specified by the output.path option.
-    filename: 'bundle.js',
+    filename: "bundle.js",
   },
   devServer: {
     // contentBase: Tell the server where to serve content from
-    static: path.join(__dirname, 'build'),
+    static: path.join(__dirname, "build"),
     port: 4280,
     compress: true,
     client: {
-      logging: 'error',
+      logging: "error",
     },
-    historyApiFallback: { index: 'index.html' },
+    historyApiFallback: { index: "index.html" },
   },
   performance: {
     maxAssetSize: 400,
@@ -46,52 +47,54 @@ module.exports = {
       {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
-        },
-        'ts-loader',
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [["@babel/preset-env", { targets: "defaults" }]],
+            },
+          },
+          "ts-loader",
         ],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(png|jpg|gif|ttf|pdf|svg)$/,
         include: [paths.IMG, paths.PUB],
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[path][name].[ext]'
-          }
-        }],
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[path][name].[ext]",
+            },
+          },
+        ],
       },
       {
         test: /\.html$/,
         include: paths.PUB,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]'
-          }
-        }]
-      }
-    ]
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+            },
+          },
+        ],
+      },
+    ],
   },
-  plugins: [
-  ],
-  devtool: 'source-map',
+  plugins: [],
+  devtool: "source-map",
   resolve: {
-    extensions: ['.*', '.js', '.jsx', '.tsx', '.ts'],
+    extensions: [".*", ".js", ".jsx", ".tsx", ".ts"],
     alias: {
       PUB: paths.PUB,
       Style: paths.CSS,
-      IMG: paths.IMG
-    }
-  }
-};
+      IMG: paths.IMG,
+    },
+  },
+}

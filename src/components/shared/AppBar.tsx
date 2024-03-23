@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react"
 import {
   MDBContainer,
   MDBNavbar,
@@ -7,15 +7,16 @@ import {
   MDBNavbarNav,
   MDBNavbarLink,
   MDBIcon,
-  MDBCollapse
-} from 'mdb-react-ui-kit';
-import Resume   from 'IMG/Bell_Kim-Resume.pdf';
-import Whiskers from 'IMG/W-white.png';
+  MDBCollapse,
+} from "mdb-react-ui-kit"
+import Resume from "IMG/Bell_Kim-Resume.pdf"
+import Whiskers from "IMG/W-white.png"
 
+// eslint-disable-next-line react/function-component-definition
 const AppBar = () => {
-  const [openNav, setOpenNav] = useState(false);
+  const [openNav, setOpenNav] = useState(false)
 
-  return(
+  return (
     <header>
       <MDBNavbar expand="lg" fixed="top" className="px-3">
         <MDBContainer fluid>
@@ -24,25 +25,25 @@ const AppBar = () => {
             <span className="pl-3 fs-4">FierceWhiskers.me</span>
           </MDBNavbarBrand>
           <MDBNavbarToggler
-            type='button'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
+            type="button"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
             onClick={() => setOpenNav(!openNav)}
           >
-            <MDBIcon icon='bars' fas />
+            <MDBIcon icon="bars" fas />
           </MDBNavbarToggler>
           <MDBCollapse navbar open={openNav}>
             <MDBNavbarNav right fullWidth={false}>
-              <MDBNavbarLink href='#about'>About</MDBNavbarLink>
-              <MDBNavbarLink href='#skills'>Skills</MDBNavbarLink>
-              <MDBNavbarLink href='#projects'>Projects</MDBNavbarLink>
+              <MDBNavbarLink href="#about">About</MDBNavbarLink>
+              <MDBNavbarLink href="#skills">Skills</MDBNavbarLink>
+              <MDBNavbarLink href="#projects">Projects</MDBNavbarLink>
               <MDBNavbarLink href={Resume}>Resume</MDBNavbarLink>
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>
       </MDBNavbar>
     </header>
-  );
+  )
 }
 
-export default AppBar;
+export default AppBar

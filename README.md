@@ -1,6 +1,7 @@
 # Personal Portfolio Website
 
-- Uses React, Webpack, AWS S3, Material Design for Bootstrap, NPM
+- UI: React 18, Typescript 5, Material Design for Bootstrap
+- Hosting & Build: NPM, Webpack5, Husky, AWS S3 & Route 53
 - [Devicon](https://devicon.dev/) for programming language icons
 
 ## NPM Installation and Usage

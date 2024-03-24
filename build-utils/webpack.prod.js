@@ -1,50 +1,39 @@
+/* eslint-disable import/no-extraneous-dependencies */
+const path = require("path")
+const Dotenv = require("dotenv-webpack")
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+
 module.exports = {
   mode: "production",
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.(js|jsx|ts|tsx)$/,
-  //       exclude: /node_modules/,
-  //       use: [
-  //         {
-  //           loader: "babel-loader",
-  //           options: {
-  //             presets: [["@babel/preset-env", { targets: "defaults" }]],
-  //           },
-  //         },
-  //         "ts-loader",
-  //       ],
-  //     },
-  //     {
-  //       test: /\.css$/,
-  //       use: ["style-loader", "css-loader"],
-  //     },
-  //     {
-  //       test: /\.(png|jpg|gif|ttf|pdf|svg)$/,
-  //       include: [paths.IMG, paths.PUB],
-  //       use: [
-  //         {
-  //           loader: "file-loader",
-  //           options: {
-  //             name: "[path][name].[ext]",
-  //           },
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       test: /\.html$/,
-  //       include: paths.PUB,
-  //       use: [
-  //         {
-  //           loader: "file-loader",
-  //           options: {
-  //             name: "[name].[ext]",
-  //           },
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
-  // plugins: [new ESLintPlugin()],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      // {
+      //   test: /\.(png|jpg|gif|ttf|pdf|svg)$/,
+      //   include: [paths.IMG, paths.PUB],
+      //   use: [
+      //     {
+      //       loader: "file-loader",
+      //       options: {
+      //         name: "[path][name].[ext]",
+      //       },
+      //     },
+      //   ],
+      // },
+    ],
+  },
+  plugins: [
+    new Dotenv({
+      path: path.resolve(__dirname, "..", "./.env.production"),
+    }),
+    new BundleAnalyzerPlugin({
+      reportFilename: path.resolve(__dirname, "..", "./dist/report.html"),
+    }),
+    new MiniCssExtractPlugin(),
+  ],
   devtool: "source-map",
 }

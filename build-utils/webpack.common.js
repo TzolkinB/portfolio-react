@@ -1,7 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path")
+// eslint-disable-next-line import/no-extraneous-dependencies
+const ESLintPlugin = require("eslint-webpack-plugin")
 
-// path: Node's built-in path module and it is prefixed with the __dirname global. https://nodejs.org/api/path.html
+// path: prefixed with the __dirname global. https://nodejs.org/api/path.html
 // This prevents file path issues between operating systems and allows relative paths to work as expected.
 // __direname: The directory name of the current module. https://nodejs.org/docs/latest/api/modules.html#__dirname
 // Example: running node example.js from /Users/mjr
@@ -10,28 +12,23 @@ const path = require("path")
 // The path.resolve() method resolves a sequence of paths or path segments into an absolute path.
 
 const paths = {
-  PUB: path.resolve(__dirname, "build"),
-  CSS: path.resolve(__dirname, "src/css"),
-  IMG: path.resolve(__dirname, "src/img"),
+  PUB: path.resolve(__dirname, "..", "dist"),
+  CSS: path.resolve(__dirname, "..", "src/assets/css"),
+  IMG: path.resolve(__dirname, "..", "src/assets/img"),
 }
 
-console.log("test-----", path.resolve(__dirname, "build"))
+console.log("test-----", path.resolve(__dirname, "..", "dist"))
 module.exports = {
-  mode: "development",
-  entry: {
-    bundle: "./src/app.tsx",
-  },
+  entry: path.resolve(__dirname, "..", "./src/index.tsx"),
   output: {
-    // path: The output directory as an absolute path.
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "..", "./dist"),
     publicPath: "/",
     // filename: the name of each output bundle.
     // The bundle is written to the directory specified by the output.path option.
     filename: "bundle.js",
   },
   devServer: {
-    // contentBase: Tell the server where to serve content from
-    static: path.join(__dirname, "build"),
+    static: path.resolve(__dirname, "..", "./dist"),
     port: 4280,
     compress: true,
     client: {
@@ -87,8 +84,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [],
-  devtool: "source-map",
+  plugins: [new ESLintPlugin()],
   resolve: {
     extensions: [".*", ".js", ".jsx", ".tsx", ".ts"],
     alias: {

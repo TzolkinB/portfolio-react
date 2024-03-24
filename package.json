@@ -1,16 +1,15 @@
 {
   "name": "portfolio",
   "version": "2.0.0",
-  "description": "New portfolio using React to replace portfolio from 2015",
-  "main": "app.tsx",
+  "description": "Personal portfolio using React",
   "repository": {
     "type": "git",
     "url": "https://github.com/TzolkinB/portfolio-react"
   },
   "scripts": {
-    "start": "webpack serve --open",
-    "build": "webpack --mode production",
-    "deploy": "aws s3 sync build/ s3://fiercewhiskers.me",
+    "start": "webpack serve --config build-utils/webpack.config.js --env env=dev --open",
+    "build": "webpack --config build-utils/webpack.config.js --env env=prod",
+    "deploy": "aws s3 sync dist/ s3://fiercewhiskers.me",
     "prod": "npm run build && npm run deploy",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .tsx",
@@ -37,13 +36,13 @@
     "babel-loader": "^9.1.0",
     "css-loader": "^6.10.0",
     "eslint": "^8.57.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.34.1",
+    "eslint-webpack-plugin": "^4.1.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.0",
+    "husky": "^8.0.0",
+    "mini-css-extract-plugin": "^2.8.1",
     "prettier": "^3.2.5",
     "style-loader": "^3.3.0",
     "ts-loader": "^9.5.1",
@@ -51,6 +50,11 @@
     "webpack": "^5.90.0",
     "webpack-cli": "^5.1.0",
     "webpack-dev-server": "^5.0.4",
-    "husky": "^8.0.0"
+    "webpack-merge": "^5.10.0"
+  },
+  "peerDependencies": {
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^9.1.0"
   }
 }

@@ -3,7 +3,7 @@ import {
   testingTools,
   terminalTools,
   webDevTools,
-} from "tech-icons"
+} from "../../src/tech-icons"
 
 describe("Home page tests", () => {
   beforeEach(() => {

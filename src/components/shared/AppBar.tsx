@@ -33,7 +33,7 @@ const AppBar = () => {
             <MDBIcon icon="bars" fas />
           </MDBNavbarToggler>
           <MDBCollapse navbar open={openNav}>
-            <MDBNavbarNav right fullWidth={false}>
+            <MDBNavbarNav right fullWidth={false} data-testid="nav-links">
               <MDBNavbarLink href="#about">About</MDBNavbarLink>
               <MDBNavbarLink href="#skills">Skills</MDBNavbarLink>
               <MDBNavbarLink href="#projects">Projects</MDBNavbarLink>

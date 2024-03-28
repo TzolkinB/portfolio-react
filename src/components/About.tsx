@@ -33,7 +33,11 @@ const About = (props: { id: string }) => {
   ]
 
   return (
-    <div id={id} className="py-5 d-flex flex-column align-items-center">
+    <div
+      id={id}
+      data-testid={id}
+      className="py-5 d-flex flex-column align-items-center"
+    >
       <div>
         <MDBTypography tag="h3" className="text-white py-3">
           About Me
@@ -60,7 +64,11 @@ const About = (props: { id: string }) => {
           return (
             // eslint-disable-next-line react/no-array-index-key
             <li className="mb-2 fw-light" key={i}>
-              <MDBIcon icon="check-circle" className="me-2 text-success" />
+              <MDBIcon
+                icon="check-circle"
+                className="me-2 text-success"
+                data-testid="success-check"
+              />
               {accomplishment}
             </li>
           )

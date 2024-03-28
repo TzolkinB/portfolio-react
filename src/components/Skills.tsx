@@ -16,7 +16,7 @@ function Skills(props: { id: string }) {
   const mobileCol2 =["Webpack", "qtest", "Browsertack", "VSCode", "YAML", "Bash", "Ember", "HTML", "CSS", "Styled Components"]
 
   return (
-    <div id={id} className="py-5">
+    <div id={id} data-testid={id} className="py-5">
       <MDBTypography tag="h3" className="text-center py-3">
         Skills
       </MDBTypography>

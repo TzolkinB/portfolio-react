@@ -63,7 +63,7 @@ describe("Profile tests", () => {
     })
   })
 
-  it.only("should have tech icons and tooltips in skills section", () => {
+  it("should have tech icons and tooltips in skills section", () => {
     const cloudHosting = ["gitlab", "bitbucket", "github", "vscode"]
     const testingTools = ["cypress", "testing-library", "qtest", "browserstack"]
     const terminalTools = ["git", "webpack", "yaml", "vim", "bash"]
@@ -88,23 +88,25 @@ describe("Profile tests", () => {
 
       cy.get("img").should("have.length", allSkills.length).as("skillImages")
 
-      // eslint-disable-next-line prettier/prettier
-        // cy.get("@skillImages").each(($el) => {
-      // allSkills.forEach(skill => {
-          // cy.wrap($el).should("have.attr", "alt", skill)
-          // cy.get("img").should("have.attr", "alt", skill)
-        })
-    //   // })
-    // })
+      // Check alt image tag
+      cy.get("@skillImages").each(($el, index) => {
+        cy.wrap($el).should("have.attr", "alt", allSkills[index])
+      })
+    })
 
-    allSkills.map(skill => {
-      cy.get("@skillImages")
-          .each(($el) => {
-            cy.wrap($el).scrollIntoView()
-            .trigger("mouseover")
-            cy.findByRole("tooltip", { name: skill.toLocaleUpperCase() })
-            cy.wrap($el).trigger("mouseout")
-          })
-        })
+    // Check tooltip on image, tooltip html lives outside of skills data-testid
+    cy.get("@skillImages").each(($el, index) => {
+      cy.wrap($el).trigger("mouseover")
+      cy.findByRole("tooltip", { name: allSkills[index].toLocaleUpperCase() })
+      cy.wrap($el).trigger("mouseout")
+    })
+  })
+
+  it.only("should have projects section", () => {
+    cy.findByTestId("projects").within(() => {
+      cy.findByRole("heading", { level: 3, name: "Projects" })
+
+      cy.findAllByTestId(/card-/i).should("have.length", 2)
+    })
   })
 })

@@ -10,11 +10,12 @@
     "start": "webpack serve --config build-utils/webpack.config.js --env env=dev --open",
     "build": "webpack --config build-utils/webpack.config.js --env env=prod",
     "build:analyze": "npm run build",
-    "deploy": "aws s3 sync dist/ s3://fiercewhiskers.me",
+    "deploy": "aws s3 sync dist/ s3://kimbell.me",
     "prod": "npm run build && npm run deploy",
     "lint": "eslint . --ext .tsx",
     "test": "cypress open --e2e",
     "cy:test": "start-server-and-test start http://localhost:4280 test",
+    "cy:run": "start-server-and-test start http://localhost:4280 cypress run",
     "prepare": "husky install",
     "lint:husky": "eslint . --ext .tsx --max-warnings=0"
   },

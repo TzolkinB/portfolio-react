@@ -87,16 +87,6 @@ const About = (props: { id: string }) => {
         that I am able to live closer to them.
       </MDBTypography>
       <MDBTypography className="fw-light align-self-start pt-1">
-        <span className="fw-bold">
-          Why am I using the domain name &quot;Fierce Whiskers&quot;?
-        </span>{" "}
-        Long story short, when I was originally buying domains, I was looking
-        for &quot;.com&quot; and variations on my name were taken. Therefore, I
-        bought &quot;Fierce Whiskers&quot; because it reminds me of my oldest
-        cat who puts up a good front but really is just a lap kitty who wants
-        cuddles.
-      </MDBTypography>
-      <MDBTypography className="fw-light align-self-start pt-1">
         I am always looking for new opportunites and challenges so feel free to
         reach out to me: krbell4@gmail.com
       </MDBTypography>

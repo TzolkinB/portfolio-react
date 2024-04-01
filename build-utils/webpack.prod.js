@@ -32,6 +32,7 @@ module.exports = {
     }),
     new BundleAnalyzerPlugin({
       reportFilename: path.resolve(__dirname, "..", "./dist/report.html"),
+      analyzerMode: "static"
     }),
     new MiniCssExtractPlugin(),
   ],

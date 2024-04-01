@@ -27,7 +27,7 @@ function Projects(props: { id: string }) {
   )
 
   return (
-    <div id={id} className="py-5 px-4 px-sm-5">
+    <div id={id} data-testid={id} className="py-5 px-4 px-sm-5">
       <MDBTypography tag="h3" className="text-center">
         Projects
       </MDBTypography>

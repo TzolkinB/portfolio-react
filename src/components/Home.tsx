@@ -23,6 +23,7 @@ const Home = () => {
     <MDBContainer fluid className="app gx-0">
       <div
         id="home"
+        data-testid="home"
         className="px-4 px-sm-5 pt-4 pb-5 d-flex flex-column justify-content-center align-items-center"
       >
         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
@@ -37,7 +38,7 @@ const Home = () => {
             Kim Bell
           </MDBTypography>
           <MDBTypography tag="h2" className="mb-0">
-            SDET | Software Engineer in Test
+            SDET | Software Development Engineer in Test
           </MDBTypography>
           <MDBTypography className="fs-4 mb-0">
             Specializing in Cypress Test Automation. Software Engineer in React.

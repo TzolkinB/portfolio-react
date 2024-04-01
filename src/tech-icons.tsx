@@ -50,7 +50,7 @@ const mapSrc = {
 
 const mapImages = {
   "styled-components": (
-    <img src={StyledComp} key="styled" alt="styled components" width="60" />
+    <img src={StyledComp} key="styled" alt="styled-components" width="60" />
   ),
   cypress: (
     <img
@@ -64,7 +64,7 @@ const mapImages = {
     <img
       src={TestingLib}
       key="testing"
-      alt="testing library"
+      alt="testing-library"
       width="60"
       height="60"
     />

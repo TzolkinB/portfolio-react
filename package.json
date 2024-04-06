@@ -10,7 +10,7 @@
     "start": "webpack serve --config build-utils/webpack.config.js --env env=dev --open",
     "build": "webpack --config build-utils/webpack.config.js --env env=prod",
     "build:analyze": "npm run build",
-    "deploy": "aws s3 sync dist/ s3://kimbell.me",
+    "deploy": "aws s3 sync dist/ s3://www.kimbell.me",
     "prod": "npm run build && npm run deploy",
     "lint": "eslint . --ext .tsx",
     "test": "cypress open --e2e",

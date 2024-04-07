@@ -1,4 +1,4 @@
-import { MDBTypography, MDBRow, MDBCol } from "mdb-react-ui-kit"
+import { MDBTypography } from "mdb-react-ui-kit"
 import {
   cloudHosting,
   testingTools,
@@ -10,17 +10,17 @@ import {
 function Skills(props: { id: string }) {
   const { id } = props
 
-  // eslint-disable-next-line prettier/prettier
+  // eslint-disable-next-line prettier/prettier, @typescript-eslint/no-unused-vars
   const mobileCol1 = ["Cypress","Testing Library", "Javascrpt", "Typescrpt", "React", "Git", "VIM", "Gitlab", "Bitbucket", "Github"]
-  // eslint-disable-next-line prettier/prettier
+  // eslint-disable-next-line prettier/prettier, @typescript-eslint/no-unused-vars
   const mobileCol2 =["Webpack", "qtest", "Browsertack", "VSCode", "YAML", "Bash", "Ember", "HTML", "CSS", "Styled Components"]
 
   return (
-    <div id={id} data-testid={id} className="py-5">
+    <div id={id} data-testid={id} className="pt-5">
       <MDBTypography tag="h3" className="text-center py-3">
         Skills
       </MDBTypography>
-      <div className="skills-list d-none d-sm-flex flex-sm-wrap justify-content-center align-items-center">
+      <div className="skills-list d-flex flex-wrap justify-content-evenly justify-content-sm-center align-items-center">
         {testingTools.map((tool) => {
           return getImage(tool)
         })}
@@ -34,7 +34,7 @@ function Skills(props: { id: string }) {
           return getImage(cloud)
         })}
       </div>
-      <MDBRow center className="skills-mobile d-flex d-sm-none">
+      {/* <MDBRow center className="skills-mobile d-flex d-sm-none">
         <MDBCol size={6}>
           <ul>
             {mobileCol1.map((item) => {
@@ -49,7 +49,7 @@ function Skills(props: { id: string }) {
             })}
           </ul>
         </MDBCol>
-      </MDBRow>
+      </MDBRow> */}
     </div>
   )
 }

@@ -24,7 +24,7 @@ const Home = () => {
       <div
         id="home"
         data-testid="home"
-        className="px-4 px-sm-5 pt-4 pb-5 d-flex flex-column justify-content-center align-items-center"
+        className="px-4 px-sm-5 pt-4 d-flex flex-column justify-content-center align-items-center"
       >
         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
         <img

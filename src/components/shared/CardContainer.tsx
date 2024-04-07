@@ -30,7 +30,9 @@ const CardContainer = (props: CardProps) => {
   return (
     <MDBCard>
       <MDBCardBody data-testid={`card-${title}`}>
-        <MDBCardTitle>{title}</MDBCardTitle>
+        <MDBCardTitle tag="h4" className="fs-5">
+          {title}
+        </MDBCardTitle>
         <MDBCardSubTitle>{subtitle}</MDBCardSubTitle>
         <MDBCardText>{text}</MDBCardText>
         <MDBBtn href={url} target="_blank">

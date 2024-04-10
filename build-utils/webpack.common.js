@@ -2,6 +2,8 @@
 const path = require("path")
 // eslint-disable-next-line import/no-extraneous-dependencies
 const ESLintPlugin = require("eslint-webpack-plugin")
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 // path: prefixed with the __dirname global. https://nodejs.org/api/path.html
 // This prevents file path issues between operating systems and allows relative paths to work as expected.
@@ -84,7 +86,12 @@ module.exports = {
       },
     ],
   },
-  plugins: [new ESLintPlugin()],
+  plugins: [new ESLintPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "..", "./src/index.html"),
+      title: "Kim Bell - SDET",
+      favicon: path.resolve(__dirname, "..", "./src/assets/img/favicon.png"),
+    })],
   resolve: {
     extensions: [".*", ".js", ".jsx", ".tsx", ".ts"],
     alias: {

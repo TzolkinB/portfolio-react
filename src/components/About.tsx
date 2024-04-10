@@ -88,13 +88,9 @@ const About = (props: { id: string }) => {
       </MDBTypography>
       <MDBTypography className="fw-light align-self-start pt-1">
         I am always looking for new opportunites and challenges so feel free to
-        reach out to me: krbell4@gmail.com
+        reach out to me: &nbsp;
+        <a href="mailto:krbell4@gmail.com">krbell4@gmail.com</a>
       </MDBTypography>
-      {/* TODO: */}
-      {/* Why remote only? */}
-      {/* My Testing -- what is it from testing library? */}
-      {/* Why not BDD () Gherkin or POM (page object model)? */}
-      {/* Why Cypress? */}
     </div>
   )
 }

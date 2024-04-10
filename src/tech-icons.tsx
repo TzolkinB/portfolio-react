@@ -50,7 +50,13 @@ const mapSrc = {
 
 const mapImages = {
   "styled-components": (
-    <img src={StyledComp} key="styled" alt="styled-components" width="60" />
+    <img
+      src={StyledComp}
+      key="styled"
+      alt="styled-components"
+      width={60}
+      height={60}
+    />
   ),
   cypress: (
     <img
@@ -58,6 +64,7 @@ const mapImages = {
       key="cypress"
       alt="cypress"
       height={90}
+      width={90}
     />
   ),
   "testing-library": (
@@ -65,17 +72,18 @@ const mapImages = {
       src={TestingLib}
       key="testing"
       alt="testing-library"
-      width="60"
-      height="60"
+      width={60}
+      height={60}
     />
   ),
-  qtest: <img src={Qtest} key="qtest" alt="qtest" width="50" />,
+  qtest: <img src={Qtest} key="qtest" alt="qtest" width={50} height={50} />,
   react: (
     <img
       src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"
       key="react"
       alt="react"
       height={60}
+      width={60}
       style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
     />
   ),
@@ -85,6 +93,7 @@ const mapImages = {
       key="webpack"
       alt="webpack"
       height={60}
+      width={60}
       style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
     />
   ),
@@ -94,7 +103,12 @@ export const getImage = (tool: string) => {
   if (mapSrc[tool as keyof typeof mapSrc]) {
     return (
       <MDBTooltip tag="span" title={`${tool.toLocaleUpperCase()}`} key={tool}>
-        <img src={mapSrc[tool as keyof typeof mapSrc]} alt={tool} height={60} />
+        <img
+          src={mapSrc[tool as keyof typeof mapSrc]}
+          alt={tool}
+          height={60}
+          width={60}
+        />
       </MDBTooltip>
     )
   }

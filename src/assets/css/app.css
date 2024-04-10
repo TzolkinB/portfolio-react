@@ -49,6 +49,12 @@ a:hover {
   -webkit-clip-path: polygon(0 0%, 100% 5%, 100% 95%, 0% 100%);
 }
 
+#about a {
+  color: #BAD0E3;
+  text-decoration: underline;
+
+}
+
 #projects {
   background-color: #3E587A;
   color: #E0E3DE;

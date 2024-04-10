@@ -32,7 +32,9 @@ const Home = () => {
           src={Me}
           alt="Profile image"
           width="170"
+          height="170"
           className="rounded-circle shadow-3-strong me-3 mb-1"
+          fetchPriority="high"
         />
         <div className="text-center">
           <MDBTypography tag="h1" className="text-uppercase name">

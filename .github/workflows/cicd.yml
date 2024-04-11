@@ -24,7 +24,7 @@ on:
         required: true
 
 jobs:
-  log-the-inputs:
+  manual-trigger:
     runs-on: ubuntu-latest
     steps:
       - run: |

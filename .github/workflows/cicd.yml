@@ -18,21 +18,15 @@ on:
           - info
           - warning
           - debug
-      environment:
-        description: "Environment to run tests against"
-        type: environment
-        required: true
 
 jobs:
-  log-the-inputs:
+  manual-trigger:
     runs-on: ubuntu-latest
     steps:
       - run: |
           echo "Log level: $LEVEL"
-          echo "Environment: $ENVIRONMENT"
         env:
           LEVEL: ${{ inputs.logLevel }}
-          ENVIRONMENT: ${{ inputs.environment }}
 
   install:
     runs-on: ubuntu-latest

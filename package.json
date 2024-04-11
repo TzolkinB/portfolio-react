@@ -15,7 +15,7 @@
     "lint": "eslint . --ext .tsx",
     "test": "cypress open --e2e",
     "cy:test": "start-server-and-test start http://localhost:4280 test",
-    "cy:run": "start-server-and-test start http://localhost:4280 cypress run",
+    "cy:run": "start-server-and-test start http://localhost:4280 'cypress run'",
     "prepare": "husky install",
     "lint:husky": "eslint . --ext .tsx --max-warnings=0"
   },

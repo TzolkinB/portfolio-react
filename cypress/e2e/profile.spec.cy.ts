@@ -103,10 +103,19 @@ describe("Profile tests", () => {
   })
 
   it.only("should have projects section", () => {
+    const cardVisibility = (index: number, visibility: string) => {
+      cy.get("@projectCards").eq(index).should(`be.${visibility}`)
+    }
+
     cy.findByTestId("projects").within(() => {
       cy.findByRole("heading", { level: 3, name: "Projects" })
 
-      cy.findAllByTestId(/card-/i).should("have.length", 2)
+      cy.findAllByTestId(/card-/i).should("have.length", 4).as("projectCards")
+
+      cardVisibility(0, "hidden")
+      cardVisibility(1, "hidden")
+      cardVisibility(2, "visible")
+      cardVisibility(3, "visible")
     })
   })
 })

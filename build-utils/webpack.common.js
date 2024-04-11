@@ -1,6 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path")
-// eslint-disable-next-line import/no-extraneous-dependencies
 const ESLintPlugin = require("eslint-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -28,6 +26,7 @@ module.exports = {
     // filename: the name of each output bundle.
     // The bundle is written to the directory specified by the output.path option.
     filename: "bundle.js",
+    assetModuleFilename: "paths.IMG/[name][ext]"
   },
   devServer: {
     static: path.resolve(__dirname, "..", "./dist"),
@@ -37,9 +36,6 @@ module.exports = {
       logging: "error",
     },
     historyApiFallback: { index: "index.html" },
-  },
-  performance: {
-    maxAssetSize: 400,
   },
   module: {
     rules: [
@@ -61,28 +57,8 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|jpg|gif|ttf|pdf|svg)$/,
-        include: [paths.IMG, paths.PUB],
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[path][name].[ext]",
-            },
-          },
-        ],
-      },
-      {
-        test: /\.html$/,
-        include: paths.PUB,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-            },
-          },
-        ],
+        test: /\.(png|jpg|gif|ttf|pdf|svg)$/i,
+        type: 'asset/resource'
       },
     ],
   },

@@ -22,7 +22,7 @@ const AppBar = () => {
         <MDBContainer fluid>
           <MDBNavbarBrand href="/" className="pl-2">
             <img src={Whiskers} alt="Cat whiskers" />
-            <span className="pl-3 fs-4">FierceWhiskers.me</span>
+            <span className="pl-3 fs-4">Kimbell.me</span>
           </MDBNavbarBrand>
           <MDBNavbarToggler
             type="button"
@@ -37,7 +37,9 @@ const AppBar = () => {
               <MDBNavbarLink href="#about">About</MDBNavbarLink>
               <MDBNavbarLink href="#skills">Skills</MDBNavbarLink>
               <MDBNavbarLink href="#projects">Projects</MDBNavbarLink>
-              <MDBNavbarLink href={Resume}>Resume</MDBNavbarLink>
+              <MDBNavbarLink href={Resume} target="_blank">
+                Resume
+              </MDBNavbarLink>
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>

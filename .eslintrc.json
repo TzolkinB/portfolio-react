@@ -3,6 +3,7 @@
         "browser": true,
         "es2021": true
     },
+    "ignorePatterns": ["build-utils/*"],
     "extends": [
         "plugin:react/recommended",
         "airbnb",

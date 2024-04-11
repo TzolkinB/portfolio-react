@@ -34,7 +34,8 @@ a:hover {
 
 #home {
   background-color: #E0E3DE;
-  color: #3E587A; 
+  color: #3E587A;
+  padding-bottom: 4.5rem;
 }
 
 #home .name {
@@ -48,9 +49,23 @@ a:hover {
   -webkit-clip-path: polygon(0 0%, 100% 5%, 100% 95%, 0% 100%);
 }
 
+#about a {
+  color: #BAD0E3;
+  text-decoration: underline;
+
+}
+
+#projects {
+  background-color: #3E587A;
+  color: #E0E3DE;
+  margin-top: -2rem;
+  clip-path: polygon(0 0%, 100% 7%, 100% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0 0%, 100% 7%, 100% 100%, 0% 100%);
+}
+
 #about,
 #skills {
-  margin-top: -40px;
+  margin-top: -3.25rem;
   padding-left: 3rem;
   padding-right: 3rem;
 }
@@ -58,15 +73,11 @@ a:hover {
 #skills {
   background-color: #E0E3DE;
   color: #3E587A;
+  padding-bottom: 3.5rem;
 }
 
 #skills img {
   padding: 0 5px 0 5px;
-}
-
-#projects {
-  background-color: #3E587A;
-  color: #fff;
 }
 
 .card {
@@ -118,6 +129,13 @@ footer {
   #about,
   #skills {
     margin-top: -4rem;
+  }
+  .skills-list {
+    row-gap: 0.75rem;
+  }
+
+  #projects {
+    margin-top: -2.5rem;
   }
 
   .copyright {

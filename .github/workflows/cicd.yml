@@ -18,10 +18,6 @@ on:
           - info
           - warning
           - debug
-      environment:
-        description: "Environment to run tests against"
-        type: environment
-        required: true
 
 jobs:
   manual-trigger:
@@ -29,10 +25,8 @@ jobs:
     steps:
       - run: |
           echo "Log level: $LEVEL"
-          echo "Environment: $ENVIRONMENT"
         env:
           LEVEL: ${{ inputs.logLevel }}
-          ENVIRONMENT: ${{ inputs.environment }}
 
   install:
     runs-on: ubuntu-latest

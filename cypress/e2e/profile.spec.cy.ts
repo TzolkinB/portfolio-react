@@ -103,8 +103,47 @@ describe("Profile tests", () => {
   })
 
   it.only("should have projects section", () => {
-    const cardVisibility = (index: number, visibility: string) => {
+    type cardVisibilityProps =
+      | {
+          index: number
+          visibility: string
+          name: string
+          hrefString: string
+        }
+      | {
+          index: number
+          visibility: string
+          name?: string
+          hrefString?: string
+        }
+    const cardVisibility = ({
+      index,
+      visibility,
+      name,
+      hrefString,
+    }: cardVisibilityProps) => {
       cy.get("@projectCards").eq(index).should(`be.${visibility}`)
+
+      if (visibility === "visible") {
+        cy.get("@projectCards")
+          .eq(index)
+          .within(() => {
+            cy.findByRole("button", { name })
+              .should("have.attr", "href", hrefString)
+              .as("cardButton")
+
+            // cy.get("@cardButton").each((link) => {
+            // cy.wrap(link)
+            // .invoke("attr", "href")
+            // .then((href) => {
+            // console.log(typeof href) // yielded string
+            cy.request(hrefString).then((resp) => {
+              expect(resp.status).to.eq(200)
+            })
+          })
+        // })
+        // })
+      }
     }
 
     cy.findByTestId("projects").within(() => {
@@ -114,8 +153,18 @@ describe("Profile tests", () => {
 
       cardVisibility(0, "hidden")
       cardVisibility(1, "hidden")
-      cardVisibility(2, "visible")
-      cardVisibility(3, "visible")
+      cardVisibility(
+        2,
+        "visible",
+        "Github Repo",
+        "https://github.com/TzolkinB/react-template",
+      )
+      cardVisibility(
+        3,
+        "visible",
+        "Demo",
+        "https://memory-game1234.firebaseapp.com/#/",
+      )
     })
   })
 })

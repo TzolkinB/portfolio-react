@@ -102,11 +102,79 @@ describe("Profile tests", () => {
     })
   })
 
-  it.only("should have projects section", () => {
+  it("should have projects section", () => {
+    const buttonsCard1 = [
+      {
+        name: "Github Repo",
+        href: "https://github.com/TzolkinB/react-template",
+      },
+    ]
+    const buttonsCard2 = [
+      {
+        name: "Demo",
+        href: "https://memory-game1234.firebaseapp.com/#/",
+      },
+      {
+        name: "Github Repo",
+        href: "https://github.com/TzolkinB/memory",
+      },
+    ]
+    const cardVisibility = (index: number, visibility: string) => {
+      cy.get("@projectCards").eq(index).should(`be.${visibility}`)
+    }
+
+    const buttonLinks = (
+      index: number,
+      buttons: { name: string; href: string }[],
+    ) => {
+      cy.get("@projectCards")
+        .eq(index)
+        .within(() => {
+          buttons.forEach((button) => {
+            cy.findByRole("button", { name: button.name }).should(
+              "have.attr",
+              "href",
+              button.href,
+            )
+
+            cy.request(button.href).then((resp) => {
+              expect(resp.status).to.eq(200)
+            })
+          })
+        })
+    }
+
     cy.findByTestId("projects").within(() => {
       cy.findByRole("heading", { level: 3, name: "Projects" })
 
-      cy.findAllByTestId(/card-/i).should("have.length", 2)
+      cy.findAllByTestId(/card-/i).should("have.length", 4).as("projectCards")
+
+      cardVisibility(0, "hidden")
+      cardVisibility(1, "hidden")
+      cardVisibility(2, "visible")
+      cardVisibility(3, "visible")
+
+      buttonLinks(2, buttonsCard1)
+      buttonLinks(3, buttonsCard2)
+    })
+  })
+
+  it.only("should have footer with copyright & links", () => {
+    const currentYear = new Date().getFullYear()
+    cy.get("footer").contains(`${currentYear} Copyright Kim Bell`)
+    cy.get("footer").within(() => {
+      cy.findAllByRole("link").should("have.length", 2).as("footerLinks")
+      cy.get("@footerLinks").each((link) => {
+        cy.wrap(link)
+          .invoke("attr", "href")
+          .then((href) =>
+            href
+              ? cy.request(href).then((resp) => {
+                  expect(resp.status).to.eq(200)
+                })
+              : console.error("no href"),
+          )
+      })
     })
   })
 })

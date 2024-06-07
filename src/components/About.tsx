@@ -44,7 +44,7 @@ const About = (props: { id: string }) => {
         </MDBTypography>
       </div>
       <MDBTypography className="fw-light align-self-start">
-        I have 7+ years experience in web development and 2+ years in test
+        I have 6+ years experience in web development and 2+ years in test
         automation.
       </MDBTypography>
       <MDBTypography className="fw-light">

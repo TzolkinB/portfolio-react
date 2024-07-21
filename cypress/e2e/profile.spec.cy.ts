@@ -21,7 +21,7 @@ describe("Profile tests", () => {
 
     cy.get("nav")
       .find("img")
-      .should("have.attr", "src", "/src/assets/img/W-white.png")
+      .should("have.attr", "src", "/paths.IMG/W-white.png")
 
     cy.get("nav")
       .findByTestId("nav-links")
@@ -43,7 +43,7 @@ describe("Profile tests", () => {
     cy.findByRole("link", { name: "Resume" }).should(
       "have.attr",
       "href",
-      "/src/assets/img/Bell_Kim-Resume.pdf",
+      "/paths.IMG/Bell_Kim-Resume.pdf",
     )
   })
 
@@ -52,9 +52,9 @@ describe("Profile tests", () => {
       cy.findByRole("heading", { level: 1, name: "Kim Bell" })
       cy.findByRole("heading", {
         level: 2,
-        name: "SDET | Software Development Engineer in Test",
+        name: "SDET | Software Engineer in Test",
       })
-      cy.get("img").should("have.attr", "src", "/src/assets/img/profile.jpg")
+      cy.get("img").should("have.attr", "src", "/paths.IMG/profile2.jpg")
     })
 
     cy.findByTestId("about").within(() => {
@@ -66,7 +66,7 @@ describe("Profile tests", () => {
   it("should have tech icons and tooltips in skills section", () => {
     const cloudHosting = ["gitlab", "bitbucket", "github", "vscode"]
     const testingTools = ["cypress", "testing-library", "qtest", "browserstack"]
-    const terminalTools = ["git", "webpack", "yaml", "vim", "bash"]
+    const terminalTools = ["git", "webpack", "yaml", "vim"]
     const webDevTools = [
       "javascript",
       "typescript",
@@ -140,6 +140,7 @@ describe("Profile tests", () => {
             cy.request(button.href).then((resp) => {
               expect(resp.status).to.eq(200)
             })
+            cy.request(button.href)
           })
         })
     }
@@ -159,7 +160,7 @@ describe("Profile tests", () => {
     })
   })
 
-  it.only("should have footer with copyright & links", () => {
+  it("should have footer with copyright & links", () => {
     const currentYear = new Date().getFullYear()
     cy.get("footer").contains(`${currentYear} Copyright Kim Bell`)
     cy.get("footer").within(() => {

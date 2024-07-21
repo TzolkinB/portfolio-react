@@ -13,7 +13,7 @@ function Skills(props: { id: string }) {
   // eslint-disable-next-line prettier/prettier, @typescript-eslint/no-unused-vars
   const mobileCol1 = ["Cypress","Testing Library", "Javascrpt", "Typescrpt", "React", "Git", "VIM", "Gitlab", "Bitbucket", "Github"]
   // eslint-disable-next-line prettier/prettier, @typescript-eslint/no-unused-vars
-  const mobileCol2 =["Webpack", "qtest", "Browsertack", "VSCode", "YAML", "Bash", "Ember", "HTML", "CSS", "Styled Components"]
+  const mobileCol2 =["Webpack", "qtest", "Browsertack", "VSCode", "YAML", "Ember", "HTML", "CSS", "Styled Components"]
 
   return (
     <div id={id} data-testid={id} className="pt-5">

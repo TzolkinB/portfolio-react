@@ -12,7 +12,7 @@ export const testingTools = [
   "qtest",
   "browserstack",
 ]
-export const terminalTools = ["git", "webpack", "yaml", "vim", "bash"]
+export const terminalTools = ["git", "webpack", "yaml", "vim"]
 export const webDevTools = [
   "javascript",
   "typescript",
@@ -35,7 +35,6 @@ const mapSrc = {
   git: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg",
   yaml: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/yaml/yaml-original.svg",
   vim: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vim/vim-original.svg",
-  bash: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg",
   javascript:
     "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
   typescript:

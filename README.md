@@ -1,4 +1,4 @@
-![CI/CD workflow](https://github.com/TzolkinB/portfolio-react/actions/workflows/cicd.js.yml/badge.svg)
+![CI/CD workflow](https://github.com/TzolkinB/portfolio-react/actions/workflows/cicd.yml/badge.svg)
 
 # Personal Portfolio Website
 

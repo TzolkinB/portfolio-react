@@ -20,7 +20,7 @@ describe("Profile tests", () => {
   ]
   const cloudHosting = ["gitlab", "bitbucket", "github", "vscode"]
   const testingTools = ["cypress", "testing-library", "qtest", "browserstack"]
-  const terminalTools = ["git", "webpack", "yaml", "vim", "bash"]
+  const terminalTools = ["git", "webpack", "yaml", "vim"]
   const webDevTools = [
     "javascript",
     "typescript",
@@ -36,6 +36,7 @@ describe("Profile tests", () => {
     ...terminalTools,
     ...cloudHosting,
   ]
+
   const buttonsCard1 = [
     {
       name: "Github Repo",
@@ -52,9 +53,9 @@ describe("Profile tests", () => {
       href: "https://github.com/TzolkinB/memory",
     },
   ]
-      
+
   const cardVisibility = (index: number, visibility: string) => {
-    cy.get("@projectCards").eq(index).should(`be.${visibility}`)
+    cy.get("@projectCards").eq(index).should(`${visibility}`)
   }
 
   const buttonLinks = (
@@ -79,18 +80,20 @@ describe("Profile tests", () => {
   }
 
   sizes.forEach((size) => {
-    it.skip(`should have whiskers img and 4 tabs in the nav bar, ${size}`, () => {
+    it(`should have whiskers img and 4 tabs in the nav bar, ${size}`, () => {
       cy.viewport(size)
 
       cy.get("nav")
         .find("img")
         .should("have.attr", "src", "/paths.IMG/W-white.png")
 
-      cy.get("nav")
-        .findByTestId("nav-links")
-        .as("navLinks")
-        .findAllByRole("link")
-        .should("have.length", 4)
+      if (size === "macbook-11") {
+        cy.get("nav").findByTestId("nav-links").as("navLinks")
+      } else {
+        cy.findByRole("button", { name: "Toggle navigation" }).click()
+        cy.findByTestId("nav-links").as("navLinks")
+      }
+      cy.get("@navLinks").findAllByRole("link").should("have.length", 4)
 
       anchorLinks.forEach((anchor) => {
         cy.get("@navLinks")
@@ -150,7 +153,7 @@ describe("Profile tests", () => {
       })
     })
 
-    it.skip(`should have projects section, ${size}`, () => {
+    it(`should have projects section, ${size}`, () => {
       cy.viewport(size)
 
       cy.findByTestId("projects").within(() => {
@@ -158,32 +161,41 @@ describe("Profile tests", () => {
 
         cy.findAllByTestId(/card-/i).should("have.length", 4).as("projectCards")
 
-        cardVisibility(0, "hidden")
-        cardVisibility(1, "hidden")
-        cardVisibility(2, "visible")
-        cardVisibility(3, "visible")
+        if (size !== "iphone-6") {
+          cardVisibility(0, "not.be.visible")
+          cardVisibility(1, "not.be.visible")
+          cardVisibility(2, "be.visible")
+          cardVisibility(3, "be.visible")
 
-        buttonLinks(2, buttonsCard1)
-        buttonLinks(3, buttonsCard2)
+          buttonLinks(2, buttonsCard1)
+          buttonLinks(3, buttonsCard2)
+        } else {
+          cardVisibility(0, "be.visible")
+          cardVisibility(1, "be.visible")
+          cardVisibility(2, "not.be.visible")
+          cardVisibility(3, "not.be.visible")
+
+          buttonLinks(0, buttonsCard1)
+          buttonLinks(1, buttonsCard2)
+        }
       })
     })
 
     it(`should have footer with copyright & links, ${size}`, () => {
+      // cy.on("fail", (e, runnable) => {
+      //   console.log("error", e)
+      //   console.log("runnable", runnable)
+      //   console.log("error", e.message)
+      //   return false
+      // })
       cy.viewport(size)
       const currentYear = new Date().getFullYear()
       cy.get("footer").contains(`${currentYear} Copyright Kim Bell`)
       cy.get("footer").within(() => {
         cy.findAllByRole("link").should("have.length", 2).as("footerLinks")
         cy.get("@footerLinks").each((link) => {
-          cy.wrap(link)
-            .invoke("attr", "href")
-            .then((href) =>
-              href
-                ? cy.request(href).then((resp) => {
-                    expect(resp.status).to.eq(200)
-                  })
-                : console.error("no href"),
-            )
+          cy.request(link.prop("href")).as("linkStatus")
+          cy.get("@linkStatus").its("status").should("eq", 200)
         })
       })
     })

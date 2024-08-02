@@ -72,9 +72,7 @@ describe("Profile tests", () => {
             button.href,
           )
 
-          cy.request(button.href).then((resp) => {
-            expect(resp.status).to.eq(200)
-          })
+          cy.request(button.href).its("status").should("eq", 200)
         })
       })
   }
@@ -111,6 +109,9 @@ describe("Profile tests", () => {
         "href",
         "/paths.IMG/Bell_Kim-Resume.pdf",
       )
+      cy.request("/paths.IMG/Bell_Kim-Resume.pdf")
+        .its("status")
+        .should("eq", 200)
     })
 
     it(`should have profile image in home section and bullet points in about me section, ${size}`, () => {
@@ -182,12 +183,15 @@ describe("Profile tests", () => {
     })
 
     it(`should have footer with copyright & links, ${size}`, () => {
-      // cy.on("fail", (e, runnable) => {
-      //   console.log("error", e)
-      //   console.log("runnable", runnable)
-      //   console.log("error", e.message)
-      //   return false
-      // })
+      cy.on("fail", (error, runnable) => {
+        console.log("error", error)
+        console.log("runnable", runnable)
+        // return false
+        if (!error.message.includes("429: Too Many Requests")) {
+          throw error
+        }
+        cy.log("Exception encountered: LinkedIn 429: Too many requests")
+      })
       cy.viewport(size)
       const currentYear = new Date().getFullYear()
       cy.get("footer").contains(`${currentYear} Copyright Kim Bell`)

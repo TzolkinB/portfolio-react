@@ -154,7 +154,7 @@ describe("Profile tests", () => {
       })
     })
 
-    it.only(`should have projects section, ${size}`, () => {
+    it(`should have projects section, ${size}`, () => {
       cy.viewport(size)
 
       cy.findByTestId("projects").within(() => {
@@ -182,7 +182,7 @@ describe("Profile tests", () => {
       })
     })
 
-    it.only(`should have footer with copyright & links, ${size}`, () => {
+    it(`should have footer with copyright & links, ${size}`, () => {
       cy.on("fail", (error, runnable) => {
         console.log("error", error)
         console.log("runnable", runnable)

@@ -9,7 +9,7 @@ export const cloudHosting = ["gitlab", "bitbucket", "github", "vscode"]
 export const testingTools = [
   "cypress",
   "testing-library",
-  "qtest",
+  "tricentis_qtest",
   "browserstack",
 ]
 export const terminalTools = ["git", "webpack", "yaml", "vim"]
@@ -75,7 +75,9 @@ const mapImages = {
       height={60}
     />
   ),
-  qtest: <img src={Qtest} key="qtest" alt="qtest" width={50} height={50} />,
+  tricentis_qtest: (
+    <img src={Qtest} key="qtest" alt="qtest" width={50} height={50} />
+  ),
   react: (
     <img
       src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"

@@ -17,10 +17,10 @@ function Skills(props: { id: string }) {
 
   return (
     <div id={id} data-testid={id} className="pt-5">
-      <MDBTypography tag="h3" className="text-center py-3">
+      <MDBTypography tag="h2" className="text-center py-2">
         Skills
       </MDBTypography>
-      <div className="skills-list d-flex flex-wrap justify-content-evenly justify-content-sm-center align-items-center">
+      <div className="skills-list d-flex flex-wrap flex-xl-nowrap justify-content-evenly justify-content-sm-center align-items-center">
         {testingTools.map((tool) => {
           return getImage(tool)
         })}

@@ -5,8 +5,15 @@ const About = (props: { id: string }) => {
   const { id } = props
 
   const accomplishments = [
-    "Created and maintained a 'Best Practices and Standards Guide' for Ally's implimentation of the framework and tools they were using.",
-    "Identified patterns used for common UI elements and added examples to ensure not only ease of adoption but also that all departments would meet the same quality and expectations.",
+    "Created and maintained a 'Best Practices and Standards Guide' for Ally Bank's implimentation of the framework and tools they were using.",
+    <>
+      Identified patterns used for common UI elements and added examples to
+      ensure not only ease of adoption but also that all departments would meet
+      the same quality and expectations.{" "}
+      <a href="https://kimbellcypress.notion.site/Usage-bd2edeebefff4f6ebbdf3b681a03ead1">
+        Common UI Patterns
+      </a>
+    </>,
     <>
       Managed the global internal <span className="fw-bold">NPM</span> package,
       written in <span className="fw-bold">Javscript</span> and{" "}
@@ -39,7 +46,7 @@ const About = (props: { id: string }) => {
       className="py-5 d-flex flex-column align-items-center"
     >
       <div>
-        <MDBTypography tag="h3" className="text-white py-3">
+        <MDBTypography tag="h2" className="text-white py-3">
           About Me
         </MDBTypography>
       </div>
@@ -50,10 +57,16 @@ const About = (props: { id: string }) => {
       <MDBTypography className="fw-light">
         In 2022 I changed positions from a Senior Software Engineer working on
         Web UI to an SDET for automation testing. I used{" "}
-        <span className="fw-bold">Cypress</span> in conjunction with{" "}
-        <span className="fw-bold">Testing-Library</span>, which made queries
-        incredibly human readable and added some accessibility coverage as well.
-        In this role I:
+        {/* <span className="fw-bold">Cypress</span> in conjunction with{" "} */}
+        <a href="https://www.cypress.io/">
+          <span className="fw-bold">Cypress</span>
+        </a>{" "}
+        in conjunction with{" "}
+        <a href="https://testing-library.com/">
+          <span className="fw-bold">Testing-Library</span>
+        </a>
+        , which made queries incredibly human readable and added some
+        accessibility coverage as well. In this role I:
       </MDBTypography>
       <MDBTypography
         listUnStyled

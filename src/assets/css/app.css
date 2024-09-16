@@ -18,6 +18,10 @@ a:hover {
   color: #5DC1BE;
 }
 
+.nav-link:focus {
+  color: #E0E3DE;
+}
+
 .navbar-toggler,
 .navbar-brand {
   color: #5DC1BE;
@@ -58,7 +62,7 @@ a:hover {
 #projects {
   background-color: #3E587A;
   color: #E0E3DE;
-  margin-top: -2rem;
+  margin-top: -3.25rem;
   clip-path: polygon(0 0%, 100% 7%, 100% 100%, 0% 100%);
   -webkit-clip-path: polygon(0 0%, 100% 7%, 100% 100%, 0% 100%);
 }
@@ -73,7 +77,7 @@ a:hover {
 #skills {
   background-color: #E0E3DE;
   color: #3E587A;
-  padding-bottom: 3.5rem;
+  padding-bottom: 4.5rem;
 }
 
 #skills img {
@@ -135,7 +139,7 @@ footer {
   }
 
   #projects {
-    margin-top: -2.5rem;
+    margin-top: -4rem;
   }
 
   .copyright {

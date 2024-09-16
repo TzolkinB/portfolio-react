@@ -9,7 +9,7 @@ export const cloudHosting = ["gitlab", "bitbucket", "github", "vscode"]
 export const testingTools = [
   "cypress",
   "testing-library",
-  "tricentis_qtest",
+  "tricentis-qtest",
   "browserstack",
 ]
 export const terminalTools = ["git", "webpack", "yaml", "vim"]
@@ -75,8 +75,8 @@ const mapImages = {
       height={60}
     />
   ),
-  tricentis_qtest: (
-    <img src={Qtest} key="qtest" alt="qtest" width={50} height={50} />
+  "tricentis-qtest": (
+    <img src={Qtest} key="qtest" alt="tricentis-qtest" width={50} height={50} />
   ),
   react: (
     <img

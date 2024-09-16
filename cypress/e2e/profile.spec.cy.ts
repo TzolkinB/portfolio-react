@@ -22,7 +22,7 @@ describe("Profile tests", () => {
   const testingTools = [
     "cypress",
     "testing-library",
-    "tricentis_qtest",
+    "tricentis-qtest",
     "browserstack",
   ]
   const terminalTools = ["git", "webpack", "yaml", "vim"]

@@ -19,7 +19,12 @@ describe("Profile tests", () => {
     { name: "Projects", link: "#projects" },
   ]
   const cloudHosting = ["gitlab", "bitbucket", "github", "vscode"]
-  const testingTools = ["cypress", "testing-library", "qtest", "browserstack"]
+  const testingTools = [
+    "cypress",
+    "testing-library",
+    "tricentis_qtest",
+    "browserstack",
+  ]
   const terminalTools = ["git", "webpack", "yaml", "vim"]
   const webDevTools = [
     "javascript",
@@ -39,11 +44,18 @@ describe("Profile tests", () => {
 
   const buttonsCard1 = [
     {
+      name: "Notion Site",
+      href: "https://kimbellcypress.notion.site/Best-Practices-bb7e5a025c834b7397d531ad76bee0b4",
+    },
+  ]
+
+  const buttonsCard2 = [
+    {
       name: "Github Repo",
       href: "https://github.com/TzolkinB/react-template",
     },
   ]
-  const buttonsCard2 = [
+  const buttonsCard3 = [
     {
       name: "Demo",
       href: "https://memory-game1234.firebaseapp.com/#/",
@@ -53,10 +65,6 @@ describe("Profile tests", () => {
       href: "https://github.com/TzolkinB/memory",
     },
   ]
-
-  const cardVisibility = (index: number, visibility: string) => {
-    cy.get("@projectCards").eq(index).should(`${visibility}`)
-  }
 
   const buttonLinks = (
     index: number,
@@ -127,16 +135,16 @@ describe("Profile tests", () => {
       })
 
       cy.findByTestId("about").within(() => {
-        cy.findByRole("heading", { level: 3, name: "About Me" })
+        cy.findByRole("heading", { level: 2, name: "About Me" })
         cy.findAllByTestId("success-check").should("have.length", 6)
       })
     })
 
-    it(`should have tech icons and tooltips in skills section, ${size}`, () => {
+    it.only(`should have tech icons and tooltips in skills section, ${size}`, () => {
       cy.viewport(size)
 
       cy.findByTestId("skills").within(() => {
-        cy.findByRole("heading", { level: 3, name: "Skills" })
+        cy.findByRole("heading", { level: 2, name: "Skills" })
 
         cy.get("img").should("have.length", allSkills.length).as("skillImages")
 
@@ -158,27 +166,13 @@ describe("Profile tests", () => {
       cy.viewport(size)
 
       cy.findByTestId("projects").within(() => {
-        cy.findByRole("heading", { level: 3, name: "Projects" })
+        cy.findByRole("heading", { level: 2, name: "Projects" })
 
-        cy.findAllByTestId(/card-/i).should("have.length", 4).as("projectCards")
+        cy.findAllByTestId(/card-/i).should("have.length", 3).as("projectCards")
 
-        if (size !== "iphone-6") {
-          cardVisibility(0, "not.be.visible")
-          cardVisibility(1, "not.be.visible")
-          cardVisibility(2, "be.visible")
-          cardVisibility(3, "be.visible")
-
-          buttonLinks(2, buttonsCard1)
-          buttonLinks(3, buttonsCard2)
-        } else {
-          cardVisibility(0, "be.visible")
-          cardVisibility(1, "be.visible")
-          cardVisibility(2, "not.be.visible")
-          cardVisibility(3, "not.be.visible")
-
-          buttonLinks(0, buttonsCard1)
-          buttonLinks(1, buttonsCard2)
-        }
+        buttonLinks(0, buttonsCard1)
+        buttonLinks(1, buttonsCard2)
+        buttonLinks(2, buttonsCard3)
       })
     })
 

@@ -4,6 +4,15 @@ import Card from "./shared/CardContainer"
 function Projects(props: { id: string }) {
   const { id } = props
 
+  const myCypressGuide = (
+    <Card
+      title="My Cypress Guide"
+      subtitle="Personal Document Maintained on Notion.so"
+      text="Personal guidelines I follow as well as a list of plugins, common UI patterns, and any other Cypress tips or information I find useful."
+      url="https://kimbellcypress.notion.site/Best-Practices-bb7e5a025c834b7397d531ad76bee0b4"
+      urlText="Notion Site"
+    />
+  )
   const reactStarterTemplate = (
     <Card
       title="React Starter Template"
@@ -28,23 +37,16 @@ function Projects(props: { id: string }) {
 
   return (
     <div id={id} data-testid={id} className="py-5 px-4 px-sm-5">
-      <MDBTypography tag="h3" className="text-center">
+      <MDBTypography tag="h2" className="text-center py-2">
         Projects
       </MDBTypography>
-      <div className="d-flex flex-column d-sm-none">
-        {reactStarterTemplate}
-        <div className="py-2" />
-        {memoryGame}
-      </div>
-      <MDBRow className="d-none d-sm-flex">
-        <MDBCol size={1} lg={2} xl={3} />
-        <MDBCol size={5} lg={4} xl={3}>
-          {reactStarterTemplate}
-        </MDBCol>
-        <MDBCol size={5} lg={4} xl={3}>
-          {memoryGame}
-        </MDBCol>
-        <MDBCol size={1} lg={2} xl={3} />
+      <MDBRow
+        className="row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 justify-content-lg-center
+      "
+      >
+        <MDBCol>{myCypressGuide}</MDBCol>
+        <MDBCol>{reactStarterTemplate}</MDBCol>
+        <MDBCol>{memoryGame}</MDBCol>
       </MDBRow>
     </div>
   )

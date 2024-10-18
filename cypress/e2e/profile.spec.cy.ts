@@ -140,7 +140,7 @@ describe("Profile tests", () => {
       })
     })
 
-    it.only(`should have tech icons and tooltips in skills section, ${size}`, () => {
+    it(`should have tech icons and tooltips in skills section, ${size}`, () => {
       cy.viewport(size)
 
       cy.findByTestId("skills").within(() => {

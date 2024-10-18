@@ -5,11 +5,10 @@ const About = (props: { id: string }) => {
   const { id } = props
 
   const accomplishments = [
-    "Created and maintained a 'Best Practices and Standards Guide' for Ally Bank's implimentation of the framework and tools they were using.",
+    "Created a 'Best Practices and Standards Guide' for Ally Bank's implimentation of their framework and tools.",
     <>
-      Identified patterns used for common UI elements and added examples to
-      ensure not only ease of adoption but also that all departments would meet
-      the same quality and expectations.{" "}
+      Standardized common UI testing patterns, with examples, to ensure ease of
+      adoption as well as adherence to best practices and quality standards.{" "}
       <a href="https://kimbellcypress.notion.site/Usage-bd2edeebefff4f6ebbdf3b681a03ead1">
         Common UI Patterns
       </a>
@@ -17,17 +16,15 @@ const About = (props: { id: string }) => {
     <>
       Managed the global internal <span className="fw-bold">NPM</span> package,
       written in <span className="fw-bold">Javscript</span> and{" "}
-      <span className="fw-bold">Typescript</span>, that contained global
-      configurations in order to reduce the number of manual changes made by
-      individual teams. This was used by 10 teams and multiple lines of
-      business.
+      <span className="fw-bold">Typescript</span>, that incorporated Cypress
+      configurations. This package resulted in streamlined operations across 10
+      teams and at least one line of business.
     </>,
     <>
       Added test jobs to <span className="fw-bold">Gitlab&apos;s CI/CD</span>{" "}
       pipeline using <span className="fw-bold">YAML</span> that allowed teams to
       trigger automated tests manually or on scheduled CICD pipeline runs,
-      reducing the hardening time for release cycles from hours to minutes in
-      many cases.
+      reducing release cycle hardening time from hours to minutes.
     </>,
     <>
       Developed a <span className="fw-bold">Bash</span> shell script to automate
@@ -35,7 +32,7 @@ const About = (props: { id: string }) => {
     </>,
     <>
       Developed and implemented <span className="fw-bold">Javascript</span>{" "}
-      custom commands to increase efficiency writing tests.
+      custom commands to increase code efficiency.
     </>,
   ]
 

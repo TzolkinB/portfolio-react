@@ -40,10 +40,10 @@ const Home = () => {
             Kim Bell
           </MDBTypography>
           <MDBTypography tag="h2" className="mb-0">
-            SDET | Software Engineer in Test
+            Software Engineer
           </MDBTypography>
           <MDBTypography className="fs-4 mb-0">
-            Specializing in Cypress Test Automation. Software Engineer in React.
+            Experience with React and as an SDET w/ Cypress Test Automation
           </MDBTypography>
         </div>
       </div>

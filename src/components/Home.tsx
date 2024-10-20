@@ -43,7 +43,7 @@ const Home = () => {
             Software Engineer
           </MDBTypography>
           <MDBTypography className="fs-4 mb-0">
-            Experience with React and as an SDET w/ Cypress Test Automation
+            Experienced Frontend Developer and SDET
           </MDBTypography>
         </div>
       </div>

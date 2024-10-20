@@ -1,10 +1,17 @@
-import { MDBTypography, MDBIcon } from "mdb-react-ui-kit"
+import { useState } from "react"
+import {
+  MDBTypography,
+  MDBIcon,
+  MDBAccordion,
+  MDBAccordionItem,
+} from "mdb-react-ui-kit"
 
 // eslint-disable-next-line react/function-component-definition
 const About = (props: { id: string }) => {
   const { id } = props
+  const [active, setActive] = useState<number | number[]>(1)
 
-  const accomplishments = [
+  const qaAccomplishments = [
     "Created a 'Best Practices and Standards Guide' for Ally Bank's implimentation of their framework and tools.",
     <>
       Standardized common UI testing patterns, with examples, to ensure ease of
@@ -36,6 +43,15 @@ const About = (props: { id: string }) => {
     </>,
   ]
 
+  const devAccomplishments = [
+    "Developed requested features using Ember and React in multiple ecosystems for new features to be released while codebase was migrated to React",
+    "Participated in the entire development life cycle, from concept to release, including sprint planning and story estimation in an agile setting with bi-weekly scrum cycles",
+    "Implemented unit tests using Jest and Testing Library to maintain code coverage at agreed-upon thresholds, ensuring reliability and confidence",
+    "Tested code for accessibility, responsiveness, and cross-browser compatibility, guaranteeing high deliverables prior to review and testing phases",
+    "Leveraged Swagger for API validation during integration, creating mocks and diagnosing UI issues arising from API contract modifications",
+    "Participated in code reviews, providing constructive feedback, ensuring code quality and best practices.",
+  ]
+
   return (
     <div
       id={id}
@@ -48,42 +64,75 @@ const About = (props: { id: string }) => {
         </MDBTypography>
       </div>
       <MDBTypography className="fw-light align-self-start">
-        I have 6+ years experience in web development and 2+ years in test
-        automation.
+        I have 6+ years experience with responsive web development and 2+ years
+        with test automation.
       </MDBTypography>
-      <MDBTypography className="fw-light">
-        In 2022 I changed positions from a Senior Software Engineer working on
-        Web UI to an SDET for automation testing. I used{" "}
-        {/* <span className="fw-bold">Cypress</span> in conjunction with{" "} */}
-        <a href="https://www.cypress.io/">
-          <span className="fw-bold">Cypress</span>
-        </a>{" "}
-        in conjunction with{" "}
-        <a href="https://testing-library.com/">
-          <span className="fw-bold">Testing-Library</span>
-        </a>
-        , which made queries incredibly human readable and added some
-        accessibility coverage as well. In this role I:
-      </MDBTypography>
-      <MDBTypography
-        listUnStyled
-        className="mb-0 px-5"
-        style={{ minWidth: "22rem" }}
-      >
-        {accomplishments.map((accomplishment, i) => {
-          return (
-            // eslint-disable-next-line react/no-array-index-key
-            <li className="mb-2 fw-light" key={i}>
-              <MDBIcon
-                icon="check-circle"
-                className="me-2 text-success"
-                data-testid="success-check"
-              />
-              {accomplishment}
-            </li>
-          )
-        })}
-      </MDBTypography>
+
+      {/* QA Accordion */}
+      <MDBAccordion active={active} onChange={(itemId) => setActive(itemId)}>
+        <MDBAccordionItem
+          collapseId={1}
+          headerTitle="QA Software Engineer in Test (SDET) with Test Automation"
+        >
+          <MDBTypography className="fw-light">
+            In 2022 I changed positions from a Software Engineer working on Web
+            UI to an SDET for automation testing. I used{" "}
+            <a href="https://www.cypress.io/">
+              <span className="fw-bold">Cypress</span>
+            </a>{" "}
+            in conjunction with{" "}
+            <a href="https://testing-library.com/">
+              <span className="fw-bold">Testing-Library</span>
+            </a>
+            , which made queries incredibly human readable and added some
+            accessibility coverage as well. In this role I:
+          </MDBTypography>
+          <MDBTypography
+            listUnStyled
+            className="mb-0 px-5"
+            style={{ minWidth: "22rem" }}
+          >
+            {qaAccomplishments.map((accomplishment, i) => {
+              return (
+                // eslint-disable-next-line react/no-array-index-key
+                <li className="mb-2 fw-light" key={i}>
+                  <MDBIcon
+                    icon="check-circle"
+                    className="me-2 text-success"
+                    data-testid="success-check"
+                  />
+                  {accomplishment}
+                </li>
+              )
+            })}
+          </MDBTypography>
+        </MDBAccordionItem>
+        <MDBAccordionItem
+          collapseId={2}
+          headerTitle="Frontend Developer with React"
+        >
+          <p>something something</p>
+          <MDBTypography
+            listUnStyled
+            className="mb-0 px-5"
+            style={{ minWidth: "22rem" }}
+          >
+            {devAccomplishments.map((accomplishment, i) => {
+              return (
+                // eslint-disable-next-line react/no-array-index-key
+                <li className="mb-2 fw-light" key={i}>
+                  <MDBIcon
+                    icon="check-circle"
+                    className="me-2 text-success"
+                    data-testid="success-check"
+                  />
+                  {accomplishment}
+                </li>
+              )
+            })}
+          </MDBTypography>
+        </MDBAccordionItem>
+      </MDBAccordion>
       {/* <MDBBadge pill light color='primary'>
            Onboarding
        </MDBBadge> */}

@@ -1,5 +1,6 @@
 body { 
   font-family: Roboto, Helvetica, Arial, sans-serif;
+  background-color: #E0E3DE;
 }
 
 a:hover { 
@@ -57,9 +58,8 @@ a:hover {
 }
 
 #home {
-  background-color: #E0E3DE;
   color: #3E587A;
-  padding-bottom: 4.5rem;
+  padding-bottom: 4rem;
 }
 
 #home .name {
@@ -83,7 +83,7 @@ a:hover {
 }
 
 #about a:hover {
-  /* text-decoration: none; */
+  text-decoration: none;
   color: #BAD0E3 !important;
   background-color: #243F6A !important;
 }
@@ -104,7 +104,6 @@ a:hover {
 }
 
 #skills {
-  background-color: #E0E3DE;
   color: #3E587A;
   padding-bottom: 4.5rem;
 }

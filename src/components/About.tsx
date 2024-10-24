@@ -1,4 +1,8 @@
-import { useState } from "react"
+/* 
+  INFO: For now comment out setting accordion state
+  so that both QA and Dev accordions are closed by default
+*/
+// import { useState } from "react"
 import {
   MDBTypography,
   MDBIcon,
@@ -9,14 +13,21 @@ import {
 // eslint-disable-next-line react/function-component-definition
 const About = (props: { id: string }) => {
   const { id } = props
-  const [active, setActive] = useState<number | number[]>(1)
+  // const [active, setActive] = useState<number | number[]>(1)
 
+  const qaAccordionTitle =
+    "QA Software Engineer in Test (SDET) in Web Test Automation"
+  const devAccordionTitle = "Frontend Developer in React"
   const qaAccomplishments = [
     "Created a 'Best Practices and Standards Guide' for Ally Bank's implimentation of their framework and tools.",
     <>
       Standardized common UI testing patterns, with examples, to ensure ease of
       adoption as well as adherence to best practices and quality standards.{" "}
-      <a href="https://kimbellcypress.notion.site/Usage-bd2edeebefff4f6ebbdf3b681a03ead1">
+      <a
+        href="https://kimbellcypress.notion.site/Usage-bd2edeebefff4f6ebbdf3b681a03ead1"
+        target="_blank"
+        rel="noreferrer"
+      >
         Common UI Patterns
       </a>
     </>,
@@ -44,11 +55,24 @@ const About = (props: { id: string }) => {
   ]
 
   const devAccomplishments = [
-    "Developed requested features using Ember and React in multiple ecosystems for new features to be released while codebase was migrated to React",
+    <>
+      Developed requested features using <span className="fw-bold">Ember</span>{" "}
+      and <span className="fw-bold">React</span> in multiple ecosystems for new
+      features to be released while codebase was migrated to{" "}
+      <span className="fw-bold">React</span>
+    </>,
     "Participated in the entire development life cycle, from concept to release, including sprint planning and story estimation in an agile setting with bi-weekly scrum cycles",
-    "Implemented unit tests using Jest and Testing Library to maintain code coverage at agreed-upon thresholds, ensuring reliability and confidence",
+    <>
+      Implemented unit tests using <span className="fw-bold">Jest</span> and{" "}
+      <span className="fw-bold">Testing Library</span> to maintain code coverage
+      at agreed-upon thresholds, ensuring reliability and confidence
+    </>,
     "Tested code for accessibility, responsiveness, and cross-browser compatibility, guaranteeing high deliverables prior to review and testing phases",
-    "Leveraged Swagger for API validation during integration, creating mocks and diagnosing UI issues arising from API contract modifications",
+    <>
+      Leveraged <span className="fw-bold">Swagger</span> for API validation
+      during integration, creating mocks and diagnosing UI issues arising from
+      API contract modifications
+    </>,
     "Participated in code reviews, providing constructive feedback, ensuring code quality and best practices.",
   ]
 
@@ -59,39 +83,58 @@ const About = (props: { id: string }) => {
       className="py-5 d-flex flex-column align-items-center"
     >
       <div>
-        <MDBTypography tag="h2" className="text-white py-3">
+        <MDBTypography tag="h2" className="pt-3">
           About Me
         </MDBTypography>
       </div>
       <MDBTypography className="fw-light align-self-start">
-        I have 6+ years experience with responsive web development and 2+ years
-        with test automation.
+        I bring 6+ years of experience in responsive frontend web development
+        and 2+ years in web test automation.
+      </MDBTypography>
+      <MDBTypography className="fw-light">
+        From 2016 to 2021, I worked as a Frontend Developer in responsive web
+        applications, focusing primarily on{" "}
+        <a href="https://react.dev/" target="_blank" rel="noreferrer">
+          <span className="fw-bold">React</span>
+        </a>{" "}
+        ,{" "}
+        <a href="https://www.javascript.com/" target="_blank" rel="noreferrer">
+          <span className="fw-bold">Javascript</span>
+        </a>
+        , and{" "}
+        <a
+          href="https://www.typescriptlang.org/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span className="fw-bold">Typescript</span>
+        </a>
+        .
+      </MDBTypography>
+      <MDBTypography className="fw-light">
+        In 2022, I transitioned from a Software Engineer focused on Web UI
+        development to an SDET position, focusing on automation testing. I
+        utilized{" "}
+        <a href="https://www.cypress.io/" target="_blank" rel="noreferrer">
+          <span className="fw-bold">Cypress</span>
+        </a>{" "}
+        in conjunction with{" "}
+        <a href="https://testing-library.com/" target="_blank" rel="noreferrer">
+          <span className="fw-bold">Testing-Library</span>
+        </a>{" "}
+        to create highly human-readable queries, enhancing both test readability
+        and accessibility coverage.
       </MDBTypography>
 
       {/* QA Accordion */}
-      <MDBAccordion active={active} onChange={(itemId) => setActive(itemId)}>
+      {/* <MDBAccordion active={active} onChange={(itemId) => setActive(itemId)}> */}
+      <MDBAccordion>
         <MDBAccordionItem
           collapseId={1}
-          headerTitle="QA Software Engineer in Test (SDET) with Test Automation"
+          headerTitle={qaAccordionTitle}
+          data-testid={qaAccordionTitle}
         >
-          <MDBTypography className="fw-light">
-            In 2022 I changed positions from a Software Engineer working on Web
-            UI to an SDET for automation testing. I used{" "}
-            <a href="https://www.cypress.io/">
-              <span className="fw-bold">Cypress</span>
-            </a>{" "}
-            in conjunction with{" "}
-            <a href="https://testing-library.com/">
-              <span className="fw-bold">Testing-Library</span>
-            </a>
-            , which made queries incredibly human readable and added some
-            accessibility coverage as well. In this role I:
-          </MDBTypography>
-          <MDBTypography
-            listUnStyled
-            className="mb-0 px-5"
-            style={{ minWidth: "22rem" }}
-          >
+          <MDBTypography listUnStyled className="mb-0 px-3">
             {qaAccomplishments.map((accomplishment, i) => {
               return (
                 // eslint-disable-next-line react/no-array-index-key
@@ -109,14 +152,10 @@ const About = (props: { id: string }) => {
         </MDBAccordionItem>
         <MDBAccordionItem
           collapseId={2}
-          headerTitle="Frontend Developer with React"
+          headerTitle={devAccordionTitle}
+          data-testid={devAccordionTitle}
         >
-          <p>something something</p>
-          <MDBTypography
-            listUnStyled
-            className="mb-0 px-5"
-            style={{ minWidth: "22rem" }}
-          >
+          <MDBTypography listUnStyled className="mb-0 px-3">
             {devAccomplishments.map((accomplishment, i) => {
               return (
                 // eslint-disable-next-line react/no-array-index-key
@@ -133,12 +172,8 @@ const About = (props: { id: string }) => {
           </MDBTypography>
         </MDBAccordionItem>
       </MDBAccordion>
-      {/* <MDBBadge pill light color='primary'>
-           Onboarding
-       </MDBBadge> */}
-      {/* My initial focus was on implimenting and assisting in the transition from what was a one hundred percent manual process to a heavily automated testing process in the web space. d
-        In addition to training teams and individuals, my move to SDET has allowed me to gain a lot of experience in various other skills.   */}
-      <MDBTypography className="fw-light align-self-start pt-5">
+
+      <MDBTypography className="fw-light align-self-start pt-3">
         When I am not coding, I love to read and be outside. In fact, I often
         use lunch breaks as an opportunity to get away from the computer and
         take a walk. Since remote positions allow me to be closer to family, I

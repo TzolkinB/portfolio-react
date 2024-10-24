@@ -42,6 +42,9 @@ describe("Profile tests", () => {
     ...cloudHosting,
   ]
 
+  const qaAccordionTitle = "QA Software Engineer in Test (SDET) in Web Test Automation"
+  const devAccordionTitle = "Frontend Developer in React"
+
   const buttonsCard1 = [
     {
       name: "Notion Site",
@@ -86,7 +89,7 @@ describe("Profile tests", () => {
   }
 
   sizes.forEach((size) => {
-    it(`should have whiskers img and 4 tabs in the nav bar, ${size}`, () => {
+    it(`should have whiskers img and 5 tabs in the nav bar, ${size}`, () => {
       cy.viewport(size)
 
       cy.get("nav")
@@ -99,7 +102,7 @@ describe("Profile tests", () => {
         cy.findByRole("button", { name: "Toggle navigation" }).click()
         cy.findByTestId("nav-links").as("navLinks")
       }
-      cy.get("@navLinks").findAllByRole("link").should("have.length", 4)
+      cy.get("@navLinks").findAllByRole("link").should("have.length", 5)
 
       anchorLinks.forEach((anchor) => {
         cy.get("@navLinks")
@@ -112,12 +115,21 @@ describe("Profile tests", () => {
         cy.url().should("contain", anchor.link)
       })
 
-      cy.findByRole("link", { name: "Resume" }).should(
+      cy.findByRole("link", { name: "DevResume" }).should(
         "have.attr",
         "href",
-        "/paths.IMG/Bell_Kim-Resume.pdf",
+        "/paths.IMG/Bell_Kim-DevResume2.pdf",
       )
-      cy.request("/paths.IMG/Bell_Kim-Resume.pdf")
+      cy.request("/paths.IMG/Bell_Kim-DevResume2.pdf")
+        .its("status")
+        .should("eq", 200)
+
+      cy.findByRole("link", { name: "QAResume" }).should(
+        "have.attr",
+        "href",
+        "/paths.IMG/Bell_Kimberly-Resume.pdf",
+      )
+      cy.request("/paths.IMG/Bell_Kimberly-Resume.pdf")
         .its("status")
         .should("eq", 200)
     })
@@ -136,8 +148,26 @@ describe("Profile tests", () => {
 
       cy.findByTestId("about").within(() => {
         cy.findByRole("heading", { level: 2, name: "About Me" })
-        // TODO: Update once accordions finished
-        // cy.findAllByTestId("success-check").should("have.length", 6)
+        // Both accordions default to closed (collapsed) state
+        cy.get(".accordion-item").should("have.length", 2).as("accordions")
+        cy.get("@accordions")
+          .first()
+          .within(() => {
+            cy.findByRole("button", { name: qaAccordionTitle }).should(
+              "have.class",
+              "collapsed",
+            )
+            cy.findAllByTestId("success-check").should("have.length", 6)
+          })
+        cy.get("@accordions")
+          .last()
+          .within(() => {
+            cy.findByRole("button", { name: devAccordionTitle }).should(
+              "have.class",
+              "collapsed",
+            )
+            cy.findAllByTestId("success-check").should("have.length", 6)
+          })
       })
     })
 

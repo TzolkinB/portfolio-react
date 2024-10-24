@@ -4,7 +4,16 @@
 //   terminalTools,
 //   webDevTools,
 // } from "../../src/tech-icons"
-const sizes: Cypress.ViewportPreset[] = ["macbook-11", "ipad-2", "iphone-6"]
+import {
+  sizes,
+  anchorLinks,
+  buttonLinks,
+  buttonsCard1,
+  buttonsCard2,
+  buttonsCard3,
+  devAccordionTitle,
+  qaAccordionTitle,
+} from "./commonMethods"
 
 describe("Profile tests", () => {
   beforeEach(() => {
@@ -13,11 +22,6 @@ describe("Profile tests", () => {
     cy.wait("@localhost")
   })
 
-  const anchorLinks = [
-    { name: "About", link: "#about" },
-    { name: "Skills", link: "#skills" },
-    { name: "Projects", link: "#projects" },
-  ]
   const cloudHosting = ["gitlab", "bitbucket", "github", "vscode"]
   const testingTools = [
     "cypress",
@@ -41,52 +45,6 @@ describe("Profile tests", () => {
     ...terminalTools,
     ...cloudHosting,
   ]
-
-  const qaAccordionTitle = "QA Software Engineer in Test (SDET) in Web Test Automation"
-  const devAccordionTitle = "Frontend Developer in React"
-
-  const buttonsCard1 = [
-    {
-      name: "Notion Site",
-      href: "https://kimbellcypress.notion.site/Best-Practices-bb7e5a025c834b7397d531ad76bee0b4",
-    },
-  ]
-
-  const buttonsCard2 = [
-    {
-      name: "Github Repo",
-      href: "https://github.com/TzolkinB/react-template",
-    },
-  ]
-  const buttonsCard3 = [
-    {
-      name: "Demo",
-      href: "https://memory-game1234.firebaseapp.com/#/",
-    },
-    {
-      name: "Github Repo",
-      href: "https://github.com/TzolkinB/memory",
-    },
-  ]
-
-  const buttonLinks = (
-    index: number,
-    buttons: { name: string; href: string }[],
-  ) => {
-    cy.get("@projectCards")
-      .eq(index)
-      .within(() => {
-        buttons.forEach((button) => {
-          cy.findByRole("button", { name: button.name }).should(
-            "have.attr",
-            "href",
-            button.href,
-          )
-
-          cy.request(button.href).its("status").should("eq", 200)
-        })
-      })
-  }
 
   sizes.forEach((size) => {
     it(`should have whiskers img and 5 tabs in the nav bar, ${size}`, () => {

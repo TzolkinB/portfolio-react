@@ -1,5 +1,6 @@
 body { 
   font-family: Roboto, Helvetica, Arial, sans-serif;
+  background-color: #E0E3DE;
 }
 
 a:hover { 
@@ -32,14 +33,33 @@ a:hover {
 }
 /* ----- */
 
+.accordion {
+  width: -webkit-fill-available;
+  width: -moz-available;
+}
+
+.accordion-header > button,
+.accordion-item {
+  color: #5DC1BE !important;
+  background-color: #0D1A2E !important;
+}
+
+.accordion-item > h2 > button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%235DC1BE%27%3e%3cpath fill-rule=%27evenodd%27 d=%27M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e") !important;
+}
+
+.accordion-body {
+  color: #3E587A;
+  background-color: #E0E3DE;
+}
+
 .app {
   margin-top: 4.3rem;
 }
 
 #home {
-  background-color: #E0E3DE;
   color: #3E587A;
-  padding-bottom: 4.5rem;
+  padding-bottom: 4rem;
 }
 
 #home .name {
@@ -55,8 +75,17 @@ a:hover {
 
 #about a {
   color: #BAD0E3;
-  text-decoration: underline;
+}
 
+#about .accordion a {
+  color: #3E587A;
+  text-decoration: underline;
+}
+
+#about a:hover {
+  text-decoration: none;
+  color: #BAD0E3 !important;
+  background-color: #243F6A !important;
 }
 
 #projects {
@@ -75,7 +104,6 @@ a:hover {
 }
 
 #skills {
-  background-color: #E0E3DE;
   color: #3E587A;
   padding-bottom: 4.5rem;
 }

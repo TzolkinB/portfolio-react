@@ -4,7 +4,16 @@
 //   terminalTools,
 //   webDevTools,
 // } from "../../src/tech-icons"
-const sizes: Cypress.ViewportPreset[] = ["macbook-11", "ipad-2", "iphone-6"]
+import {
+  sizes,
+  anchorLinks,
+  buttonLinks,
+  buttonsCard1,
+  buttonsCard2,
+  buttonsCard3,
+  devAccordionTitle,
+  qaAccordionTitle,
+} from "./commonMethods"
 
 describe("Profile tests", () => {
   beforeEach(() => {
@@ -13,11 +22,6 @@ describe("Profile tests", () => {
     cy.wait("@localhost")
   })
 
-  const anchorLinks = [
-    { name: "About", link: "#about" },
-    { name: "Skills", link: "#skills" },
-    { name: "Projects", link: "#projects" },
-  ]
   const cloudHosting = ["gitlab", "bitbucket", "github", "vscode"]
   const testingTools = [
     "cypress",
@@ -42,51 +46,8 @@ describe("Profile tests", () => {
     ...cloudHosting,
   ]
 
-  const buttonsCard1 = [
-    {
-      name: "Notion Site",
-      href: "https://kimbellcypress.notion.site/Best-Practices-bb7e5a025c834b7397d531ad76bee0b4",
-    },
-  ]
-
-  const buttonsCard2 = [
-    {
-      name: "Github Repo",
-      href: "https://github.com/TzolkinB/react-template",
-    },
-  ]
-  const buttonsCard3 = [
-    {
-      name: "Demo",
-      href: "https://memory-game1234.firebaseapp.com/#/",
-    },
-    {
-      name: "Github Repo",
-      href: "https://github.com/TzolkinB/memory",
-    },
-  ]
-
-  const buttonLinks = (
-    index: number,
-    buttons: { name: string; href: string }[],
-  ) => {
-    cy.get("@projectCards")
-      .eq(index)
-      .within(() => {
-        buttons.forEach((button) => {
-          cy.findByRole("button", { name: button.name }).should(
-            "have.attr",
-            "href",
-            button.href,
-          )
-
-          cy.request(button.href).its("status").should("eq", 200)
-        })
-      })
-  }
-
   sizes.forEach((size) => {
-    it(`should have whiskers img and 4 tabs in the nav bar, ${size}`, () => {
+    it(`should have whiskers img and 5 tabs in the nav bar, ${size}`, () => {
       cy.viewport(size)
 
       cy.get("nav")
@@ -99,7 +60,7 @@ describe("Profile tests", () => {
         cy.findByRole("button", { name: "Toggle navigation" }).click()
         cy.findByTestId("nav-links").as("navLinks")
       }
-      cy.get("@navLinks").findAllByRole("link").should("have.length", 4)
+      cy.get("@navLinks").findAllByRole("link").should("have.length", 5)
 
       anchorLinks.forEach((anchor) => {
         cy.get("@navLinks")
@@ -112,12 +73,21 @@ describe("Profile tests", () => {
         cy.url().should("contain", anchor.link)
       })
 
-      cy.findByRole("link", { name: "Resume" }).should(
+      cy.findByRole("link", { name: "DevResume" }).should(
         "have.attr",
         "href",
-        "/paths.IMG/Bell_Kim-Resume.pdf",
+        "/paths.IMG/Bell_Kim-DevResume2.pdf",
       )
-      cy.request("/paths.IMG/Bell_Kim-Resume.pdf")
+      cy.request("/paths.IMG/Bell_Kim-DevResume2.pdf")
+        .its("status")
+        .should("eq", 200)
+
+      cy.findByRole("link", { name: "QAResume" }).should(
+        "have.attr",
+        "href",
+        "/paths.IMG/Bell_Kimberly-Resume.pdf",
+      )
+      cy.request("/paths.IMG/Bell_Kimberly-Resume.pdf")
         .its("status")
         .should("eq", 200)
     })
@@ -129,14 +99,33 @@ describe("Profile tests", () => {
         cy.findByRole("heading", { level: 1, name: "Kim Bell" })
         cy.findByRole("heading", {
           level: 2,
-          name: "SDET | Software Engineer in Test",
+          name: "Software Engineer",
         })
         cy.get("img").should("have.attr", "src", "/paths.IMG/profile2.jpg")
       })
 
       cy.findByTestId("about").within(() => {
         cy.findByRole("heading", { level: 2, name: "About Me" })
-        cy.findAllByTestId("success-check").should("have.length", 6)
+        // Both accordions default to closed (collapsed) state
+        cy.get(".accordion-item").should("have.length", 2).as("accordions")
+        cy.get("@accordions")
+          .first()
+          .within(() => {
+            cy.findByRole("button", { name: qaAccordionTitle }).should(
+              "have.class",
+              "collapsed",
+            )
+            cy.findAllByTestId("success-check").should("have.length", 6)
+          })
+        cy.get("@accordions")
+          .last()
+          .within(() => {
+            cy.findByRole("button", { name: devAccordionTitle }).should(
+              "have.class",
+              "collapsed",
+            )
+            cy.findAllByTestId("success-check").should("have.length", 6)
+          })
       })
     })
 

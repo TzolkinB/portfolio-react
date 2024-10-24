@@ -9,7 +9,8 @@ import {
   MDBIcon,
   MDBCollapse,
 } from "mdb-react-ui-kit"
-import Resume from "IMG/Bell_Kim-Resume.pdf"
+import devResume from "IMG/Bell_Kim-DevResume2.pdf"
+import qaResume from "IMG/Bell_Kimberly-Resume.pdf"
 import Whiskers from "IMG/W-white.png"
 
 // eslint-disable-next-line react/function-component-definition
@@ -37,8 +38,11 @@ const AppBar = () => {
               <MDBNavbarLink href="#about">About</MDBNavbarLink>
               <MDBNavbarLink href="#skills">Skills</MDBNavbarLink>
               <MDBNavbarLink href="#projects">Projects</MDBNavbarLink>
-              <MDBNavbarLink href={Resume} target="_blank">
-                Resume
+              <MDBNavbarLink href={devResume} target="_blank">
+                DevResume
+              </MDBNavbarLink>
+              <MDBNavbarLink href={qaResume} target="_blank">
+                QAResume
               </MDBNavbarLink>
             </MDBNavbarNav>
           </MDBCollapse>

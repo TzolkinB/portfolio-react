@@ -17,7 +17,6 @@ const paths = {
   IMG: path.resolve(__dirname, "..", "src/assets/img"),
 }
 
-console.log("test-----", path.resolve(__dirname, "..", "dist"))
 module.exports = {
   entry: path.resolve(__dirname, "..", "./src/index.tsx"),
   output: {
@@ -27,15 +26,6 @@ module.exports = {
     // The bundle is written to the directory specified by the output.path option.
     filename: "bundle.js",
     assetModuleFilename: "paths.IMG/[name][ext]"
-  },
-  devServer: {
-    static: path.resolve(__dirname, "..", "./dist"),
-    port: 4280,
-    compress: true,
-    client: {
-      logging: "error",
-    },
-    historyApiFallback: { index: "index.html" },
   },
   module: {
     rules: [
@@ -65,7 +55,7 @@ module.exports = {
   plugins: [new ESLintPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "..", "./src/index.html"),
-      title: "Kim Bell - SDET",
+      title: "Kim Bell - Software Engineer",
       favicon: path.resolve(__dirname, "..", "./src/assets/img/favicon.png"),
     })],
   resolve: {

@@ -41,6 +41,7 @@ const AppBar = () => {
             <MDBNavbarNav right fullWidth={false} data-testid="nav-links">
               <MDBNavbarLink href="#about">About</MDBNavbarLink>
               <MDBNavbarLink href="#skills">Skills</MDBNavbarLink>
+              <MDBNavbarLink href="#projects">Projects</MDBNavbarLink>
 
               {/* NOTE: MDB does not recognize "target" as prop of MDBDropdownItem */}
               <div data-testid="resume-dropdown">

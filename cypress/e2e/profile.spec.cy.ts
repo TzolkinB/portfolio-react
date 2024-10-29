@@ -47,7 +47,7 @@ describe("Profile tests", () => {
   ]
 
   sizes.forEach((size) => {
-    it(`should have whiskers img and 5 tabs in the nav bar, ${size}`, () => {
+    it(`should have whiskers img, 3 links, and a dropdown in the nav bar, ${size}`, () => {
       cy.viewport(size)
 
       cy.get("nav")
@@ -60,7 +60,7 @@ describe("Profile tests", () => {
         cy.findByRole("button", { name: "Toggle navigation" }).click()
         cy.findByTestId("nav-links").as("navLinks")
       }
-      cy.get("@navLinks").findAllByRole("link").should("have.length", 5)
+      cy.get("@navLinks").findAllByRole("link").should("have.length", 3)
 
       anchorLinks.forEach((anchor) => {
         cy.get("@navLinks")
@@ -73,23 +73,34 @@ describe("Profile tests", () => {
         cy.url().should("contain", anchor.link)
       })
 
-      cy.findByRole("link", { name: "DevResume" }).should(
-        "have.attr",
-        "href",
-        "/paths.IMG/Bell_Kim-DevResume2.pdf",
-      )
-      cy.request("/paths.IMG/Bell_Kim-DevResume2.pdf")
-        .its("status")
-        .should("eq", 200)
+      cy.findByTestId("resume-dropdown").within(() => {
+        cy.findByText("Resumes")
+          .should("have.attr", "aria-expanded", "false")
+          .as("resumeDropdown")
+        cy.get("@resumeDropdown").click()
+        cy.get("@resumeDropdown").should("have.attr", "aria-expanded", "true")
 
-      cy.findByRole("link", { name: "QAResume" }).should(
-        "have.attr",
-        "href",
-        "/paths.IMG/Bell_Kimberly-Resume.pdf",
-      )
-      cy.request("/paths.IMG/Bell_Kimberly-Resume.pdf")
-        .its("status")
-        .should("eq", 200)
+        cy.get(".dropdown-menu").within(() => {
+          cy.get(".dropdown-item").should("have.length", 2)
+          cy.findByRole("link", { name: "Dev Resume" }).should(
+            "have.attr",
+            "href",
+            "/paths.IMG/Bell_Kim-DevResume2.pdf",
+          )
+          cy.request("/paths.IMG/Bell_Kim-DevResume2.pdf")
+            .its("status")
+            .should("eq", 200)
+
+          cy.findByRole("link", { name: "QA Resume" }).should(
+            "have.attr",
+            "href",
+            "/paths.IMG/Bell_Kimberly-Resume.pdf",
+          )
+          cy.request("/paths.IMG/Bell_Kimberly-Resume.pdf")
+            .its("status")
+            .should("eq", 200)
+        })
+      })
     })
 
     it(`should have profile image in home section and bullet points in about me section, ${size}`, () => {

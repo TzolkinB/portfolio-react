@@ -20,3 +20,10 @@
 types.d.ts
 
 npm-debug.log*
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

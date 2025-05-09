@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from 'react'
 import {
   MDBContainer,
   MDBNavbar,
@@ -12,10 +12,10 @@ import {
   MDBDropdownToggle,
   MDBDropdownMenu,
   MDBDropdownItem,
-} from "mdb-react-ui-kit"
-import devResume from "IMG/Bell_Kim-DevResume2.pdf"
-import qaResume from "IMG/Bell_Kimberly-Resume.pdf"
-import Whiskers from "IMG/W-white.png"
+} from 'mdb-react-ui-kit'
+import devResume from 'IMG/Bell_Kim-DevResume2.pdf'
+import qaResume from 'IMG/Bell_Kimberly-Resume.pdf'
+import Whiskers from 'IMG/W-white.png'
 
 // eslint-disable-next-line react/function-component-definition
 const AppBar = () => {

@@ -1,20 +1,20 @@
-import { MDBContainer, MDBTypography } from "mdb-react-ui-kit"
-import Me from "IMG/profile2.jpg"
-import About from "./About"
-import Skills from "./Skills"
-import Projects from "./Projects"
+import { MDBContainer, MDBTypography } from 'mdb-react-ui-kit'
+import Me from 'IMG/profile2.jpg'
+import About from './About'
+import Skills from './Skills'
+import Projects from './Projects'
 
 const msg =
   "%c👋 Thank you for visiting my website! If you like my credentials and are looking for an SDET with expertise in Cypress, DM me. Let's discuss!"
 const styles = [
-  "font-size: 12px",
-  "font-family: monospace",
-  "background: black",
-  "display: inline-block",
-  "color: #5DC1BE",
-  "padding: 8px 15px",
-  "border: 3px solid;",
-].join(";")
+  'font-size: 12px',
+  'font-family: monospace',
+  'background: black',
+  'display: inline-block',
+  'color: #5DC1BE',
+  'padding: 8px 15px',
+  'border: 3px solid;',
+].join(';')
 
 // eslint-disable-next-line react/function-component-definition
 const Home = () => {

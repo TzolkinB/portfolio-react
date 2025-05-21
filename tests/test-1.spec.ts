@@ -145,4 +145,39 @@ test.describe('Profile tests', () => {
     ).toHaveClass(/collapsed/)
     await expect(accordions.first().getByTestId('success-check')).toHaveCount(6)
   })
+
+  test('should have tech icons and tooltips in skills section', async ({
+    page,
+  }) => {
+    // await page.FIXME_viewport(size);
+    const skills = page.getByTestId('skills')
+    await expect(skills.getByRole('heading', { level: 2 })).toHaveText('Skills')
+    const skillImages = skills.locator('img')
+    await expect(skillImages).toHaveCount(allSkills.length)
+    const imagesCount = await skillImages.count()
+    // Check alt image tag
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < imagesCount; i++) {
+      // skillImages.map((image, index) => {
+      // eslint-disable-next-line no-await-in-loop
+      expect(skillImages.nth(i)).toHaveAttribute('alt', allSkills[i])
+    }
+
+    // Check tooltip on image, tooltip html lives outside of skills data-testid
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < imagesCount; i++) {
+      // eslint-disable-next-line no-await-in-loop
+      // await skillImages.nth(i).dispatchEvent('mouseover')
+      await skillImages.nth(i).hover()
+      const tooltipText = await skills.getByRole('tooltip').textContent()
+      // await expect(
+      //   skills.getByRole('tooltip', {
+      //     name: allSkills[i].toLocaleUpperCase(),
+      //   }),
+      // )
+      // eslint-disable-next-line no-await-in-loop
+      // await skillImages.nth(i).dispatchEvent('mouseout')
+      expect(tooltipText).toBe(allSkills[i].toLocaleUpperCase)
+    }
+  })
 })

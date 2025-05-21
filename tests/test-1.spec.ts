@@ -45,10 +45,6 @@ test.describe('Profile tests', () => {
     page,
     isMobile,
   }) => {
-    // await page.FIXME_viewport(size);
-
-    // console.log('browserName', browserName)
-    // console.log(page.context())
     await expect(page.locator('nav').locator('img')).toHaveAttribute(
       'src',
       '/paths.IMG/W-white.png',
@@ -90,7 +86,10 @@ test.describe('Profile tests', () => {
       'false',
     )
     await resumeDropdown.click()
-    await expect(resumeDropdown.getByText('Resumes')).toHaveAttribute('aria-expanded', 'true')
+    await expect(resumeDropdown.getByText('Resumes')).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    )
 
     const dropdownMenu = resumeDropdown.getByRole('list')
     //FIXME: count is 1 not 2
@@ -112,5 +111,38 @@ test.describe('Profile tests', () => {
       '/paths.IMG/Bell_Kimberly-Resume.pdf',
     )
     await expect(qaResponse).toBeOK()
+  })
+
+  test('should have profile image in home section and bullet points in about me section', async ({
+    page,
+  }) => {
+    // await page.FIXME_viewport(size);
+    const home = page.getByTestId('home')
+    await expect(home.getByRole('heading', { level: 1 })).toHaveText('Kim Bell')
+    await expect(home.getByRole('heading', { level: 2 })).toHaveText(
+      'Software Engineer',
+    )
+    await expect(home.locator('img')).toHaveAttribute(
+      'src',
+      '/paths.IMG/profile2.jpg',
+    )
+
+    const about = page.getByTestId('about')
+    await expect(about).toBeVisible()
+    await expect(
+      about.getByRole('heading', { level: 2, name: 'About Me' }),
+    ).toBeVisible()
+    // Both accordions default to closed (collapsed) state
+    const accordions = about.locator('.accordion-item')
+    await expect(accordions).toHaveCount(2)
+    await expect(
+      accordions.first().getByRole('button', { name: qaAccordionTitle }),
+    ).toHaveClass(/collapsed/)
+    await expect(accordions.first().getByTestId('success-check')).toHaveCount(6)
+
+    await expect(
+      accordions.last().getByRole('button', { name: devAccordionTitle }),
+    ).toHaveClass(/collapsed/)
+    await expect(accordions.first().getByTestId('success-check')).toHaveCount(6)
   })
 })

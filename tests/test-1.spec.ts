@@ -167,4 +167,14 @@ test.describe('Profile tests', () => {
       await skillImages.nth(i).dispatchEvent('mouseout')
     }
   })
+
+  test('should have projects section', async ({ page }) => {
+    const projects = page.getByTestId('projects')
+    await expect(projects.getByRole('heading', { level: 2 })).toHaveText(
+      'Projects',
+    )
+    await expect(projects.getByTestId(/card-/i)).toHaveCount(3)
+
+    buttonLinks(0, buttonsCard1, page)
+  })
 })

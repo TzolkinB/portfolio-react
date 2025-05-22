@@ -65,18 +65,17 @@ export const buttonLinks = async (
   //       cy.request(button.href).its("status").should("eq", 200)
   // })
   // })
-  await expect(page.getByTestId(/card-/i)).toHaveCount(3)
+  // await expect(page.getByTestId(/card-/i)).toHaveCount(3)
   const projectCards = page.getByTestId(/card-/i)
-  {
-    const scope = projectCards.nth(index)
+  const card = projectCards.nth(index)
+  //await card.waitFor({timeout: 10000})
 
-    buttons.forEach(async (button) => {
-      await expect(
-        scope.getByRole('button', { name: button.name }),
-      ).toHaveAttribute('href', button.href)
+  buttons.forEach(async (button) => {
+    await expect(
+      card.getByRole('button', { name: button.name }),
+    ).toHaveAttribute('href', button.href)
 
-      const response = await page.request.get(button.href)
-      await expect(response).toBeOK()
-    })
-  }
+    const response = await page.request.get(button.href)
+    await expect(response).toBeOK()
+  })
 }

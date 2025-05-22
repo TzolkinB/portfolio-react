@@ -1,4 +1,4 @@
-import { test, expect, devices } from '@playwright/test'
+import { test, expect } from '@playwright/test'
 import {
   sizes,
   anchorLinks,
@@ -11,9 +11,10 @@ import {
 } from './commonMethods'
 
 test.describe('Profile tests', () => {
-  test.beforeEach(async ({ page, browserName }) => {
+  test.beforeEach(async ({ page }) => {
     // await page.waitForResponse('localhost:4280')
-    await page.goto('/')
+    // await page.goto('/')
+    await page.goto('https://kimbell.me/')
   })
 
   const cloudHosting = ['gitlab', 'bitbucket', 'github', 'vscode']
@@ -156,28 +157,15 @@ test.describe('Profile tests', () => {
     await expect(skillImages).toHaveCount(allSkills.length)
     const imagesCount = await skillImages.count()
     // Check alt image tag
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < imagesCount; i++) {
-      // skillImages.map((image, index) => {
-      // eslint-disable-next-line no-await-in-loop
-      expect(skillImages.nth(i)).toHaveAttribute('alt', allSkills[i])
-    }
-
     // Check tooltip on image, tooltip html lives outside of skills data-testid
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < imagesCount; i++) {
-      // eslint-disable-next-line no-await-in-loop
-      // await skillImages.nth(i).dispatchEvent('mouseover')
+      expect(skillImages.nth(i)).toHaveAttribute('alt', allSkills[i])
       await skillImages.nth(i).hover()
-      const tooltipText = await skills.getByRole('tooltip').textContent()
-      // await expect(
-      //   skills.getByRole('tooltip', {
-      //     name: allSkills[i].toLocaleUpperCase(),
-      //   }),
-      // )
-      // eslint-disable-next-line no-await-in-loop
-      // await skillImages.nth(i).dispatchEvent('mouseout')
-      expect(tooltipText).toBe(allSkills[i].toLocaleUpperCase)
+      //await (page.getByRole('tooltip').nth(i)).waitFor()
+      expect(page.getByRole('tooltip').nth(i)).toHaveText(
+        allSkills[i].toLocaleUpperCase(),
+      )
     }
   })
 })

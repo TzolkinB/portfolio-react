@@ -13,8 +13,7 @@ import {
 test.describe('Profile tests', () => {
   test.beforeEach(async ({ page }) => {
     // await page.waitForResponse('localhost:4280')
-    // await page.goto('/')
-    await page.goto('https://kimbell.me/')
+    await page.goto('/')
   })
 
   const cloudHosting = ['gitlab', 'bitbucket', 'github', 'vscode']
@@ -161,11 +160,11 @@ test.describe('Profile tests', () => {
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < imagesCount; i++) {
       expect(skillImages.nth(i)).toHaveAttribute('alt', allSkills[i])
-      await skillImages.nth(i).hover()
-      //await (page.getByRole('tooltip').nth(i)).waitFor()
+      await skillImages.nth(i).dispatchEvent('mouseover')
       expect(page.getByRole('tooltip').nth(i)).toHaveText(
         allSkills[i].toLocaleUpperCase(),
       )
+      await skillImages.nth(i).dispatchEvent('mouseout')
     }
   })
 })

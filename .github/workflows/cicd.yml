@@ -34,10 +34,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 24
+      - name: Setup Node.js 18
         uses: actions/setup-node@v3
         with:
-          node-version: 24
+          node-version: 18
           cache: 'npm'
 
       # Cache both npm packages AND node_modules for maximum speed
@@ -46,7 +46,7 @@ jobs:
         id: cache-node-modules
         with:
           path: node_modules
-          key: node-modules-${{ runner.os }}--${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       # Only install if cache miss (usually only on first run or package changes)
       - name: Install dependencies
@@ -65,10 +65,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 24
+      - name: Setup Node.js 18
         uses: actions/setup-node@v3
         with:
-          node-version: 24
+          node-version: 18
       # Restore node_modules from setup job
       - name: Restore node_modules
         uses: actions/cache@v3

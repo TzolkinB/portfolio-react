@@ -17,7 +17,9 @@
     "cy:test": "start-server-and-test start http://localhost:4280 test",
     "cy:run": "start-server-and-test start http://localhost:4280 'cypress run'",
     "prepare": "husky install",
-    "lint:husky": "eslint . --ext .tsx --max-warnings=0"
+    "lint:js": "eslint . --ext .tsx --max-warnings=0",
+    "lint:yaml": "yamllint .github/**/*.yml",
+    "lint:husky": "npm run lint:js && npm run lint:yaml"
   },
   "author": "Kimberly Bell",
   "license": "UNLICENSED",

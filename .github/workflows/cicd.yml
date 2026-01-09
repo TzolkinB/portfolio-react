@@ -1,4 +1,6 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run lint
+# CI/CD Pipeline: Lint and test code on every push/PR
+# Workflow visualization: setup → (lint + test run in parallel)
+
 
 name: CI/CD
 
@@ -7,6 +9,7 @@ on:
     branches: ["master"]
   pull_request:
     branches: ["master"]
+  # Manual trigger option - appears as separate job in UI because it has no dependencies
   workflow_dispatch:
     inputs:
       logLevel:
@@ -20,81 +23,126 @@ on:
           - debug
 
 jobs:
-  manual-trigger:
+  # ============================================================================
+  # SETUP: Install dependencies once, share with all other jobs
+  # This job creates the foundation - other jobs depend on it
+  # ============================================================================
+  setup:
+    name: Setup Dependencies
     runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo "Log level: $LEVEL"
-        env:
-          LEVEL: ${{ inputs.logLevel }}
-
-  install:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
+    steps:     
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Setup Node.js ${{ matrix.node-version }}
+
+      - name: Setup Node.js 24
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          node-version: 24
+          cache: 'npm'
 
-      - name: Cache NPM dependencies
+      # Cache both npm packages AND node_modules for maximum speed
+      - name: Cache node-modules
         uses: actions/cache@v3
-        id: cache-npm
+        id: cache-node-modules
         with:
-          # npm cache files are stored in `~/.npm`
-          path: ~/.npm
-          key: npm-${{ hashFiles('package-lock.json') }}
+          path: node_modules
+          key: node-modules-${{ runner.os }}--${{ hashFiles('package-lock.json') }}
 
-      - name: Install package-lock dependencies
-        if: steps.cache-npm.outputs.cache-hit != 'true'
-        run: npm ci
+      # Only install if cache miss (usually only on first run or package changes)
+      - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci 
 
+  # ============================================================================
+  # LINT: Check code style and quality
+  # Runs in parallel with 'test' after 'setup' completes
+  # ============================================================================
   lint:
+    name: Lint Code
     runs-on: ubuntu-latest
-    needs: install
+    needs: setup
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/cache@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v3
         with:
-          # npm cache files are stored in `~/.npm`
-          path: ~/.npm
-          key: npm-${{ hashFiles('package-lock.json') }}
+          node-version: 24
+      # Restore node_modules from setup job
+      - name: Restore node_modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
-      - name: Linting app
-        run: |
-          npm ci 
-          npm run lint
+      - name: Run linter
+        run: npm run lint
 
-  test:
+  # ============================================================================
+  # TEST: Run Cypress E2E tests across multiple browsers
+  # Matrix creates separate jobs for each browser (chrome, firefox, safari, edge)
+  # All browser tests run in parallel after 'setup' completes
+  # ============================================================================
+test:
+    name: E2E Tests (${{ matrix.browser }})
     runs-on: ubuntu-latest
-    needs: install
+    needs: setup
+    strategy:
+      matrix:
+        browser: [chrome, firefox, edge]
+      # Don't cancel other browser tests if one fails - see all results
+      fail-fast: false
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/cache@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v3
         with:
-          # npm cache files are stored in `~/.npm`
-          path: ~/.npm
-          key: npm-${{ hashFiles('package-lock.json') }}
-      - name: Cypress E2E
+          node-version: 24
+
+      # Restore node_modules from setup job      
+      - name: Restore node_modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      # Run Cypress tests on a specified browser (retries once on failure)
+      - name: Run Cypress E2E on ${{ matrix.browser }}
         uses: cypress-io/github-action@v6
         with:
+          install: false # skip install, restoring from cache
+          browser: ${{ matrix.browser }}
           config: retries=1
           # start parameter is used for starting the server, json-server is required for booklist tests
           # start: npm run server
           # command parameter overwrites the Cypress run command with your custom command
           command: npm run cy:run
-      - name: Artifacts
+
+      # Save screenshots only when tests fail (for debugging)
+      # Include browser name in artifact so they don't overwrite each other
+      - name: Upload test failure screenshots
         uses: actions/upload-artifact@v4
-        # store screenshots only on failures
         if: failure()
         with:
-          name: cypress-screenshots
+          name: cypress-screenshots-${{ matrix.browser }}
           path: cypress/screenshots
-          if-no-files-found: warn
+          if-no-files-found: ignore
+
+  # ============================================================================
+  # MANUAL TRIGGER: Debug logging (only runs on workflow_dispatch)
+  # Independent job - shows separately in UI
+  # ============================================================================
+  manual-trigger:
+    name: Manual Workflow Trigger
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Log manual trigger info
+        run: |
+          echo "Manual workflow triggered."
+          echo "Log level: $LEVEL"
+        env:
+          LEVEL: ${{ inputs.logLevel }}

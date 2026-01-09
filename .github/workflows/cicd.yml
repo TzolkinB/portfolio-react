@@ -1,6 +1,5 @@
 # CI/CD Pipeline: Lint and test code on every push/PR
 # Workflow visualization: setup → (lint + test run in parallel)
-
 name: CI/CD
 
 on:

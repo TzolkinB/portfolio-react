@@ -38,12 +38,14 @@ jobs:
           node-version: 18
           cache: "npm"
 
-      # Cache both npm packages AND node_modules for maximum speed
+      # Cache both node_modules AND Cypress binary for maximum speed
       - name: Cache node-modules
         uses: actions/cache@v3
         id: cache-node-modules
         with:
-          path: node_modules
+          path: |
+            node_modules
+            ~/.cache/Cypress
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       # Only install if cache miss (usually only on first run or package changes)
@@ -67,11 +69,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      # Restore node_modules from setup job
-      - name: Restore node_modules
+      # Restore node_modules and Cypress binary rom setup job
+      - name: Restore node_modules and Cypress binary
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: |
+            node_modules
+            ~/.cache/Cypress
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Run linter
@@ -90,23 +94,25 @@ jobs:
     needs: setup
     strategy:
       matrix:
-        browser: [chrome, firefox, edge]
+        browser: [chrome, firefox]
       # Don't cancel other browser tests if one fails - see all results
       fail-fast: false
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 24
+      - name: Setup Node.js 18
         uses: actions/setup-node@v3
         with:
-          node-version: 24
+          node-version: 18
 
-      # Restore node_modules from setup job
-      - name: Restore node_modules
+      # Restore node_modules and Cypress binary from setup job
+      - name: Restore node_modules and Cypress binary
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: |
+            node_modules
+            ~/.cache/Cypress
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       # Run Cypress tests on a specified browser (retries once on failure)

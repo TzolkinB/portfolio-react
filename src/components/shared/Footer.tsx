@@ -1,4 +1,4 @@
-import { MDBFooter } from "mdb-react-ui-kit"
+import { MDBFooter } from 'mdb-react-ui-kit'
 
 // eslint-disable-next-line react/function-component-definition
 const Footer = () => {

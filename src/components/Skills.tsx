@@ -1,11 +1,11 @@
-import { MDBTypography } from "mdb-react-ui-kit"
+import { MDBTypography } from 'mdb-react-ui-kit'
 import {
   cloudHosting,
   testingTools,
   terminalTools,
   webDevTools,
   getImage,
-} from "../tech-icons"
+} from '../tech-icons'
 
 function Skills(props: { id: string }) {
   const { id } = props

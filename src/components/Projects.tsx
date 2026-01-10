@@ -1,5 +1,5 @@
-import { MDBTypography, MDBRow, MDBCol } from "mdb-react-ui-kit"
-import Card from "./shared/CardContainer"
+import { MDBTypography, MDBRow, MDBCol } from 'mdb-react-ui-kit'
+import Card from './shared/CardContainer'
 
 function Projects(props: { id: string }) {
   const { id } = props

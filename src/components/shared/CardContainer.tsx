@@ -5,7 +5,7 @@ import {
   MDBCardSubTitle,
   MDBCardText,
   MDBBtn,
-} from "mdb-react-ui-kit"
+} from 'mdb-react-ui-kit'
 
 type CardProps = {
   title: string

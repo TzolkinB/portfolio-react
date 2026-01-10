@@ -1,8 +1,10 @@
+---
 # CI/CD Pipeline: Lint and test code on every push/PR
 # Workflow visualization: setup → (lint + test run in parallel)
 name: CI/CD
 
-on:
+# "on" is linter safe since it's a reserved word in YAML
+"on":
   push:
     branches: ["master"]
   pull_request:
@@ -121,7 +123,6 @@ jobs:
         with:
           install: false # skip install, restoring from cache
           browser: ${{ matrix.browser }}
-          config: retries=1
           # start parameter is used for starting the server, json-server is required for booklist tests
           # start: npm run server
           # command parameter overwrites the Cypress run command with your custom command

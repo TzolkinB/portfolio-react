@@ -80,7 +80,7 @@ const About = (props: { id: string }) => {
     <div id={id} data-testid={id}>
       <div>
         <MDBTypography tag="h2" className="py-2 text-center">
-          About Me
+          About
         </MDBTypography>
       </div>
       <MDBTypography className="fw-light align-self-start">

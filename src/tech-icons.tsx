@@ -12,7 +12,7 @@ export const testingTools = [
   "tricentis-qtest",
   "browserstack",
 ]
-export const terminalTools = ["git", "webpack", "yaml", "vim"]
+export const terminalTools = ["webpack", "vim"]
 export const webDevTools = [
   "javascript",
   "typescript",
@@ -45,6 +45,14 @@ const mapSrc = {
     "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ember/ember-original.svg",
   html: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg",
   css: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg",
+  cypress:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg",
+  react:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+  webpack:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original.svg",
+  "tricentis-qtest":
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/qtest/qtest-original.svg",
 }
 
 const mapImages = {
@@ -57,15 +65,6 @@ const mapImages = {
       height={60}
     />
   ),
-  cypress: (
-    <img
-      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg"
-      key="cypress"
-      alt="cypress"
-      height={90}
-      width={90}
-    />
-  ),
   "testing-library": (
     <img
       src={TestingLib}
@@ -75,45 +74,27 @@ const mapImages = {
       height={60}
     />
   ),
-  "tricentis-qtest": (
-    <img
-      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/qtest/qtest-original.svg"
-      alt="tricentis-qtest"
-      width={50}
-      height={50}
-    />
-  ),
-  react: (
-    <img
-      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-      key="react"
-      alt="react"
-      height={60}
-      width={60}
-    />
-  ),
-  webpack: (
-    <img
-      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original.svg"
-      key="webpack"
-      alt="webpack"
-      height={60}
-      width={60}
-    />
-  ),
+}
+
+const capitalizeFirstLetter = (string: string) => {
+  if (!string) {
+    // Handle null, undefined, or empty strings
+    return string
+  }
+  return `${string[0].toUpperCase()}${string.slice(1)}`
 }
 
 export const getImage = (tool: string) => {
   if (mapSrc[tool as keyof typeof mapSrc]) {
     return (
-      <MDBContainer className="skill-item square rounded-8">
+      <MDBContainer className="skill-item square rounded-8 py-3">
         <img
           src={mapSrc[tool as keyof typeof mapSrc]}
           alt={tool}
           height={60}
           width={60}
         />
-        <div className="skill-name">{tool.toLocaleUpperCase()}</div>
+        <div className="skill-name">{capitalizeFirstLetter(tool)}</div>
         {/* </div> */}
       </MDBContainer>
     )
@@ -121,7 +102,7 @@ export const getImage = (tool: string) => {
   return (
     <MDBContainer className="skill-item square rounded-8">
       {mapImages[tool as keyof typeof mapImages]}
-      <div className="skill-name">{tool.toLocaleUpperCase()}</div>
+      <div className="skill-name">{capitalizeFirstLetter(tool)}</div>
       {/* </div> */}
     </MDBContainer>
   )

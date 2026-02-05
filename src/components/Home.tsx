@@ -231,16 +231,22 @@ const Home = () => {
             </div>
 
             <MDBBtn
+              tag="a"
+              href="https://www.linkedin.com/in/kimbell4"
+              aria-label="link to linkedin"
+              target="_blank"
               className="m-1"
               style={{ backgroundColor: "#0082ca" }}
-              href="#"
             >
               <MDBIcon fab icon="linkedin-in" />
             </MDBBtn>
             <MDBBtn
+              tag="a"
+              href="https://github.com/TzolkinB"
+              aria-label="link to github"
+              target="_blank"
               className="m-1"
               style={{ backgroundColor: "#333333" }}
-              href="#"
             >
               <MDBIcon fab icon="github" />
             </MDBBtn>

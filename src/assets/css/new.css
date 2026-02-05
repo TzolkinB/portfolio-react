@@ -3,8 +3,9 @@
 /* ===== BASE / MOBILE STYLES (0px - 767px) ===== */
 
 body {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  background-color: #293d59;
+  font-family: "Roboto Flex", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #233650;
+  color: #e0e3de;
 }
 
 a:hover {
@@ -63,8 +64,11 @@ a:hover {
 }
 
 #home {
-  color: #e0e3de;
   padding-bottom: 1.5rem;
+}
+
+#home .name {
+  font-stretch: extra-expanded;
 }
 
 #home img {
@@ -72,12 +76,7 @@ a:hover {
   height: 100px;
 }
 
-#home .name {
-  color: #e0e3de;
-}
-
 #about {
-  color: #e0e3de;
   padding-left: 3rem;
   padding-right: 3rem;
 }
@@ -98,13 +97,10 @@ a:hover {
 }
 
 #projects {
-  /* background-color: #293d59; */
-  color: #e0e3de;
   margin-top: -4rem;
 }
 
 #skills {
-  color: #e0e3de;
   margin-top: -4rem;
   padding-left: 3rem;
   padding-right: 3rem;
@@ -130,12 +126,15 @@ a:hover {
   flex-direction: column;
   align-items: center;
   max-width: 100px;
+  transition: all 0.5s;
 }
 
 .skill-item:hover {
+  /* .skill-item { */
   background: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px);
+  color: #0d1a2e;
 }
 
 .skill-item .skill-name {
@@ -150,7 +149,10 @@ a:hover {
 .card {
   background-color: #e0e3de !important;
   color: #0d1a2e !important;
-  border: 3px solid transparent;
+  border: 5px solid transparent;
+  transition:
+    box-shadow 0.5s,
+    border-color 0.5s;
 }
 
 .card:hover {
@@ -196,7 +198,7 @@ footer {
 @media screen and (min-width: 1100px) {
   #about,
   #skills {
-    padding: 6rem 20rem;
+    padding: 4rem 20rem;
   }
 
   #projects {

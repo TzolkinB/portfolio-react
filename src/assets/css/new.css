@@ -65,20 +65,22 @@ a:hover {
 #home {
   color: #e0e3de;
   padding-bottom: 1.5rem;
+  background-color: #293d59;
 }
 
 #home img {
   width: 100px;
   height: 100px;
 }
+
 #home .name {
-  /* color: #293d59; */
+  color: #e0e3de;
 }
 
 #about {
   /* background-color: #293d59; */
   color: #e0e3de;
-  margin-top: -4rem;
+  /* margin-top: -4rem; */
   padding-left: 3rem;
   padding-right: 3rem;
 }
@@ -205,6 +207,8 @@ footer {
 
   #home {
     padding-bottom: 4rem;
+    padding-left: 20rem;
+    padding-right: 20rem;
   }
 
   .skills-list {

@@ -11,16 +11,37 @@ function Skills(props: { id: string }) {
   const { id } = props
 
   // eslint-disable-next-line prettier/prettier, @typescript-eslint/no-unused-vars
-  const mobileCol1 = ["Cypress","Testing Library", "Javascrpt", "Typescrpt", "React", "Git", "VIM", "Gitlab", "Bitbucket", "Github"]
+  const mobileCol1 = [
+    "Cypress",
+    "Testing Library",
+    "Javascrpt",
+    "Typescrpt",
+    "React",
+    "Git",
+    "VIM",
+    "Gitlab",
+    "Bitbucket",
+    "Github",
+  ]
   // eslint-disable-next-line prettier/prettier, @typescript-eslint/no-unused-vars
-  const mobileCol2 =["Webpack", "qtest", "Browsertack", "VSCode", "YAML", "Ember", "HTML", "CSS", "Styled Components"]
+  const mobileCol2 = [
+    "Webpack",
+    "qtest",
+    "Browsertack",
+    "VSCode",
+    "YAML",
+    "Ember",
+    "HTML",
+    "CSS",
+    "Styled Components",
+  ]
 
   return (
     <div id={id} data-testid={id} className="pt-5">
       <MDBTypography tag="h2" className="text-center py-2">
         Skills
       </MDBTypography>
-      <div className="skills-list d-flex flex-wrap flex-xl-nowrap justify-content-evenly justify-content-sm-center align-items-center">
+      <div className="skills-list">
         {testingTools.map((tool) => {
           return getImage(tool)
         })}

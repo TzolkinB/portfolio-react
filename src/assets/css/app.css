@@ -1,35 +1,36 @@
-body { 
+body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
-  background-color: #E0E3DE;
+  background-color: #e0e3de;
 }
 
-a:hover { 
+a:hover {
   text-decoration: none;
-  color: #243F6A !important;
+  color: #243f6a !important;
   background-color: #fff;
 }
 
 /* ---- App Bar ---- */
 .navbar {
-  background: #0D1A2E;
+  background: #0d1a2e;
 }
 
 .nav-link {
   font-size: large !important;
-  color: #5DC1BE;
+  color: #5dc1be;
 }
 
 .nav-link:focus {
-  color: #E0E3DE;
+  color: #e0e3de;
 }
 
 .navbar-toggler,
 .navbar-brand {
-  color: #5DC1BE;
+  color: #5dc1be;
 }
 
 .navbar-brand img {
-  filter: invert(58%) sepia(48%) saturate(1039%) hue-rotate(131deg) brightness(108%) contrast(150%);
+  filter: invert(58%) sepia(48%) saturate(1039%) hue-rotate(131deg)
+    brightness(108%) contrast(150%);
 }
 /* ----- */
 
@@ -40,8 +41,8 @@ a:hover {
 
 .accordion-header > button,
 .accordion-item {
-  color: #5DC1BE !important;
-  background-color: #0D1A2E !important;
+  color: #5dc1be !important;
+  background-color: #0d1a2e !important;
 }
 
 .accordion-item > h2 > button::after {
@@ -49,8 +50,8 @@ a:hover {
 }
 
 .accordion-body {
-  color: #3E587A;
-  background-color: #E0E3DE;
+  color: #293d59;
+  background-color: #e0e3de;
 }
 
 .app {
@@ -58,42 +59,42 @@ a:hover {
 }
 
 #home {
-  color: #3E587A;
+  color: #293d59;
   padding-bottom: 4rem;
 }
 
 #home .name {
- color: #3E587A; 
+  color: #293d59;
 }
 
 #about {
-  background-color: #3E587A;
-  color: #E0E3DE;
-  clip-path: polygon(0 0%, 100% 5%, 100% 95%, 0% 100%);
-  -webkit-clip-path: polygon(0 0%, 100% 5%, 100% 95%, 0% 100%);
+  background-color: #293d59;
+  color: #e0e3de;
+  clip-path: polygon(0 0%, 100% 15%, 100% 85%, 0% 100%);
+  -webkit-clip-path: polygon(0 0%, 100% 15%, 100% 85%, 0% 100%);
 }
 
 #about a {
-  color: #BAD0E3;
+  color: #bad0e3;
 }
 
 #about .accordion a {
-  color: #3E587A;
+  color: #293d59;
   text-decoration: underline;
 }
 
 #about a:hover {
   text-decoration: none;
-  color: #BAD0E3 !important;
-  background-color: #243F6A !important;
+  color: #bad0e3 !important;
+  background-color: #243f6a !important;
 }
 
 #projects {
-  background-color: #3E587A;
-  color: #E0E3DE;
+  background-color: #293d59;
+  color: #e0e3de;
   margin-top: -3.25rem;
-  clip-path: polygon(0 0%, 100% 7%, 100% 100%, 0% 100%);
-  -webkit-clip-path: polygon(0 0%, 100% 7%, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0%, 100% 15%, 100% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0 0%, 100% 15%, 100% 100%, 0% 100%);
 }
 
 #about,
@@ -104,7 +105,7 @@ a:hover {
 }
 
 #skills {
-  color: #3E587A;
+  color: #293d59;
   padding-bottom: 4.5rem;
 }
 
@@ -112,31 +113,67 @@ a:hover {
   padding: 0 5px 0 5px;
 }
 
+.skills-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100px;
+}
+
+.skill-item:hover {
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+.skill-item .skill-name {
+  display: none;
+}
+.skill-item:hover .skill-name {
+  display: block;
+  font-size: small;
+}
+
 .card {
-  background-color: #E0E3DE !important;
-  color: #0D1A2E !important;
+  background-color: #e0e3de !important;
+  color: #0d1a2e !important;
+  border: 3px solid transparent;
+}
+
+.card:hover {
+  border-color: #5dc1be;
+  box-shadow: 0 6px 16px rgba(41, 61, 89, 0.8);
+  transform: translateY(-4px);
 }
 
 .card-subtitle {
-  color: #3B6893 !important;
+  color: #3b6893 !important;
 }
 
 .card a {
-  background-color: #0D1A2E !important;
-  color: #5DC1BE !important;
+  background-color: #0d1a2e !important;
+  color: #5dc1be !important;
 }
 
 /* ----- Footer ----- */
 footer {
   height: 75px;
-  background: #0D1A2E;
+  background: #0d1a2e;
 }
 
 .footer-links,
-.copyright, 
+.copyright,
 .footer-links a,
 .footer-links a:visited {
-  color: #5DC1BE !important;
+  color: #5dc1be !important;
 }
 /* ----- */
 

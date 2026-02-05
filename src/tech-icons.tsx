@@ -1,5 +1,5 @@
 import React from "react"
-import { MDBTooltip } from "mdb-react-ui-kit"
+import { MDBContainer } from "mdb-react-ui-kit"
 
 import Qtest from "IMG/qtest.svg"
 import TestingLib from "IMG/octopus.png"
@@ -103,19 +103,25 @@ const mapImages = {
 export const getImage = (tool: string) => {
   if (mapSrc[tool as keyof typeof mapSrc]) {
     return (
-      <MDBTooltip tag="span" title={`${tool.toLocaleUpperCase()}`} key={tool}>
+      <MDBContainer className="skill-item square rounded-8">
         <img
           src={mapSrc[tool as keyof typeof mapSrc]}
           alt={tool}
           height={60}
           width={60}
         />
-      </MDBTooltip>
+        <div className="skill-name">{tool.toLocaleUpperCase()}</div>
+        {/* </div> */}
+      </MDBContainer>
     )
   }
   return (
-    <MDBTooltip tag="span" title={`${tool.toLocaleUpperCase()}`} key={tool}>
+    <MDBContainer className="skill-item square rounded-8">
       {mapImages[tool as keyof typeof mapImages]}
-    </MDBTooltip>
+      <div className="skill-name">{tool.toLocaleUpperCase()}</div>
+      {/* </div> */}
+    </MDBContainer>
   )
 }
+
+// <MDBTooltip tag="span" title={`${tool.toLocaleUpperCase()}`} key={tool}></MDBTooltip>

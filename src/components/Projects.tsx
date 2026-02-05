@@ -7,7 +7,7 @@ function Projects(props: { id: string }) {
   const myCypressGuide = (
     <Card
       title="My Cypress Guide"
-      subtitle="Personal Document Maintained on Notion.so"
+      subtitle="SDET Documentation &#8226; Ongoing"
       text="Personal guidelines I follow as well as a list of plugins, common UI patterns, and any other Cypress tips or information I find useful."
       url="https://kimbellcypress.notion.site/Best-Practices-bb7e5a025c834b7397d531ad76bee0b4"
       urlText="Notion Site"

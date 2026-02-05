@@ -1,11 +1,11 @@
-import { MDBContainer, MDBTypography } from "mdb-react-ui-kit"
+import { MDBContainer, MDBTypography, MDBBtn, MDBIcon } from "mdb-react-ui-kit"
 import Me from "IMG/profile2.jpg"
 import About from "./About"
 import Skills from "./Skills"
 import Projects from "./Projects"
 
 const msg =
-  "%c👋 Thank you for visiting my website! If you like my credentials and are looking for an SDET with expertise in Cypress, DM me. Let's discuss!"
+  "%c👋 Thank you for visiting my site! If you like my credentials and are looking for an SDET with expertise in test automation, DM me. Let's discuss!"
 const styles = [
   "font-size: 12px",
   "font-family: monospace",
@@ -39,14 +39,31 @@ const Home = () => {
           <MDBTypography tag="h1" className="text-uppercase name">
             Kim Bell
           </MDBTypography>
-          <MDBTypography tag="h2" className="mb-0">
-            Software Engineer
+          <MDBTypography tag="h2" className="fs-3 mb-0">
+            Senior SDET & Frontend Developer
           </MDBTypography>
-          <MDBTypography className="fs-4 mb-0">
-            Experienced Frontend Developer and SDET
+          <MDBTypography className="mb-0">
+            8+ years experience, 2+ years SDET
           </MDBTypography>
+          <MDBBtn
+            size="lg"
+            className="m-1"
+            style={{ backgroundColor: "#0082ca" }}
+            href="#"
+          >
+            <MDBIcon fab icon="linkedin-in" size="lg" />
+          </MDBBtn>{" "}
+          <MDBBtn
+            size="lg"
+            className="m-1"
+            style={{ backgroundColor: "#333333" }}
+            href="#"
+          >
+            <MDBIcon fab icon="github" size="lg" />
+          </MDBBtn>
         </div>
       </div>
+
       <About id="about" />
       <Skills id="skills" />
       <Projects id="projects" />

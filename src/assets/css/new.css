@@ -1,6 +1,10 @@
+/* ===== MOBILE FIRST CSS ===== */
+
+/* ===== BASE / MOBILE STYLES (0px - 767px) ===== */
+
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
-  background-color: #e0e3de;
+  background-color: #293d59;
 }
 
 a:hover {
@@ -32,7 +36,7 @@ a:hover {
   filter: invert(58%) sepia(48%) saturate(1039%) hue-rotate(131deg)
     brightness(108%) contrast(150%);
 }
-/* ----- */
+/* -------- */
 
 .accordion {
   width: -webkit-fill-available;
@@ -59,19 +63,24 @@ a:hover {
 }
 
 #home {
-  color: #293d59;
+  color: #e0e3de;
   padding-bottom: 1.5rem;
 }
 
+#home img {
+  width: 100px;
+  height: 100px;
+}
 #home .name {
-  color: #293d59;
+  /* color: #293d59; */
 }
 
 #about {
-  background-color: #293d59;
+  /* background-color: #293d59; */
   color: #e0e3de;
-  clip-path: polygon(0 0%, 100% 15%, 100% 85%, 0% 100%);
-  -webkit-clip-path: polygon(0 0%, 100% 15%, 100% 85%, 0% 100%);
+  margin-top: -4rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 #about a {
@@ -90,22 +99,16 @@ a:hover {
 }
 
 #projects {
-  background-color: #293d59;
+  /* background-color: #293d59; */
   color: #e0e3de;
-  margin-top: -3.25rem;
-  clip-path: polygon(0 0%, 100% 15%, 100% 100%, 0% 100%);
-  -webkit-clip-path: polygon(0 0%, 100% 15%, 100% 100%, 0% 100%);
+  margin-top: -4rem;
 }
 
-#about,
 #skills {
-  margin-top: -3.25rem;
+  color: #e0e3de;
+  margin-top: -4rem;
   padding-left: 3rem;
   padding-right: 3rem;
-}
-
-#skills {
-  color: #293d59;
   padding-bottom: 4.5rem;
 }
 
@@ -120,6 +123,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  row-gap: 0.75rem;
 }
 
 .skill-item {
@@ -134,9 +138,11 @@ a:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px);
 }
+
 .skill-item .skill-name {
   display: none;
 }
+
 .skill-item:hover .skill-name {
   display: block;
   font-size: small;
@@ -156,7 +162,6 @@ a:hover {
 
 .card-subtitle {
   color: #3b6893 !important;
-  /* font-size: smaller; */
 }
 
 .card a {
@@ -176,38 +181,33 @@ footer {
 .footer-links a:visited {
   color: #5dc1be !important;
 }
-/* ----- */
+
+.copyright {
+  margin-left: 2%;
+}
+/* -------- */
+
+/* ===== TABLET / MEDIUM STYLES (768px - 1099px) ===== */
+
+@media screen and (min-width: 768px) {
+}
+
+/* ===== DESKTOP / LARGE STYLES (1100px and above) ===== */
 
 @media screen and (min-width: 1100px) {
   #about,
   #skills {
-    padding: 6rem 25rem;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  #home div h1 {
-    margin-bottom: 0;
-  }
-
-  #about {
-    clip-path: polygon(0 0%, 100% 3%, 100% 97%, 0% 100%);
-    -webkit-clip-path: polygon(0 0%, 100% 3%, 100% 97%, 0% 100%);
-  }
-
-  #about,
-  #skills {
-    margin-top: -4rem;
-  }
-  .skills-list {
-    row-gap: 0.75rem;
+    padding: 6rem 20rem;
   }
 
   #projects {
-    margin-top: -4rem;
   }
 
-  .copyright {
-    margin-left: 2%;
+  #home {
+    padding-bottom: 4rem;
+  }
+
+  .skills-list {
+    row-gap: 0.5rem;
   }
 }

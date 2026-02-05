@@ -36,12 +36,12 @@ function Projects(props: { id: string }) {
   )
 
   return (
-    <div id={id} data-testid={id} className="py-5 px-4 px-sm-5">
+    <div id={id} data-testid={id} className="py-5 px-4">
       <MDBTypography tag="h2" className="text-center py-2">
         Projects
       </MDBTypography>
       <MDBRow
-        className="row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 justify-content-lg-center
+        className="row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 justify-content-lg-center
       "
       >
         <MDBCol>{myCypressGuide}</MDBCol>

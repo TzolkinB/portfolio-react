@@ -21,21 +21,22 @@ const Home = () => {
   // eslint-disable-next-line no-console
   console.log(msg, styles)
   return (
-    <MDBContainer fluid className="app gx-0">
+    <MDBContainer className="app gx-0">
       <div
         id="home"
         data-testid="home"
-        className="px-4 px-sm-5 pt-4 d-flex flex-column justify-content-center align-items-center"
+        className="px-4 px-sm-5 py-4 d-flex justify-content-center align-items-md-center"
       >
         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
         <img
           src={Me}
           alt="Profile image"
-          width="170"
-          height="170"
+          // width="170"
+          // height="170"
+          // sizes="(width <= 767px) 100px, 170px"
           className="rounded-circle shadow-3-strong me-3 mb-1"
         />
-        <div className="text-center">
+        <div className="">
           <MDBTypography tag="h1" className="text-uppercase name">
             Kim Bell
           </MDBTypography>
@@ -45,22 +46,24 @@ const Home = () => {
           <MDBTypography className="mb-0">
             8+ years experience, 2+ years SDET
           </MDBTypography>
-          <MDBBtn
-            size="lg"
-            className="m-1"
-            style={{ backgroundColor: "#0082ca" }}
-            href="#"
-          >
-            <MDBIcon fab icon="linkedin-in" size="lg" />
-          </MDBBtn>{" "}
-          <MDBBtn
-            size="lg"
-            className="m-1"
-            style={{ backgroundColor: "#333333" }}
-            href="#"
-          >
-            <MDBIcon fab icon="github" size="lg" />
-          </MDBBtn>
+          <div className="mt-1">
+            <MDBBtn
+              size="lg"
+              className="m-1"
+              style={{ backgroundColor: "#0082ca" }}
+              href="#"
+            >
+              <MDBIcon fab icon="linkedin-in" size="lg" />
+            </MDBBtn>{" "}
+            <MDBBtn
+              size="lg"
+              className="m-1"
+              style={{ backgroundColor: "#333333" }}
+              href="#"
+            >
+              <MDBIcon fab icon="github" size="lg" />
+            </MDBBtn>
+          </div>
         </div>
       </div>
 

@@ -4,7 +4,9 @@ import {
   MDBCardTitle,
   MDBCardSubTitle,
   MDBCardText,
+  MDBBadge,
   MDBBtn,
+  MDBTypography,
 } from "mdb-react-ui-kit"
 
 type CardProps = {
@@ -33,8 +35,16 @@ const CardContainer = (props: CardProps) => {
         <MDBCardTitle tag="h4" className="fs-4">
           {title}
         </MDBCardTitle>
-        <MDBCardSubTitle>{subtitle}</MDBCardSubTitle>
-        <MDBCardText>{text}</MDBCardText>
+        <MDBCardSubTitle tag="small">{subtitle}</MDBCardSubTitle>
+        <MDBCardText className="pt-3 fw-light">{text}</MDBCardText>
+        <MDBTypography note noteColor="info">
+          <strong>Comprehensive resource</strong> for team onboarding
+        </MDBTypography>
+        <div className="mb-3">
+          <MDBBadge className="text-dark" color="light" light>
+            Light
+          </MDBBadge>
+        </div>
         <MDBBtn href={url} target="_blank">
           {urlText}
         </MDBBtn>

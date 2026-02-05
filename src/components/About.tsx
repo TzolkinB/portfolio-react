@@ -77,9 +77,9 @@ const About = (props: { id: string }) => {
   ]
 
   return (
-    <div id={id} data-testid={id} className="py-5 d-flex flex-column">
+    <div id={id} data-testid={id}>
       <div>
-        <MDBTypography tag="h2" className="pt-3 text-center">
+        <MDBTypography tag="h2" className="py-2 text-center">
           About Me
         </MDBTypography>
       </div>

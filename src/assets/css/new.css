@@ -4,14 +4,38 @@
 
 body {
   font-family: "Roboto Flex", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #233650;
+  background-color: #1a2a41;
   color: #e0e3de;
+  --hr-line-offset: 25%;
+  --hr-color: lightsalmon;
+}
+
+:root hr {
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    to right,
+    transparent,
+    var(--hr-color) calc(50% - var(--hr-line-offset)),
+    var(--hr-color) calc(50% + var(--hr-line-offset)),
+    transparent
+  );
+  border-top: 10px solid;
 }
 
 a:hover {
   text-decoration: none;
   color: #243f6a !important;
   background-color: #fff;
+}
+
+.text-gradient {
+  background-image: linear-gradient(135deg, #00d4ff, #ffab00);
+  color: transparent;
+  background-clip: text;
+}
+
+.text-muted {
+  color: #9aa0b2 !important;
 }
 
 /* ---- App Bar ---- */
@@ -67,13 +91,25 @@ a:hover {
   padding-bottom: 1.5rem;
 }
 
-#home .name {
-  font-stretch: extra-expanded;
+#home .name,
+#home .years {
+  font-variation-settings:
+    "wght" 700,
+    "wdth" 150,
+    "XTRA" 603,
+    "XOPQ" 125,
+    /* make e hard to see */ "YOPQ" 80,
+    "YTAS" 651,
+    "YTFI" 560;
 }
 
 #home img {
   width: 100px;
   height: 100px;
+  border: 4px solid transparent; /*2*/
+  /* background: linear-gradient(45deg, red, blue) border-box; 3 */
+  background: linear-gradient(135deg, #00d4ff, #ffab00) border-box;
+  mask-composite: exclude; /*5*/
 }
 
 #about {
@@ -191,6 +227,13 @@ footer {
 /* ===== TABLET / MEDIUM STYLES (768px - 1099px) ===== */
 
 @media screen and (min-width: 768px) {
+  #home {
+    justify-content: center;
+  }
+
+  #home .row {
+    align-items: center;
+  }
 }
 
 /* ===== DESKTOP / LARGE STYLES (1100px and above) ===== */
@@ -206,8 +249,9 @@ footer {
 
   #home {
     padding-bottom: 4rem;
-    padding-left: 20rem;
-    padding-right: 20rem;
+    /* justify-content: center; */
+    /* padding-left: 20rem; */
+    /* padding-right: 20rem; */
   }
 
   .skills-list {

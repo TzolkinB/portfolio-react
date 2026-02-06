@@ -154,21 +154,18 @@ const Home = () => {
       <div
         id="home"
         data-testid="home"
-        className="d-md-block d-sm-none px-xs-4 py-4"
+        className="d-md-flex d-sm-none px-xs-4 py-4"
       >
-        <MDBRow className="justify-content-end">
+        <MDBRow>
           {/* Text Content Column */}
-          <MDBCol size="7" className="text-start">
+          <MDBCol size="8">
             <div className="mb-2">
-              <MDBTypography
-                tag="div"
-                className="display-1 text-uppercase name mb-0 fw-bold"
-              >
+              <MDBTypography tag="div" className="display-1 name mb-0">
                 Kim Bell
               </MDBTypography>
             </div>
             <div>
-              <MDBTypography tag="h2" className="fs-5 mb-0">
+              <MDBTypography tag="h2" className="text-gradient fw-bold">
                 Senior SDET & Frontend Developer
               </MDBTypography>
             </div>
@@ -203,10 +200,7 @@ const Home = () => {
               <div>
                 <MDBTypography
                   tag="div"
-                  className="display-4 mb-0 fw-bold"
-                  style={{
-                    color: "#5dc1be",
-                  }}
+                  className="display-4 mb-0 years text-gradient"
                 >
                   8+
                 </MDBTypography>
@@ -217,10 +211,7 @@ const Home = () => {
               <div>
                 <MDBTypography
                   tag="div"
-                  className="display-4 mb-0 fw-bold"
-                  style={{
-                    color: "#5dc1be",
-                  }}
+                  className="display-4 mb-0 years text-gradient"
                 >
                   2+
                 </MDBTypography>
@@ -253,19 +244,20 @@ const Home = () => {
           </MDBCol>
           {/* Profile Image Column */}
           <MDBCol
-            size="5"
+            size="4"
             className="d-flex justify-content-center justify-content-md-start"
           >
             <img
               src={Me}
               alt="Kim Bell"
-              className="rounded-circle shadow-3-strong"
+              className="rounded-circle"
               style={{ width: "250px", height: "250px" }}
             />
           </MDBCol>
         </MDBRow>
       </div>
-
+      {/* <hr className="text-gradient" /> */}
+      <hr />
       <About id="about" />
       <Skills id="skills" />
       <Projects id="projects" />

@@ -29,132 +29,10 @@ const Home = () => {
   console.log(msg, styles)
   return (
     <MDBContainer className="app gx-0">
-      {/* Mobile Home View */}
-      <div id="home" data-testid="home" className="d-md-none px-xs-4 py-4">
-        <MDBRow className="justify-content-end">
-          {/* Profile Image Column */}
-          <MDBCol size="4" md="4" className="d-flex justify-content-center">
-            <img
-              src={Me}
-              alt="Kim Bell"
-              className="rounded-circle shadow-3-strong"
-              style={{ width: "100px", height: "100px" }}
-            />
-          </MDBCol>
-
-          {/* Text Content Column */}
-          <MDBCol size="7" md="8" className="text-start">
-            <div className="mb-2">
-              <MDBTypography tag="h1" className="text-uppercase name mb-0">
-                Kim Bell
-              </MDBTypography>
-            </div>
-            <div>
-              <MDBTypography tag="h2" className="fs-5 mb-0">
-                Senior SDET
-              </MDBTypography>
-              <MDBTypography className="text-muted">
-                Frontend Developer
-              </MDBTypography>
-            </div>
-          </MDBCol>
-        </MDBRow>
-
-        {/* Tech Skills Badges Row */}
-        <MDBRow>
-          <MDBCol
-            size="12"
-            className="d-flex flex-wrap gap-2 justify-content-center"
-          >
-            <div
-              className="badge square border rounded-2"
-              style={{ padding: "6px 10px" }}
-            >
-              <i className="fas fa-check me-1" />
-              Playwright
-            </div>
-            <div
-              className="badge square border rounded-2"
-              style={{ padding: "6px 10px" }}
-            >
-              <i className="fas fa-check me-1" />
-              Cypress
-            </div>
-            <div
-              className="badge square border rounded-2"
-              style={{ padding: "6px 10px" }}
-            >
-              <i className="fab fa-react me-1" />
-              React
-            </div>
-          </MDBCol>
-        </MDBRow>
-
-        {/* Experience Stats Row */}
-        <MDBRow className="">
-          <MDBCol size="2" />
-          <MDBCol size="3" className="text-center text-md-start">
-            <div style={{ padding: "1rem" }}>
-              <MDBTypography
-                tag="p"
-                className="mb-0"
-                style={{
-                  color: "#5dc1be",
-                  fontSize: "1.5rem",
-                  fontWeight: "bold",
-                }}
-              >
-                6+
-              </MDBTypography>
-              <MDBTypography className="text-muted small">
-                Years
-                <br />
-                Experience
-              </MDBTypography>
-            </div>
-          </MDBCol>
-          <MDBCol size="5" className="text-center text-md-start">
-            <div style={{ padding: "1rem" }}>
-              <MDBTypography
-                tag="p"
-                className="mb-0"
-                style={{
-                  color: "#5dc1be",
-                  fontSize: "1.5rem",
-                  fontWeight: "bold",
-                }}
-              >
-                2+
-              </MDBTypography>
-              <MDBTypography className="text-muted small">
-                Years SDET
-              </MDBTypography>
-            </div>
-          </MDBCol>
-          <MDBCol size="2" />
-        </MDBRow>
-        <MDBRow>
-          <MDBBtn
-            className="m-1"
-            style={{ backgroundColor: "#0082ca" }}
-            href="#"
-          >
-            <MDBIcon fab icon="linkedin-in" />
-          </MDBBtn>
-          <MDBBtn
-            className="m-1"
-            style={{ backgroundColor: "#333333" }}
-            href="#"
-          >
-            <MDBIcon fab icon="github" />
-          </MDBBtn>
-        </MDBRow>
-      </div>
-      {/* Tablet/Desktop Home View */}
       <div
         id="home"
         data-testid="home"
-        className="d-md-flex d-sm-none px-xs-4 py-4"
+        className="d-md-flex d-sm-none px-3 py-4"
       >
         <MDBRow>
           {/* Text Content Column */}
@@ -180,7 +58,7 @@ const Home = () => {
             </div>
 
             {/* Tech Skills Badges Row */}
-            <div className="d-flex flex-wrap gap-2 pt-2">
+            <div className="d-flex flex-md-wrap gap-2 pt-2">
               <div
                 className="badge square border rounded-2"
                 style={{ padding: "6px 10px" }}
@@ -205,7 +83,8 @@ const Home = () => {
             </div>
 
             {/* Experience Stats Row */}
-            <div style={{ padding: "1rem" }} className="d-flex gap-5">
+            {/* Hide on Mobile */}
+            <div style={{ padding: "1rem" }} className="d-flex gap-3">
               <div>
                 <MDBTypography
                   tag="div"

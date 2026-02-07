@@ -38,9 +38,11 @@ function Skills(props: { id: string }) {
 
   return (
     <div id={id} data-testid={id} className="pt-5">
+      <hr />
       <MDBTypography tag="h2" className="text-center py-2">
         Skills
       </MDBTypography>
+      <hr />
       <div className="skills-list">
         {testingTools.map((tool) => {
           return getImage(tool)

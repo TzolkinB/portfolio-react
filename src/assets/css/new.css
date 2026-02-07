@@ -7,7 +7,8 @@ body {
   background-color: #1a2a41;
   color: #e0e3de;
   --hr-line-offset: 25%;
-  --hr-color: lightsalmon;
+  --hr-left-color: #00d4ff;
+  --hr-right-color: #ffab00;
 }
 
 :root hr {
@@ -15,8 +16,8 @@ body {
   border-image-source: linear-gradient(
     to right,
     transparent,
-    var(--hr-color) calc(50% - var(--hr-line-offset)),
-    var(--hr-color) calc(50% + var(--hr-line-offset)),
+    var(--hr-left-color) calc(50% - var(--hr-line-offset)),
+    var(--hr-right-color) calc(50% + var(--hr-line-offset)),
     transparent
   );
   border-top: 10px solid;
@@ -148,29 +149,55 @@ a:hover {
 }
 
 .skills-list {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  row-gap: 0.75rem;
+  row-gap: 0.75rem; */
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 }
 
 .skill-item {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 100px;
-  transition: all 0.5s;
+  transition: all 0.5s; */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .skill-item:hover {
-  /* .skill-item { */
-  background: white;
+  /* background: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px);
-  color: #0d1a2e;
+  color: #0d1a2e; */
+  background: rgba(0, 255, 136, 0.05);
+  border-color: rgba(0, 255, 136, 0.3);
+  transform: translateY(-5px);
+}
+
+.skill-item:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00d4ff, #00ff88);
+  transform: scaleX(0);
+  transition: transform 0.3s;
 }
 
 .skill-item .skill-name {
@@ -213,7 +240,6 @@ footer {
 }
 
 .footer-links,
-.copyright,
 .footer-links a,
 .footer-links a:visited {
   color: #5dc1be !important;
@@ -233,6 +259,11 @@ footer {
 
   #home .row {
     align-items: center;
+  }
+
+  #home img {
+    width: 275px;
+    height: 275px;
   }
 }
 

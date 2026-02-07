@@ -94,18 +94,16 @@ export const getImage = (tool: string) => {
           height={60}
           width={60}
         />
-        <div className="skill-name">{capitalizeFirstLetter(tool)}</div>
+        <p className="skill-name">{capitalizeFirstLetter(tool)}</p>
         {/* </div> */}
       </MDBContainer>
     )
   }
   return (
-    <MDBContainer className="skill-item square rounded-8">
+    <MDBContainer className="skill-item square rounded-8 py-3">
       {mapImages[tool as keyof typeof mapImages]}
-      <div className="skill-name">{capitalizeFirstLetter(tool)}</div>
+      <p className="skill-name">{capitalizeFirstLetter(tool)}</p>
       {/* </div> */}
     </MDBContainer>
   )
 }
-
-// <MDBTooltip tag="span" title={`${tool.toLocaleUpperCase()}`} key={tool}></MDBTooltip>

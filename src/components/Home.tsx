@@ -160,13 +160,22 @@ const Home = () => {
           {/* Text Content Column */}
           <MDBCol size="8">
             <div className="mb-2">
-              <MDBTypography tag="div" className="display-1 name mb-0">
+              <MDBTypography tag="div" className="display-2 name mb-0">
                 Kim Bell
               </MDBTypography>
             </div>
             <div>
-              <MDBTypography tag="h2" className="text-gradient fw-bold">
+              <MDBTypography
+                tag="h2"
+                className="d-none d-md-block text-gradient"
+              >
                 Senior SDET & Frontend Developer
+              </MDBTypography>
+              <MDBTypography tag="h2" className="d-md-none text-gradient">
+                Senior SDET
+              </MDBTypography>
+              <MDBTypography className="d-md-none text-muted">
+                Frontend Developer
               </MDBTypography>
             </div>
 
@@ -247,17 +256,10 @@ const Home = () => {
             size="4"
             className="d-flex justify-content-center justify-content-md-start"
           >
-            <img
-              src={Me}
-              alt="Kim Bell"
-              className="rounded-circle"
-              style={{ width: "250px", height: "250px" }}
-            />
+            <img src={Me} alt="Kim Bell" className="rounded-circle" />
           </MDBCol>
         </MDBRow>
       </div>
-      {/* <hr className="text-gradient" /> */}
-      <hr />
       <About id="about" />
       <Skills id="skills" />
       <Projects id="projects" />

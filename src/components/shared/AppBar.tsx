@@ -27,7 +27,7 @@ const AppBar = () => {
         <MDBContainer fluid>
           <MDBNavbarBrand href="/" className="pl-2">
             <img src={Whiskers} alt="Cat whiskers" />
-            <span className="pl-3 fs-4">kimbell.me</span>
+            <span className="pl-3 fs-4 text-gradient">kimbell.me</span>
           </MDBNavbarBrand>
           <MDBNavbarToggler
             type="button"

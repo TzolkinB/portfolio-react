@@ -7,8 +7,10 @@ const Footer = () => {
   return (
     <MDBFooter className="d-flex justify-content-between align-items-center">
       <div />
-      <div className="copyright">&#169; {currentYear} Copyright Kim Bell</div>
-      <div className="footer-links">
+      <p className="copyright text-gradient">
+        &#169; {currentYear} Copyright Kim Bell
+      </p>
+      <div className="footer-links text-gradient">
         <a
           href="https://github.com/TzolkinB"
           aria-label="link to github"

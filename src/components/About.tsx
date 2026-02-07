@@ -79,9 +79,11 @@ const About = (props: { id: string }) => {
   return (
     <div id={id} data-testid={id}>
       <div>
+        <hr />
         <MDBTypography tag="h2" className="py-2 text-center">
           About
         </MDBTypography>
+        <hr />
       </div>
       <MDBTypography className="fw-light align-self-start">
         I bring 6+ years of experience in responsive frontend web development

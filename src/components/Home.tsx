@@ -46,7 +46,7 @@ const Home = () => {
           {/* Text Content Column */}
           <MDBCol size="8">
             <div className="mb-2">
-              <MDBTypography tag="div" className="display-2 mb-0 name">
+              <MDBTypography tag="h1" className="display-2 mb-0 name">
                 Kim Bell
               </MDBTypography>
             </div>

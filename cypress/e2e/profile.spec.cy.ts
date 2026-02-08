@@ -25,11 +25,12 @@ describe("Profile tests", () => {
   const cloudHosting = ["gitlab", "bitbucket", "github", "vscode"]
   const testingTools = [
     "cypress",
+    "playwright",
     "testing-library",
     "tricentis-qtest",
     "browserstack",
   ]
-  const terminalTools = ["git", "webpack", "yaml", "vim"]
+  const terminalTools = ["webpack", "vim"]
   const webDevTools = [
     "javascript",
     "typescript",
@@ -104,19 +105,21 @@ describe("Profile tests", () => {
     })
 
     it(`should have profile image in home section and bullet points in about me section, ${size}`, () => {
+      const getH2 =
+        size === "iphone-6" ? "Senior SDET" : "Senior SDET & Frontend Developer"
       cy.viewport(size)
 
       cy.findByTestId("home").within(() => {
         cy.findByRole("heading", { level: 1, name: "Kim Bell" })
         cy.findByRole("heading", {
           level: 2,
-          name: "Software Engineer",
+          name: getH2,
         })
         cy.get("img").should("have.attr", "src", "/paths.IMG/profile2.jpg")
       })
 
       cy.findByTestId("about").within(() => {
-        cy.findByRole("heading", { level: 2, name: "About Me" })
+        cy.findByRole("heading", { level: 2, name: "About" })
         // Both accordions default to closed (collapsed) state
         cy.get(".accordion-item").should("have.length", 2).as("accordions")
         cy.get("@accordions")
@@ -140,7 +143,7 @@ describe("Profile tests", () => {
       })
     })
 
-    it(`should have tech icons and tooltips in skills section, ${size}`, () => {
+    it(`should have tech icons and text on hover in skills section, ${size}`, () => {
       cy.viewport(size)
 
       cy.findByTestId("skills").within(() => {

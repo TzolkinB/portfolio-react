@@ -227,10 +227,6 @@ footer {
     justify-content: center;
   }
 
-  #home .row {
-    align-items: center;
-  }
-
   #home img {
     width: 275px;
     height: 275px;
@@ -243,6 +239,10 @@ footer {
   #about,
   #skills {
     padding: 4rem 20rem;
+  }
+
+  #home .name {
+    font-size: 5rem;
   }
 
   .skills-list {

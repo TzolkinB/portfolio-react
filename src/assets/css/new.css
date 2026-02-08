@@ -88,8 +88,25 @@ a:hover {
   margin-top: 4.3rem;
 }
 
-#home {
-  padding-bottom: 1.5rem;
+#about,
+#skills {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+#about a {
+  color: #bad0e3;
+}
+
+#about .accordion a {
+  color: #293d59;
+  text-decoration: underline;
+}
+
+#about a:hover {
+  text-decoration: none;
+  color: #bad0e3 !important;
+  background-color: #243f6a !important;
 }
 
 #home .name,
@@ -113,60 +130,17 @@ a:hover {
   mask-composite: exclude; /*5*/
 }
 
-#about {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
-#about a {
-  color: #bad0e3;
-}
-
-#about .accordion a {
-  color: #293d59;
-  text-decoration: underline;
-}
-
-#about a:hover {
-  text-decoration: none;
-  color: #bad0e3 !important;
-  background-color: #243f6a !important;
-}
-
-#projects {
-  margin-top: -4rem;
-}
-
-#skills {
-  margin-top: -4rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-bottom: 4.5rem;
-}
-
 #skills img {
   padding: 0 5px 0 5px;
 }
 
 .skills-list {
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  row-gap: 0.75rem; */
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 }
 
 .skill-item {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 100px;
-  transition: all 0.5s; */
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
@@ -179,10 +153,6 @@ a:hover {
 }
 
 .skill-item:hover {
-  /* background: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-3px);
-  color: #0d1a2e; */
   background: rgba(0, 255, 136, 0.05);
   border-color: rgba(0, 255, 136, 0.3);
   transform: translateY(-5px);
@@ -273,16 +243,6 @@ footer {
   #about,
   #skills {
     padding: 4rem 20rem;
-  }
-
-  #projects {
-  }
-
-  #home {
-    padding-bottom: 4rem;
-    /* justify-content: center; */
-    /* padding-left: 20rem; */
-    /* padding-right: 20rem; */
   }
 
   .skills-list {

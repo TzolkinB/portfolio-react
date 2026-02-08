@@ -12,21 +12,37 @@ import {
 type CardProps = {
   title: string
   subtitle: string
-  text: string
+  description: string
   url: string
   urlText: string
+  badgeText: string[]
   url2?: string
   url2Text?: string
 }
 
 // eslint-disable-next-line react/function-component-definition
 const CardContainer = (props: CardProps) => {
-  const { title, subtitle, text, url, urlText, url2, url2Text } = props
+  const {
+    title,
+    subtitle,
+    description,
+    url,
+    urlText,
+    url2,
+    url2Text,
+    badgeText,
+  } = props
 
   const multipleUrls = (
     <MDBBtn href={url2} target="_blank" className="ms-3">
       {url2Text}
     </MDBBtn>
+  )
+
+  const badge = (text: string) => (
+    <MDBBadge className="text-dark me-2" color="light" light>
+      {text}
+    </MDBBadge>
   )
 
   return (
@@ -36,15 +52,11 @@ const CardContainer = (props: CardProps) => {
           {title}
         </MDBCardTitle>
         <MDBCardSubTitle tag="small">{subtitle}</MDBCardSubTitle>
-        <MDBCardText className="pt-3 fw-light">{text}</MDBCardText>
+        <MDBCardText className="pt-3 fw-light">{description}</MDBCardText>
         <MDBTypography note noteColor="info">
           <strong>Comprehensive resource</strong> for team onboarding
         </MDBTypography>
-        <div className="mb-3">
-          <MDBBadge className="text-dark" color="light" light>
-            Light
-          </MDBBadge>
-        </div>
+        <div className="mb-3">{badgeText.map((text) => badge(text))}</div>
         <MDBBtn href={url} target="_blank">
           {urlText}
         </MDBBtn>

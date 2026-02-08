@@ -3,6 +3,7 @@ import { MDBContainer } from "mdb-react-ui-kit"
 
 import TestingLib from "IMG/octopus.png"
 import StyledComp from "IMG/styled-components.png"
+import { capitalizeFirstLetter } from "./components/utils"
 
 export const cloudHosting = ["gitlab", "bitbucket", "github", "vscode"]
 export const testingTools = [
@@ -76,14 +77,6 @@ const mapImages = {
   ),
 }
 
-const capitalizeFirstLetter = (string: string) => {
-  if (!string) {
-    // Handle null, undefined, or empty strings
-    return string
-  }
-  return `${string[0].toUpperCase()}${string.slice(1)}`
-}
-
 export const getImage = (tool: string) => {
   if (mapSrc[tool as keyof typeof mapSrc]) {
     return (
@@ -95,7 +88,6 @@ export const getImage = (tool: string) => {
           width={60}
         />
         <p className="skill-name">{capitalizeFirstLetter(tool)}</p>
-        {/* </div> */}
       </MDBContainer>
     )
   }
@@ -103,7 +95,6 @@ export const getImage = (tool: string) => {
     <MDBContainer className="skill-item square rounded-8 py-3">
       {mapImages[tool as keyof typeof mapImages]}
       <p className="skill-name">{capitalizeFirstLetter(tool)}</p>
-      {/* </div> */}
     </MDBContainer>
   )
 }

@@ -1,5 +1,6 @@
 export interface Skill {
   name: string
+  years: string
   isCore: boolean
   imageSrc?: string
   customImage?: JSX.Element
@@ -23,7 +24,8 @@ export interface Project {
   url2?: string
   url2Text?: string
   badgeText: string[]
-  impactMetric?: string
+  impactMetricBold?: string
+  impactMetricStandard?: string
 }
 
 export interface SectionProps {

@@ -13,10 +13,10 @@ function Projects({ id }: SectionProps): JSX.Element {
       <hr />
       <div className="projects-list">
         {projects.map((project) => (
-          <>
+          <div key={project.title}>
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             <Card {...project} />
-          </>
+          </div>
         ))}
       </div>
     </div>

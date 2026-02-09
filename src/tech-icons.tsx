@@ -57,20 +57,33 @@ export const skillCategories: SkillCategories = {
   "Test Automation & QA": {
     icon: "🧪",
     skills: [
-      { name: "cypress", isCore: true, imageSrc: iconSources.cypress },
-      { name: "playwright", isCore: true, imageSrc: iconSources.playwright },
+      {
+        name: "cypress",
+        years: "2+",
+        isCore: true,
+        imageSrc: iconSources.cypress,
+      },
+      {
+        name: "playwright",
+        years: "1+",
+        isCore: true,
+        imageSrc: iconSources.playwright,
+      },
       {
         name: "testing-library",
+        years: "2+",
         isCore: true,
         customImage: customImages["testing-library"],
       },
       {
         name: "tricentis-qtest",
+        years: "3+",
         isCore: false,
         imageSrc: iconSources["tricentis-qtest"],
       },
       {
         name: "browserstack",
+        years: "2+",
         isCore: false,
         imageSrc: iconSources.browserstack,
       },
@@ -79,14 +92,25 @@ export const skillCategories: SkillCategories = {
   "Frontend Development": {
     icon: "🎨",
     skills: [
-      { name: "react", isCore: true, imageSrc: iconSources.react },
-      { name: "typescript", isCore: true, imageSrc: iconSources.typescript },
-      { name: "javascript", isCore: true, imageSrc: iconSources.javascript },
-      { name: "ember", isCore: false, imageSrc: iconSources.ember },
-      { name: "html", isCore: false, imageSrc: iconSources.html },
-      { name: "css", isCore: false, imageSrc: iconSources.css },
+      {
+        name: "typescript",
+        years: "4+",
+        isCore: true,
+        imageSrc: iconSources.typescript,
+      },
+      {
+        name: "javascript",
+        years: "8+",
+        isCore: true,
+        imageSrc: iconSources.javascript,
+      },
+      { name: "react", years: "6+", isCore: true, imageSrc: iconSources.react },
+      { name: "ember", years: "3", isCore: false, imageSrc: iconSources.ember },
+      { name: "html", years: "8+", isCore: false, imageSrc: iconSources.html },
+      { name: "css", years: "8+", isCore: false, imageSrc: iconSources.css },
       {
         name: "styled-components",
+        years: "3+",
         isCore: false,
         customImage: customImages["styled-components"],
       },
@@ -95,12 +119,37 @@ export const skillCategories: SkillCategories = {
   "Development Tools & CI/CD": {
     icon: "🔧",
     skills: [
-      { name: "gitlab", isCore: false, imageSrc: iconSources.gitlab },
-      { name: "github", isCore: false, imageSrc: iconSources.github },
-      { name: "bitbucket", isCore: false, imageSrc: iconSources.bitbucket },
-      { name: "vscode", isCore: false, imageSrc: iconSources.vscode },
-      { name: "webpack", isCore: false, imageSrc: iconSources.webpack },
-      { name: "vim", isCore: false, imageSrc: iconSources.vim },
+      {
+        name: "github",
+        years: "8+",
+        isCore: false,
+        imageSrc: iconSources.github,
+      },
+      {
+        name: "gitlab",
+        years: "3+",
+        isCore: false,
+        imageSrc: iconSources.gitlab,
+      },
+      {
+        name: "bitbucket",
+        years: "3+",
+        isCore: false,
+        imageSrc: iconSources.bitbucket,
+      },
+      {
+        name: "vscode",
+        years: "6+",
+        isCore: false,
+        imageSrc: iconSources.vscode,
+      },
+      {
+        name: "webpack",
+        years: "4",
+        isCore: false,
+        imageSrc: iconSources.webpack,
+      },
+      { name: "vim", years: "3+", isCore: false, imageSrc: iconSources.vim },
     ],
   },
 }
@@ -114,16 +163,18 @@ export const skillCategories: SkillCategories = {
  */
 export const getImage = (
   name: string,
+  years: string,
   imageSrc?: string,
   customImage?: JSX.Element,
   isCore: boolean = false,
 ): JSX.Element => {
   const displayName = capitalizeFirstLetter(name)
-  const size = isCore ? 70 : 60
+  const size = isCore ? 50 : 50
 
   return (
     <MDBContainer
-      className={`skill-item square rounded-8 py-3 ${isCore ? "skill-item-core" : ""}`}
+      key={name}
+      className={`skill-item rounded-8 py-3 ${isCore ? "skill-item-core" : ""}`}
     >
       {imageSrc ? (
         <img
@@ -136,7 +187,8 @@ export const getImage = (
       ) : (
         customImage
       )}
-      <p className="skill-name">{displayName}</p>
+      <p className="skill-name mb-1">{displayName}</p>
+      <p className="skill-years mb-0">{years} years</p>
     </MDBContainer>
   )
 }

@@ -1,15 +1,8 @@
 import { MDBTypography } from "mdb-react-ui-kit"
-import {
-  cloudHosting,
-  testingTools,
-  terminalTools,
-  webDevTools,
-  getImage,
-} from "../tech-icons"
+import { skillCategories, getImage } from "../tech-icons"
+import type { SectionProps } from "../types"
 
-function Skills(props: { id: string }) {
-  const { id } = props
-
+function Skills({ id }: SectionProps) {
   return (
     <div id={id} data-testid={id} className="pt-5">
       <hr />
@@ -17,20 +10,26 @@ function Skills(props: { id: string }) {
         Skills
       </MDBTypography>
       <hr />
-      <div className="skills-list">
-        {testingTools.map((tool) => {
-          return getImage(tool)
-        })}
-        {webDevTools.map((tool) => {
-          return getImage(tool)
-        })}
-        {terminalTools.map((tool) => {
-          return getImage(tool)
-        })}
-        {cloudHosting.map((cloud) => {
-          return getImage(cloud)
-        })}
-      </div>
+      {Object.entries(skillCategories).map(([categoryName, categoryData]) => (
+        <div key={categoryName} className="skill-category mb-5">
+          {/* Category Header */}
+          <div className="category-header">
+            <div className="category-icon">{categoryData.icon}</div>
+            <h3 className="category-name">{categoryName}</h3>
+          </div>
+          {/* Skills Grid */}
+          <div className="skills-list">
+            {categoryData.skills.map((skill) =>
+              getImage(
+                skill.name,
+                skill.imageSrc,
+                skill.customImage,
+                skill.isCore,
+              ),
+            )}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

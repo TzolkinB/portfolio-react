@@ -11,39 +11,40 @@ import About from "./About"
 import Skills from "./Skills"
 import Projects from "./Projects"
 import { badge, experienceStats } from "./utils"
+import type { BadgeConfig } from "../types"
 
-// Hidden Dev Tools console message
-const msg =
-  "%c👋 Thank you for visiting my site! If you like my credentials and are looking for an SDET with expertise in test automation, DM me. Let's discuss!"
-const styles = [
-  "font-size: 12px",
-  "font-family: monospace",
-  "background: black",
-  "display: inline-block",
-  "color: #5DC1BE",
-  "padding: 8px 15px",
-  "border: 3px solid;",
-].join(";")
+// Developer console message
+const DEV_MESSAGE = {
+  text: "👋 Thank you for visiting my site! If you like my credentials and are looking for an SDET with expertise in test automation, DM me. Let's discuss!",
+  styles: [
+    "font-size: 12px",
+    "font-family: monospace",
+    "background: black",
+    "display: inline-block",
+    "color: #5DC1BE",
+    "padding: 8px 15px",
+    "border: 3px solid;",
+  ].join(";"),
+} as const
 
-const badgeContent = [
+const badgeContent: readonly BadgeConfig[] = [
   { icon: "fas fa-check", text: "Playright" },
   { icon: "fas fa-check", text: "Cypress" },
   { icon: "fab fa-react", text: "React" },
-]
+] as const
 
-// eslint-disable-next-line react/function-component-definition
-const Home = () => {
+const experienceStatData = [
+  { years: 8, text: "Years Experience" },
+  { years: 2, text: "Years SDET" },
+] as const
+
+function Home() {
   // eslint-disable-next-line no-console
-  console.log(msg, styles)
+  console.log(DEV_MESSAGE.text, DEV_MESSAGE.styles)
   return (
     <MDBContainer className="app gx-0">
-      <div
-        id="home"
-        data-testid="home"
-        className="d-md-flex d-sm-none px-3 py-4"
-      >
+      <div id="home" data-testid="home" className="d-flex px-3 py-4">
         <MDBRow>
-          {/* Text Content Column */}
           <MDBCol size="8">
             <div className="mb-2">
               <MDBTypography tag="h1" className="display-2 mb-0 name">
@@ -68,15 +69,26 @@ const Home = () => {
             </div>
 
             {/* Tech Skills Badges Row */}
-            <div className="d-flex flex-md-wrap gap-2 pt-2">
-              {badgeContent.map((item) => badge(item.icon, item.text))}
+            <div
+              className="d-flex flex-md-wrap gap-2 pt-2"
+              role="list"
+              aria-label="Technical skills badges"
+            >
+              {badgeContent.map((item) => (
+                <div key={item.text} role="listitem">
+                  {badge(item)}
+                </div>
+              ))}
             </div>
 
             {/* Experience Stats Row */}
             {/* Hide on Mobile */}
-            <div style={{ padding: "1rem" }} className="d-flex gap-3">
-              {experienceStats(8, "Years Experience")}
-              {experienceStats(2, "Years SDET")}
+            <div className="d-flex gap-3 p-3">
+              {experienceStatData.map((stat) => (
+                <div key={stat.text}>
+                  {experienceStats(stat.years, stat.text)}
+                </div>
+              ))}
             </div>
 
             <MDBBtn
@@ -103,9 +115,14 @@ const Home = () => {
           {/* Profile Image Column */}
           <MDBCol
             size="4"
-            className="d-flex justify-content-md-center justify-content-lg-end"
+            className="d-flex justify-content-md-center justify-content-lg-end mt-4 mt-md-0"
           >
-            <img src={Me} alt="Kim Bell" className="rounded-circle" />
+            <img
+              src={Me}
+              alt="Kim Bell - Senior SDET and Frontend Developer"
+              className="rounded-circle profile-image"
+              loading="eager"
+            />
           </MDBCol>
         </MDBRow>
       </div>

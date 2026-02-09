@@ -7,8 +7,8 @@ body {
   background-color: #1a2a41;
   color: #e0e3de;
   --hr-line-offset: 25%;
-  --hr-left-color: #00d4ff;
-  --hr-right-color: #ffab00;
+  --gradient-left: #00d4ff;
+  --gradient-right: #ffab00;
 }
 
 :root hr {
@@ -16,8 +16,8 @@ body {
   border-image-source: linear-gradient(
     to right,
     transparent,
-    var(--hr-left-color) calc(50% - var(--hr-line-offset)),
-    var(--hr-right-color) calc(50% + var(--hr-line-offset)),
+    var(--gradient-left) calc(50% - var(--hr-line-offset)),
+    var(--gradient-right) calc(50% + var(--hr-line-offset)),
     transparent
   );
   border-top: 10px solid;
@@ -30,7 +30,11 @@ a:hover {
 }
 
 .text-gradient {
-  background-image: linear-gradient(135deg, #00d4ff, #ffab00);
+  background-image: linear-gradient(
+    135deg,
+    var(--gradient-left),
+    var(--gradient-right)
+  );
   color: transparent;
   background-clip: text;
 }
@@ -62,7 +66,7 @@ a:hover {
   filter: invert(58%) sepia(48%) saturate(1039%) hue-rotate(131deg)
     brightness(108%) contrast(150%);
 }
-/* -------- */
+/* ----- Accordion ----- */
 
 .accordion {
   width: -webkit-fill-available;
@@ -83,6 +87,8 @@ a:hover {
   color: #293d59;
   background-color: #e0e3de;
 }
+
+/* ----- Main App Styles ----- */
 
 .app {
   margin-top: 4.3rem;
@@ -121,13 +127,76 @@ a:hover {
     "YTFI" 560;
 }
 
-#home img {
+#home .profile-image {
   width: 100px;
   height: 100px;
-  border: 4px solid transparent; /*2*/
-  /* background: linear-gradient(45deg, red, blue) border-box; 3 */
-  background: linear-gradient(135deg, #00d4ff, #ffab00) border-box;
-  mask-composite: exclude; /*5*/
+  border: 4px solid transparent;
+  background: linear-gradient(
+      135deg,
+      var(--gradient-left),
+      var(--gradient-right)
+    )
+    border-box;
+  mask-composite: exclude;
+}
+
+/* == new-improved.css == */
+
+.skill-badge {
+  padding: 6px 10px;
+}
+
+.skill-badge:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(#5dc1be);
+}
+
+/* Social links container (moved from inline styles) */
+.social-links-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.social-btn {
+  margin: 0.25rem;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== SKILLS SECTION ===== */
+.skill-category {
+  margin-bottom: 3rem;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.category-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--color-primary), #6ed1ce);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+.category-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  margin: 0;
 }
 
 #skills img {
@@ -165,9 +234,26 @@ a:hover {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #00d4ff, #00ff88);
+  background: linear-gradient(
+    90deg,
+    var(--gradient-left),
+    var(--gradient-right)
+  );
   transform: scaleX(0);
   transition: transform 0.3s;
+}
+
+.skill-item:hover::before {
+  transform: scaleX(1);
+}
+
+/* Core skills are slightly larger */
+.skill-item-core {
+  transform: scale(1.1);
+}
+
+.skill-item-core:hover {
+  transform: scale(1.1) translateY(-5px);
 }
 
 .skill-item .skill-name {
@@ -227,7 +313,7 @@ footer {
     justify-content: center;
   }
 
-  #home img {
+  #home .profile-image {
     width: 275px;
     height: 275px;
   }
@@ -247,5 +333,23 @@ footer {
 
   .skills-list {
     row-gap: 0.5rem;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+.skill-item:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

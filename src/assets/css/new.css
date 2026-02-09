@@ -177,7 +177,6 @@ a:hover {
 .category-header {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
 }
@@ -185,7 +184,11 @@ a:hover {
 .category-icon {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, var(--color-primary), #6ed1ce);
+  background: linear-gradient(
+    135deg,
+    var(--gradient-left),
+    var(--gradient-right)
+  );
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -209,12 +212,13 @@ a:hover {
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 }
 
-.skill-item {
+.skill-item,
+.card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 24px;
-  text-align: center;
+  /* text-align: center; */
   transition: all 0.3s;
   cursor: pointer;
   position: relative;
@@ -265,19 +269,18 @@ a:hover {
   font-size: small;
 }
 
-.card {
-  background-color: #e0e3de !important;
-  color: #0d1a2e !important;
-  border: 5px solid transparent;
-  transition:
-    box-shadow 0.5s,
-    border-color 0.5s;
+/* ===== PROJECTS SECTION ===== */
+
+.projects-list {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
 
 .card:hover {
-  border-color: #5dc1be;
-  box-shadow: 0 6px 16px rgba(41, 61, 89, 0.8);
-  transform: translateY(-4px);
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 212, 255, 0.15);
 }
 
 .card-subtitle {
@@ -287,6 +290,23 @@ a:hover {
 .card a {
   background-color: #0d1a2e !important;
   color: #5dc1be !important;
+}
+
+.project-badge {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: var(--gradient-left);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.note {
+  background: rgba(255, 171, 0, 0.05);
+  border-left: 3px solid var(--gradient-right);
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 4px;
 }
 
 /* ----- Footer ----- */

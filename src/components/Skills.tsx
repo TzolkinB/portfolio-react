@@ -18,7 +18,7 @@ function Skills({ id }: SectionProps) {
             <h3 className="category-name">{categoryName}</h3>
           </div>
           {/* Skills Grid */}
-          <div className="skills-list">
+          <div className="skills-list text-center">
             {categoryData.skills.map((skill) =>
               getImage(
                 skill.name,

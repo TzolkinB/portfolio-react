@@ -11,7 +11,7 @@ import {
 import type { Project } from "../../types"
 
 const badge = (text: string) => (
-  <MDBBadge className="text-dark me-2" color="light" light>
+  <MDBBadge className="project-badge me-2" light>
     {text}
   </MDBBadge>
 )
@@ -35,7 +35,7 @@ const CardContainer = ({
         </MDBCardTitle>
         <MDBCardSubTitle tag="small">{subtitle}</MDBCardSubTitle>
         <MDBCardText className="pt-3 fw-light">{description}</MDBCardText>
-        <MDBTypography note noteColor="info">
+        <MDBTypography note>
           <strong>{impactMetric}</strong>
           {/* <strong>Comprehensive resource</strong> for team onboarding */}
         </MDBTypography>

@@ -77,7 +77,7 @@ export const skillCategories: SkillCategories = {
     ],
   },
   "Frontend Development": {
-    icon: "⚛️",
+    icon: "🎨",
     skills: [
       { name: "react", isCore: true, imageSrc: iconSources.react },
       { name: "typescript", isCore: true, imageSrc: iconSources.typescript },

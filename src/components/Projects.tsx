@@ -1,4 +1,4 @@
-import { MDBTypography, MDBRow, MDBCol } from "mdb-react-ui-kit"
+import { MDBTypography } from "mdb-react-ui-kit"
 import Card from "./shared/CardContainer"
 import projects from "../projectsData"
 import type { SectionProps } from "../types"
@@ -11,17 +11,14 @@ function Projects({ id }: SectionProps): JSX.Element {
         Projects
       </MDBTypography>
       <hr />
-      <MDBRow
-        className="row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 justify-content-lg-center
-      "
-      >
+      <div className="projects-list">
         {projects.map((project) => (
-          <MDBCol key={project.title}>
+          <>
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             <Card {...project} />
-          </MDBCol>
+          </>
         ))}
-      </MDBRow>
+      </div>
     </div>
   )
 }

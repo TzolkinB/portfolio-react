@@ -3,63 +3,39 @@ import { MDBContainer } from "mdb-react-ui-kit"
 
 import TestingLib from "IMG/octopus.png"
 import StyledComp from "IMG/styled-components.png"
+import { capitalizeFirstLetter } from "./components/utils"
+import type { SkillCategories } from "./types"
 
-export const cloudHosting = ["gitlab", "bitbucket", "github", "vscode"]
-export const testingTools = [
-  "cypress",
-  "playwright",
-  "testing-library",
-  "tricentis-qtest",
-  "browserstack",
-]
-export const terminalTools = ["webpack", "vim"]
-export const webDevTools = [
-  "javascript",
-  "typescript",
-  "react",
-  "ember",
-  "html",
-  "css",
-  "styled-components",
-]
+// Base URL for devicon CDN - DRY principle
+const DEVICON_BASE_URL =
+  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons"
 
-const mapSrc = {
-  gitlab:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg",
-  bitbucket:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bitbucket/bitbucket-original.svg",
-  github:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
-  browserstack:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/browserstack/browserstack-original.svg",
-  playwright:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg",
-  vim: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vim/vim-original.svg",
-  javascript:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
-  typescript:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
-  vscode:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
-  ember:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ember/ember-original.svg",
-  html: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg",
-  css: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg",
-  cypress:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg",
-  react:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-  webpack:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original.svg",
-  "tricentis-qtest":
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/qtest/qtest-original.svg",
+// Image source mapping
+const iconSources: Record<string, string> = {
+  gitlab: `${DEVICON_BASE_URL}/gitlab/gitlab-original.svg`,
+  bitbucket: `${DEVICON_BASE_URL}/bitbucket/bitbucket-original.svg`,
+  github: `${DEVICON_BASE_URL}/github/github-original.svg`,
+  browserstack: `${DEVICON_BASE_URL}/browserstack/browserstack-original.svg`,
+  playwright: `${DEVICON_BASE_URL}/playwright/playwright-original.svg`,
+  vim: `${DEVICON_BASE_URL}/vim/vim-original.svg`,
+  javascript: `${DEVICON_BASE_URL}/javascript/javascript-original.svg`,
+  typescript: `${DEVICON_BASE_URL}/typescript/typescript-original.svg`,
+  vscode: `${DEVICON_BASE_URL}/vscode/vscode-original.svg`,
+  ember: `${DEVICON_BASE_URL}/ember/ember-original.svg`,
+  html: `${DEVICON_BASE_URL}/html5/html5-original-wordmark.svg`,
+  css: `${DEVICON_BASE_URL}/css3/css3-original-wordmark.svg`,
+  cypress: `${DEVICON_BASE_URL}/cypressio/cypressio-original.svg`,
+  react: `${DEVICON_BASE_URL}/react/react-original.svg`,
+  webpack: `${DEVICON_BASE_URL}/webpack/webpack-original.svg`,
+  "tricentis-qtest": `${DEVICON_BASE_URL}/qtest/qtest-original.svg`,
 }
 
-const mapImages = {
+// Custom images for tools without devicon support
+const customImages: Record<string, JSX.Element> = {
   "styled-components": (
     <img
       src={StyledComp}
-      key="styled"
+      // key="styled"
       alt="styled-components"
       width={60}
       height={60}
@@ -68,7 +44,7 @@ const mapImages = {
   "testing-library": (
     <img
       src={TestingLib}
-      key="testing"
+      // key="testing"
       alt="testing-library"
       width={60}
       height={60}
@@ -76,34 +52,91 @@ const mapImages = {
   ),
 }
 
-const capitalizeFirstLetter = (string: string) => {
-  if (!string) {
-    // Handle null, undefined, or empty strings
-    return string
-  }
-  return `${string[0].toUpperCase()}${string.slice(1)}`
+// Categorized skills with core skills marked
+export const skillCategories: SkillCategories = {
+  "Test Automation & QA": {
+    icon: "🧪",
+    skills: [
+      { name: "cypress", isCore: true, imageSrc: iconSources.cypress },
+      { name: "playwright", isCore: true, imageSrc: iconSources.playwright },
+      {
+        name: "testing-library",
+        isCore: true,
+        customImage: customImages["testing-library"],
+      },
+      {
+        name: "tricentis-qtest",
+        isCore: false,
+        imageSrc: iconSources["tricentis-qtest"],
+      },
+      {
+        name: "browserstack",
+        isCore: false,
+        imageSrc: iconSources.browserstack,
+      },
+    ],
+  },
+  "Frontend Development": {
+    icon: "⚛️",
+    skills: [
+      { name: "react", isCore: true, imageSrc: iconSources.react },
+      { name: "typescript", isCore: true, imageSrc: iconSources.typescript },
+      { name: "javascript", isCore: true, imageSrc: iconSources.javascript },
+      { name: "ember", isCore: false, imageSrc: iconSources.ember },
+      { name: "html", isCore: false, imageSrc: iconSources.html },
+      { name: "css", isCore: false, imageSrc: iconSources.css },
+      {
+        name: "styled-components",
+        isCore: false,
+        customImage: customImages["styled-components"],
+      },
+    ],
+  },
+  "Development Tools & CI/CD": {
+    icon: "🔧",
+    skills: [
+      { name: "gitlab", isCore: false, imageSrc: iconSources.gitlab },
+      { name: "github", isCore: false, imageSrc: iconSources.github },
+      { name: "bitbucket", isCore: false, imageSrc: iconSources.bitbucket },
+      { name: "vscode", isCore: false, imageSrc: iconSources.vscode },
+      { name: "webpack", isCore: false, imageSrc: iconSources.webpack },
+      { name: "vim", isCore: false, imageSrc: iconSources.vim },
+    ],
+  },
 }
 
-export const getImage = (tool: string) => {
-  if (mapSrc[tool as keyof typeof mapSrc]) {
-    return (
-      <MDBContainer className="skill-item square rounded-8 py-3">
-        <img
-          src={mapSrc[tool as keyof typeof mapSrc]}
-          alt={tool}
-          height={60}
-          width={60}
-        />
-        <p className="skill-name">{capitalizeFirstLetter(tool)}</p>
-        {/* </div> */}
-      </MDBContainer>
-    )
-  }
+/**
+ * Renders a skill icon with tooltip
+ * @param name - Skill name
+ * @param imageSrc - URL to skill icon
+ * @param customImage - Custom JSX image element (if no imageSrc)
+ * @param isCore - Whether this is a core skill (renders larger)
+ */
+export const getImage = (
+  name: string,
+  imageSrc?: string,
+  customImage?: JSX.Element,
+  isCore: boolean = false,
+): JSX.Element => {
+  const displayName = capitalizeFirstLetter(name)
+  const size = isCore ? 70 : 60
+
   return (
-    <MDBContainer className="skill-item square rounded-8 py-3">
-      {mapImages[tool as keyof typeof mapImages]}
-      <p className="skill-name">{capitalizeFirstLetter(tool)}</p>
-      {/* </div> */}
+    <MDBContainer
+      className={`skill-item square rounded-8 py-3 ${isCore ? "skill-item-core" : ""}`}
+    >
+      {imageSrc ? (
+        <img
+          src={imageSrc}
+          alt={name}
+          height={size}
+          width={size}
+          loading="lazy"
+        />
+      ) : (
+        customImage
+      )}
+      <p className="skill-name">{displayName}</p>
     </MDBContainer>
   )
 }

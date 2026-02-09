@@ -1,41 +1,8 @@
 import { MDBTypography } from "mdb-react-ui-kit"
-import {
-  cloudHosting,
-  testingTools,
-  terminalTools,
-  webDevTools,
-  getImage,
-} from "../tech-icons"
+import { skillCategories, getImage } from "../tech-icons"
+import type { SectionProps } from "../types"
 
-function Skills(props: { id: string }) {
-  const { id } = props
-
-  // eslint-disable-next-line prettier/prettier, @typescript-eslint/no-unused-vars
-  const mobileCol1 = [
-    "Cypress",
-    "Testing Library",
-    "Javascrpt",
-    "Typescrpt",
-    "React",
-    "Git",
-    "VIM",
-    "Gitlab",
-    "Bitbucket",
-    "Github",
-  ]
-  // eslint-disable-next-line prettier/prettier, @typescript-eslint/no-unused-vars
-  const mobileCol2 = [
-    "Webpack",
-    "qtest",
-    "Browsertack",
-    "VSCode",
-    "YAML",
-    "Ember",
-    "HTML",
-    "CSS",
-    "Styled Components",
-  ]
-
+function Skills({ id }: SectionProps) {
   return (
     <div id={id} data-testid={id} className="pt-5">
       <hr />
@@ -43,36 +10,26 @@ function Skills(props: { id: string }) {
         Skills
       </MDBTypography>
       <hr />
-      <div className="skills-list">
-        {testingTools.map((tool) => {
-          return getImage(tool)
-        })}
-        {webDevTools.map((tool) => {
-          return getImage(tool)
-        })}
-        {terminalTools.map((tool) => {
-          return getImage(tool)
-        })}
-        {cloudHosting.map((cloud) => {
-          return getImage(cloud)
-        })}
-      </div>
-      {/* <MDBRow center className="skills-mobile d-flex d-sm-none">
-        <MDBCol size={6}>
-          <ul>
-            {mobileCol1.map((item) => {
-              return <li key={item}>{item}</li>
-            })}
-          </ul>
-        </MDBCol>
-        <MDBCol size={6}>
-          <ul>
-            {mobileCol2.map((item) => {
-              return <li key={item}>{item}</li>
-            })}
-          </ul>
-        </MDBCol>
-      </MDBRow> */}
+      {Object.entries(skillCategories).map(([categoryName, categoryData]) => (
+        <div key={categoryName} className="skill-category mb-5">
+          {/* Category Header */}
+          <div className="category-header">
+            <div className="category-icon">{categoryData.icon}</div>
+            <h3 className="category-name">{categoryName}</h3>
+          </div>
+          {/* Skills Grid */}
+          <div className="skills-list">
+            {categoryData.skills.map((skill) =>
+              getImage(
+                skill.name,
+                skill.imageSrc,
+                skill.customImage,
+                skill.isCore,
+              ),
+            )}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

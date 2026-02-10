@@ -8,12 +8,8 @@ import {
   MDBNavbarLink,
   MDBIcon,
   MDBCollapse,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
 } from "mdb-react-ui-kit"
-import devResume from "IMG/Bell_Kim-DevResume2.pdf"
+// import devResume from "IMG/Bell_Kim-DevResume2.pdf"
 import qaResume from "IMG/Bell_Kimberly-Resume.pdf"
 import Whiskers from "IMG/W-white.png"
 
@@ -27,7 +23,7 @@ const AppBar = () => {
         <MDBContainer fluid>
           <MDBNavbarBrand href="/" className="pl-2">
             <img src={Whiskers} alt="Cat whiskers" />
-            <span className="pl-3 fs-4">kimbell.me</span>
+            <span className="pl-3 fs-4 text-gradient">kimbell.me</span>
           </MDBNavbarBrand>
           <MDBNavbarToggler
             type="button"
@@ -44,7 +40,15 @@ const AppBar = () => {
               <MDBNavbarLink href="#projects">Projects</MDBNavbarLink>
 
               {/* NOTE: MDB does not recognize "target" as prop of MDBDropdownItem */}
-              <div data-testid="resume-dropdown">
+              {/* only show qa resume */}
+              <MDBNavbarLink
+                href={qaResume}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Resume
+              </MDBNavbarLink>
+              {/* <div data-testid="resume-dropdown">
                 <MDBDropdown>
                   <MDBDropdownToggle tag="a" className="nav-link">
                     Resumes
@@ -58,7 +62,7 @@ const AppBar = () => {
                     </MDBDropdownItem>
                   </MDBDropdownMenu>
                 </MDBDropdown>
-              </div>
+              </div> */}
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>

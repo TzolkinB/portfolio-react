@@ -9,15 +9,32 @@ import {
   MDBAccordion,
   MDBAccordionItem,
 } from "mdb-react-ui-kit"
+import { SectionProps } from "types"
+
+// Tech link component for DRY principle
+function TechLink({
+  href,
+  children,
+}: {
+  href: string
+  children: React.ReactNode
+}) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  )
+}
 
 // eslint-disable-next-line react/function-component-definition
-const About = (props: { id: string }) => {
-  const { id } = props
+const About = ({ id }: SectionProps) => {
   // const [active, setActive] = useState<number | number[]>(1)
 
-  const qaAccordionTitle =
-    "QA Software Engineer in Test (SDET) in Web Test Automation"
-  const devAccordionTitle = "Frontend Developer in React"
+  const accordionTitles = {
+    qa: "QA Software Engineer in Test (SDET) in Web Test Automation",
+    dev: "Frontend Developer in React",
+  } as const
+
   const qaAccomplishments = [
     "Created a 'Best Practices and Standards Guide' for Ally Bank's implimentation of their framework and tools.",
     <>
@@ -33,8 +50,8 @@ const About = (props: { id: string }) => {
     </>,
     <>
       Managed the global internal <span className="fw-bold">NPM</span> package,
-      written in <span className="fw-bold">Javscript</span> and{" "}
-      <span className="fw-bold">Typescript</span>, that incorporated Cypress
+      written in <span className="fw-bold">JavaScript</span> and{" "}
+      <span className="fw-bold">TypeScript</span>, that incorporated Cypress
       configurations. This package resulted in streamlined operations across 10
       teams and at least one line of business.
     </>,
@@ -49,7 +66,7 @@ const About = (props: { id: string }) => {
       a needed change during Cypress version upgrade.
     </>,
     <>
-      Developed and implemented <span className="fw-bold">Javascript</span>{" "}
+      Developed and implemented <span className="fw-bold">JavaScript</span>{" "}
       custom commands to increase code efficiency.
     </>,
   ]
@@ -77,11 +94,13 @@ const About = (props: { id: string }) => {
   ]
 
   return (
-    <div id={id} data-testid={id} className="py-5 d-flex flex-column">
+    <div id={id} data-testid={id}>
       <div>
-        <MDBTypography tag="h2" className="pt-3 text-center">
-          About Me
+        <hr />
+        <MDBTypography tag="h2" className="py-2 text-center">
+          About
         </MDBTypography>
+        <hr />
       </div>
       <MDBTypography className="fw-light align-self-start">
         I bring 6+ years of experience in responsive frontend web development
@@ -90,47 +109,49 @@ const About = (props: { id: string }) => {
       <MDBTypography className="fw-light">
         From 2016 to 2021, I worked as a Frontend Developer in responsive web
         applications, focusing primarily on{" "}
-        <a href="https://react.dev/" target="_blank" rel="noreferrer">
+        <TechLink href="https://react.dev/">
           <span className="fw-bold">React</span>
-        </a>{" "}
+        </TechLink>
         ,{" "}
-        <a href="https://www.javascript.com/" target="_blank" rel="noreferrer">
-          <span className="fw-bold">Javascript</span>
-        </a>
+        <TechLink href="https://www.javascript.com/">
+          <span className="fw-bold">JavaScript</span>
+        </TechLink>
         , and{" "}
-        <a
-          href="https://www.typescriptlang.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span className="fw-bold">Typescript</span>
-        </a>
+        <TechLink href="https://www.typescriptlang.org/">
+          <span className="fw-bold">TypeScript</span>
+        </TechLink>
         .
       </MDBTypography>
+
       <MDBTypography className="fw-light">
         In 2022, I transitioned from a Software Engineer focused on Web UI
         development to an SDET position, focusing on automation testing. I
         utilized{" "}
-        <a href="https://www.cypress.io/" target="_blank" rel="noreferrer">
+        <TechLink href="https://www.cypress.io/">
           <span className="fw-bold">Cypress</span>
-        </a>{" "}
+        </TechLink>{" "}
         in conjunction with{" "}
-        <a href="https://testing-library.com/" target="_blank" rel="noreferrer">
+        <TechLink href="https://testing-library.com/">
           <span className="fw-bold">Testing-Library</span>
-        </a>{" "}
+        </TechLink>{" "}
         to create highly human-readable queries, enhancing both test readability
         and accessibility coverage.
       </MDBTypography>
 
-      {/* QA Accordion */}
+      {/* Accordions */}
       {/* <MDBAccordion active={active} onChange={(itemId) => setActive(itemId)}> */}
       <MDBAccordion>
         <MDBAccordionItem
           collapseId={1}
-          headerTitle={qaAccordionTitle}
-          data-testid={qaAccordionTitle}
+          headerTitle={accordionTitles.qa}
+          data-testid={accordionTitles.qa}
         >
-          <MDBTypography listUnStyled className="mb-0 px-3">
+          <MDBTypography
+            listUnStyled
+            className="mb-0 px-3"
+            tag="ul"
+            role="list"
+          >
             {qaAccomplishments.map((accomplishment, i) => {
               return (
                 // eslint-disable-next-line react/no-array-index-key
@@ -139,6 +160,7 @@ const About = (props: { id: string }) => {
                     icon="check-circle"
                     className="me-2 text-success"
                     data-testid="success-check"
+                    aria-hidden="true"
                   />
                   {accomplishment}
                 </li>
@@ -146,12 +168,18 @@ const About = (props: { id: string }) => {
             })}
           </MDBTypography>
         </MDBAccordionItem>
+
         <MDBAccordionItem
           collapseId={2}
-          headerTitle={devAccordionTitle}
-          data-testid={devAccordionTitle}
+          headerTitle={accordionTitles.dev}
+          data-testid={accordionTitles.dev}
         >
-          <MDBTypography listUnStyled className="mb-0 px-3">
+          <MDBTypography
+            listUnStyled
+            className="mb-0 px-3"
+            tag="ul"
+            role="list"
+          >
             {devAccomplishments.map((accomplishment, i) => {
               return (
                 // eslint-disable-next-line react/no-array-index-key
@@ -160,6 +188,7 @@ const About = (props: { id: string }) => {
                     icon="check-circle"
                     className="me-2 text-success"
                     data-testid="success-check"
+                    aria-hidden="true"
                   />
                   {accomplishment}
                 </li>

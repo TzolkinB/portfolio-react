@@ -16,20 +16,27 @@ export const anchorLinks = [
 
 /* Project Cards */
 // TODO: Abstract further into one array or too much?
-export const buttonsCard1 = [
+export const buttonsCard3 = [
   {
     name: "Notion Site",
     href: "https://kimbellcypress.notion.site/Best-Practices-bb7e5a025c834b7397d531ad76bee0b4",
   },
 ]
 
+export const buttonsCard1 = [
+  {
+    name: "Github Repo",
+    href: "https://github.com/TzolkinB/playwright-test-collection",
+  },
+]
+
 export const buttonsCard2 = [
   {
     name: "Github Repo",
-    href: "https://github.com/TzolkinB/react-template",
+    href: "https://github.com/TzolkinB/cypress-test-collection",
   },
 ]
-export const buttonsCard3 = [
+export const buttonsCard4 = [
   {
     name: "Demo",
     href: "https://memory-game1234.firebaseapp.com/#/",

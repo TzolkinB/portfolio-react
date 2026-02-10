@@ -13,6 +13,7 @@ import {
   buttonsCard3,
   devAccordionTitle,
   qaAccordionTitle,
+  buttonsCard4,
 } from "./commonMethods"
 
 describe("Profile tests", () => {
@@ -22,17 +23,18 @@ describe("Profile tests", () => {
     cy.wait("@localhost")
   })
 
-  const cloudHosting = ["gitlab", "bitbucket", "github", "vscode"]
+  const cloudHosting = ["github", "gitlab", "bitbucket", "vscode"]
   const testingTools = [
     "cypress",
+    "playwright",
     "testing-library",
     "tricentis-qtest",
     "browserstack",
   ]
-  const terminalTools = ["git", "webpack", "yaml", "vim"]
+  const terminalTools = ["webpack", "vim"]
   const webDevTools = [
-    "javascript",
-    "typescript",
+    "typeScript",
+    "javaScript",
     "react",
     "ember",
     "html",
@@ -42,12 +44,12 @@ describe("Profile tests", () => {
   const allSkills = [
     ...testingTools,
     ...webDevTools,
-    ...terminalTools,
     ...cloudHosting,
+    ...terminalTools,
   ]
 
   sizes.forEach((size) => {
-    it(`should have whiskers img, 3 links, and a dropdown in the nav bar, ${size}`, () => {
+    it(`should have whiskers img, 4 links, in the nav bar, ${size}`, () => {
       cy.viewport(size)
 
       cy.get("nav")
@@ -60,7 +62,7 @@ describe("Profile tests", () => {
         cy.findByRole("button", { name: "Toggle navigation" }).click()
         cy.findByTestId("nav-links").as("navLinks")
       }
-      cy.get("@navLinks").findAllByRole("link").should("have.length", 3)
+      cy.get("@navLinks").findAllByRole("link").should("have.length", 4)
 
       anchorLinks.forEach((anchor) => {
         cy.get("@navLinks")
@@ -73,50 +75,61 @@ describe("Profile tests", () => {
         cy.url().should("contain", anchor.link)
       })
 
-      cy.findByTestId("resume-dropdown").within(() => {
-        cy.findByText("Resumes")
-          .should("have.attr", "aria-expanded", "false")
-          .as("resumeDropdown")
-        cy.get("@resumeDropdown").click()
-        cy.get("@resumeDropdown").should("have.attr", "aria-expanded", "true")
+      cy.findByRole("link", { name: "Resume" }).should(
+        "have.attr",
+        "href",
+        "/paths.IMG/Bell_Kimberly-Resume.pdf",
+      )
+      cy.request("/paths.IMG/Bell_Kimberly-Resume.pdf")
+        .its("status")
+        .should("eq", 200)
 
-        cy.get(".dropdown-menu").within(() => {
-          cy.get(".dropdown-item").should("have.length", 2)
-          cy.findByRole("link", { name: "Dev Resume" }).should(
-            "have.attr",
-            "href",
-            "/paths.IMG/Bell_Kim-DevResume2.pdf",
-          )
-          cy.request("/paths.IMG/Bell_Kim-DevResume2.pdf")
-            .its("status")
-            .should("eq", 200)
+      // cy.findByTestId("resume-dropdown").within(() => {
+      //   cy.findByText("Resumes")
+      //     .should("have.attr", "aria-expanded", "false")
+      //     .as("resumeDropdown")
+      //   cy.get("@resumeDropdown").click()
+      //   cy.get("@resumeDropdown").should("have.attr", "aria-expanded", "true")
 
-          cy.findByRole("link", { name: "QA Resume" }).should(
-            "have.attr",
-            "href",
-            "/paths.IMG/Bell_Kimberly-Resume.pdf",
-          )
-          cy.request("/paths.IMG/Bell_Kimberly-Resume.pdf")
-            .its("status")
-            .should("eq", 200)
-        })
-      })
+      //   cy.get(".dropdown-menu").within(() => {
+      //     cy.get(".dropdown-item").should("have.length", 2)
+      //     cy.findByRole("link", { name: "Dev Resume" }).should(
+      //       "have.attr",
+      //       "href",
+      //       "/paths.IMG/Bell_Kim-DevResume2.pdf",
+      //     )
+      //     cy.request("/paths.IMG/Bell_Kim-DevResume2.pdf")
+      //       .its("status")
+      //       .should("eq", 200)
+
+      //     cy.findByRole("link", { name: "QA Resume" }).should(
+      //       "have.attr",
+      //       "href",
+      //       "/paths.IMG/Bell_Kimberly-Resume.pdf",
+      //     )
+      //     cy.request("/paths.IMG/Bell_Kimberly-Resume.pdf")
+      //       .its("status")
+      //       .should("eq", 200)
+      //   })
+      // })
     })
 
     it(`should have profile image in home section and bullet points in about me section, ${size}`, () => {
+      const getH2 =
+        size === "iphone-6" ? "Senior SDET" : "Senior SDET & Frontend Developer"
       cy.viewport(size)
 
       cy.findByTestId("home").within(() => {
         cy.findByRole("heading", { level: 1, name: "Kim Bell" })
         cy.findByRole("heading", {
           level: 2,
-          name: "Software Engineer",
+          name: getH2,
         })
         cy.get("img").should("have.attr", "src", "/paths.IMG/profile2.jpg")
       })
 
       cy.findByTestId("about").within(() => {
-        cy.findByRole("heading", { level: 2, name: "About Me" })
+        cy.findByRole("heading", { level: 2, name: "About" })
         // Both accordions default to closed (collapsed) state
         cy.get(".accordion-item").should("have.length", 2).as("accordions")
         cy.get("@accordions")
@@ -140,11 +153,17 @@ describe("Profile tests", () => {
       })
     })
 
-    it(`should have tech icons and tooltips in skills section, ${size}`, () => {
+    it(`should have tech icons and text on hover in skills section, ${size}`, () => {
       cy.viewport(size)
 
       cy.findByTestId("skills").within(() => {
         cy.findByRole("heading", { level: 2, name: "Skills" })
+        cy.findByRole("heading", { level: 3, name: "Test Automation & QA" })
+        cy.findByRole("heading", { level: 3, name: "Frontend Development" })
+        cy.findByRole("heading", {
+          level: 3,
+          name: "Development Tools & CI/CD",
+        })
 
         cy.get("img").should("have.length", allSkills.length).as("skillImages")
 
@@ -152,13 +171,6 @@ describe("Profile tests", () => {
         cy.get("@skillImages").each(($el, index) => {
           cy.wrap($el).should("have.attr", "alt", allSkills[index])
         })
-      })
-
-      // Check tooltip on image, tooltip html lives outside of skills data-testid
-      cy.get("@skillImages").each(($el, index) => {
-        cy.wrap($el).trigger("mouseover")
-        cy.findByRole("tooltip", { name: allSkills[index].toLocaleUpperCase() })
-        cy.wrap($el).trigger("mouseout")
       })
     })
 
@@ -168,11 +180,12 @@ describe("Profile tests", () => {
       cy.findByTestId("projects").within(() => {
         cy.findByRole("heading", { level: 2, name: "Projects" })
 
-        cy.findAllByTestId(/card-/i).should("have.length", 3).as("projectCards")
+        cy.findAllByTestId(/card-/i).should("have.length", 4).as("projectCards")
 
         buttonLinks(0, buttonsCard1)
         buttonLinks(1, buttonsCard2)
         buttonLinks(2, buttonsCard3)
+        buttonLinks(3, buttonsCard4)
       })
     })
 

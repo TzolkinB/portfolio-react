@@ -4,41 +4,68 @@ import {
   MDBCardTitle,
   MDBCardSubTitle,
   MDBCardText,
+  MDBBadge,
   MDBBtn,
+  MDBTypography,
 } from "mdb-react-ui-kit"
+import type { Project } from "../../types"
 
-type CardProps = {
-  title: string
-  subtitle: string
-  text: string
-  url: string
-  urlText: string
-  url2?: string
-  url2Text?: string
-}
-
+const badge = (text: string) => (
+  <MDBBadge key={text} className="project-badge me-2" light>
+    {text}
+  </MDBBadge>
+)
 // eslint-disable-next-line react/function-component-definition
-const CardContainer = (props: CardProps) => {
-  const { title, subtitle, text, url, urlText, url2, url2Text } = props
-
-  const multipleUrls = (
-    <MDBBtn href={url2} target="_blank" className="ms-3">
-      {url2Text}
-    </MDBBtn>
-  )
-
+const CardContainer = ({
+  title,
+  subtitle,
+  description,
+  url,
+  urlText,
+  url2,
+  url2Text,
+  badgeText,
+  impactMetricBold,
+  impactMetricStandard,
+}: Project) => {
   return (
     <MDBCard>
       <MDBCardBody data-testid={`card-${title}`}>
-        <MDBCardTitle tag="h4" className="fs-5">
+        <MDBCardTitle tag="h3" className="fw-bold mb-1">
           {title}
         </MDBCardTitle>
-        <MDBCardSubTitle>{subtitle}</MDBCardSubTitle>
-        <MDBCardText>{text}</MDBCardText>
-        <MDBBtn href={url} target="_blank">
-          {urlText}
-        </MDBBtn>
-        {url2 && multipleUrls}
+        <MDBCardSubTitle tag="small" className="mt-1 fw-bold">
+          {subtitle}
+        </MDBCardSubTitle>
+        <MDBCardText className="pt-2 fw-light text-muted">
+          {description}
+        </MDBCardText>
+        {impactMetricBold && impactMetricStandard && (
+          <MDBTypography note>
+            <strong>{impactMetricBold}</strong> {impactMetricStandard}
+          </MDBTypography>
+        )}
+        <div className="mb-4">{badgeText.map((text) => badge(text))}</div>
+        <div className="d-flex gap-3">
+          <MDBBtn
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-link link-primary fw-bold"
+          >
+            {urlText}
+          </MDBBtn>
+          {url2 && url2Text && (
+            <MDBBtn
+              href={url2}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link link-secondary fw-bold"
+            >
+              {url2Text}
+            </MDBBtn>
+          )}
+        </div>
       </MDBCardBody>
     </MDBCard>
   )

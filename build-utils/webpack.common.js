@@ -55,7 +55,7 @@ module.exports = {
     new ESLintPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "..", "./src/index.html"),
-      title: "Kim Bell - Software Engineer",
+      title: "Kim Bell - SDET",
       favicon: path.resolve(__dirname, "..", "./src/assets/img/favicon.png"),
     }),
   ],

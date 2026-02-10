@@ -1,7 +1,6 @@
 const path = require("path")
 const ESLintPlugin = require("eslint-webpack-plugin")
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 // path: prefixed with the __dirname global. https://nodejs.org/api/path.html
 // This prevents file path issues between operating systems and allows relative paths to work as expected.
@@ -24,8 +23,8 @@ module.exports = {
     publicPath: "/",
     // filename: the name of each output bundle.
     // The bundle is written to the directory specified by the output.path option.
-    filename: "bundle.js",
-    assetModuleFilename: "paths.IMG/[name][ext]"
+    filename: "[name].[contenthash].js",
+    assetModuleFilename: "paths.IMG/[name][ext]",
   },
   module: {
     rules: [
@@ -48,16 +47,18 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif|ttf|pdf|svg)$/i,
-        type: 'asset/resource'
+        type: "asset/resource",
       },
     ],
   },
-  plugins: [new ESLintPlugin(),
+  plugins: [
+    new ESLintPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "..", "./src/index.html"),
       title: "Kim Bell - Software Engineer",
       favicon: path.resolve(__dirname, "..", "./src/assets/img/favicon.png"),
-    })],
+    }),
+  ],
   resolve: {
     extensions: [".*", ".js", ".jsx", ".tsx", ".ts"],
     alias: {

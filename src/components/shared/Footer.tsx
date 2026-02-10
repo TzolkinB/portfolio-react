@@ -11,16 +11,6 @@ const Footer = () => {
         &#169; {currentYear} Copyright Kim Bell
       </p>
 
-      {/* Shared SVG with gradient definitions */}
-      <svg style={{ display: "none" }} width="0" height="0">
-        <defs>
-          <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#00d4ff" />
-            <stop offset="100%" stopColor="#ffab00" />
-          </linearGradient>
-        </defs>
-      </svg>
-
       <div className="footer-links pe-2">
         <a
           href="https://github.com/TzolkinB"
@@ -30,6 +20,18 @@ const Footer = () => {
           className="px-2 footer-link"
         >
           <svg className="footer-icon" viewBox="0 0 128 128">
+            <defs>
+              <linearGradient
+                id="iconGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="#00d4ff" />
+                <stop offset="100%" stopColor="#ffab00" />
+              </linearGradient>
+            </defs>
             <path
               className="icon-path"
               fill="currentColor"
@@ -45,6 +47,18 @@ const Footer = () => {
           className="px-2 footer-link"
         >
           <svg className="footer-icon" viewBox="0 0 128 128">
+            <defs>
+              <linearGradient
+                id="iconGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="#00d4ff" />
+                <stop offset="100%" stopColor="#ffab00" />
+              </linearGradient>
+            </defs>
             <path
               className="icon-path"
               fill="currentColor"

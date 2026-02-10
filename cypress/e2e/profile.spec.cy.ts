@@ -33,8 +33,8 @@ describe("Profile tests", () => {
   ]
   const terminalTools = ["webpack", "vim"]
   const webDevTools = [
-    "typescript",
-    "javascript",
+    "typeScript",
+    "javaScript",
     "react",
     "ember",
     "html",
@@ -157,6 +157,7 @@ describe("Profile tests", () => {
       cy.viewport(size)
 
       cy.findByTestId("skills").within(() => {
+        cy.findByRole("heading", { level: 2, name: "Skills" })
         cy.findByRole("heading", { level: 3, name: "Test Automation & QA" })
         cy.findByRole("heading", { level: 3, name: "Frontend Development" })
         cy.findByRole("heading", {

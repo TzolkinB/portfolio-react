@@ -59,6 +59,7 @@ const CardContainer = ({
             <MDBBtn
               href={url2}
               target="_blank"
+              rel="noopener noreferrer"
               className="ms-3 project-link link-secondary fw-bold"
             >
               {url2Text}

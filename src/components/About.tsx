@@ -50,8 +50,8 @@ const About = ({ id }: SectionProps) => {
     </>,
     <>
       Managed the global internal <span className="fw-bold">NPM</span> package,
-      written in <span className="fw-bold">Javscript</span> and{" "}
-      <span className="fw-bold">Typescript</span>, that incorporated Cypress
+      written in <span className="fw-bold">JavaScript</span> and{" "}
+      <span className="fw-bold">TypeScript</span>, that incorporated Cypress
       configurations. This package resulted in streamlined operations across 10
       teams and at least one line of business.
     </>,
@@ -66,7 +66,7 @@ const About = ({ id }: SectionProps) => {
       a needed change during Cypress version upgrade.
     </>,
     <>
-      Developed and implemented <span className="fw-bold">Javascript</span>{" "}
+      Developed and implemented <span className="fw-bold">JavaScript</span>{" "}
       custom commands to increase code efficiency.
     </>,
   ]
@@ -114,11 +114,11 @@ const About = ({ id }: SectionProps) => {
         </TechLink>
         ,{" "}
         <TechLink href="https://www.javascript.com/">
-          <span className="fw-bold">Javascript</span>
+          <span className="fw-bold">JavaScript</span>
         </TechLink>
         , and{" "}
         <TechLink href="https://www.typescriptlang.org/">
-          <span className="fw-bold">Typescript</span>
+          <span className="fw-bold">TypeScript</span>
         </TechLink>
         .
       </MDBTypography>

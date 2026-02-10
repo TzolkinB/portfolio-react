@@ -156,7 +156,6 @@ body {
 
 .skill-badge:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: var(#5dc1be);
 }
 
 .social-links-container {

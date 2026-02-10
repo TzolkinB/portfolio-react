@@ -1,9 +1,14 @@
+import { MDBTypography } from "mdb-react-ui-kit"
 import { skillCategories, getImage } from "../tech-icons"
 import type { SectionProps } from "../types"
 
 function Skills({ id }: SectionProps) {
   return (
     <div id={id} data-testid={id}>
+      <hr />
+      <MDBTypography tag="h2" className="py-2 text-center">
+        Skills
+      </MDBTypography>
       <hr />
       <div className="pt-3">
         {Object.entries(skillCategories).map(([categoryName, categoryData]) => (

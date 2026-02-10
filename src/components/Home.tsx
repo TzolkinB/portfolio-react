@@ -97,6 +97,7 @@ function Home() {
                 href="https://www.linkedin.com/in/kimbell4"
                 aria-label="link to linkedin"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="m-1 social-btn"
                 style={{ backgroundColor: "#0082ca" }}
               >
@@ -107,6 +108,7 @@ function Home() {
                 href="https://github.com/TzolkinB"
                 aria-label="link to github"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="m-1 social-btn"
                 style={{ backgroundColor: "#333333" }}
               >

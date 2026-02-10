@@ -93,13 +93,13 @@ export const skillCategories: SkillCategories = {
     icon: "🎨",
     skills: [
       {
-        name: "typescript",
+        name: "typeScript",
         years: "4+",
         isCore: true,
         imageSrc: iconSources.typescript,
       },
       {
-        name: "javascript",
+        name: "javaScript",
         years: "8+",
         isCore: true,
         imageSrc: iconSources.javascript,
@@ -155,11 +155,11 @@ export const skillCategories: SkillCategories = {
 }
 
 /**
- * Renders a skill icon with tooltip
+ * Renders a skill icon with its name and years of experience.
  * @param name - Skill name
  * @param imageSrc - URL to skill icon
  * @param customImage - Custom JSX image element (if no imageSrc)
- * @param isCore - Whether this is a core skill (renders larger)
+ * @param isCore - Whether this is a core skill (TBD renders larger)
  */
 export const getImage = (
   name: string,

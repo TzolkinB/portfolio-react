@@ -3,23 +3,23 @@ import type { Project } from "./types"
 const projects: Project[] = [
   {
     title: "Playwright Test Collection",
-    subtitle: "Test Automation • Typscript",
+    subtitle: "Test Automation • TypeScript",
     description:
-      "Focuses on conversion from Cypress to Playwright with Typescript enhancements",
+      "Focuses on conversion from Cypress to Playwright with TypeScript enhancements",
     url: "https://github.com/TzolkinB/playwright-test-collection",
     urlText: "Github Repo",
-    badgeText: ["Playwright", "Typescript", "API Testing", "UI Testing"],
+    badgeText: ["Playwright", "TypeScript", "API Testing", "UI Testing"],
     impactMetricBold: "Cross-browser testing",
     impactMetricStandard: "with fixtures and helper utilities",
   },
   {
     title: "Cypress Test Collection",
-    subtitle: "Test Automation • Javascript",
+    subtitle: "Test Automation • JavaScript",
     description:
       "Emphasizes the organized structure with separation of concerns (API, integration, regression)",
     url: "https://github.com/TzolkinB/cypress-test-collection",
     urlText: "Github Repo",
-    badgeText: ["Cypress", "Javascript", "API Testing", "UI Testing"],
+    badgeText: ["Cypress", "JavaScript", "API Testing", "UI Testing"],
     impactMetricBold: "Organized test structure",
     impactMetricStandard: "with CI/CD integration and responsive testing",
   },

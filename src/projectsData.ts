@@ -2,6 +2,28 @@ import type { Project } from "./types"
 
 const projects: Project[] = [
   {
+    title: "Playwright Test Collection",
+    subtitle: "Test Automation • TypeScript",
+    description:
+      "Focuses on conversion from Cypress to Playwright with TypeScript enhancements",
+    url: "https://github.com/TzolkinB/playwright-test-collection",
+    urlText: "Github Repo",
+    badgeText: ["Playwright", "TypeScript", "API Testing", "UI Testing"],
+    impactMetricBold: "Cross-browser testing",
+    impactMetricStandard: "with fixtures and helper utilities",
+  },
+  {
+    title: "Cypress Test Collection",
+    subtitle: "Test Automation • JavaScript",
+    description:
+      "Emphasizes the organized structure with separation of concerns (API, integration, regression)",
+    url: "https://github.com/TzolkinB/cypress-test-collection",
+    urlText: "Github Repo",
+    badgeText: ["Cypress", "JavaScript", "API Testing", "UI Testing"],
+    impactMetricBold: "Organized test structure",
+    impactMetricStandard: "with CI/CD integration and responsive testing",
+  },
+  {
     title: "My Cypress Guide",
     subtitle: "SDET Documentation • Ongoing",
     description:
@@ -9,17 +31,8 @@ const projects: Project[] = [
     url: "https://kimbellcypress.notion.site/Best-Practices-bb7e5a025c834b7397d531ad76bee0b4",
     urlText: "Notion Site",
     badgeText: ["Cypress", "Documentation"],
-    impactMetric: "Comprehensive resource for team onboarding",
-  },
-  {
-    title: "React Starter Template",
-    subtitle: "Uses Webpack",
-    description:
-      "Basic template for getting new applications up and running quickly.",
-    url: "https://github.com/TzolkinB/react-template",
-    urlText: "Github Repo",
-    badgeText: ["Github", "Cypress"],
-    impactMetric: "Quick setup for production-ready React apps",
+    impactMetricBold: "Comprehensive resource",
+    impactMetricStandard: "for team onboarding",
   },
   {
     title: "Memory Game",

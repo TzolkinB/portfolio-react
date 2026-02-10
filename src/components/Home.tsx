@@ -91,26 +91,30 @@ function Home() {
               ))}
             </div>
 
-            <MDBBtn
-              tag="a"
-              href="https://www.linkedin.com/in/kimbell4"
-              aria-label="link to linkedin"
-              target="_blank"
-              className="m-1"
-              style={{ backgroundColor: "#0082ca" }}
-            >
-              <MDBIcon fab icon="linkedin-in" />
-            </MDBBtn>
-            <MDBBtn
-              tag="a"
-              href="https://github.com/TzolkinB"
-              aria-label="link to github"
-              target="_blank"
-              className="m-1"
-              style={{ backgroundColor: "#333333" }}
-            >
-              <MDBIcon fab icon="github" />
-            </MDBBtn>
+            <div className="social-links-container">
+              <MDBBtn
+                tag="a"
+                href="https://www.linkedin.com/in/kimbell4"
+                aria-label="link to linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="m-1 social-btn"
+                style={{ backgroundColor: "#0082ca" }}
+              >
+                <MDBIcon fab icon="linkedin-in" />
+              </MDBBtn>
+              <MDBBtn
+                tag="a"
+                href="https://github.com/TzolkinB"
+                aria-label="link to github"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="m-1 social-btn"
+                style={{ backgroundColor: "#333333" }}
+              >
+                <MDBIcon fab icon="github" />
+              </MDBBtn>
+            </div>
           </MDBCol>
           {/* Profile Image Column */}
           <MDBCol

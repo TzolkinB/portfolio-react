@@ -8,7 +8,7 @@ import {
   MDBBtn,
   MDBTypography,
 } from "mdb-react-ui-kit"
-import type { Project } from "../../types"
+import type { Project } from "../../types/types"
 
 const badge = (text: string) => (
   <MDBBadge key={text} className="project-badge me-2" light>

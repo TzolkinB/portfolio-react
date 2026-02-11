@@ -1,6 +1,6 @@
 import { MDBTypography } from "mdb-react-ui-kit"
-import { skillCategories, getImage } from "../tech-icons"
-import type { SectionProps } from "../types"
+import { skillCategories, getImage } from "../utils/tech-icons"
+import type { SectionProps } from "../types/types"
 
 function Skills({ id }: SectionProps) {
   return (
@@ -20,14 +20,9 @@ function Skills({ id }: SectionProps) {
             </div>
             {/* Skills Grid */}
             <div className="skills-list text-center">
-              {categoryData.skills.map((skill) =>
-                getImage(
-                  skill.name,
-                  skill.years,
-                  skill.imageSrc,
-                  skill.customImage,
-                  skill.isCore,
-                ),
+              {categoryData.skills.map(
+                (skill: (typeof categoryData.skills)[number]) =>
+                  getImage(skill),
               )}
             </div>
           </div>

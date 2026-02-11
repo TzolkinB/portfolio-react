@@ -1,42 +1,14 @@
-import {
-  MDBContainer,
-  MDBRow,
-  MDBTypography,
-  MDBBtn,
-  MDBIcon,
-  MDBCol,
-} from "mdb-react-ui-kit"
+import { MDBContainer, MDBRow, MDBTypography, MDBCol } from "mdb-react-ui-kit"
 import Me from "IMG/profile2.jpg"
 import About from "./About"
 import Skills from "./Skills"
 import Projects from "./Projects"
-import { badge, experienceStats } from "./utils"
-import type { BadgeConfig } from "../types"
-
-// Developer console message
-const DEV_MESSAGE = {
-  text: "👋 Thank you for visiting my site! If you like my credentials and are looking for an SDET with expertise in test automation, DM me. Let's discuss!",
-  styles: [
-    "font-size: 12px",
-    "font-family: monospace",
-    "background: black",
-    "display: inline-block",
-    "color: #5DC1BE",
-    "padding: 8px 15px",
-    "border: 3px solid;",
-  ].join(";"),
-} as const
-
-const badgeContent: readonly BadgeConfig[] = [
-  { icon: "fas fa-check", text: "Playright" },
-  { icon: "fas fa-check", text: "Cypress" },
-  { icon: "fab fa-react", text: "React" },
-] as const
-
-const experienceStatData = [
-  { years: 8, text: "Years Experience" },
-  { years: 2, text: "Years SDET" },
-] as const
+import { badge, experienceStats, SocialLinks } from "../utils/utils"
+import {
+  badgeContent,
+  experienceStatData,
+  DEV_MESSAGE,
+} from "../constants/appData"
 
 function Home() {
   // eslint-disable-next-line no-console
@@ -91,30 +63,22 @@ function Home() {
               ))}
             </div>
 
-            <div className="social-links-container">
-              <MDBBtn
-                tag="a"
-                href="https://www.linkedin.com/in/kimbell4"
-                aria-label="link to linkedin"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="m-1 social-btn"
-                style={{ backgroundColor: "#0082ca" }}
-              >
-                <MDBIcon fab icon="linkedin-in" />
-              </MDBBtn>
-              <MDBBtn
-                tag="a"
-                href="https://github.com/TzolkinB"
-                aria-label="link to github"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="m-1 social-btn"
-                style={{ backgroundColor: "#333333" }}
-              >
-                <MDBIcon fab icon="github" />
-              </MDBBtn>
-            </div>
+            <SocialLinks
+              links={[
+                {
+                  href: "https://www.linkedin.com/in/kimbell4",
+                  icon: "linkedin-in",
+                  label: "link to linkedin",
+                  backgroundColor: "#0082ca",
+                },
+                {
+                  href: "https://github.com/TzolkinB",
+                  icon: "github",
+                  label: "link to github",
+                  backgroundColor: "#333333",
+                },
+              ]}
+            />
           </MDBCol>
           {/* Profile Image Column */}
           <MDBCol

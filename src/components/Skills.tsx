@@ -3,6 +3,8 @@ import { skillCategories, getImage } from "../utils/tech-icons"
 import type { SectionProps } from "../types/types"
 
 function Skills({ id }: SectionProps) {
+  const categories = skillCategories()
+
   return (
     <div id={id} data-testid={id}>
       <hr />
@@ -11,7 +13,7 @@ function Skills({ id }: SectionProps) {
       </MDBTypography>
       <hr />
       <div className="pt-3">
-        {Object.entries(skillCategories).map(([categoryName, categoryData]) => (
+        {Object.entries(categories).map(([categoryName, categoryData]) => (
           <div key={categoryName} className="skill-category mb-5">
             {/* Category Header */}
             <div className="category-header">

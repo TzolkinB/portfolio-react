@@ -5,16 +5,16 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
-    # Group all non-security updates into a single PR
+    # Group all npm updates into a single PR
     groups:
-      regular-updates:
-        dependency-type: "all"
-        exclude-dependencies: "security"
-    # Security updates get their own PR (handled immediately)
+      all-updates:
+        patterns:
+          - "*"
     # Allow both patch and minor version updates
     allow:
       - dependency-type: "all"
-    # Limit to one open PR at a time per group
+    # Security updates get their own PR automatically
+    # Limit to 2 open PRs (1 for regular updates, 1 for security if needed)
     open-pull-requests-limit: 2
 
   # GitHub Actions - alerts only, no auto-updates

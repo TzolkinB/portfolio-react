@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Personal portfolio using React",
   "repository": {
     "type": "git",
@@ -10,12 +10,13 @@
     "start": "webpack serve --config build-utils/webpack.config.js --env env=dev",
     "build": "webpack --config build-utils/webpack.config.js --env env=prod",
     "build:analyze": "npm run build",
-    "deploy": "aws s3 sync dist/ s3://www.kimbell.me",
+    "deploy": "aws s3 sync dist/ s3://www.kimbell.me --delete && aws cloudfront create-invalidation --distribution-id E2UIRXEU09EPZZ --paths \"/*\"",
     "prod": "npm run build && npm run deploy",
     "lint": "eslint . --ext .tsx",
     "test": "cypress open --e2e",
     "cy:test": "start-server-and-test start http://localhost:4280 test",
     "cy:run": "start-server-and-test start http://localhost:4280 'cypress run'",
+    "cy:headless": "start-server-and-test start http://localhost:4280 'cypress run --browser chrome --headless'",
     "prepare": "husky install",
     "lint:js": "eslint . --ext .tsx --max-warnings=0",
     "lint:yaml": "yamllint .github/**/*.yml",

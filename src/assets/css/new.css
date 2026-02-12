@@ -23,6 +23,24 @@ body {
   border-top: 10px solid;
 }
 
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(0, 212, 255, 0.8),
+      0 0 50px rgba(255, 171, 0, 0.4);
+  }
+}
+
+.app {
+  margin-top: 4.3rem;
+}
+
+/* ===== TYPOGRAPHY & COLORS ===== */
+
 .text-gradient {
   background-image: linear-gradient(
     135deg,
@@ -37,7 +55,9 @@ body {
   color: #9aa0b2 !important;
 }
 
-/* ---- App Bar ---- */
+/* ===== COMPONENTS ===== */
+
+/* ---- Navigation/App Bar ---- */
 .navbar {
   background: #0d1a2e;
 }
@@ -63,12 +83,12 @@ body {
   transition: transform 0.3s ease;
 }
 
-.nav-link:hover::after {
-  transform: scaleX(1);
-}
-
 .nav-link:hover {
   color: var(--gradient-right) !important;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
 }
 
 .navbar-toggler,
@@ -80,8 +100,8 @@ body {
   filter: invert(42%) sepia(89%) saturate(1455%) hue-rotate(169deg)
     brightness(1.05) contrast(150%);
 }
-/* ----- Accordion ----- */
 
+/* ----- Accordion ----- */
 .accordion {
   width: -webkit-fill-available;
   width: -moz-available;
@@ -102,33 +122,7 @@ body {
   background-color: #e0e3de;
 }
 
-/* ----- Main App Styles ----- */
-
-.app {
-  margin-top: 4.3rem;
-}
-
-#about,
-#skills {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
-#about a {
-  color: #bad0e3;
-}
-
-#about .accordion a {
-  color: #293d59;
-  text-decoration: underline;
-}
-
-#about a:hover {
-  text-decoration: none;
-  color: #bad0e3 !important;
-  background-color: #243f6a !important;
-}
-
+/* ----- Home ----- */
 #home .name,
 #home .years {
   font-variation-settings:
@@ -152,6 +146,11 @@ body {
     )
     border-box;
   mask-composite: exclude;
+  transition: transform 0.3s ease;
+}
+
+#home .profile-image:hover {
+  animation: glowPulse 2s ease-in-out;
 }
 
 .skill-badge:hover {
@@ -173,7 +172,29 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===== SKILLS SECTION ===== */
+/* ----- About ----- */
+#about,
+#skills {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+#about a {
+  color: #bad0e3;
+}
+
+#about .accordion a {
+  color: #293d59;
+  text-decoration: underline;
+}
+
+#about a:hover {
+  text-decoration: none;
+  color: #bad0e3 !important;
+  background-color: #243f6a !important;
+}
+
+/* ----- Skills ----- */
 .skill-category {
   margin-bottom: 3rem;
 }
@@ -269,8 +290,7 @@ body {
   font-size: 12px;
   color: var(--gradient-left);
 }
-/* ===== PROJECTS SECTION ===== */
-
+/* -----PROJECTS SECTION ----- */
 .projects-list {
   display: grid;
   gap: 20px;
@@ -287,6 +307,7 @@ body {
 .card:hover:before {
   opacity: 1;
 }
+
 .card:before {
   content: "";
   position: absolute;
@@ -306,6 +327,7 @@ body {
   opacity: 0.3;
   transition: opacity 0.3s;
 }
+
 .card:hover {
   /* border-color: rgba(0, 212, 255, 0.3); */
   transform: translateY(-8px);
@@ -393,9 +415,10 @@ footer {
 .copyright {
   margin-left: 2%;
 }
-/* -------- */
 
-/* ===== TABLET / MEDIUM STYLES (768px - 1099px) ===== */
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* TABLET (768px - 1099px) */
 
 @media screen and (min-width: 768px) {
   #home {
@@ -413,8 +436,7 @@ footer {
   }
 }
 
-/* ===== DESKTOP / LARGE STYLES (1100px and above) ===== */
-
+/* DESKTOP (1100px and up) */
 @media screen and (min-width: 1100px) {
   #about,
   #skills {
@@ -430,6 +452,7 @@ footer {
   }
 }
 
+/* ===== ACCESSIBILITY ===== */
 /* Focus visible for keyboard navigation */
 a:focus-visible,
 button:focus-visible,

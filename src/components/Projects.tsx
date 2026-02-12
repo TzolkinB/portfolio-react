@@ -1,7 +1,7 @@
 import { MDBTypography } from "mdb-react-ui-kit"
 import Card from "./shared/CardContainer"
-import projects from "../projectsData"
-import type { SectionProps } from "../types"
+import projects from "../constants/projectsData"
+import type { SectionProps } from "../types/types"
 
 function Projects({ id }: SectionProps): JSX.Element {
   return (

@@ -9,22 +9,8 @@ import {
   MDBAccordion,
   MDBAccordionItem,
 } from "mdb-react-ui-kit"
-import { SectionProps } from "types"
-
-// Tech link component for DRY principle
-function TechLink({
-  href,
-  children,
-}: {
-  href: string
-  children: React.ReactNode
-}) {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      {children}
-    </a>
-  )
-}
+import { SectionProps } from "../types/types"
+import { TechLink } from "../utils/utils"
 
 // eslint-disable-next-line react/function-component-definition
 const About = ({ id }: SectionProps) => {

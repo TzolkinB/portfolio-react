@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Setup Node.js 18
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
           node-version: 18
           cache: "npm"
@@ -68,7 +68,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Setup Node.js 18
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
           node-version: 18
       # Restore node_modules and Cypress binary rom setup job
@@ -104,7 +104,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Setup Node.js 18
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
           node-version: 18
 

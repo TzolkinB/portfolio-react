@@ -17,7 +17,6 @@
     "cy:test": "start-server-and-test start http://localhost:4280 test",
     "cy:run": "start-server-and-test start http://localhost:4280 'cypress run'",
     "cy:headless": "start-server-and-test start http://localhost:4280 'cypress run --browser chrome --headless'",
-    "prepare": "husky install",
     "lint:js": "eslint . --ext .tsx --max-warnings=0",
     "lint:yaml": "yamllint .github/**/*.yml",
     "lint:husky": "npm run lint:js && npm run lint:yaml"

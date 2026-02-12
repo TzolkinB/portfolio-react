@@ -398,7 +398,7 @@ body {
 
 /* ----- Footer ----- */
 footer {
-  height: 75px;
+  height: 100px;
   background: #0d1a2e;
 }
 
@@ -413,7 +413,11 @@ footer {
 }
 
 .copyright {
-  margin-left: 2%;
+  margin-left: 10%;
+}
+
+.privacy-notice {
+  font-size: 12px;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */

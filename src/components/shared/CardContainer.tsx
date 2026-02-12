@@ -8,6 +8,7 @@ import {
   MDBBtn,
   MDBTypography,
 } from "mdb-react-ui-kit"
+
 import type { Project } from "../../types/types"
 
 const badge = (text: string) => (
@@ -15,7 +16,7 @@ const badge = (text: string) => (
     {text}
   </MDBBadge>
 )
-// eslint-disable-next-line react/function-component-definition
+
 const CardContainer = ({
   title,
   subtitle,
@@ -40,7 +41,7 @@ const CardContainer = ({
         <MDBCardText className="pt-2 fw-light text-muted">
           {description}
         </MDBCardText>
-        {impactMetricBold && impactMetricStandard && (
+        {impactMetricBold != null && impactMetricStandard != null && (
           <MDBTypography note>
             <strong>{impactMetricBold}</strong> {impactMetricStandard}
           </MDBTypography>
@@ -55,7 +56,7 @@ const CardContainer = ({
           >
             {urlText}
           </MDBBtn>
-          {url2 && url2Text && (
+          {url2 != null && url2Text != null && (
             <MDBBtn
               href={url2}
               target="_blank"

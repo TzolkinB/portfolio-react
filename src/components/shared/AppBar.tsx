@@ -1,4 +1,4 @@
-import { useState } from "react"
+// import devResume from "IMG/Bell_Kim-DevResume2.pdf"
 import {
   MDBContainer,
   MDBNavbar,
@@ -9,11 +9,11 @@ import {
   MDBIcon,
   MDBCollapse,
 } from "mdb-react-ui-kit"
-// import devResume from "IMG/Bell_Kim-DevResume2.pdf"
-import qaResume from "IMG/Bell_Kimberly-Resume.pdf"
-import Whiskers from "IMG/W-white.png"
+import { useState } from "react"
 
-// eslint-disable-next-line react/function-component-definition
+import qaResume from "../../assets/img/Bell_Kimberly-Resume.pdf"
+import Whiskers from "../../assets/img/W-white.png"
+
 const AppBar = () => {
   const [openNav, setOpenNav] = useState(false)
 

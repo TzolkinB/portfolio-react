@@ -1,5 +1,7 @@
 import { MDBTypography } from "mdb-react-ui-kit"
+
 import { skillCategories, getImage } from "../utils/tech-icons"
+
 import type { SectionProps } from "../types/types"
 
 function Skills({ id }: SectionProps) {

@@ -1,6 +1,9 @@
 import { MDBTypography } from "mdb-react-ui-kit"
-import Card from "./shared/CardContainer"
+
 import projects from "../constants/projectsData"
+
+import Card from "./shared/CardContainer"
+
 import type { SectionProps } from "../types/types"
 
 function Projects({ id }: SectionProps): JSX.Element {
@@ -14,7 +17,7 @@ function Projects({ id }: SectionProps): JSX.Element {
       <div className="projects-list">
         {projects.map((project) => (
           <div key={project.title}>
-            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+            {}
             <Card {...project} />
           </div>
         ))}

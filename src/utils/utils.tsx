@@ -1,4 +1,5 @@
 import { MDBTypography, MDBIcon, MDBBtn } from "mdb-react-ui-kit"
+
 import type {
   BadgeConfig,
   SocialLinksProps,

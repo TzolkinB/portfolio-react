@@ -119,7 +119,7 @@ jobs:
 
       # Run Cypress tests on a specified browser (retries once on failure)
       - name: Run Cypress E2E on ${{ matrix.browser }}
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           install: false # skip install, restoring from cache
           browser: ${{ matrix.browser }}

@@ -131,7 +131,7 @@ jobs:
       # Save screenshots only when tests fail (for debugging)
       # Include browser name in artifact so they don't overwrite each other
       - name: Upload test failure screenshots
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: failure()
         with:
           name: cypress-screenshots-${{ matrix.browser }}

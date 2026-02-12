@@ -6,14 +6,8 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
-    # Avoid complex grouping that causes timeouts
-    # Allow patch and minor updates only (faster dependency resolution)
-    allow:
-      - dependency-type: "direct"
-    # Rebase PRs to speed up dependency resolution
-    rebase-strategy: "auto"
-    # Limit to 5 open PRs
-    open-pull-requests-limit: 5
+    # Limit to 10 open PRs to catch all direct dependency updates
+    open-pull-requests-limit: 10
 
   # GitHub Actions - alerts only, no auto-updates
   - package-ecosystem: "github-actions"

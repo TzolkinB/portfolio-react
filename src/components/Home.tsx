@@ -1,17 +1,18 @@
 import { MDBContainer, MDBRow, MDBTypography, MDBCol } from "mdb-react-ui-kit"
-import Me from "IMG/profile2.jpg"
-import About from "./About"
-import Skills from "./Skills"
-import Projects from "./Projects"
-import { badge, experienceStats, SocialLinks } from "../utils/utils"
+
+import Me from "../assets/img/profile2.jpg"
 import {
   badgeContent,
   experienceStatData,
   DEV_MESSAGE,
 } from "../constants/appData"
+import { badge, experienceStats, SocialLinks } from "../utils/utils"
+
+import About from "./About"
+import Projects from "./Projects"
+import Skills from "./Skills"
 
 function Home() {
-  // eslint-disable-next-line no-console
   console.log(DEV_MESSAGE.text, DEV_MESSAGE.styles)
   return (
     <MDBContainer className="app gx-0">

@@ -1,5 +1,4 @@
 const path = require("path")
-const ESLintPlugin = require("eslint-webpack-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 // path: prefixed with the __dirname global. https://nodejs.org/api/path.html
@@ -52,7 +51,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new ESLintPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "..", "./src/index.html"),
       title: "Kim Bell - SDET",

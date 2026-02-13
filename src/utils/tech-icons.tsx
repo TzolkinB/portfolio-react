@@ -1,14 +1,16 @@
 import { MDBContainer } from "mdb-react-ui-kit"
 
-import TestingLib from "IMG/octopus.png"
-import StyledComp from "IMG/styled-components.png"
+import TestingLib from "../assets/img/octopus.png"
+import StyledComp from "../assets/img/styled-components.png"
+import { iconSources } from "../constants/appData"
+
 import { capitalizeFirstLetter } from "./utils"
+
 import type {
   CustomImageMap,
   GetImageProps,
   SkillCategories,
 } from "../types/types"
-import { iconSources } from "../constants/appData"
 
 // Custom images for tools without devicon support
 const customImages: CustomImageMap = {
@@ -161,7 +163,7 @@ export function getImage({
       key={name}
       className={`skill-item rounded-8 py-3 ${isCore ? "skill-item-core" : ""}`}
     >
-      {imageSrc ? (
+      {imageSrc != null ? (
         <img
           src={imageSrc}
           alt={name}

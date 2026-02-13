@@ -1,6 +1,37 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google Analytics 4 - Privacy-First Configuration -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PFVL3LCP7N"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("js", new Date())
+
+      // Privacy-first configuration
+      gtag("config", "G-PFVL3LCP7N", {
+        // Anonymize IP addresses
+        anonymize_ip: true,
+
+        // Respect Do Not Track browser setting
+        client_storage: navigator.doNotTrack === "1" ? "none" : "enabled",
+
+        // Short cookie expiration (30 days instead of 2 years)
+        cookie_expires: 30 * 24 * 60 * 60, // 30 days in seconds
+
+        // Disable advertising features
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false,
+
+        // Site-specific settings
+        send_page_view: true,
+      })
+    </script>
     <meta charset="utf-8" />
     <meta
       name="viewport"

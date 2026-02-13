@@ -9,10 +9,10 @@ import {
   MDBAccordion,
   MDBAccordionItem,
 } from "mdb-react-ui-kit"
+
 import { SectionProps } from "../types/types"
 import { TechLink } from "../utils/utils"
 
-// eslint-disable-next-line react/function-component-definition
 const About = ({ id }: SectionProps) => {
   // const [active, setActive] = useState<number | number[]>(1)
 
@@ -140,7 +140,6 @@ const About = ({ id }: SectionProps) => {
           >
             {qaAccomplishments.map((accomplishment, i) => {
               return (
-                // eslint-disable-next-line react/no-array-index-key
                 <li className="mb-2 fw-light" key={i}>
                   <MDBIcon
                     icon="check-circle"
@@ -168,7 +167,6 @@ const About = ({ id }: SectionProps) => {
           >
             {devAccomplishments.map((accomplishment, i) => {
               return (
-                // eslint-disable-next-line react/no-array-index-key
                 <li className="mb-2 fw-light" key={i}>
                   <MDBIcon
                     icon="check-circle"

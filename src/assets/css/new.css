@@ -101,6 +101,10 @@ body {
     brightness(1.05) contrast(150%);
 }
 
+.collapse-content {
+  margin-left: auto;
+}
+
 /* ----- Accordion ----- */
 .accordion {
   width: -webkit-fill-available;

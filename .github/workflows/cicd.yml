@@ -9,6 +9,8 @@ name: CI/CD
     branches: ["master"]
   pull_request:
     branches: ["master"]
+  schedule:
+    - cron: "0 3 * * 0"
   # Manual trigger option - appears as separate job in UI because it has no dependencies
   workflow_dispatch:
     inputs:

@@ -128,7 +128,7 @@ jobs:
           # start parameter is used for starting the server, json-server is required for booklist tests
           # start: npm run server
           # command parameter overwrites the Cypress run command with your custom command
-          command: npm run cy:run
+          command: npm run test
 
       # Save screenshots only when tests fail (for debugging)
       # Include browser name in artifact so they don't overwrite each other

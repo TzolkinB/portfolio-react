@@ -21,7 +21,7 @@ describe("Profile tests", () => {
     // cy.intercept("localhost:4280").as("localhost")
     cy.visit("/")
     // cy.wait("@localhost")
-    cy.url().should("eq", `${Cypress.config("baseUrl")}`)
+    cy.url().should("eq", `${Cypress.config("baseUrl")}/`)
   })
 
   const cloudHosting = ["github", "gitlab", "bitbucket", "vscode"]

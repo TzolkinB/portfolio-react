@@ -1,18 +1,36 @@
 version: 2
 updates:
-  # NPM dependencies - weekly to avoid timeout issues
+  # NPM dependencies - weekly, minor + patch grouped
   - package-ecosystem: "npm"
-    directory: "/"
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
-    # Limit to 10 open PRs to catch all direct dependency updates
-    open-pull-requests-limit: 10
-
+      interval: 'weekly'
+      day: 'monday'
+    # Groups define how Dependabot creates PRs for different update types
+    groups:
+      # minor + patch updates in one PR
+      # applies-to is version updated by default so does not need to be specified
+      minor-and-patch:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+      # major updates get individual PR
+      major-updates:
+        patterns:
+          - '*'
+        update-types:
+          - 'major'
+      # security updates get individual PR and are labeled as security updates
+      # applies-to: "security-updates" ensures this only applies to security vulnerabilities
+      security-updates:
+        patterns:
+          - '*'
+        applies-to: 'security-updates'
   # GitHub Actions - alerts only, no auto-updates
   - package-ecosystem: "github-actions"
-    directory: "/"
+    directory: '/'
     schedule:
-      interval: "monthly"
-    # This will check for updates but not auto-create PRs
-    # You'll see notifications if there are available updates
+      interval: 'weekly'
+      day: 'monday'

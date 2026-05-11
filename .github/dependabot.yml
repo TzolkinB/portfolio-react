@@ -16,12 +16,6 @@ updates:
         update-types:
           - 'minor'
           - 'patch'
-      # major updates get individual PR
-      major-updates:
-        patterns:
-          - '*'
-        update-types:
-          - 'major'
       # security updates get individual PR and are labeled as security updates
       # applies-to: "security-updates" ensures this only applies to security vulnerabilities
       security-updates:

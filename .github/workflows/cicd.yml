@@ -119,15 +119,26 @@ jobs:
             ~/.cache/Cypress
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
-      # Run Cypress tests on a specified browser (retries once on failure)
-      - name: Run Cypress E2E on ${{ matrix.browser }}
+      # PRs: start local server and run against it so new features can be tested before deploy
+      - name: Run Cypress E2E on ${{ matrix.browser }} (PR)
+        if: github.event_name == 'pull_request'
         uses: cypress-io/github-action@v7
         with:
-          install: false # skip install, restoring from cache
+          install: false
           browser: ${{ matrix.browser }}
-          # start parameter is used for starting the server, json-server is required for booklist tests
-          # start: npm run server
-          # command parameter overwrites the Cypress run command with your custom command
+          start: npm start
+          wait-on: "http://localhost:4280"
+          command: npm run test
+        env:
+          CYPRESS_BASE_URL: http://localhost:4280
+
+      # Push to master / schedule: run against production (post-deploy verification)
+      - name: Run Cypress E2E on ${{ matrix.browser }} (production)
+        if: github.event_name != 'pull_request'
+        uses: cypress-io/github-action@v7
+        with:
+          install: false
+          browser: ${{ matrix.browser }}
           command: npm run test
 
       # Save screenshots only when tests fail (for debugging)

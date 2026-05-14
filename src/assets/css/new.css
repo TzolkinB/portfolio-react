@@ -478,3 +478,30 @@ button:focus-visible,
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ---- Cat Easter Egg ---- */
+.cat-easter-egg {
+  position: absolute;
+  left: 3.75rem;
+  bottom: 0;
+  cursor: pointer;
+  z-index: 999;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+@keyframes catFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.cat-fadeout {
+  animation: catFadeOut 0.4s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cat-easter-egg {
+    display: none;
+  }
+}

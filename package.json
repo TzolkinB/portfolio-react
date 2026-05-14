@@ -26,6 +26,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.2.0",
+    "lottie-react": "^2.4.1",
     "mdb-react-ui-kit": "^10.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

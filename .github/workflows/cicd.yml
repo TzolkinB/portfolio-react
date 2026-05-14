@@ -119,15 +119,23 @@ jobs:
             ~/.cache/Cypress
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
-      # Run Cypress tests on a specified browser (retries once on failure)
-      - name: Run Cypress E2E on ${{ matrix.browser }}
+      # PRs: Chrome only — Firefox requires xvfb on Ubuntu runners even with --headless
+      - name: Run Cypress E2E on ${{ matrix.browser }} (PR)
+        if: github.event_name == 'pull_request' && matrix.browser == 'chrome'
+        run: |
+          npm start &
+          npx wait-on http://localhost:4280 --timeout 60000
+          npx cypress run --browser chrome --headless
+        env:
+          CYPRESS_BASE_URL: http://localhost:4280
+
+      # Push to master / schedule: run against production (post-deploy verification)
+      - name: Run Cypress E2E on ${{ matrix.browser }} (production)
+        if: github.event_name != 'pull_request'
         uses: cypress-io/github-action@v7
         with:
-          install: false # skip install, restoring from cache
+          install: false
           browser: ${{ matrix.browser }}
-          # start parameter is used for starting the server, json-server is required for booklist tests
-          # start: npm run server
-          # command parameter overwrites the Cypress run command with your custom command
           command: npm run test
 
       # Save screenshots only when tests fail (for debugging)

@@ -120,13 +120,14 @@ jobs:
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       # PRs: start local server and run against it so new features can be tested before deploy
-      # Uses start-server-and-test + --headless so Firefox works on Ubuntu without a display server
+      # Uses a plain run: step to avoid nested quoting issues with start-server-and-test.
+      # --headless required for Firefox on Ubuntu CI runners (no display server).
       - name: Run Cypress E2E on ${{ matrix.browser }} (PR)
         if: github.event_name == 'pull_request'
-        uses: cypress-io/github-action@v7
-        with:
-          install: false
-          command: npx start-server-and-test 'npm start' http://localhost:4280 'npx cypress run --browser ${{ matrix.browser }} --headless'
+        run: |
+          npm start &
+          npx wait-on http://localhost:4280 --timeout 60000
+          npx cypress run --browser ${{ matrix.browser }} --headless
         env:
           CYPRESS_BASE_URL: http://localhost:4280
 

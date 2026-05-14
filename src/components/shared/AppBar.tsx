@@ -14,6 +14,8 @@ import { useState } from "react"
 import qaResume from "../../assets/img/Bell_Kimberly-Resume.pdf"
 import Whiskers from "../../assets/img/W-white.png"
 
+import CatEasterEgg from "./CatEasterEgg"
+
 const AppBar = () => {
   const [openNav, setOpenNav] = useState(false)
 
@@ -21,6 +23,7 @@ const AppBar = () => {
     <header>
       <MDBNavbar expand="lg" fixed="top" className="px-3">
         <MDBContainer fluid>
+          <CatEasterEgg />
           <MDBNavbarBrand href="/" className="pl-2">
             <img src={Whiskers} alt="Cat whiskers" />
             <span className="pl-3 fs-4 text-gradient">kimbell.me</span>

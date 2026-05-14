@@ -1,5 +1,5 @@
 import Lottie from "lottie-react"
-import { useEffect, useState } from "react"
+import { type MouseEvent, useEffect, useState } from "react"
 
 import catAnimation from "../../assets/cat-animation.json"
 
@@ -12,7 +12,7 @@ const CatEasterEgg = () => {
     return () => clearTimeout(timer)
   }, [])
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     e.stopPropagation()
     setFading(true)
@@ -21,11 +21,11 @@ const CatEasterEgg = () => {
   if (!visible) return null
 
   return (
-    <div
+    <button
       className={`cat-easter-egg${fading ? " cat-fadeout" : ""}`}
       onClick={handleClick}
       onAnimationEnd={fading ? () => setVisible(false) : undefined}
-      role="button"
+      type="button"
       aria-label="Dismiss cat"
     >
       <Lottie
@@ -34,7 +34,7 @@ const CatEasterEgg = () => {
         autoplay={true}
         style={{ width: 150, height: 150 }}
       />
-    </div>
+    </button>
   )
 }
 

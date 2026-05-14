@@ -16,6 +16,22 @@ import {
   buttonsCard4,
 } from "./commonMethods"
 
+describe("Cat easter egg", () => {
+  beforeEach(() => {
+    cy.clock()
+    cy.visit("/")
+    cy.url().should("eq", `${Cypress.config("baseUrl")}/`)
+  })
+
+  it("should not be visible on load, appear after 2s, and dismiss on click", () => {
+    cy.findByRole("button", { name: "Dismiss cat" }).should("not.exist")
+    cy.tick(2000)
+    cy.findByRole("button", { name: "Dismiss cat" }).should("exist")
+    cy.findByRole("button", { name: "Dismiss cat" }).click()
+    cy.findByRole("button", { name: "Dismiss cat" }).should("not.exist")
+  })
+})
+
 describe("Profile tests", () => {
   beforeEach(() => {
     // cy.intercept("localhost:4280").as("localhost")

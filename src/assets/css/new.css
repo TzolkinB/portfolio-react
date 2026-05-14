@@ -486,6 +486,9 @@ button:focus-visible,
   bottom: 0;
   cursor: pointer;
   z-index: 999;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 @keyframes catFadeOut {

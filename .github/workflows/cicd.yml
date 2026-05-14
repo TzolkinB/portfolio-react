@@ -120,6 +120,7 @@ jobs:
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       # PRs: start local server and run against it so new features can be tested before deploy
+      # NOTE: command overrides browser/start/wait-on, so use native action params here
       - name: Run Cypress E2E on ${{ matrix.browser }} (PR)
         if: github.event_name == 'pull_request'
         uses: cypress-io/github-action@v7
@@ -128,7 +129,6 @@ jobs:
           browser: ${{ matrix.browser }}
           start: npm start
           wait-on: "http://localhost:4280"
-          command: npm run test
         env:
           CYPRESS_BASE_URL: http://localhost:4280
 

@@ -1,20 +1,22 @@
 #!/bin/sh
 # Skip if this commit is itself a version bump to prevent infinite loops
-if git log -1 --pretty=%B | grep -q "^chore: bump version"; then
+if git log -1 --pretty=%B | grep -qF "[version-bump]"; then
   exit 0
 fi
 
 COMMIT_MSG=$(git log -1 --pretty=%B)
 
 # Suggest bump type based on conventional commit prefix
-if echo "$COMMIT_MSG" | grep -qi "BREAKING CHANGE"; then
+# feat! or BREAKING CHANGE → major; feat → minor; fix → patch; everything else → skip
+if echo "$COMMIT_MSG" | grep -qE "^BREAKING CHANGE:" || \
+   echo "$COMMIT_MSG" | grep -qiE "^feat(\(.+\))?!:"; then
   SUGGESTED="major"
-elif echo "$COMMIT_MSG" | grep -qiE "^feat(\(.+\))?!?:"; then
+elif echo "$COMMIT_MSG" | grep -qiE "^feat(\(.+\))?:"; then
   SUGGESTED="minor"
 elif echo "$COMMIT_MSG" | grep -qiE "^fix(\(.+\))?:"; then
   SUGGESTED="patch"
 else
-  SUGGESTED="patch"
+  SUGGESTED="skip"
 fi
 
 # Skip prompt in non-interactive environments (CI, automated tools)
@@ -37,12 +39,20 @@ case "$answer" in
   M|major)
     TYPE="major" ;;
   *)
-    echo "Skipping version bump."
-    exit 0 ;;
+    TYPE="skip" ;;
 esac
 
-npm version "$TYPE" --no-git-tag-version --silent
+if [ "$TYPE" = "skip" ]; then
+  echo "Skipping version bump."
+  exit 0
+fi
+
+if ! npm version "$TYPE" --no-git-tag-version --silent; then
+  echo "Version bump failed — package.json was not modified." >&2
+  exit 1
+fi
+
 NEW_VERSION=$(node -p "require('./package.json').version")
 git add package.json package-lock.json
-git commit -m "chore: bump version to $NEW_VERSION"
+git commit -m "chore: bump version to $NEW_VERSION [version-bump]"
 echo "Version bumped to $NEW_VERSION"

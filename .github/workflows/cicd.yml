@@ -41,6 +41,8 @@ jobs:
   setup:
     name: Setup Dependencies
     runs-on: ubuntu-latest
+    outputs:
+      cypress_version: ${{ steps.cypress-version.outputs.version }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -51,13 +53,21 @@ jobs:
           node-version: 20
           cache: "npm"
 
+      # Read the exact resolved Cypress version from the lockfile so the Docker image tag
+      # always matches what npm ci would install — no manual sync needed
+      - name: Get Cypress version
+        id: cypress-version
+        run: |
+          echo "version=$(node -p "require('./package-lock.json').packages['node_modules/cypress'].version")" >> "$GITHUB_OUTPUT"
+
       # Cypress binary is provided by the cypress/included Docker image — cache node_modules only
+      # Cache key includes CYPRESS_INSTALL_BINARY so a flag change busts the cache
       - name: Cache node-modules
         uses: actions/cache@v5
         id: cache-node-modules
         with:
           path: node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-no-cypress-binary
 
       # Only install if cache miss (usually only on first run or package changes)
       # CYPRESS_INSTALL_BINARY=0 skips downloading the binary — it lives in the Docker image
@@ -87,7 +97,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-no-cypress-binary
 
       - name: Run linter
         run: |
@@ -101,7 +111,7 @@ jobs:
   test-pr:
     name: E2E Tests PR (chrome)
     runs-on: ubuntu-latest
-    container: cypress/included:13.7.1
+    container: cypress/included:${{ needs.setup.outputs.cypress_version }}
     needs: setup
     if: github.event_name == 'pull_request'
     steps:
@@ -112,7 +122,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-no-cypress-binary
 
       - name: Run Cypress E2E against local server
         run: |
@@ -153,7 +163,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-no-cypress-binary
 
       - name: Build
         run: npm run build
@@ -183,7 +193,7 @@ jobs:
   test-production:
     name: E2E Tests Production (chrome)
     runs-on: ubuntu-latest
-    container: cypress/included:13.7.1
+    container: cypress/included:${{ needs.setup.outputs.cypress_version }}
     needs: [setup, deploy]
     if: |
       always() &&
@@ -202,7 +212,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-no-cypress-binary
 
       - name: Run Cypress E2E against production
         run: cypress run --browser chrome --headless

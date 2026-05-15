@@ -1,4 +1,4 @@
-import { BadgeConfig } from "../types/types"
+import { BadgeConfig, Skill, SkillCategories } from "../types/types"
 
 // Developer console message
 export const DEV_MESSAGE = {
@@ -43,22 +43,38 @@ export const footerLinks = [
 export const DEVICON_BASE_URL =
   "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons"
 
-// Image source mapping
-export const iconSources: Record<string, string> = {
-  gitlab: `${DEVICON_BASE_URL}/gitlab/gitlab-original.svg`,
-  bitbucket: `${DEVICON_BASE_URL}/bitbucket/bitbucket-original.svg`,
-  github: `${DEVICON_BASE_URL}/github/github-original.svg`,
-  browserstack: `${DEVICON_BASE_URL}/browserstack/browserstack-original.svg`,
-  playwright: `${DEVICON_BASE_URL}/playwright/playwright-original.svg`,
-  vim: `${DEVICON_BASE_URL}/vim/vim-original.svg`,
-  javascript: `${DEVICON_BASE_URL}/javascript/javascript-original.svg`,
-  typescript: `${DEVICON_BASE_URL}/typescript/typescript-original.svg`,
-  vscode: `${DEVICON_BASE_URL}/vscode/vscode-original.svg`,
-  ember: `${DEVICON_BASE_URL}/ember/ember-original.svg`,
-  html: `${DEVICON_BASE_URL}/html5/html5-original-wordmark.svg`,
-  css: `${DEVICON_BASE_URL}/css3/css3-original-wordmark.svg`,
-  cypress: `${DEVICON_BASE_URL}/cypressio/cypressio-original.svg`,
-  react: `${DEVICON_BASE_URL}/react/react-original.svg`,
-  webpack: `${DEVICON_BASE_URL}/webpack/webpack-original.svg`,
-  "tricentis-qtest": `${DEVICON_BASE_URL}/qtest/qtest-original.svg`,
+export const skillCategories: SkillCategories = {
+  "Test Automation & QA": {
+    icon: "🧪",
+    skills: [
+      { name: "cypress", years: "2+", isCore: true, iconPath: "cypressio/cypressio-original.svg" },
+      { name: "playwright", years: "1+", isCore: true, iconPath: "playwright/playwright-original.svg" },
+      { name: "testing-library", years: "2+", isCore: true, customImageKey: "testing-library" },
+      { name: "tricentis-qtest", years: "3+", isCore: false, iconPath: "qtest/qtest-original.svg" },
+      { name: "browserstack", years: "2+", isCore: false, iconPath: "browserstack/browserstack-original.svg" },
+    ] as Skill[],
+  },
+  "Frontend Development": {
+    icon: "🎨",
+    skills: [
+      { name: "typeScript", years: "4+", isCore: true, iconPath: "typescript/typescript-original.svg" },
+      { name: "javaScript", years: "8+", isCore: true, iconPath: "javascript/javascript-original.svg" },
+      { name: "react", years: "6+", isCore: true, iconPath: "react/react-original.svg" },
+      { name: "ember", years: "3", isCore: false, iconPath: "ember/ember-original.svg" },
+      { name: "html", years: "8+", isCore: false, iconPath: "html5/html5-original-wordmark.svg" },
+      { name: "css", years: "8+", isCore: false, iconPath: "css3/css3-original-wordmark.svg" },
+      { name: "styled-components", years: "3+", isCore: false, customImageKey: "styled-components" },
+    ] as Skill[],
+  },
+  "Development Tools & CI/CD": {
+    icon: "🔧",
+    skills: [
+      { name: "github", years: "8+", isCore: false, iconPath: "github/github-original.svg" },
+      { name: "gitlab", years: "3+", isCore: false, iconPath: "gitlab/gitlab-original.svg" },
+      { name: "bitbucket", years: "3+", isCore: false, iconPath: "bitbucket/bitbucket-original.svg" },
+      { name: "vscode", years: "6+", isCore: false, iconPath: "vscode/vscode-original.svg" },
+      { name: "webpack", years: "4", isCore: false, iconPath: "webpack/webpack-original.svg" },
+      { name: "vim", years: "3+", isCore: false, iconPath: "vim/vim-original.svg" },
+    ] as Skill[],
+  },
 }

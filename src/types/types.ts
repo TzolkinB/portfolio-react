@@ -3,9 +3,6 @@ export interface BadgeConfig {
   text: string
 }
 
-export interface CustomImageMap {
-  readonly [key: string]: JSX.Element
-}
 
 export interface FooterLink {
   href: string
@@ -17,13 +14,6 @@ export interface FooterLinksProps {
   links: readonly FooterLink[]
 }
 
-export interface GetImageProps {
-  readonly name: string
-  readonly years: string
-  readonly imageSrc?: string
-  readonly customImage?: JSX.Element
-  readonly isCore?: boolean
-}
 
 export interface Project {
   title: string
@@ -46,8 +36,8 @@ export interface Skill {
   name: string
   years: string
   isCore: boolean
-  imageSrc?: string
-  customImage?: JSX.Element
+  iconPath?: string
+  customImageKey?: string
 }
 
 export interface SkillCategory {

@@ -122,14 +122,21 @@ jobs:
 
       - name: Restore node_modules
         uses: actions/cache@v5
+        id: cache-node-modules
         with:
           path: node_modules
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-no-cypress-binary
 
+      - name: Install dependencies (cache miss fallback)
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+        env:
+          CYPRESS_INSTALL_BINARY: "0"
+
       - name: Run Cypress E2E against local server
         run: |
           npm start &
-          npx wait-on http://localhost:4280 --timeout 60000
+          node_modules/.bin/wait-on http://localhost:4280 --timeout 60000
           cypress run --browser chrome --headless
         env:
           CYPRESS_BASE_URL: http://localhost:4280
@@ -212,9 +219,16 @@ jobs:
 
       - name: Restore node_modules
         uses: actions/cache@v5
+        id: cache-node-modules
         with:
           path: node_modules
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-no-cypress-binary
+
+      - name: Install dependencies (cache miss fallback)
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+        env:
+          CYPRESS_INSTALL_BINARY: "0"
 
       - name: Run Cypress E2E against production
         run: cypress run --browser chrome --headless

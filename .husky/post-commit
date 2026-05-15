@@ -1,0 +1,43 @@
+#!/bin/sh
+# Skip if this commit is itself a version bump to prevent infinite loops
+if git log -1 --pretty=%B | grep -q "^chore: bump version"; then
+  exit 0
+fi
+
+COMMIT_MSG=$(git log -1 --pretty=%B)
+
+# Suggest bump type based on conventional commit prefix
+if echo "$COMMIT_MSG" | grep -qi "BREAKING CHANGE"; then
+  SUGGESTED="major"
+elif echo "$COMMIT_MSG" | grep -qiE "^feat(\(.+\))?!?:"; then
+  SUGGESTED="minor"
+elif echo "$COMMIT_MSG" | grep -qiE "^fix(\(.+\))?:"; then
+  SUGGESTED="patch"
+else
+  SUGGESTED="patch"
+fi
+
+exec < /dev/tty
+printf "\nSuggested bump: %s (%s)\n" "$SUGGESTED" "$(echo "$COMMIT_MSG" | head -1)"
+printf "Accept [Enter], or choose: [p]atch / [m]inor / [M]ajor / [s]kip: "
+read -r answer
+
+case "$answer" in
+  "")
+    TYPE="$SUGGESTED" ;;
+  p|patch)
+    TYPE="patch" ;;
+  m|minor)
+    TYPE="minor" ;;
+  M|major)
+    TYPE="major" ;;
+  *)
+    echo "Skipping version bump."
+    exit 0 ;;
+esac
+
+npm version "$TYPE" --no-git-tag-version --silent
+NEW_VERSION=$(node -p "require('./package.json').version")
+git add package.json package-lock.json
+git commit -m "chore: bump version to $NEW_VERSION"
+echo "Version bumped to $NEW_VERSION"

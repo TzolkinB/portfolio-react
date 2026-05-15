@@ -51,20 +51,21 @@ jobs:
           node-version: 20
           cache: "npm"
 
-      # Cache both node_modules AND Cypress binary for maximum speed
+      # Cypress binary is provided by the cypress/included Docker image — cache node_modules only
       - name: Cache node-modules
         uses: actions/cache@v5
         id: cache-node-modules
         with:
-          path: |
-            node_modules
-            ~/.cache/Cypress
+          path: node_modules
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       # Only install if cache miss (usually only on first run or package changes)
+      # CYPRESS_INSTALL_BINARY=0 skips downloading the binary — it lives in the Docker image
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
+        env:
+          CYPRESS_INSTALL_BINARY: "0"
 
   # ============================================================================
   # LINT: Check code style and quality
@@ -82,12 +83,10 @@ jobs:
         with:
           node-version: 20
 
-      - name: Restore node_modules and Cypress binary
+      - name: Restore node_modules
         uses: actions/cache@v5
         with:
-          path: |
-            node_modules
-            ~/.cache/Cypress
+          path: node_modules
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Run linter
@@ -97,35 +96,29 @@ jobs:
 
   # ============================================================================
   # TEST (PR): Run Cypress against local dev server
-  # Chrome only — Firefox requires xvfb on Ubuntu runners even with --headless
+  # Uses cypress/included Docker image — Cypress and Chrome are pre-installed
   # ============================================================================
   test-pr:
     name: E2E Tests PR (chrome)
     runs-on: ubuntu-latest
+    container: cypress/included:13.7.1
     needs: setup
     if: github.event_name == 'pull_request'
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Setup Node.js 20
-        uses: actions/setup-node@v6
-        with:
-          node-version: 20
-
-      - name: Restore node_modules and Cypress binary
+      - name: Restore node_modules
         uses: actions/cache@v5
         with:
-          path: |
-            node_modules
-            ~/.cache/Cypress
+          path: node_modules
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Run Cypress E2E against local server
         run: |
           npm start &
           npx wait-on http://localhost:4280 --timeout 60000
-          npx cypress run --browser chrome --headless
+          cypress run --browser chrome --headless
         env:
           CYPRESS_BASE_URL: http://localhost:4280
 
@@ -159,9 +152,7 @@ jobs:
       - name: Restore node_modules
         uses: actions/cache@v5
         with:
-          path: |
-            node_modules
-            ~/.cache/Cypress
+          path: node_modules
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Build
@@ -187,10 +178,12 @@ jobs:
   # TEST (PRODUCTION): Verify the live site
   # Runs after deploy on push to master, or standalone on schedule/dispatch
   # Uses if: always() so it still runs when deploy was skipped (schedule/dispatch)
+  # Uses cypress/included Docker image — Cypress and Chrome are pre-installed
   # ============================================================================
   test-production:
     name: E2E Tests Production (chrome)
     runs-on: ubuntu-latest
+    container: cypress/included:13.7.1
     needs: [setup, deploy]
     if: |
       always() &&
@@ -205,21 +198,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Setup Node.js 20
-        uses: actions/setup-node@v6
-        with:
-          node-version: 20
-
-      - name: Restore node_modules and Cypress binary
+      - name: Restore node_modules
         uses: actions/cache@v5
         with:
-          path: |
-            node_modules
-            ~/.cache/Cypress
+          path: node_modules
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Run Cypress E2E against production
-        run: npx cypress run --browser chrome --headless
+        run: cypress run --browser chrome --headless
 
       - name: Upload test failure screenshots
         uses: actions/upload-artifact@v7

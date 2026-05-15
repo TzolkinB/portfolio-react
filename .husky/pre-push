@@ -5,4 +5,4 @@ if [ "${CI}" = "true" ] || [ "${CI}" = "1" ]; then
 fi
 
 echo "Running Cypress before push..."
-CYPRESS_BASE_URL=http://localhost:4280 npm run cy:headless
+CYPRESS_BASE_URL=http://localhost:4280 npm run cy:chrome

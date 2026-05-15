@@ -26,7 +26,8 @@ module.exports = [
       "build",
       "node_modules",
       "eslint.config.cjs",
-      "build-utils/**/*",
+      "build-utils/**",
+      ".claude/**",
     ],
   },
 

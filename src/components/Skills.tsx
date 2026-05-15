@@ -1,11 +1,12 @@
 import { MDBTypography } from "mdb-react-ui-kit"
 
-import { skillCategories, getImage } from "../utils/tech-icons"
+import { skillCategories } from "../constants/appData"
+import { getImage } from "../utils/tech-icons"
 
 import type { SectionProps } from "../types/types"
 
 function Skills({ id }: SectionProps) {
-  const categories = skillCategories()
+  const categories = skillCategories
 
   return (
     <div id={id} data-testid={id}>

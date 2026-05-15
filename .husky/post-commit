@@ -17,7 +17,11 @@ else
   SUGGESTED="patch"
 fi
 
-exec < /dev/tty
+# Skip prompt in non-interactive environments (CI, automated tools)
+if ! exec < /dev/tty 2>/dev/null; then
+  exit 0
+fi
+
 printf "\nSuggested bump: %s (%s)\n" "$SUGGESTED" "$(echo "$COMMIT_MSG" | head -1)"
 printf "Accept [Enter], or choose: [p]atch / [m]inor / [M]ajor / [s]kip: "
 read -r answer

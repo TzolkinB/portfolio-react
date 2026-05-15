@@ -18,9 +18,10 @@ else
 fi
 
 # Skip prompt in non-interactive environments (CI, automated tools)
-if ! exec < /dev/tty 2>/dev/null; then
+if ! { : < /dev/tty; } 2>/dev/null; then
   exit 0
 fi
+exec < /dev/tty
 
 printf "\nSuggested bump: %s (%s)\n" "$SUGGESTED" "$(echo "$COMMIT_MSG" | head -1)"
 printf "Accept [Enter], or choose: [p]atch / [m]inor / [M]ajor / [s]kip: "

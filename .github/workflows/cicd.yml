@@ -1,6 +1,16 @@
 ---
-# CI/CD Pipeline: Lint and test code on every push/PR
-# Workflow visualization: setup → (lint + test run in parallel)
+# CI/CD Pipeline
+#
+# Flow:
+#   pull_request  → setup → (lint + test-pr) in parallel
+#                   test-pr runs against local dev server (Chrome only)
+#
+#   push master   → setup → lint → deploy → test-production
+#                   deploy builds and ships to S3/CloudFront
+#                   test-production verifies the live site after deploy
+#
+#   schedule /    → setup → test-production (smoke test, no redeploy)
+#   workflow_dispatch
 name: CI/CD
 
 # "on" is linter safe since it's a reserved word in YAML
@@ -27,7 +37,6 @@ name: CI/CD
 jobs:
   # ============================================================================
   # SETUP: Install dependencies once, share with all other jobs
-  # This job creates the foundation - other jobs depend on it
   # ============================================================================
   setup:
     name: Setup Dependencies
@@ -59,7 +68,6 @@ jobs:
 
   # ============================================================================
   # LINT: Check code style and quality
-  # Runs in parallel with 'test' after 'setup' completes
   # ============================================================================
   lint:
     name: Lint Code
@@ -73,7 +81,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 20
-      # Restore node_modules and Cypress binary rom setup job
+
       - name: Restore node_modules and Cypress binary
         uses: actions/cache@v5
         with:
@@ -88,19 +96,14 @@ jobs:
           npm run lint:yaml
 
   # ============================================================================
-  # TEST: Run Cypress E2E tests across multiple browsers
-  # Matrix creates separate jobs for each browser (chrome, firefox, safari, edge)
-  # All browser tests run in parallel after 'setup' completes
+  # TEST (PR): Run Cypress against local dev server
+  # Chrome only — Firefox requires xvfb on Ubuntu runners even with --headless
   # ============================================================================
-  test:
-    name: E2E Tests (${{ matrix.browser }})
+  test-pr:
+    name: E2E Tests PR (chrome)
     runs-on: ubuntu-latest
     needs: setup
-    strategy:
-      matrix:
-        browser: [chrome, firefox]
-      # Don't cancel other browser tests if one fails - see all results
-      fail-fast: false
+    if: github.event_name == 'pull_request'
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -110,7 +113,6 @@ jobs:
         with:
           node-version: 20
 
-      # Restore node_modules and Cypress binary from setup job
       - name: Restore node_modules and Cypress binary
         uses: actions/cache@v5
         with:
@@ -119,9 +121,7 @@ jobs:
             ~/.cache/Cypress
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
-      # PRs: Chrome only — Firefox requires xvfb on Ubuntu runners even with --headless
-      - name: Run Cypress E2E on ${{ matrix.browser }} (PR)
-        if: github.event_name == 'pull_request' && matrix.browser == 'chrome'
+      - name: Run Cypress E2E against local server
         run: |
           npm start &
           npx wait-on http://localhost:4280 --timeout 60000
@@ -129,28 +129,108 @@ jobs:
         env:
           CYPRESS_BASE_URL: http://localhost:4280
 
-      # Push to master / schedule: run against production (post-deploy verification)
-      - name: Run Cypress E2E on ${{ matrix.browser }} (production)
-        if: github.event_name != 'pull_request'
-        uses: cypress-io/github-action@v7
-        with:
-          install: false
-          browser: ${{ matrix.browser }}
-          command: npm run test
-
-      # Save screenshots only when tests fail (for debugging)
-      # Include browser name in artifact so they don't overwrite each other
       - name: Upload test failure screenshots
         uses: actions/upload-artifact@v7
         if: failure()
         with:
-          name: cypress-screenshots-${{ matrix.browser }}
+          name: cypress-screenshots-pr
+          path: cypress/screenshots
+          if-no-files-found: ignore
+
+  # ============================================================================
+  # DEPLOY: Build and ship to S3 + invalidate CloudFront
+  # Runs only on push to master, after lint passes
+  # Requires secrets: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION
+  # ============================================================================
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [setup, lint]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+
+      - name: Restore node_modules
+        uses: actions/cache@v5
+        with:
+          path: |
+            node_modules
+            ~/.cache/Cypress
+          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Sync to S3
+        run: aws s3 sync dist/ s3://www.kimbell.me --delete
+
+      - name: Invalidate CloudFront cache
+        run: >
+          aws cloudfront create-invalidation
+          --distribution-id E2UIRXEU09EPZZ
+          --paths "/*"
+
+  # ============================================================================
+  # TEST (PRODUCTION): Verify the live site
+  # Runs after deploy on push to master, or standalone on schedule/dispatch
+  # Uses if: always() so it still runs when deploy was skipped (schedule/dispatch)
+  # ============================================================================
+  test-production:
+    name: E2E Tests Production (chrome)
+    runs-on: ubuntu-latest
+    needs: [setup, deploy]
+    if: |
+      always() &&
+      needs.setup.result == 'success' &&
+      needs.deploy.result != 'failure' &&
+      (
+        needs.deploy.result == 'success' ||
+        github.event_name == 'schedule' ||
+        github.event_name == 'workflow_dispatch'
+      )
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+
+      - name: Restore node_modules and Cypress binary
+        uses: actions/cache@v5
+        with:
+          path: |
+            node_modules
+            ~/.cache/Cypress
+          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Run Cypress E2E against production
+        run: npx cypress run --browser chrome --headless
+
+      - name: Upload test failure screenshots
+        uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: cypress-screenshots-production
           path: cypress/screenshots
           if-no-files-found: ignore
 
   # ============================================================================
   # MANUAL TRIGGER: Debug logging (only runs on workflow_dispatch)
-  # Independent job - shows separately in UI
   # ============================================================================
   manual-trigger:
     name: Manual Workflow Trigger

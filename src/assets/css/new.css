@@ -237,14 +237,14 @@ body {
 
 .skills-list {
   display: grid;
-  gap: 20px;
+  gap: 15px;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 }
 
 .skill-item {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 24px;
+  padding: 5px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -454,10 +454,6 @@ footer {
   #home .name {
     font-size: 5rem;
   }
-
-  .skills-list {
-    row-gap: 0.5rem;
-  }
 }
 
 /* ===== ACCESSIBILITY ===== */
@@ -492,8 +488,12 @@ button:focus-visible,
 }
 
 @keyframes catFadeOut {
-  from { opacity: 1; }
-  to   { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .cat-fadeout {

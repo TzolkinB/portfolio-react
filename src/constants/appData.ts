@@ -15,9 +15,9 @@ export const DEV_MESSAGE = {
 } as const
 
 export const badgeContent: readonly BadgeConfig[] = [
-  { icon: "fas fa-check", text: "Playright" },
-  { icon: "fas fa-check", text: "Cypress" },
-  { icon: "fab fa-react", text: "React" },
+  { icon: "devicon-playwright-plain", text: "Playright" },
+  { icon: "devicon-cypressio-plain", text: "Cypress" },
+  { icon: "devicon-react-plain", text: "React" },
 ] as const
 
 export const experienceStatData = [
@@ -116,19 +116,19 @@ export const skillCategories: SkillCategories = {
         name: "html",
         years: "8+",
         isCore: false,
-        iconPath: "html5/html5-original-wordmark.svg",
+        iconPath: "html5/html5-original.svg",
       },
       {
         name: "css",
         years: "8+",
         isCore: false,
-        iconPath: "css3/css3-original-wordmark.svg",
+        iconPath: "css3/css3-original.svg",
       },
       {
         name: "styled-components",
         years: "3+",
         isCore: false,
-        customImageKey: "styled-components",
+        iconPath: "styledcomponents/styledcomponents-original.svg",
       },
     ] as Skill[],
   },
@@ -154,46 +154,40 @@ export const skillCategories: SkillCategories = {
         iconPath: "bitbucket/bitbucket-original.svg",
       },
       {
+        name: "github-actions",
+        years: "2+",
+        isCore: false,
+        iconPath: "githubactions/githubactions-original.svg",
+      },
+      {
         name: "vscode",
         years: "6+",
         isCore: false,
         iconPath: "vscode/vscode-original.svg",
       },
       {
-        name: "webpack",
-        years: "4",
-        isCore: false,
-        iconPath: "webpack/webpack-original.svg",
-      },
-      {
-        name: "vim",
-        years: "3+",
-        isCore: false,
-        iconPath: "vim/vim-original.svg",
-      },
-      {
-        name: "github-actions",
-        years: "2+",
-        isCore: false,
-        iconPath: "githubactions/githubactions-original-wordmark.svg",
-      },
-      {
         name: "jira",
         years: "4+",
         isCore: false,
-        iconPath: "jira/jira-original-wordmark.svg",
+        iconPath: "jira/jira-original.svg",
       },
       {
         name: "vite",
         years: "1+",
         isCore: false,
-        iconPath: "vite/vite-original-wordmark.svg",
+        iconPath: "vite/vite-original.svg",
       },
       {
         name: "eslint",
         years: "4+",
         isCore: false,
-        iconPath: "eslint/eslint-original-wordmark.svg",
+        iconPath: "eslint/eslint-original.svg",
+      },
+      {
+        name: "webpack",
+        years: "4",
+        isCore: false,
+        iconPath: "webpack/webpack-original.svg",
       },
     ] as Skill[],
   },

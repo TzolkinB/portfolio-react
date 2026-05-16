@@ -13,6 +13,17 @@ const projects: Project[] = [
     impactMetricStandard: "with fixtures and helper utilities",
   },
   {
+    title: "Data-driven Playwright",
+    subtitle: "Test Automation • TypeScript",
+    description:
+      "Scalable test suite using POM, JSON test data, and TypeScript enums for type-safe test data. New test scenarios added via configuration, zero code changes required.",
+    url: "https://github.com/TzolkinB/loop-playwright",
+    urlText: "Github Repo",
+    badgeText: ["Playwright", "TypeScript", "UI Testing"],
+    impactMetricBold: "Scalable test suite",
+    impactMetricStandard: "with JSON-based test data",
+  },
+  {
     title: "Cypress Test Collection",
     subtitle: "Test Automation • JavaScript",
     description:

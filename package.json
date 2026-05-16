@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "type": "module",
   "description": "Personal portfolio using React",
   "repository": {

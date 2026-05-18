@@ -1,0 +1,8 @@
+#!/bin/sh
+# Skip in CI — GitHub Actions runs Cypress in its own job
+if [ "${CI}" = "true" ] || [ "${CI}" = "1" ]; then
+  exit 0
+fi
+
+echo "Running Cypress before push..."
+CYPRESS_BASE_URL=http://localhost:4280 NPM_SCRIPT=cy:chrome bash scripts/test-and-claude.sh

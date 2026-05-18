@@ -31,7 +31,8 @@ export function badge({ icon, text }: BadgeConfig): JSX.Element {
       role="status"
       aria-label={text}
     >
-      <MDBIcon className={`${icon} me-1`} aria-hidden="true" />
+      {/* <MDBIcon className={`${icon} me-1`} aria-hidden="true" /> */}
+      <i className={`${icon} me-1`} aria-hidden="true" />
       <span>{text}</span>
     </div>
   )

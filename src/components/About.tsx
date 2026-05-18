@@ -13,71 +13,63 @@ import {
 import { SectionProps } from "../types/types"
 import { TechLink } from "../utils/utils"
 
+export const accordionTitles = {
+  qa: "Senior SDET in Web Test Automation | Ally Financial",
+  dev: "Software Engineer in Frontend Development | Ally Financial",
+} as const
+
+export const qaAccomplishments = [
+    <>
+      Led transition from{" "}
+      <span className="fw-bold">100% manual → 90% automated testing</span>{" "}
+      across 10 teams in 2 years using{" "}
+      <TechLink href="https://www.cypress.io/">Cypress</TechLink>,{" "}
+      <TechLink href="https://www.typescriptlang.org/">TypeScript</TechLink>,
+      and <TechLink href="https://docs.gitlab.com/ee/ci/">CI/CD</TechLink>
+      —reducing regression effort and enabling consistent 2-week release
+      cycles{" "}
+    </>,
+    <>
+      Architected a{" "}
+      <span className="fw-bold">TypeScript-based Cypress framework </span>
+      (internal NPM package) adopted across{" "}
+      <span className="fw-bold">35 repositories</span> (scaled from 11),
+      standardizing test strategy across multiple business lines
+    </>,
+    <>
+      Built and scaled{" "}
+      <span className="fw-bold">
+        reusable Cypress commands and testing standards
+      </span>
+      , accelerating test development by 75%
+    </>,
+    <>
+      <span className="fw-bold">Reduced test flakiness across 10 teams</span> by
+      implementing mocking strategies and establishing common test patterns with
+      built-in stability guards
+    </>,
+  ]
+
+export const devAccomplishments = [
+  <>
+    Delivered responsive frontend features across Ember and React ecosystems
+    during large-scale migration
+  </>,
+  <>
+    <span className="fw-bold">Championed Cypress adoption</span> by leading
+    training and establishing foundational testing patterns that became the
+    standard across the organization
+  </>,
+  <>
+    Partnered with QA on the{" "}
+    <span className="fw-bold">migration of automated tests</span> to align
+    with React architecture, ensuring test coverage and stability were
+    maintainted during platform transition
+  </>,
+]
+
 const About = ({ id }: SectionProps) => {
   // const [active, setActive] = useState<number | number[]>(1)
-
-  const accordionTitles = {
-    qa: "QA Software Engineer in Test (SDET) in Web Test Automation",
-    dev: "Frontend Developer in React",
-  } as const
-
-  const qaAccomplishments = [
-    "Created a 'Best Practices and Standards Guide' for Ally Bank's implimentation of their framework and tools.",
-    <>
-      Standardized common UI testing patterns, with examples, to ensure ease of
-      adoption as well as adherence to best practices and quality standards.{" "}
-      <a
-        href="https://kimbellcypress.notion.site/Usage-bd2edeebefff4f6ebbdf3b681a03ead1"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Common UI Patterns
-      </a>
-    </>,
-    <>
-      Managed the global internal <span className="fw-bold">NPM</span> package,
-      written in <span className="fw-bold">JavaScript</span> and{" "}
-      <span className="fw-bold">TypeScript</span>, that incorporated Cypress
-      configurations. This package resulted in streamlined operations across 10
-      teams and at least one line of business.
-    </>,
-    <>
-      Added test jobs to <span className="fw-bold">Gitlab&apos;s CI/CD</span>{" "}
-      pipeline using <span className="fw-bold">YAML</span> that allowed teams to
-      trigger automated tests manually or on scheduled CICD pipeline runs,
-      reducing release cycle hardening time from hours to minutes.
-    </>,
-    <>
-      Developed a <span className="fw-bold">Bash</span> shell script to automate
-      a needed change during Cypress version upgrade.
-    </>,
-    <>
-      Developed and implemented <span className="fw-bold">JavaScript</span>{" "}
-      custom commands to increase code efficiency.
-    </>,
-  ]
-
-  const devAccomplishments = [
-    <>
-      Developed requested features using <span className="fw-bold">Ember</span>{" "}
-      and <span className="fw-bold">React</span> in multiple ecosystems for new
-      features to be released while codebase was migrated to{" "}
-      <span className="fw-bold">React</span>
-    </>,
-    "Participated in the entire development life cycle, from concept to release, including sprint planning and story estimation in an agile setting with bi-weekly scrum cycles",
-    <>
-      Implemented unit tests using <span className="fw-bold">Jest</span> and{" "}
-      <span className="fw-bold">Testing Library</span> to maintain code coverage
-      at agreed-upon thresholds, ensuring reliability and confidence
-    </>,
-    "Tested code for accessibility, responsiveness, and cross-browser compatibility, guaranteeing high deliverables prior to review and testing phases",
-    <>
-      Leveraged <span className="fw-bold">Swagger</span> for API validation
-      during integration, creating mocks and diagnosing UI issues arising from
-      API contract modifications
-    </>,
-    "Participated in code reviews, providing constructive feedback, ensuring code quality and best practices.",
-  ]
 
   return (
     <div id={id} data-testid={id}>
@@ -88,40 +80,20 @@ const About = ({ id }: SectionProps) => {
         </MDBTypography>
         <hr />
       </div>
-      <MDBTypography className="fw-light align-self-start">
-        I bring 6+ years of experience in responsive frontend web development
-        and 2+ years in web test automation.
+      <MDBTypography className="fw-light">
+        With development experience prior to pivoting to SDET, I believe quality
+        isn&apos;t a phase, it&apos;s baked in from day one. Good testing
+        frameworks disappear into the background; teams just use them. I design
+        automation that scales because I&apos;ve seen what happens when it
+        doesn&apos;t: friction, bottlenecks, people avoiding tests entirely. I
+        care about bridging the gap between QA and engineering because testing
+        is everyone&apos;s responsibility.{" "}
       </MDBTypography>
       <MDBTypography className="fw-light">
-        From 2016 to 2021, I worked as a Frontend Developer in responsive web
-        applications, focusing primarily on{" "}
-        <TechLink href="https://react.dev/">
-          <span className="fw-bold">React</span>
-        </TechLink>
-        ,{" "}
-        <TechLink href="https://www.javascript.com/">
-          <span className="fw-bold">JavaScript</span>
-        </TechLink>
-        , and{" "}
-        <TechLink href="https://www.typescriptlang.org/">
-          <span className="fw-bold">TypeScript</span>
-        </TechLink>
-        .
-      </MDBTypography>
-
-      <MDBTypography className="fw-light">
-        In 2022, I transitioned from a Software Engineer focused on Web UI
-        development to an SDET position, focusing on automation testing. I
-        utilized{" "}
-        <TechLink href="https://www.cypress.io/">
-          <span className="fw-bold">Cypress</span>
-        </TechLink>{" "}
-        in conjunction with{" "}
-        <TechLink href="https://testing-library.com/">
-          <span className="fw-bold">Testing-Library</span>
-        </TechLink>{" "}
-        to create highly human-readable queries, enhancing both test readability
-        and accessibility coverage.
+        I&apos;m looking for roles where testing strategy matters. Where I can
+        partner with engineering teams to design automation they want to use,
+        and that actually scales. I thrive in environments that value shift-left
+        thinking and treat test infrastructure as seriously as production code.
       </MDBTypography>
 
       {/* Accordions */}
@@ -132,6 +104,13 @@ const About = ({ id }: SectionProps) => {
           headerTitle={accordionTitles.qa}
           data-testid={accordionTitles.qa}
         >
+          Built Ally&apos;s automation infrastructure that enabled{" "}
+          <span className="fw-bold">
+            10 teams to shift from manual to automated testing
+          </span>
+          . As technical lead and primary escalation point for framework issues,
+          I partnered with product and engineering teams to align workflows and
+          eliminate bottlenecks.
           <MDBTypography
             listUnStyled
             className="mb-0 px-3"
@@ -159,6 +138,12 @@ const About = ({ id }: SectionProps) => {
           headerTitle={accordionTitles.dev}
           data-testid={accordionTitles.dev}
         >
+          Joined during Ally&apos;s critical{" "}
+          <span className="fw-bold">Ember-to-React migration</span>, developing
+          features across 2+ ecosystems while simultaneously leading the
+          parallel effort to migrate and modernize automated tests. Became the
+          <span className="fw-bold">subject matter expert on Cypress</span>,
+          training teams and accelerating tool adoption across the organization.
           <MDBTypography
             listUnStyled
             className="mb-0 px-3"

@@ -15,9 +15,9 @@ export const DEV_MESSAGE = {
 } as const
 
 export const badgeContent: readonly BadgeConfig[] = [
-  { icon: "fas fa-check", text: "Playright" },
-  { icon: "fas fa-check", text: "Cypress" },
-  { icon: "fab fa-react", text: "React" },
+  { icon: "devicon-playwright-plain", text: "Playright" },
+  { icon: "devicon-cypressio-plain", text: "Cypress" },
+  { icon: "devicon-react-plain", text: "React" },
 ] as const
 
 export const experienceStatData = [
@@ -47,34 +47,148 @@ export const skillCategories: SkillCategories = {
   "Test Automation & QA": {
     icon: "🧪",
     skills: [
-      { name: "cypress", years: "2+", isCore: true, iconPath: "cypressio/cypressio-original.svg" },
-      { name: "playwright", years: "1+", isCore: true, iconPath: "playwright/playwright-original.svg" },
-      { name: "testing-library", years: "2+", isCore: true, customImageKey: "testing-library" },
-      { name: "tricentis-qtest", years: "3+", isCore: false, iconPath: "qtest/qtest-original.svg" },
-      { name: "browserstack", years: "2+", isCore: false, iconPath: "browserstack/browserstack-original.svg" },
+      {
+        name: "cypress",
+        years: "2+",
+        isCore: true,
+        iconPath: "cypressio/cypressio-original.svg",
+      },
+      {
+        name: "playwright",
+        years: "1+",
+        isCore: true,
+        iconPath: "playwright/playwright-original.svg",
+      },
+      {
+        name: "testing-library",
+        years: "2+",
+        isCore: true,
+        customImageKey: "testing-library",
+      },
+      {
+        name: "tricentis-qtest",
+        years: "3+",
+        isCore: false,
+        iconPath: "qtest/qtest-original.svg",
+      },
+      {
+        name: "browserstack",
+        years: "2+",
+        isCore: false,
+        iconPath: "browserstack/browserstack-original.svg",
+      },
+      {
+        name: "json",
+        years: "4+",
+        isCore: false,
+        iconPath: "json/json-original.svg",
+      },
     ] as Skill[],
   },
   "Frontend Development": {
     icon: "🎨",
     skills: [
-      { name: "typeScript", years: "4+", isCore: true, iconPath: "typescript/typescript-original.svg" },
-      { name: "javaScript", years: "8+", isCore: true, iconPath: "javascript/javascript-original.svg" },
-      { name: "react", years: "6+", isCore: true, iconPath: "react/react-original.svg" },
-      { name: "ember", years: "3", isCore: false, iconPath: "ember/ember-original.svg" },
-      { name: "html", years: "8+", isCore: false, iconPath: "html5/html5-original-wordmark.svg" },
-      { name: "css", years: "8+", isCore: false, iconPath: "css3/css3-original-wordmark.svg" },
-      { name: "styled-components", years: "3+", isCore: false, customImageKey: "styled-components" },
+      {
+        name: "typeScript",
+        years: "4+",
+        isCore: true,
+        iconPath: "typescript/typescript-original.svg",
+      },
+      {
+        name: "javaScript",
+        years: "8+",
+        isCore: true,
+        iconPath: "javascript/javascript-original.svg",
+      },
+      {
+        name: "react",
+        years: "6+",
+        isCore: true,
+        iconPath: "react/react-original.svg",
+      },
+      {
+        name: "ember",
+        years: "3",
+        isCore: false,
+        iconPath: "ember/ember-original.svg",
+      },
+      {
+        name: "html",
+        years: "8+",
+        isCore: false,
+        iconPath: "html5/html5-original.svg",
+      },
+      {
+        name: "css",
+        years: "8+",
+        isCore: false,
+        iconPath: "css3/css3-original.svg",
+      },
+      {
+        name: "styled-components",
+        years: "3+",
+        isCore: false,
+        iconPath: "styledcomponents/styledcomponents-original.svg",
+      },
     ] as Skill[],
   },
   "Development Tools & CI/CD": {
     icon: "🔧",
     skills: [
-      { name: "github", years: "8+", isCore: false, iconPath: "github/github-original.svg" },
-      { name: "gitlab", years: "3+", isCore: false, iconPath: "gitlab/gitlab-original.svg" },
-      { name: "bitbucket", years: "3+", isCore: false, iconPath: "bitbucket/bitbucket-original.svg" },
-      { name: "vscode", years: "6+", isCore: false, iconPath: "vscode/vscode-original.svg" },
-      { name: "webpack", years: "4", isCore: false, iconPath: "webpack/webpack-original.svg" },
-      { name: "vim", years: "3+", isCore: false, iconPath: "vim/vim-original.svg" },
+      {
+        name: "github",
+        years: "8+",
+        isCore: false,
+        iconPath: "github/github-original.svg",
+      },
+      {
+        name: "gitlab",
+        years: "3+",
+        isCore: false,
+        iconPath: "gitlab/gitlab-original.svg",
+      },
+      {
+        name: "bitbucket",
+        years: "3+",
+        isCore: false,
+        iconPath: "bitbucket/bitbucket-original.svg",
+      },
+      {
+        name: "github-actions",
+        years: "2+",
+        isCore: false,
+        iconPath: "githubactions/githubactions-original.svg",
+      },
+      {
+        name: "vscode",
+        years: "6+",
+        isCore: false,
+        iconPath: "vscode/vscode-original.svg",
+      },
+      {
+        name: "jira",
+        years: "4+",
+        isCore: false,
+        iconPath: "jira/jira-original.svg",
+      },
+      {
+        name: "vite",
+        years: "1+",
+        isCore: false,
+        iconPath: "vite/vite-original.svg",
+      },
+      {
+        name: "eslint",
+        years: "4+",
+        isCore: false,
+        iconPath: "eslint/eslint-original.svg",
+      },
+      {
+        name: "webpack",
+        years: "4",
+        isCore: false,
+        iconPath: "webpack/webpack-original.svg",
+      },
     ] as Skill[],
   },
 }

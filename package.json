@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "type": "module",
   "description": "Personal portfolio using React",
   "repository": {
@@ -13,14 +13,11 @@
     "build:analyze": "npm run build",
     "deploy": "aws s3 sync dist/ s3://www.kimbell.me --delete && aws cloudfront create-invalidation --distribution-id E2UIRXEU09EPZZ --paths \"/*\"",
     "prod": "npm run build && npm run deploy",
+    "test": "start-server-and-test start http://localhost:4280 'cypress run'",
+    "cy:chrome": "start-server-and-test start http://localhost:4280 'cypress run --browser chrome'",
+    "cy:ui": "start-server-and-test start http://localhost:4280 'cypress open'",
     "lint": "eslint .",
-    "test": "cypress run",
-    "cy:test": "start-server-and-test start http://localhost:4280 test",
-    "cy:run": "start-server-and-test start http://localhost:4280 'cypress run'",
-    "cy:headless": "start-server-and-test start http://localhost:4280 'cypress run --browser chrome --headless'",
-    "lint:js": "eslint . --max-warnings=0",
-    "lint:yaml": "yamllint .github/**/*.yml",
-    "lint:husky": "npm run lint:js && npm run lint:yaml"
+    "lint:husky": "eslint . --max-warnings=0 && yamllint .github/**/*.yml"
   },
   "author": "Kimberly Bell",
   "license": "UNLICENSED",

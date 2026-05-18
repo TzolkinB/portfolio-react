@@ -1,20 +1,20 @@
-// import {
-//   cloudHosting,
-//   testingTools,
-//   terminalTools,
-//   webDevTools,
-// } from "../../src/tech-icons"
-import {
-  sizes,
-  anchorLinks,
-  buttonLinks,
-  buttonsCard1,
-  buttonsCard2,
-  buttonsCard3,
-  devAccordionTitle,
-  qaAccordionTitle,
-  buttonsCard4,
-} from "./commonMethods"
+import { accordionTitles, qaAccomplishments, devAccomplishments } from "../../src/components/About"
+import { skillCategories } from "../../src/constants/appData"
+import projects from "../../src/constants/projectsData"
+
+import { sizes, anchorLinks, buttonLinks } from "./commonMethods"
+
+import type { Project } from "../../src/types/types"
+
+const getProjectButtons = (project: Project) => {
+  const buttons: { name: string; href: string }[] = [
+    { name: project.urlText, href: project.url },
+  ]
+  if (project.url2 && project.url2Text) {
+    buttons.push({ name: project.url2Text, href: project.url2 })
+  }
+  return buttons
+}
 
 describe("Cat easter egg", () => {
   beforeEach(() => {
@@ -24,7 +24,9 @@ describe("Cat easter egg", () => {
 
   it("should not be visible on load, appear after 2s, and dismiss on click", () => {
     cy.findByRole("button", { name: "Dismiss cat" }).should("not.exist")
-    cy.findByRole("button", { name: "Dismiss cat" }, { timeout: 5000 }).should("exist")
+    cy.findByRole("button", { name: "Dismiss cat", timeout: 5000 }).should(
+      "exist",
+    )
     // force: true because the button is position:absolute;bottom:0 inside a fixed navbar —
     // its center is above the viewport, but users click the visible portion of the animation
     // eslint-disable-next-line cypress/no-force
@@ -41,30 +43,9 @@ describe("Profile tests", () => {
     cy.url().should("eq", `${Cypress.config("baseUrl")}/`)
   })
 
-  const cloudHosting = ["github", "gitlab", "bitbucket", "vscode"]
-  const testingTools = [
-    "cypress",
-    "playwright",
-    "testing-library",
-    "tricentis-qtest",
-    "browserstack",
-  ]
-  const terminalTools = ["webpack", "vim"]
-  const webDevTools = [
-    "typeScript",
-    "javaScript",
-    "react",
-    "ember",
-    "html",
-    "css",
-    "styled-components",
-  ]
-  const allSkills = [
-    ...testingTools,
-    ...webDevTools,
-    ...cloudHosting,
-    ...terminalTools,
-  ]
+  const allSkills = Object.values(skillCategories).flatMap((category) =>
+    category.skills.map((skill) => skill.name),
+  )
 
   sizes.forEach((size) => {
     it(`should have whiskers img, 4 links, in the nav bar, ${size}`, () => {
@@ -153,20 +134,20 @@ describe("Profile tests", () => {
         cy.get("@accordions")
           .first()
           .within(() => {
-            cy.findByRole("button", { name: qaAccordionTitle }).should(
+            cy.findByRole("button", { name: accordionTitles.qa }).should(
               "have.class",
               "collapsed",
             )
-            cy.findAllByTestId("success-check").should("have.length", 6)
+            cy.findAllByTestId("success-check").should("have.length", qaAccomplishments.length)
           })
         cy.get("@accordions")
           .last()
           .within(() => {
-            cy.findByRole("button", { name: devAccordionTitle }).should(
+            cy.findByRole("button", { name: accordionTitles.dev }).should(
               "have.class",
               "collapsed",
             )
-            cy.findAllByTestId("success-check").should("have.length", 6)
+            cy.findAllByTestId("success-check").should("have.length", devAccomplishments.length)
           })
       })
     })
@@ -198,12 +179,13 @@ describe("Profile tests", () => {
       cy.findByTestId("projects").within(() => {
         cy.findByRole("heading", { level: 2, name: "Projects" })
 
-        cy.findAllByTestId(/card-/i).should("have.length", 4).as("projectCards")
+        cy.findAllByTestId(/card-/i)
+          .should("have.length", projects.length)
+          .as("projectCards")
 
-        buttonLinks(0, buttonsCard1)
-        buttonLinks(1, buttonsCard2)
-        buttonLinks(2, buttonsCard3)
-        buttonLinks(3, buttonsCard4)
+        projects.forEach((project, index) => {
+          buttonLinks(index, getProjectButtons(project))
+        })
       })
     })
 

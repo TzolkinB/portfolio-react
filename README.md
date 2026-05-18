@@ -2,28 +2,88 @@
 
 # Personal Portfolio Website
 
-- UI: React 18, TypeScript 5, Material Design for Bootstrap
-- Hosting & Build: NPM, Webpack5, Husky, AWS S3 & Route 53
-- [Devicon](https://devicon.dev/) for programming language icons
+## Overview
 
-- Cypress: retry 1, each test loops through desktop, tablet, and mobile
-  - Using Testing Library
-  - 5 specs (15 total because of screen sizes) in 1 file
-  - Takes 1:21 to run in cy open
+Modern portfolio built with React 18, TypeScript 5, and [MDB React UI Kit](https://mdbootstrap.com/docs/react/) (Material Design for Bootstrap). Features responsive design, project showcase, and automated testing.
 
-## NPM Installation and Usage
+**Key Technologies:**
 
-- Install all of the npm dependencies:
+- React 18, TypeScript 5.9
+- [MDB React UI Kit](https://mdbootstrap.com/docs/react/)
+- Webpack 5, NPM scripts, Husky
+- AWS S3 & Route 53 for hosting
+- Cypress (with Testing Library) for E2E tests
+- Prettier & ESLint for code quality
+- [Devicon](https://devicon.dev/) for language icons
 
-  $ npm install
+## Directory Structure
 
-- To start the client in development run:
+- `src/` — Main React app (components, assets, utils)
+- `cypress/` — E2E tests (specs, helpers, fixtures)
+- `build-utils/` — Webpack configs
+- `scripts/` — Custom scripts (e.g., Claude test prompt)
 
-  $ npm start
+## Installation & Usage
 
-  - This command will open a new window running at a default port of 4280 in your browser at
-    [http://localhost:4280](http://localhost:4280/).
+Install dependencies:
 
-- Build and Deploy to Domain
+```sh
+npm install
+```
 
-  $ npm run prod
+Start development server (http://localhost:4280):
+
+```sh
+npm start
+```
+
+Build for production:
+
+```sh
+npm run build
+```
+
+Build & deploy to AWS:
+
+```sh
+npm run prod
+```
+
+## Testing
+
+- Run all Cypress tests (headless):
+  ```sh
+  npm test
+  ```
+- Open Cypress UI:
+  ```sh
+  npm run cy:ui
+  ```
+- Custom script for Claude Code prompt (copies test failure context to clipboard):
+  ```sh
+  ./scripts/test-and-claude.sh
+  ```
+
+## Linting & Formatting
+
+- Lint all code:
+  ```sh
+  npm run lint
+  ```
+- Format code with Prettier (auto on save in VS Code):
+  - Prettier config: `.prettierrc`
+  - ESLint config: `eslint.config.cjs`
+
+## CI/CD
+
+Automated via GitHub Actions ([see workflow](https://github.com/TzolkinB/portfolio-react/actions/workflows/cicd.yml)). Runs tests and linting on push/PR.
+
+## Notes
+
+- Cypress tests loop through desktop, tablet, and mobile for each spec (5 specs × 3 sizes = 15 runs per file)
+- Uses [Devicon](https://devicon.dev/) for technology icons in the UI
+- All project and skills data are type-safe and managed in `src/constants/`
+
+---
+
+**Author:** Kimberly Bell

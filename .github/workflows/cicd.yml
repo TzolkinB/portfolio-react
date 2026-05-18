@@ -102,9 +102,7 @@ jobs:
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-no-cypress-binary
 
       - name: Run linter
-        run: |
-          npm run lint:js
-          npm run lint:yaml
+        run: npm run lint:husky
 
   # ============================================================================
   # TEST (PR): Run Cypress against local dev server

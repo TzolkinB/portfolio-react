@@ -1,4 +1,4 @@
-import { accordionTitles } from "../../src/components/About"
+import { accordionTitles, qaAccomplishments, devAccomplishments } from "../../src/components/About"
 import { skillCategories } from "../../src/constants/appData"
 import projects from "../../src/constants/projectsData"
 
@@ -138,7 +138,7 @@ describe("Profile tests", () => {
               "have.class",
               "collapsed",
             )
-            cy.findAllByTestId("success-check").should("have.length", 6)
+            cy.findAllByTestId("success-check").should("have.length", qaAccomplishments.length)
           })
         cy.get("@accordions")
           .last()
@@ -147,7 +147,7 @@ describe("Profile tests", () => {
               "have.class",
               "collapsed",
             )
-            cy.findAllByTestId("success-check").should("have.length", 6)
+            cy.findAllByTestId("success-check").should("have.length", devAccomplishments.length)
           })
       })
     })

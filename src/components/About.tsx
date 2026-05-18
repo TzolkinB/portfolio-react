@@ -18,10 +18,7 @@ export const accordionTitles = {
   dev: "Software Engineer in Frontend Development | Ally Financial",
 } as const
 
-const About = ({ id }: SectionProps) => {
-  // const [active, setActive] = useState<number | number[]>(1)
-
-  const qaAccomplishments = [
+export const qaAccomplishments = [
     <>
       Led transition from{" "}
       <span className="fw-bold">100% manual → 90% automated testing</span>{" "}
@@ -53,23 +50,26 @@ const About = ({ id }: SectionProps) => {
     </>,
   ]
 
-  const devAccomplishments = [
-    <>
-      Delivered responsive frontend features across Ember and React ecosystems
-      during large-scale migration
-    </>,
-    <>
-      <span className="fw-bold">Championed Cypress adoption</span> by leading
-      training and establishing foundational testing patterns that became the
-      standard across the organization
-    </>,
-    <>
-      Partnered with QA on the{" "}
-      <span className="fw-bold">migration of automated tests</span> to align
-      with React architecture, ensuring test coverage and stability were
-      maintainted during platform transition
-    </>,
-  ]
+export const devAccomplishments = [
+  <>
+    Delivered responsive frontend features across Ember and React ecosystems
+    during large-scale migration
+  </>,
+  <>
+    <span className="fw-bold">Championed Cypress adoption</span> by leading
+    training and establishing foundational testing patterns that became the
+    standard across the organization
+  </>,
+  <>
+    Partnered with QA on the{" "}
+    <span className="fw-bold">migration of automated tests</span> to align
+    with React architecture, ensuring test coverage and stability were
+    maintainted during platform transition
+  </>,
+]
+
+const About = ({ id }: SectionProps) => {
+  // const [active, setActive] = useState<number | number[]>(1)
 
   return (
     <div id={id} data-testid={id}>

@@ -22,13 +22,13 @@ echo -e "${RED}❌ Tests failed${NC}"
 echo ""
 
 # Extract the first failing test name
-TEST_NAME=$(echo "$OUTPUT" | grep -E '1\) ' | grep -oP 'should.+' | head -1)
+TEST_NAME=$(echo "$OUTPUT" | grep -E '1\) ' | grep -o 'should.*' | head -1)
 
 # Extract error message (AssertionError or similar)
 ERROR_LINE=$(echo "$OUTPUT" | grep -E 'AssertionError|Error:' | head -1 | xargs)
 
 # Extract line number from the error context
-LINE_NUM=$(echo "$OUTPUT" | grep -oP 'profile\.spec\.cy\.ts:\K[0-9]+' | head -1)
+LINE_NUM=$(echo "$OUTPUT" | grep 'profile\.spec\.cy\.ts:' | sed -E 's/.*profile\.spec\.cy\.ts:([0-9]+).*/\1/' | head -1)
 
 # File path
 FILE_PATH="cypress/e2e/profile.spec.cy.ts"

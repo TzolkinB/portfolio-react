@@ -1,16 +1,20 @@
+import { accordionTitles } from "../../src/components/About"
 import { skillCategories } from "../../src/constants/appData"
+import projects from "../../src/constants/projectsData"
 
-import {
-  sizes,
-  anchorLinks,
-  buttonLinks,
-  buttonsCard1,
-  buttonsCard2,
-  buttonsCard3,
-  devAccordionTitle,
-  qaAccordionTitle,
-  buttonsCard4,
-} from "./commonMethods"
+import { sizes, anchorLinks, buttonLinks } from "./commonMethods"
+
+import type { Project } from "../../src/types/types"
+
+const getProjectButtons = (project: Project) => {
+  const buttons: { name: string; href: string }[] = [
+    { name: project.urlText, href: project.url },
+  ]
+  if (project.url2 && project.url2Text) {
+    buttons.push({ name: project.url2Text, href: project.url2 })
+  }
+  return buttons
+}
 
 describe("Cat easter egg", () => {
   beforeEach(() => {
@@ -130,7 +134,7 @@ describe("Profile tests", () => {
         cy.get("@accordions")
           .first()
           .within(() => {
-            cy.findByRole("button", { name: qaAccordionTitle }).should(
+            cy.findByRole("button", { name: accordionTitles.qa }).should(
               "have.class",
               "collapsed",
             )
@@ -139,7 +143,7 @@ describe("Profile tests", () => {
         cy.get("@accordions")
           .last()
           .within(() => {
-            cy.findByRole("button", { name: devAccordionTitle }).should(
+            cy.findByRole("button", { name: accordionTitles.dev }).should(
               "have.class",
               "collapsed",
             )
@@ -175,12 +179,13 @@ describe("Profile tests", () => {
       cy.findByTestId("projects").within(() => {
         cy.findByRole("heading", { level: 2, name: "Projects" })
 
-        cy.findAllByTestId(/card-/i).should("have.length", 4).as("projectCards")
+        cy.findAllByTestId(/card-/i)
+          .should("have.length", projects.length)
+          .as("projectCards")
 
-        buttonLinks(0, buttonsCard1)
-        buttonLinks(1, buttonsCard2)
-        buttonLinks(2, buttonsCard3)
-        buttonLinks(3, buttonsCard4)
+        projects.forEach((project, index) => {
+          buttonLinks(index, getProjectButtons(project))
+        })
       })
     })
 

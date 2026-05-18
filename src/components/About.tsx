@@ -13,13 +13,13 @@ import {
 import { SectionProps } from "../types/types"
 import { TechLink } from "../utils/utils"
 
+export const accordionTitles = {
+  qa: "Senior SDET in Web Test Automation | Ally Financial",
+  dev: "Software Engineer in Frontend Development | Ally Financial",
+} as const
+
 const About = ({ id }: SectionProps) => {
   // const [active, setActive] = useState<number | number[]>(1)
-
-  const accordionTitles = {
-    qa: "Senior SDET in Web Test Automation | Ally Financial",
-    dev: "Software Engineer in Frontend Development | Ally Financial",
-  } as const
 
   const qaAccomplishments = [
     <>

@@ -1,3 +1,4 @@
+---
 version: 2
 updates:
   # NPM dependencies - weekly, minor + patch grouped
@@ -16,7 +17,7 @@ updates:
         update-types:
           - 'minor'
           - 'patch'
-      
+
   # GitHub Actions - PRs only, no auto-updates
   - package-ecosystem: "github-actions"
     directory: '/'

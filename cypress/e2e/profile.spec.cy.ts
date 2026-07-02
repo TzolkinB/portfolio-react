@@ -1,4 +1,8 @@
-import { accordionTitles, qaAccomplishments, devAccomplishments } from "../../src/components/About"
+import {
+  accordionTitles,
+  qaAccomplishments,
+  devAccomplishments,
+} from "../../src/components/About"
 import { skillCategories } from "../../src/constants/appData"
 import projects from "../../src/constants/projectsData"
 
@@ -82,35 +86,6 @@ describe("Profile tests", () => {
       cy.request("/paths.IMG/Bell_Kimberly-Resume.pdf")
         .its("status")
         .should("eq", 200)
-
-      // cy.findByTestId("resume-dropdown").within(() => {
-      //   cy.findByText("Resumes")
-      //     .should("have.attr", "aria-expanded", "false")
-      //     .as("resumeDropdown")
-      //   cy.get("@resumeDropdown").click()
-      //   cy.get("@resumeDropdown").should("have.attr", "aria-expanded", "true")
-
-      //   cy.get(".dropdown-menu").within(() => {
-      //     cy.get(".dropdown-item").should("have.length", 2)
-      //     cy.findByRole("link", { name: "Dev Resume" }).should(
-      //       "have.attr",
-      //       "href",
-      //       "/paths.IMG/Bell_Kim-DevResume2.pdf",
-      //     )
-      //     cy.request("/paths.IMG/Bell_Kim-DevResume2.pdf")
-      //       .its("status")
-      //       .should("eq", 200)
-
-      //     cy.findByRole("link", { name: "QA Resume" }).should(
-      //       "have.attr",
-      //       "href",
-      //       "/paths.IMG/Bell_Kimberly-Resume.pdf",
-      //     )
-      //     cy.request("/paths.IMG/Bell_Kimberly-Resume.pdf")
-      //       .its("status")
-      //       .should("eq", 200)
-      //   })
-      // })
     })
 
     it(`should have profile image in home section and bullet points in about me section, ${size}`, () => {
@@ -138,7 +113,10 @@ describe("Profile tests", () => {
               "have.class",
               "collapsed",
             )
-            cy.findAllByTestId("success-check").should("have.length", qaAccomplishments.length)
+            cy.findAllByTestId("success-check").should(
+              "have.length",
+              qaAccomplishments.length,
+            )
           })
         cy.get("@accordions")
           .last()
@@ -147,7 +125,10 @@ describe("Profile tests", () => {
               "have.class",
               "collapsed",
             )
-            cy.findAllByTestId("success-check").should("have.length", devAccomplishments.length)
+            cy.findAllByTestId("success-check").should(
+              "have.length",
+              devAccomplishments.length,
+            )
           })
       })
     })

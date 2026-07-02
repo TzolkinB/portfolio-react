@@ -85,6 +85,71 @@ export const skillCategories: SkillCategories = {
       },
     ] as Skill[],
   },
+  "Development Tools & CI/CD": {
+    icon: "🔧",
+    skills: [
+      {
+        name: "github",
+        years: "8+",
+        isCore: false,
+        iconPath: "github/github-original.svg",
+      },
+      {
+        name: "gitlab",
+        years: "3+",
+        isCore: false,
+        iconPath: "gitlab/gitlab-original.svg",
+      },
+      {
+        name: "bitbucket",
+        years: "3+",
+        isCore: false,
+        iconPath: "bitbucket/bitbucket-original.svg",
+      },
+      {
+        name: "github-actions",
+        years: "2+",
+        isCore: false,
+        iconPath: "githubactions/githubactions-original.svg",
+      },
+      {
+        name: "vscode",
+        years: "6+",
+        isCore: false,
+        iconPath: "vscode/vscode-original.svg",
+      },
+      {
+        name: "jira",
+        years: "4+",
+        isCore: false,
+        iconPath: "jira/jira-original.svg",
+      },
+      {
+        name: "confluence",
+        years: "4+",
+        isCore: false,
+        iconPath: "confluence/confluence-original.svg",
+      },
+      {
+        name: "vite",
+        years: "1+",
+        isCore: false,
+        iconPath: "vite/vite-original.svg",
+      },
+      {
+        name: "eslint",
+        years: "4+",
+        isCore: false,
+        iconPath: "eslint/eslint-original.svg",
+      },
+      {
+        name: "webpack",
+        years: "4",
+        isCore: false,
+        iconPath: "webpack/webpack-original.svg",
+      },
+    ] as Skill[],
+  },
   "Frontend Development": {
     icon: "🎨",
     skills: [
@@ -129,65 +194,6 @@ export const skillCategories: SkillCategories = {
         years: "3+",
         isCore: false,
         iconPath: "styledcomponents/styledcomponents-original.svg",
-      },
-    ] as Skill[],
-  },
-  "Development Tools & CI/CD": {
-    icon: "🔧",
-    skills: [
-      {
-        name: "github",
-        years: "8+",
-        isCore: false,
-        iconPath: "github/github-original.svg",
-      },
-      {
-        name: "gitlab",
-        years: "3+",
-        isCore: false,
-        iconPath: "gitlab/gitlab-original.svg",
-      },
-      {
-        name: "bitbucket",
-        years: "3+",
-        isCore: false,
-        iconPath: "bitbucket/bitbucket-original.svg",
-      },
-      {
-        name: "github-actions",
-        years: "2+",
-        isCore: false,
-        iconPath: "githubactions/githubactions-original.svg",
-      },
-      {
-        name: "vscode",
-        years: "6+",
-        isCore: false,
-        iconPath: "vscode/vscode-original.svg",
-      },
-      {
-        name: "jira",
-        years: "4+",
-        isCore: false,
-        iconPath: "jira/jira-original.svg",
-      },
-      {
-        name: "vite",
-        years: "1+",
-        isCore: false,
-        iconPath: "vite/vite-original.svg",
-      },
-      {
-        name: "eslint",
-        years: "4+",
-        isCore: false,
-        iconPath: "eslint/eslint-original.svg",
-      },
-      {
-        name: "webpack",
-        years: "4",
-        isCore: false,
-        iconPath: "webpack/webpack-original.svg",
       },
     ] as Skill[],
   },

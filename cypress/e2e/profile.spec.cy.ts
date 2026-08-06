@@ -59,15 +59,10 @@ describe("Profile tests", () => {
       if (size === "macbook-11") {
         cy.get("nav").findByTestId("nav-links").as("navLinks")
       } else {
-        cy.findByRole("button", { name: "Toggle navigation" })
-          .should("have.attr", "aria-expanded", "false")
-          .and("have.attr", "aria-controls", "nav-links")
+        cy.findByRole("button", { name: "Toggle navigation", expanded: false })
+          .should("have.attr", "aria-controls", "nav-links")
           .click()
-        cy.findByRole("button", { name: "Toggle navigation" }).should(
-          "have.attr",
-          "aria-expanded",
-          "true",
-        )
+        cy.findByRole("button", { name: "Toggle navigation", expanded: true })
         cy.findByTestId("nav-links").as("navLinks")
       }
 

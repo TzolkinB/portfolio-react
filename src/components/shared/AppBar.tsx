@@ -4,6 +4,15 @@ import qaResume from "../../assets/img/Bell_Kimberly-Resume.pdf"
 
 import CatEasterEgg from "./CatEasterEgg"
 
+const navLink = (name: string, link: string) => (
+  <li>
+    <a href={link}>
+      <span aria-hidden="true">./</span>
+      {name}
+    </a>
+  </li>
+)
+
 const AppBar = () => {
   const [openNav, setOpenNav] = useState(false)
 
@@ -31,21 +40,9 @@ const AppBar = () => {
           data-testid="nav-links"
           className={`nav-links${openNav ? " open" : ""}`}
         >
-          <li>
-            <a href="#about">
-              <span aria-hidden="true">./</span>About
-            </a>
-          </li>
-          <li>
-            <a href="#skills">
-              <span aria-hidden="true">./</span>Skills
-            </a>
-          </li>
-          <li>
-            <a href="#projects">
-              <span aria-hidden="true">./</span>Projects
-            </a>
-          </li>
+          {navLink("About", "#about")}
+          {navLink("Skills", "#skills")}
+          {navLink("Projects", "#projects")}
           <li>
             <a href={qaResume} target="_blank" rel="noopener noreferrer">
               <span aria-hidden="true">./</span>Resume

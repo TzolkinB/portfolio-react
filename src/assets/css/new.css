@@ -157,27 +157,6 @@ body {
   color: var(--amber);
 }
 
-/* ----- Accordion ----- */
-.accordion {
-  width: -webkit-fill-available;
-  width: -moz-available;
-}
-
-.accordion-header > button,
-.accordion-item {
-  color: var(--gradient-left);
-  background-color: #0d1a2e !important;
-}
-
-.accordion-item > h2 > button::after {
-  background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%235DC1BE%27%3e%3cpath fill-rule=%27evenodd%27 d=%27M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e") !important;
-}
-
-.accordion-body {
-  color: #293d59;
-  background-color: #e0e3de;
-}
-
 /* ---- Hero ---- */
 .hero {
   max-width: var(--maxw);
@@ -541,24 +520,100 @@ body {
 }
 
 /* ----- About ----- */
-#about {
-  padding-left: 3rem;
-  padding-right: 3rem;
+.about {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 60px var(--space-lg);
 }
 
-#about a {
-  color: #bad0e3;
+.about-lead {
+  max-width: 64ch;
+  color: var(--ink-dim);
+  font-size: 1.02rem;
 }
 
-#about .accordion a {
-  color: #293d59;
+.about a {
+  color: var(--amber);
   text-decoration: underline;
 }
 
-#about a:hover {
+.about a:hover {
   text-decoration: none;
-  color: #bad0e3 !important;
-  background-color: #243f6a !important;
+}
+
+.terminal-details-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: 24px 0;
+}
+
+.terminal-details {
+  background: var(--navy-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+}
+
+.terminal-details summary {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.terminal-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.disclosure-icon {
+  display: inline-block;
+  margin-right: 4px;
+  color: var(--amber);
+}
+
+.disclosure-icon::before {
+  content: "▸";
+}
+
+.terminal-details[open] .disclosure-icon::before {
+  content: "▾";
+}
+
+.terminal-details summary:hover,
+.terminal-details summary:focus-visible {
+  color: var(--amber);
+}
+
+.terminal-details p {
+  margin: 14px 0 0;
+  color: var(--ink-dim);
+  font-size: 0.95rem;
+}
+
+.accomplishments {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.accomplishments li {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--ink-dim);
+  font-size: 0.95rem;
+}
+
+.accomplishments .check {
+  flex-shrink: 0;
+  color: var(--amber);
+}
+
+.accomplishments strong {
+  color: var(--ink);
 }
 
 /* ----- Skills ----- */
@@ -918,10 +973,6 @@ footer {
 
 /* DESKTOP (1100px and up) */
 @media screen and (min-width: 1100px) {
-  #about {
-    padding: 2rem 15rem;
-  }
-
   .nav-burger {
     display: none;
   }

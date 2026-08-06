@@ -49,6 +49,19 @@ export const heroSocialLinks = [
   { label: "github", href: "https://github.com/TzolkinB" },
 ] as const
 
+export const aboutContent = {
+  heading: "cd ./about",
+  intro: [
+    "With 8+ years of software experience, I bring a developer's mindset to quality engineering. I believe quality isn't a phase, it's baked in from day one. Good testing frameworks disappear into the background and foster collaboration between QA and engineering teams. I design automation that scales because I've seen what happens when it doesn't: friction, bottlenecks, people avoiding tests entirely. I care about bridging the gap between QA and engineering because testing is everyone's responsibility.",
+    "I'm looking for roles where testing strategy matters. Where I can partner with engineering teams to design automation they want to use, and that actually scales. I thrive in environments that value shift-left thinking and treat test infrastructure as seriously as production code.",
+  ],
+  notCoding:
+    "When I am not coding, I love to read and be outside. In fact, I often use lunch breaks as an opportunity to get away from the computer and take a walk. Since remote positions allow me to be closer to family, I also enjoy spending time with my nieces and nephews on the weekends now that I am able to live closer to them.",
+  contactIntro:
+    "I am always looking for new opportunites and challenges so feel free to reach out to me:",
+  email: "krbell4@gmail.com",
+} as const
+
 export const statBandData: readonly Stat[] = [
   { value: "8+", label: "Years Experience" },
   { value: "2+", label: "Years SDET" },

@@ -1,8 +1,6 @@
 export interface BadgeConfig {
-  icon: string
   text: string
 }
-
 
 export interface FooterLink {
   href: string
@@ -13,7 +11,6 @@ export interface FooterLink {
 export interface FooterLinksProps {
   links: readonly FooterLink[]
 }
-
 
 export interface Project {
   title: string
@@ -47,15 +44,4 @@ export interface SkillCategory {
 
 export interface SkillCategories {
   [categoryName: string]: SkillCategory
-}
-
-export interface SocialLink {
-  href: string
-  icon: string
-  label: string
-  backgroundColor: string
-}
-
-export interface SocialLinksProps {
-  links: SocialLink[]
 }

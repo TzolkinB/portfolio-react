@@ -3,7 +3,12 @@ import {
   qaAccomplishments,
   devAccomplishments,
 } from "../../src/components/About"
-import { skillCategories } from "../../src/constants/appData"
+import {
+  badgeContent,
+  heroContent,
+  heroSocialLinks,
+  skillCategories,
+} from "../../src/constants/appData"
 import projects from "../../src/constants/projectsData"
 
 import { sizes, anchorLinks, buttonLinks } from "./commonMethods"
@@ -91,19 +96,52 @@ describe("Profile tests", () => {
         .should("eq", 200)
     })
 
-    it(`should have profile image in home section and bullet points in about me section, ${size}`, () => {
-      const getH2 =
-        size === "iphone-6" ? "Senior SDET" : "Senior SDET & Frontend Developer"
+    it(`should have an accessible hero with name, title, tags, CTAs, socials, and photo, ${size}`, () => {
       cy.viewport(size)
 
+      cy.checkA11y('[data-testid="home"]')
+
       cy.findByTestId("home").within(() => {
-        cy.findByRole("heading", { level: 1, name: "Kim Bell" })
-        cy.findByRole("heading", {
-          level: 2,
-          name: getH2,
+        cy.findByRole("heading", { level: 1, name: heroContent.name })
+        cy.findByText(heroContent.eyebrow)
+        cy.findByText(heroContent.title)
+
+        cy.findByRole("list", { name: "Technical skills badges" }).within(
+          () => {
+            cy.findAllByRole("listitem").should(
+              "have.length",
+              badgeContent.length,
+            )
+            badgeContent.forEach((item) => cy.findByText(item.text))
+          },
+        )
+        const heroLinks = [
+          {
+            label: heroContent.ctaPrimary.label,
+            href: heroContent.ctaPrimary.href,
+          },
+          {
+            label: heroContent.ctaSecondary.label,
+            href: heroContent.ctaSecondary.href,
+          },
+          ...heroSocialLinks.map((link) => ({
+            label: link.label,
+            href: link.href,
+          })),
+        ]
+
+        heroLinks.forEach((link) => {
+          cy.findByRole("link", {
+            name: link.label,
+          }).should("have.attr", "href", link.href)
         })
+
         cy.get("img").should("have.attr", "src", "/paths.IMG/profile2.jpg")
       })
+    })
+
+    it(`should have bullet points in about me section, ${size}`, () => {
+      cy.viewport(size)
 
       cy.findByTestId("about").within(() => {
         cy.findByRole("heading", { level: 2, name: "About" })

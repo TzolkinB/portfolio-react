@@ -15,9 +15,36 @@ export const DEV_MESSAGE = {
 } as const
 
 export const badgeContent: readonly BadgeConfig[] = [
-  { icon: "devicon-playwright-plain", text: "Playright" },
-  { icon: "devicon-cypressio-plain", text: "Cypress" },
-  { icon: "devicon-react-plain", text: "React" },
+  { text: "Playright" },
+  { text: "Cypress" },
+  { text: "React" },
+] as const
+
+export const heroContent = {
+  eyebrow: "// available for remote SDET roles",
+  name: "Kim Bell",
+  title: "senior sdet & frontend developer",
+  ctaPrimary: { label: "see projects", href: "#projects" },
+  ctaSecondary: {
+    label: "view résumé",
+    href: "/paths.IMG/Bell_Kimberly-Resume.pdf",
+  },
+} as const
+
+export const heroTerminal = {
+  path: "kim@bell:~",
+  whoamiPrompt: "$ whoami",
+  whoamiOutput: "→ kim bell",
+  rolePrompt: "$ cat role.txt",
+  roleOutput: "→ senior sdet & frontend dev",
+  photoPrompt: "$ cat ~/kim.jpg",
+  statusPrompt: "$ ./status.sh",
+  statusOutput: "→ open to remote work",
+} as const
+
+export const heroSocialLinks = [
+  { label: "linkedin", href: "https://www.linkedin.com/in/kimbell4" },
+  { label: "github", href: "https://github.com/TzolkinB" },
 ] as const
 
 export const experienceStatData = [

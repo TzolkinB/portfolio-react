@@ -6,6 +6,7 @@ import {
 import {
   badgeContent,
   heroContent,
+  heroSocialLinks,
   skillCategories,
 } from "../../src/constants/appData"
 import projects from "../../src/constants/projectsData"
@@ -114,27 +115,26 @@ describe("Profile tests", () => {
             badgeContent.forEach((item) => cy.findByText(item.text))
           },
         )
+        const heroLinks = [
+          {
+            label: heroContent.ctaPrimary.label,
+            href: heroContent.ctaPrimary.href,
+          },
+          {
+            label: heroContent.ctaSecondary.label,
+            href: heroContent.ctaSecondary.href,
+          },
+          ...heroSocialLinks.map((link) => ({
+            label: link.label,
+            href: link.href,
+          })),
+        ]
 
-        cy.findByRole("link", { name: "see projects" }).should(
-          "have.attr",
-          "href",
-          "#projects",
-        )
-        cy.findByRole("link", { name: "view résumé" }).should(
-          "have.attr",
-          "href",
-          "/paths.IMG/Bell_Kimberly-Resume.pdf",
-        )
-        cy.findByRole("link", { name: "linkedin" }).should(
-          "have.attr",
-          "href",
-          "https://www.linkedin.com/in/kimbell4",
-        )
-        cy.findByRole("link", { name: "github" }).should(
-          "have.attr",
-          "href",
-          "https://github.com/TzolkinB",
-        )
+        heroLinks.forEach((link) => {
+          cy.findByRole("link", {
+            name: link.label,
+          }).should("have.attr", "href", link.href)
+        })
 
         cy.get("img").should("have.attr", "src", "/paths.IMG/profile2.jpg")
       })

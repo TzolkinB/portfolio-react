@@ -109,18 +109,19 @@ function Home() {
           </div>
         </div>
 
-        <div
-          className="stat-band"
-          data-testid="stat-band"
-          role="list"
-          aria-label="Career highlights"
-        >
-          {statBandData.map((stat) => (
-            <div className="stat" role="listitem" key={stat.label}>
-              <span className="stat-value">{stat.value}</span>
-              <span className="stat-label">{stat.label}</span>
-            </div>
-          ))}
+        <div className="stat-band" data-testid="stat-band">
+          <div
+            className="stat-band-inner"
+            role="list"
+            aria-label="Career highlights"
+          >
+            {statBandData.map((stat) => (
+              <div className="stat" role="listitem" key={stat.label}>
+                <span className="stat-value">{stat.value}</span>
+                <span className="stat-label">{stat.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <About id="about" />

@@ -35,6 +35,7 @@ body {
   font-family: "Roboto Flex", Roboto, Helvetica, Arial, sans-serif;
   background-color: #1a2a41;
   color: #e0e3de;
+  overflow-x: hidden;
   --hr-line-offset: 25%;
   --gradient-left: #00d4ff;
   --gradient-right: #ffab00;
@@ -486,12 +487,23 @@ body {
 
 /* ---- Stat band ---- */
 .stat-band {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-top: 40px;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: var(--amber);
+}
+
+.stat-band-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 28px var(--space-lg);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-lg) var(--space-md);
-  margin-top: 40px;
-  padding-top: 28px;
-  border-top: 1px solid var(--line);
 }
 
 .stat {
@@ -504,7 +516,7 @@ body {
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: clamp(1.6rem, 4vw, 2.2rem);
-  color: var(--amber);
+  color: var(--navy);
 }
 
 .stat-label {
@@ -512,7 +524,7 @@ body {
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--ink-dim);
+  color: rgba(14, 22, 48, 0.7);
 }
 
 /* ----- About ----- */
@@ -772,7 +784,7 @@ footer {
     grid-template-columns: 1fr 340px;
   }
 
-  .stat-band {
+  .stat-band-inner {
     grid-template-columns: repeat(4, 1fr);
   }
 

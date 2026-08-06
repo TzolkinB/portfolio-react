@@ -45,6 +45,7 @@ describe("Profile tests", () => {
     cy.visit("/")
     // cy.wait("@localhost")
     cy.url().should("eq", `${Cypress.config("baseUrl")}/`)
+    cy.injectAxe()
   })
 
   const allSkills = Object.values(skillCategories).flatMap((category) =>
@@ -52,19 +53,21 @@ describe("Profile tests", () => {
   )
 
   sizes.forEach((size) => {
-    it(`should have whiskers img, 4 links, in the nav bar, ${size}`, () => {
+    it(`should have an accessible nav bar with 4 links, ${size}`, () => {
       cy.viewport(size)
-
-      cy.get("nav")
-        .find("img")
-        .should("have.attr", "src", "/paths.IMG/W-white.png")
 
       if (size === "macbook-11") {
         cy.get("nav").findByTestId("nav-links").as("navLinks")
       } else {
-        cy.findByRole("button", { name: "Toggle navigation" }).click()
+        cy.findByRole("button", { name: "Toggle navigation", expanded: false })
+          .should("have.attr", "aria-controls", "nav-links")
+          .click()
+        cy.findByRole("button", { name: "Toggle navigation", expanded: true })
         cy.findByTestId("nav-links").as("navLinks")
       }
+
+      cy.checkA11y("nav")
+
       cy.get("@navLinks").findAllByRole("link").should("have.length", 4)
 
       anchorLinks.forEach((anchor) => {

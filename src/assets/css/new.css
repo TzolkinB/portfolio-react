@@ -1,5 +1,29 @@
 /* ===== MOBILE FIRST CSS ===== */
 
+/* ===== DESIGN TOKENS (terminal redesign) ===== */
+/* See docs/adr/0001-bespoke-css-no-component-library.md. Consumed today by
+   the nav; remaining sections adopt these token-by-token as their own
+   redesign tickets land. */
+
+:root {
+  --navy: #0e1630;
+  --navy-panel: #141d3f;
+  --ink: #f3f1ea;
+  --ink-dim: rgba(243, 241, 234, 0.6);
+  --amber: #f2a93b;
+  --amber-dim: rgba(242, 169, 59, 0.35);
+  --line: rgba(242, 169, 59, 0.18);
+  --nav-bg: rgba(14, 22, 48, 0.9);
+  --maxw: 1080px;
+  --radius-sm: 2px;
+  --radius-lg: 8px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: clamp(20px, 5vw, 64px);
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+}
+
 /* ===== BASE / MOBILE STYLES (0px - 767px) ===== */
 
 body {
@@ -35,8 +59,9 @@ body {
   }
 }
 
-.app {
-  margin-top: 4.3rem;
+.page {
+  max-width: var(--maxw);
+  margin: 0 auto;
 }
 
 /* ===== TYPOGRAPHY & COLORS ===== */
@@ -58,51 +83,84 @@ body {
 /* ===== COMPONENTS ===== */
 
 /* ---- Navigation/App Bar ---- */
-.navbar {
-  background: #0d1a2e;
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
 }
 
-.nav-link {
-  font-size: large !important;
-  color: var(--gradient-left) !important;
-  padding-bottom: 8px;
-  position: relative;
-  transition: all 0.3s ease;
+.logo {
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  text-transform: lowercase;
 }
 
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.logo span {
+  color: var(--amber);
+}
+
+.nav-burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  padding: 8px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.nav-burger span {
+  display: block;
   width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #00d4ff, #ffab00);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+  height: 2px;
+  background: var(--ink);
 }
 
-.nav-link:hover {
-  color: var(--gradient-right) !important;
+.nav-links {
+  display: none;
+  flex-basis: 100%;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: var(--space-md) 0 0;
+  list-style: none;
 }
 
-.nav-link:hover::after {
-  transform: scaleX(1);
+.nav-links.open {
+  display: flex;
 }
 
-.navbar-toggler,
-.navbar-brand {
-  color: var(--gradient-left) !important;
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink-dim);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-transform: lowercase;
 }
 
-.navbar-brand img {
-  filter: invert(42%) sepia(89%) saturate(1455%) hue-rotate(169deg)
-    brightness(1.05) contrast(150%);
+.nav-links a span {
+  color: var(--amber);
 }
 
-.collapse-content {
-  margin-left: auto;
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--amber);
 }
 
 /* ----- Accordion ----- */
@@ -454,6 +512,18 @@ footer {
   #home .name {
     font-size: 5rem;
   }
+
+  .nav-burger {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: row;
+    gap: clamp(14px, 3vw, 32px);
+    padding: 0;
+  }
 }
 
 /* ===== ACCESSIBILITY ===== */
@@ -461,7 +531,7 @@ footer {
 a:focus-visible,
 button:focus-visible,
 .skill-item:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--amber);
   outline-offset: 2px;
 }
 /* Reduced motion for users who prefer it */

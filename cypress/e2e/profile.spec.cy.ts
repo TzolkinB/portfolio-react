@@ -8,6 +8,7 @@ import {
   heroContent,
   heroSocialLinks,
   skillCategories,
+  statBandData,
 } from "../../src/constants/appData"
 import projects from "../../src/constants/projectsData"
 
@@ -137,6 +138,23 @@ describe("Profile tests", () => {
         })
 
         cy.get("img").should("have.attr", "src", "/paths.IMG/profile2.jpg")
+      })
+    })
+
+    it(`should have an accessible stat band with 4 stats, ${size}`, () => {
+      cy.viewport(size)
+
+      cy.checkA11y('[data-testid="stat-band"]')
+
+      cy.findByRole("list", { name: "Career highlights" }).within(() => {
+        cy.findAllByRole("listitem").should(
+          "have.length",
+          statBandData.length,
+        )
+        statBandData.forEach((stat) => {
+          cy.findByText(stat.value)
+          cy.findByText(stat.label)
+        })
       })
     })
 

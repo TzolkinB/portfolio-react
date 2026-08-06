@@ -1,5 +1,7 @@
 import { BadgeConfig, Skill, SkillCategories } from "../types/types"
 
+import type { Stat } from "../types/types"
+
 // Developer console message
 export const DEV_MESSAGE = {
   text: "👋 Thank you for visiting my site! If you like my credentials and are looking for an SDET with expertise in test automation, DM me. Let's discuss!",
@@ -47,9 +49,11 @@ export const heroSocialLinks = [
   { label: "github", href: "https://github.com/TzolkinB" },
 ] as const
 
-export const experienceStatData = [
-  { years: 8, text: "Years Experience" },
-  { years: 2, text: "Years SDET" },
+export const statBandData: readonly Stat[] = [
+  { value: "8+", label: "Years Experience" },
+  { value: "2+", label: "Years SDET" },
+  { value: "90%+", label: "Manual to Automated" },
+  { value: "35+", label: "Repos on Framework" },
 ] as const
 
 export const footerLinks = [

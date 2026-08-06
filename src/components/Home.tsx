@@ -6,6 +6,7 @@ import {
   heroContent,
   heroSocialLinks,
   heroTerminal,
+  statBandData,
 } from "../constants/appData"
 
 import About from "./About"
@@ -105,6 +106,21 @@ function Home() {
                 <span className="cursor" aria-hidden="true" />
               </span>
             </div>
+          </div>
+        </div>
+
+        <div className="stat-band" data-testid="stat-band">
+          <div
+            className="stat-band-inner"
+            role="list"
+            aria-label="Career highlights"
+          >
+            {statBandData.map((stat) => (
+              <div className="stat" role="listitem" key={stat.label}>
+                <span className="stat-value">{stat.value}</span>
+                <span className="stat-label">{stat.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@
    redesign tickets land. */
 
 :root {
+  /* Colors */
   --navy: #0e1630;
   --navy-panel: #141d3f;
   --ink: #f3f1ea;
@@ -15,12 +16,15 @@
   --amber-hover: #ffc266;
   --line: rgba(242, 169, 59, 0.18);
   --nav-bg: rgba(14, 22, 48, 0.9);
+  /* Layout */
   --maxw: 1080px;
   --radius-sm: 2px;
   --radius-lg: 8px;
+  /* Spacing */
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: clamp(20px, 5vw, 64px);
+  /* Typography */
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
   --font-sans: "IBM Plex Sans", system-ui, sans-serif;
 }
@@ -31,6 +35,7 @@ body {
   font-family: "Roboto Flex", Roboto, Helvetica, Arial, sans-serif;
   background-color: #1a2a41;
   color: #e0e3de;
+  overflow-x: hidden;
   --hr-line-offset: 25%;
   --gradient-left: #00d4ff;
   --gradient-right: #ffab00;
@@ -480,6 +485,48 @@ body {
   }
 }
 
+/* ---- Stat band ---- */
+.stat-band {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-top: 40px;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: var(--amber);
+}
+
+.stat-band-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 28px var(--space-lg);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg) var(--space-md);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--navy);
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(14, 22, 48, 0.7);
+}
+
 /* ----- About ----- */
 #about,
 #skills {
@@ -735,6 +782,10 @@ footer {
 @media screen and (min-width: 768px) {
   .hero-grid {
     grid-template-columns: 1fr 340px;
+  }
+
+  .stat-band-inner {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .footer-icon {

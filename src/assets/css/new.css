@@ -6,6 +6,7 @@
    redesign tickets land. */
 
 :root {
+  /* Colors */
   --navy: #0e1630;
   --navy-panel: #141d3f;
   --ink: #f3f1ea;
@@ -15,12 +16,15 @@
   --amber-hover: #ffc266;
   --line: rgba(242, 169, 59, 0.18);
   --nav-bg: rgba(14, 22, 48, 0.9);
+  /* Layout */
   --maxw: 1080px;
   --radius-sm: 2px;
   --radius-lg: 8px;
+  /* Spacing */
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: clamp(20px, 5vw, 64px);
+  /* Typography */
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
   --font-sans: "IBM Plex Sans", system-ui, sans-serif;
 }
@@ -480,6 +484,37 @@ body {
   }
 }
 
+/* ---- Stat band ---- */
+.stat-band {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg) var(--space-md);
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--amber);
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
 /* ----- About ----- */
 #about,
 #skills {
@@ -735,6 +770,10 @@ footer {
 @media screen and (min-width: 768px) {
   .hero-grid {
     grid-template-columns: 1fr 340px;
+  }
+
+  .stat-band {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .footer-icon {

@@ -45,3 +45,8 @@ export interface SkillCategory {
 export interface SkillCategories {
   [categoryName: string]: SkillCategory
 }
+
+export interface Stat {
+  value: string
+  label: string
+}

@@ -13,6 +13,7 @@
   --amber: #f2a93b;
   --amber-dim: rgba(242, 169, 59, 0.35);
   --line: rgba(242, 169, 59, 0.18);
+  --nav-bg: rgba(14, 22, 48, 0.9);
   --maxw: 1080px;
   --radius-sm: 2px;
   --radius-lg: 8px;
@@ -58,6 +59,11 @@ body {
   }
 }
 
+.page {
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
 /* ===== TYPOGRAPHY & COLORS ===== */
 
 .text-gradient {
@@ -87,7 +93,7 @@ body {
   justify-content: space-between;
   gap: var(--space-md);
   padding: var(--space-md) var(--space-lg);
-  background: rgba(14, 22, 48, 0.9);
+  background: var(--nav-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   font-family: var(--font-mono);
@@ -115,6 +121,7 @@ body {
   padding: 8px;
   background: none;
   border: none;
+  border-radius: var(--radius-sm);
   cursor: pointer;
 }
 

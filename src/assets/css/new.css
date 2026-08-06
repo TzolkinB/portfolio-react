@@ -154,6 +154,10 @@ body {
   text-transform: lowercase;
 }
 
+.nav-links a span {
+  color: var(--amber);
+}
+
 .nav-links a:hover,
 .nav-links a:focus-visible {
   color: var(--amber);

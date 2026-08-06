@@ -32,17 +32,23 @@ const AppBar = () => {
           className={`nav-links${openNav ? " open" : ""}`}
         >
           <li>
-            <a href="#about">About</a>
+            <a href="#about">
+              <span aria-hidden="true">./</span>About
+            </a>
           </li>
           <li>
-            <a href="#skills">Skills</a>
+            <a href="#skills">
+              <span aria-hidden="true">./</span>Skills
+            </a>
           </li>
           <li>
-            <a href="#projects">Projects</a>
+            <a href="#projects">
+              <span aria-hidden="true">./</span>Projects
+            </a>
           </li>
           <li>
             <a href={qaResume} target="_blank" rel="noopener noreferrer">
-              Resume
+              <span aria-hidden="true">./</span>Resume
             </a>
           </li>
         </ul>

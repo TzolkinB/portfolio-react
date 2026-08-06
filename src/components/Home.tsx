@@ -1,12 +1,12 @@
-import { MDBRow, MDBTypography, MDBCol } from "mdb-react-ui-kit"
-
+import qaResume from "../assets/img/Bell_Kimberly-Resume.pdf"
 import Me from "../assets/img/profile2.jpg"
 import {
   badgeContent,
-  experienceStatData,
   DEV_MESSAGE,
+  heroContent,
+  heroSocialLinks,
+  heroTerminal,
 } from "../constants/appData"
-import { badge, experienceStats, SocialLinks } from "../utils/utils"
 
 import About from "./About"
 import Projects from "./Projects"
@@ -16,84 +16,97 @@ function Home() {
   console.log(DEV_MESSAGE.text, DEV_MESSAGE.styles)
   return (
     <div className="page">
-      <div id="home" data-testid="home" className="d-flex px-3 py-4">
-        <MDBRow>
-          <MDBCol size="8">
-            <div className="mb-2">
-              <MDBTypography tag="h1" className="display-2 mb-0 name">
-                Kim Bell
-              </MDBTypography>
-            </div>
-            <div>
-              {/* Tablet/Desktop */}
-              <MDBTypography
-                tag="h2"
-                className="d-none d-md-block text-gradient"
-              >
-                Senior SDET & Frontend Developer
-              </MDBTypography>
-              {/* Mobile View */}
-              <MDBTypography tag="h2" className="d-md-none text-gradient">
-                Senior SDET
-              </MDBTypography>
-              <MDBTypography className="d-md-none text-muted">
-                Frontend Developer
-              </MDBTypography>
-            </div>
+      <div id="home" data-testid="home" className="hero">
+        <p className="eyebrow">{heroContent.eyebrow}</p>
+        <h1>{heroContent.name}</h1>
+        <p className="title">{heroContent.title}</p>
 
-            {/* Tech Skills Badges Row */}
+        <div className="hero-grid">
+          <div className="hero-left">
             <div
-              className="d-flex flex-md-wrap gap-2 pt-2"
+              className="tags"
               role="list"
               aria-label="Technical skills badges"
             >
               {badgeContent.map((item) => (
-                <div key={item.text} role="listitem">
-                  {badge(item)}
-                </div>
+                <span key={item.text} className="tag" role="listitem">
+                  {item.text}
+                </span>
               ))}
             </div>
 
-            {/* Experience Stats Row */}
-            {/* Hide on Mobile */}
-            <div className="d-flex gap-3 p-3">
-              {experienceStatData.map((stat) => (
-                <div key={stat.text}>
-                  {experienceStats(stat.years, stat.text)}
-                </div>
-              ))}
+            <div className="cta-row">
+              <a className="btn primary" href={heroContent.ctaPrimary.href}>
+                {heroContent.ctaPrimary.label}
+              </a>
+              <a
+                className="btn ghost"
+                href={qaResume}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {heroContent.ctaSecondary.label}{" "}
+                <span aria-hidden="true">↗</span>
+              </a>
             </div>
 
-            <SocialLinks
-              links={[
-                {
-                  href: "https://www.linkedin.com/in/kimbell4",
-                  icon: "linkedin-in",
-                  label: "link to linkedin",
-                  backgroundColor: "#0082ca",
-                },
-                {
-                  href: "https://github.com/TzolkinB",
-                  icon: "github",
-                  label: "link to github",
-                  backgroundColor: "#333333",
-                },
-              ]}
-            />
-          </MDBCol>
-          {/* Profile Image Column */}
-          <MDBCol
-            size="4"
-            className="d-flex justify-content-md-center justify-content-lg-end mt-4 mt-md-0"
-          >
-            <img
-              src={Me}
-              alt="Kim Bell - Senior SDET and Frontend Developer"
-              className="rounded-circle profile-image"
-              loading="eager"
-            />
-          </MDBCol>
-        </MDBRow>
+            <div className="social">
+              {heroSocialLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span aria-hidden="true">[ </span>
+                  {link.label}
+                  <span aria-hidden="true"> ]</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="terminal">
+            <div className="terminal-bar">
+              <span className="dot" aria-hidden="true" />
+              <span className="dot" aria-hidden="true" />
+              <span className="dot" aria-hidden="true" />
+              <span className="path">{heroTerminal.path}</span>
+            </div>
+            <div className="terminal-body">
+              <span className="type-line tl-whoami">
+                {heroTerminal.whoamiPrompt}
+              </span>
+              <span className="type-line tl-whoami-reply output">
+                {heroTerminal.whoamiOutput}
+              </span>
+              <span className="type-line tl-role">
+                {heroTerminal.rolePrompt}
+              </span>
+              <span className="type-line tl-role-reply output">
+                {heroTerminal.roleOutput}
+              </span>
+              <span className="type-line tl-photo">
+                {heroTerminal.photoPrompt}
+              </span>
+              <div className="terminal-photo-frame">
+                <img
+                  src={Me}
+                  alt="Kim Bell - Senior SDET and Frontend Developer"
+                  className="terminal-photo"
+                  loading="eager"
+                />
+              </div>
+              <span className="type-line tl-status">
+                {heroTerminal.statusPrompt}
+              </span>
+              <span className="type-line tl-status-reply output">
+                {heroTerminal.statusOutput}
+                <span className="cursor" aria-hidden="true" />
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <About id="about" />
       <Skills id="skills" />

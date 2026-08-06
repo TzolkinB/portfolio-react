@@ -1,4 +1,4 @@
-import { MDBContainer, MDBRow, MDBTypography, MDBCol } from "mdb-react-ui-kit"
+import { MDBRow, MDBTypography, MDBCol } from "mdb-react-ui-kit"
 
 import Me from "../assets/img/profile2.jpg"
 import {
@@ -15,7 +15,7 @@ import Skills from "./Skills"
 function Home() {
   console.log(DEV_MESSAGE.text, DEV_MESSAGE.styles)
   return (
-    <MDBContainer className="app gx-0">
+    <div className="page">
       <div id="home" data-testid="home" className="d-flex px-3 py-4">
         <MDBRow>
           <MDBCol size="8">
@@ -98,7 +98,7 @@ function Home() {
       <About id="about" />
       <Skills id="skills" />
       <Projects id="projects" />
-    </MDBContainer>
+    </div>
   )
 }
 

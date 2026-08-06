@@ -1,18 +1,6 @@
-// import devResume from "IMG/Bell_Kim-DevResume2.pdf"
-import {
-  MDBContainer,
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarToggler,
-  MDBNavbarNav,
-  MDBNavbarLink,
-  MDBIcon,
-  MDBCollapse,
-} from "mdb-react-ui-kit"
 import { useState } from "react"
 
 import qaResume from "../../assets/img/Bell_Kimberly-Resume.pdf"
-import Whiskers from "../../assets/img/W-white.png"
 
 import CatEasterEgg from "./CatEasterEgg"
 
@@ -21,55 +9,44 @@ const AppBar = () => {
 
   return (
     <header>
-      <MDBNavbar expand="lg" fixed="top" className="px-3">
-        <MDBContainer fluid>
-          <CatEasterEgg />
-          <MDBNavbarBrand href="/" className="pl-2">
-            <img src={Whiskers} alt="Cat whiskers" />
-            <span className="pl-3 fs-4 text-gradient">kimbell.me</span>
-          </MDBNavbarBrand>
-          <MDBNavbarToggler
-            type="button"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            onClick={() => setOpenNav(!openNav)}
-          >
-            <MDBIcon icon="bars" fas />
-          </MDBNavbarToggler>
-          <MDBCollapse navbar open={openNav}>
-            <MDBNavbarNav right fullWidth={false} data-testid="nav-links">
-              <MDBNavbarLink href="#about">About</MDBNavbarLink>
-              <MDBNavbarLink href="#skills">Skills</MDBNavbarLink>
-              <MDBNavbarLink href="#projects">Projects</MDBNavbarLink>
-
-              {/* NOTE: MDB does not recognize "target" as prop of MDBDropdownItem */}
-              {/* only show qa resume */}
-              <MDBNavbarLink
-                href={qaResume}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Resume
-              </MDBNavbarLink>
-              {/* <div data-testid="resume-dropdown">
-                <MDBDropdown>
-                  <MDBDropdownToggle tag="a" className="nav-link">
-                    Resumes
-                  </MDBDropdownToggle>
-                  <MDBDropdownMenu>
-                    <MDBDropdownItem link href={devResume}>
-                      Dev Resume
-                    </MDBDropdownItem>
-                    <MDBDropdownItem link href={qaResume}>
-                      QA Resume
-                    </MDBDropdownItem>
-                  </MDBDropdownMenu>
-                </MDBDropdown>
-              </div> */}
-            </MDBNavbarNav>
-          </MDBCollapse>
-        </MDBContainer>
-      </MDBNavbar>
+      <nav className="nav">
+        <CatEasterEgg />
+        <a className="logo" href="/">
+          kim<span>bell</span>.me
+        </a>
+        <button
+          type="button"
+          className="nav-burger"
+          aria-expanded={openNav}
+          aria-controls="nav-links"
+          aria-label="Toggle navigation"
+          onClick={() => setOpenNav(!openNav)}
+        >
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+        </button>
+        <ul
+          id="nav-links"
+          data-testid="nav-links"
+          className={`nav-links${openNav ? " open" : ""}`}
+        >
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#skills">Skills</a>
+          </li>
+          <li>
+            <a href="#projects">Projects</a>
+          </li>
+          <li>
+            <a href={qaResume} target="_blank" rel="noopener noreferrer">
+              Resume
+            </a>
+          </li>
+        </ul>
+      </nav>
     </header>
   )
 }

@@ -48,6 +48,13 @@ module.exports = {
         test: /\.(png|jpg|gif|ttf|pdf|svg)$/i,
         type: "asset/resource",
       },
+      {
+        test: /\.(woff2?)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[name][ext]",
+        },
+      },
     ],
   },
   plugins: [

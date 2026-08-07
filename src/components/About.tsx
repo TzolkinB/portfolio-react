@@ -136,7 +136,7 @@ const About = ({ id }: SectionProps) => {
                   >
                     ✓
                   </span>
-                  {accomplishment}
+                  <span>{accomplishment}</span>
                 </li>
               ))}
             </ul>

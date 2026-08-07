@@ -1,38 +1,36 @@
-import { MDBTypography } from "mdb-react-ui-kit"
-
 import { skillCategories } from "../constants/appData"
-import { getImage } from "../utils/tech-icons"
+import { capitalizeFirstLetter } from "../utils/utils"
 
-import type { SectionProps } from "../types/types"
+import type { SectionProps, Skill } from "../types/types"
 
 function Skills({ id }: SectionProps) {
-  const categories = skillCategories
-
   return (
-    <div id={id} data-testid={id}>
-      <hr />
-      <MDBTypography tag="h2" className="py-2 text-center">
-        Skills
-      </MDBTypography>
-      <hr />
-      <div className="pt-3">
-        {Object.entries(categories).map(([categoryName, categoryData]) => (
-          <div key={categoryName} className="skill-category mb-5">
-            {/* Category Header */}
-            <div className="category-header">
-              <div className="category-icon">{categoryData.icon}</div>
-              <h3 className="category-name">{categoryName}</h3>
-            </div>
-            {/* Skills Grid */}
-            <div className="skills-list text-center">
-              {categoryData.skills.map(
-                (skill: (typeof categoryData.skills)[number]) =>
-                  getImage(skill),
-              )}
-            </div>
+    <div id={id} data-testid={id} className="skills">
+      <h2 className="prompt">
+        <span className="prompt-symbol" aria-hidden="true">
+          $
+        </span>{" "}
+        ls ./skills
+      </h2>
+      {Object.entries(skillCategories).map(([categoryName, categoryData]) => (
+        <div key={categoryName} className="skill-category">
+          <h3 className="category-name">{categoryName}</h3>
+          <div className="skills-list">
+            {categoryData.skills.map((skill: Skill) => (
+              <div
+                key={skill.name}
+                data-testid={`skill-${skill.name}`}
+                className={`skill-item${skill.isCore ? " skill-item-core" : ""}`}
+              >
+                <span className="skill-name">
+                  {capitalizeFirstLetter(skill.name)}
+                </span>
+                <span className="skill-years">{skill.years} years</span>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   )
 }

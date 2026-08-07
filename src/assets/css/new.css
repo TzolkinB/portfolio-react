@@ -33,8 +33,8 @@
 
 body {
   font-family: "Roboto Flex", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #1a2a41;
-  color: #e0e3de;
+  background-color: var(--navy);
+  color: var(--ink);
   overflow-x: hidden;
   --hr-line-offset: 25%;
   --gradient-left: #00d4ff;
@@ -891,6 +891,17 @@ footer {
 /* TABLET (768px - 1099px) */
 
 @media screen and (min-width: 768px) {
+  .nav-burger {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: row;
+    gap: clamp(14px, 3vw, 32px);
+    padding: 0;
+  }
   .hero-grid {
     grid-template-columns: 1fr 340px;
   }

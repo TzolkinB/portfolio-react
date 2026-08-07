@@ -52,8 +52,6 @@ export const heroSocialLinks = [
 export const statBandData: readonly Stat[] = [
   { value: "8+", label: "Years Experience" },
   { value: "2+", label: "Years SDET" },
-  { value: "90%+", label: "Manual to Automated" },
-  { value: "35+", label: "Repos on Framework" },
 ] as const
 
 export const footerLinks = [

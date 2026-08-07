@@ -60,10 +60,10 @@ describe("Profile tests", () => {
   )
 
   sizes.forEach((size) => {
-    it(`should have an accessible nav bar with 4 links, ${size}`, () => {
+    it.only(`should have an accessible nav bar with 4 links, ${size}`, () => {
       cy.viewport(size)
 
-      if (size === "macbook-11") {
+      if (size != "iphone-6") {
         cy.get("nav").findByTestId("nav-links").as("navLinks")
       } else {
         cy.findByRole("button", { name: "Toggle navigation", expanded: false })

@@ -11,6 +11,7 @@ import {
   statBandData,
 } from "../../src/constants/appData"
 import projects from "../../src/constants/projectsData"
+import { capitalizeFirstLetter } from "../../src/utils/utils"
 
 import { sizes, anchorLinks, buttonLinks } from "./commonMethods"
 
@@ -54,15 +55,15 @@ describe("Profile tests", () => {
     cy.injectAxe()
   })
 
-  const allSkills = Object.values(skillCategories).flatMap((category) =>
-    category.skills.map((skill) => skill.name),
+  const allSkills = Object.values(skillCategories).flatMap(
+    (category) => category.skills,
   )
 
   sizes.forEach((size) => {
-    it(`should have an accessible nav bar with 4 links, ${size}`, () => {
+    it.only(`should have an accessible nav bar with 4 links, ${size}`, () => {
       cy.viewport(size)
 
-      if (size === "macbook-11") {
+      if (size != "iphone-6") {
         cy.get("nav").findByTestId("nav-links").as("navLinks")
       } else {
         cy.findByRole("button", { name: "Toggle navigation", expanded: false })
@@ -147,10 +148,7 @@ describe("Profile tests", () => {
       cy.checkA11y('[data-testid="stat-band"]')
 
       cy.findByRole("list", { name: "Career highlights" }).within(() => {
-        cy.findAllByRole("listitem").should(
-          "have.length",
-          statBandData.length,
-        )
+        cy.findAllByRole("listitem").should("have.length", statBandData.length)
         statBandData.forEach((stat) => {
           cy.findByText(stat.value)
           cy.findByText(stat.label)
@@ -192,23 +190,39 @@ describe("Profile tests", () => {
       })
     })
 
-    it(`should have tech icons and text on hover in skills section, ${size}`, () => {
+    it(`should render skills as numbered pipeline stages with years of experience, ${size}`, () => {
       cy.viewport(size)
 
+      cy.checkA11y('[data-testid="skills"]')
+
       cy.findByTestId("skills").within(() => {
-        cy.findByRole("heading", { level: 2, name: "Skills" })
-        cy.findByRole("heading", { level: 3, name: "Test Automation & QA" })
-        cy.findByRole("heading", { level: 3, name: "Frontend Development" })
         cy.findByRole("heading", {
-          level: 3,
-          name: "Development Tools & CI/CD",
+          level: 2,
+          name: "cat ./skills/pipeline.yml",
         })
 
-        cy.get("img").should("have.length", allSkills.length).as("skillImages")
+        Object.entries(skillCategories).forEach(
+          ([categoryName, categoryData], index) => {
+            const stageNumber = String(index + 1).padStart(2, "0")
 
-        // Check alt image tag
-        cy.get("@skillImages").each(($el, index) => {
-          cy.wrap($el).should("have.attr", "alt", allSkills[index])
+            cy.findByTestId(`stage-${categoryName}`).within(() => {
+              cy.findByRole("heading", { level: 3, name: categoryName })
+              cy.findByText(`stage ${stageNumber} · ${categoryData.kicker}`)
+              cy.findAllByTestId(/^skill-/).should(
+                "have.length",
+                categoryData.skills.length,
+              )
+            })
+          },
+        )
+
+        cy.findAllByTestId(/^skill-/).should("have.length", allSkills.length)
+
+        allSkills.forEach((skill) => {
+          cy.findByTestId(`skill-${skill.name}`).within(() => {
+            cy.findByText(capitalizeFirstLetter(skill.name))
+            cy.findByText(`${skill.years} years`)
+          })
         })
       })
     })

@@ -112,11 +112,22 @@ const About = ({ id }: SectionProps) => {
         {aboutContent.heading}
       </h2>
 
-      {aboutContent.intro.map((paragraph) => (
-        <p className="about-lead" key={paragraph}>
-          {paragraph}
-        </p>
-      ))}
+      <p className="about-lead">
+        With 8+ years of software experience, I bring a developer&apos;s mindset
+        to quality engineering. I believe quality isn&apos;t a phase, it&apos;s
+        baked in from day one. Good testing frameworks disappear into the
+        background and foster collaboration between QA and engineering teams. I
+        design automation that scales because I&apos;ve seen what happens when
+        it doesn&apos;t: friction, bottlenecks, people avoiding tests entirely.
+        I care about bridging the gap between QA and engineering because testing
+        is everyone&apos;s responsibility.
+      </p>
+      <p className="about-lead">
+        I&apos;m looking for roles where testing strategy matters. Where I can
+        partner with engineering teams to design automation they want to use,
+        and that actually scales. I thrive in environments that value shift-left
+        thinking and treat test infrastructure as seriously as production code.
+      </p>
 
       <div className="terminal-details-group">
         {roleWriteUps.map((role) => (
@@ -144,9 +155,16 @@ const About = ({ id }: SectionProps) => {
         ))}
       </div>
 
-      <p className="about-lead">{aboutContent.notCoding}</p>
       <p className="about-lead">
-        {aboutContent.contactIntro}{" "}
+        When I am not coding, I love to read and be outside. In fact, I often
+        use lunch breaks as an opportunity to get away from the computer and
+        take a walk. Since remote positions allow me to be closer to family, I
+        also enjoy spending time with my nieces and nephews on the weekends now
+        that I am able to live closer to them.
+      </p>
+      <p className="about-lead">
+        I am always looking for new opportunites and challenges so feel free to
+        reach out to me:{" "}
         <a href={`mailto:${aboutContent.email}`}>{aboutContent.email}</a>
       </p>
     </div>

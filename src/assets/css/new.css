@@ -568,21 +568,148 @@ body {
   padding: 60px var(--space-lg);
 }
 
-.skill-category {
-  margin-top: 26px;
-}
-
-.skill-category:first-of-type {
-  margin-top: 0;
-}
-
-.category-name {
+.pipeline-caption {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.78rem;
+  color: var(--ink-dim);
+  opacity: 0.85;
+  margin: 0 0 40px;
+}
+
+.pipeline-caption b {
+  color: var(--amber);
+  font-weight: 500;
+}
+
+/* ---- pipeline rail: each category is a numbered stage on a vertical rail ---- */
+.stage-rail {
+  position: relative;
+}
+
+.rail-line {
+  position: absolute;
+  left: 15px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--amber-dim) 4%,
+    var(--amber-dim) 96%,
+    transparent
+  );
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+/* Positioned with top/height in % (not fixed px) so the traveling glow stays
+   correct however tall a stage's content is — a fixed-offset version of this
+   broke once category sizes diverged from an even split to the real 7/6/10. */
+.rail-pulse {
+  position: absolute;
+  left: -5px;
+  top: -16%;
+  width: 12px;
+  height: 16%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--amber),
+    transparent
+  );
+  filter: drop-shadow(0 0 6px var(--amber));
+  animation: railFlow 5s linear infinite;
+}
+
+@keyframes railFlow {
+  to {
+    top: 116%;
+  }
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  column-gap: 18px;
+  padding-bottom: 40px;
+}
+
+.stage:last-child {
+  padding-bottom: 0;
+}
+
+.stage-node {
+  position: relative;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--amber);
+  box-shadow: 0 0 0 4px rgba(242, 169, 59, 0.12);
+  animation: nodePulse 2.6s ease-in-out infinite;
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 4px rgba(242, 169, 59, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(242, 169, 59, 0.04);
+  }
+}
+
+.stage-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 12px;
+  row-gap: 4px;
+  margin-top: 2px;
+  margin-bottom: 14px;
+}
+
+.stage-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.85;
+}
+
+.stage-name {
+  font-family: var(--font-mono);
+  font-size: 1rem;
   font-weight: 600;
   color: var(--ink);
+  margin: 0;
   text-transform: lowercase;
-  margin: 0 0 14px;
+}
+
+.stage-name span {
+  color: var(--amber);
+}
+
+.stage-status {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+}
+
+.stage-status b {
+  color: var(--amber);
+  font-weight: 500;
 }
 
 .skills-list {

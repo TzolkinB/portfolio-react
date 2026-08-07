@@ -39,6 +39,7 @@ export interface Skill {
 
 export interface SkillCategory {
   icon: string
+  kicker: string
   skills: Skill[]
 }
 

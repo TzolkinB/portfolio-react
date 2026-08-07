@@ -190,19 +190,31 @@ describe("Profile tests", () => {
       })
     })
 
-    it(`should have skills grouped by category with years of experience, ${size}`, () => {
+    it(`should render skills as numbered pipeline stages with years of experience, ${size}`, () => {
       cy.viewport(size)
 
       cy.checkA11y('[data-testid="skills"]')
 
       cy.findByTestId("skills").within(() => {
-        cy.findByRole("heading", { level: 2, name: "ls ./skills" })
-        cy.findByRole("heading", { level: 3, name: "Test Automation & QA" })
-        cy.findByRole("heading", { level: 3, name: "Frontend Development" })
         cy.findByRole("heading", {
-          level: 3,
-          name: "Development Tools & CI/CD",
+          level: 2,
+          name: "cat ./skills/pipeline.yml",
         })
+
+        Object.entries(skillCategories).forEach(
+          ([categoryName, categoryData], index) => {
+            const stageNumber = String(index + 1).padStart(2, "0")
+
+            cy.findByTestId(`stage-${categoryName}`).within(() => {
+              cy.findByRole("heading", { level: 3, name: categoryName })
+              cy.findByText(`stage ${stageNumber} · ${categoryData.kicker}`)
+              cy.findAllByTestId(/^skill-/).should(
+                "have.length",
+                categoryData.skills.length,
+              )
+            })
+          },
+        )
 
         cy.findAllByTestId(/^skill-/).should("have.length", allSkills.length)
 

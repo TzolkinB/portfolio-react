@@ -75,8 +75,58 @@ export const DEVICON_BASE_URL =
   "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons"
 
 export const skillCategories: SkillCategories = {
-  "Test Automation & QA": {
+  frontend: {
+    icon: "🎨",
+    // Pipeline-stage kicker shown above this category (e.g. "stage 01 · build").
+    kicker: "build",
+    skills: [
+      {
+        name: "typeScript",
+        years: "4+",
+        isCore: true,
+        iconPath: "typescript/typescript-original.svg",
+      },
+      {
+        name: "javaScript",
+        years: "8+",
+        isCore: true,
+        iconPath: "javascript/javascript-original.svg",
+      },
+      {
+        name: "react",
+        years: "6+",
+        isCore: true,
+        iconPath: "react/react-original.svg",
+      },
+      {
+        name: "ember",
+        years: "3",
+        isCore: false,
+        iconPath: "ember/ember-original.svg",
+      },
+      {
+        name: "html",
+        years: "8+",
+        isCore: false,
+        iconPath: "html5/html5-original.svg",
+      },
+      {
+        name: "css",
+        years: "8+",
+        isCore: false,
+        iconPath: "css3/css3-original.svg",
+      },
+      {
+        name: "styled-components",
+        years: "3+",
+        isCore: false,
+        iconPath: "styledcomponents/styledcomponents-original.svg",
+      },
+    ] as Skill[],
+  },
+  test_automation_qa: {
     icon: "🧪",
+    kicker: "test",
     skills: [
       {
         name: "cypress",
@@ -116,8 +166,12 @@ export const skillCategories: SkillCategories = {
       },
     ] as Skill[],
   },
-  "Development Tools & CI/CD": {
+  tooling_cicd: {
     icon: "🔧",
+    // "tools", not "ship" — only github-actions here is actually a shipping/deploy
+    // tool; the rest (vscode, jira, confluence, vite, eslint, webpack, plus the VCS
+    // hosts) are editor/PM/build tooling.
+    kicker: "tools",
     skills: [
       {
         name: "github",
@@ -178,53 +232,6 @@ export const skillCategories: SkillCategories = {
         years: "4",
         isCore: false,
         iconPath: "webpack/webpack-original.svg",
-      },
-    ] as Skill[],
-  },
-  "Frontend Development": {
-    icon: "🎨",
-    skills: [
-      {
-        name: "typeScript",
-        years: "4+",
-        isCore: true,
-        iconPath: "typescript/typescript-original.svg",
-      },
-      {
-        name: "javaScript",
-        years: "8+",
-        isCore: true,
-        iconPath: "javascript/javascript-original.svg",
-      },
-      {
-        name: "react",
-        years: "6+",
-        isCore: true,
-        iconPath: "react/react-original.svg",
-      },
-      {
-        name: "ember",
-        years: "3",
-        isCore: false,
-        iconPath: "ember/ember-original.svg",
-      },
-      {
-        name: "html",
-        years: "8+",
-        isCore: false,
-        iconPath: "html5/html5-original.svg",
-      },
-      {
-        name: "css",
-        years: "8+",
-        isCore: false,
-        iconPath: "css3/css3-original.svg",
-      },
-      {
-        name: "styled-components",
-        years: "3+",
-        isCore: false,
-        iconPath: "styledcomponents/styledcomponents-original.svg",
       },
     ] as Skill[],
   },

@@ -115,42 +115,53 @@ const About = ({ id }: SectionProps) => {
       <p className="about-lead">
         With 8+ years of software experience, I bring a developer&apos;s mindset
         to quality engineering. I believe quality isn&apos;t a phase, it&apos;s
-        baked in from day one. Good testing frameworks disappear into the
-        background and foster collaboration between QA and engineering teams. I
-        design automation that scales because I&apos;ve seen what happens when
-        it doesn&apos;t: friction, bottlenecks, people avoiding tests entirely.
-        I care about bridging the gap between QA and engineering because testing
-        is everyone&apos;s responsibility.
+        built in from day one, and I design automation to reduce ambiguity in
+        failures and improve feedback loops.
       </p>
       <p className="about-lead">
-        I&apos;m looking for roles where testing strategy matters. Where I can
-        partner with engineering teams to design automation they want to use,
-        and that actually scales. I thrive in environments that value shift-left
-        thinking and treat test infrastructure as seriously as production code.
+        I&apos;ve built and led quality platforms end-to-end, from front-end
+        understanding to automation architecture. I owned a shared Cypress +
+        TypeScript automation platform used by 10 engineering teams across 35
+        repositories, then helped turn regression testing into a repeatable
+        release capability by integrating suites into GitLab CI/CD. The result:
+        hardening went from hours to minutes, and my team established a clear
+        escalation path for flaky or ambiguous failures. Recently, I’ve extended
+        the same evidence-first approach into Playwright and AI-assisted QA
+        tooling.
+      </p>
+      <p className="about-lead">
+        I&apos;m especially interested in roles where testing strategy matters.
+        Where I can partner with engineering teams to design automation that
+        scales, is trusted, and reduces friction instead of creating it. I
+        thrive in environments that treat test infrastructure as production
+        code: thoughtfully engineered, maintainble, and built for long-term
+        adoption.
       </p>
 
-      <div className="terminal-details-group">
+      <div className="accordion-group">
         {roleWriteUps.map((role) => (
-          <details className="terminal-details" key={role.title}>
+          <details className="accordion" key={role.title}>
             <summary>
               <span className="disclosure-icon" aria-hidden="true" />
               {role.title}
             </summary>
-            <p>{role.summary}</p>
-            <ul className="accomplishments" role="list">
-              {role.accomplishments.map((accomplishment, i) => (
-                <li key={i}>
-                  <span
-                    className="check"
-                    data-testid="success-check"
-                    aria-hidden="true"
-                  >
-                    ✓
-                  </span>
-                  <span>{accomplishment}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="accordion-body">
+              <p>{role.summary}</p>
+              <ul className="accomplishments" role="list">
+                {role.accomplishments.map((accomplishment, i) => (
+                  <li key={i}>
+                    <span
+                      className="check"
+                      data-testid="success-check"
+                      aria-hidden="true"
+                    >
+                      ✓
+                    </span>
+                    <span>{accomplishment}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </details>
         ))}
       </div>
@@ -160,7 +171,7 @@ const About = ({ id }: SectionProps) => {
         use lunch breaks as an opportunity to get away from the computer and
         take a walk. Since remote positions allow me to be closer to family, I
         also enjoy spending time with my nieces and nephews on the weekends now
-        that I am able to live closer to them.
+        that I am closer to them.
       </p>
       <p className="about-lead">
         I am always looking for new opportunites and challenges so feel free to

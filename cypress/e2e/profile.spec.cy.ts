@@ -28,6 +28,33 @@ const getProjectButtons = (project: Project) => {
   return buttons
 }
 
+const heroLinks = [
+  {
+    label: heroContent.ctaPrimary.label,
+    href: heroContent.ctaPrimary.href,
+  },
+  {
+    label: heroContent.ctaSecondary.label,
+    href: heroContent.ctaSecondary.href,
+  },
+  ...heroSocialLinks.map((link) => ({
+    label: link.label,
+    href: link.href,
+  })),
+]
+const roleWriteUps = [
+  {
+    title: accordionTitles.qa,
+    accomplishments: qaAccomplishments,
+    alias: "qaDetails",
+  },
+  {
+    title: accordionTitles.dev,
+    accomplishments: devAccomplishments,
+    alias: "devDetails",
+  },
+]
+
 describe("Cat easter egg", () => {
   beforeEach(() => {
     cy.visit("/")
@@ -118,20 +145,6 @@ describe("Profile tests", () => {
             badgeContent.forEach((item) => cy.findByText(item.text))
           },
         )
-        const heroLinks = [
-          {
-            label: heroContent.ctaPrimary.label,
-            href: heroContent.ctaPrimary.href,
-          },
-          {
-            label: heroContent.ctaSecondary.label,
-            href: heroContent.ctaSecondary.href,
-          },
-          ...heroSocialLinks.map((link) => ({
-            label: link.label,
-            href: link.href,
-          })),
-        ]
 
         heroLinks.forEach((link) => {
           cy.findByRole("link", {
@@ -165,26 +178,18 @@ describe("Profile tests", () => {
       cy.findByTestId("about").within(() => {
         cy.findByRole("heading", { level: 2, name: aboutContent.heading })
 
-        // The summary's decorative disclosure icon is aria-hidden, so
-        // findByText matching the exact title also confirms the accessible
-        // name has no stray icon text in it.
-        const roleWriteUps = [
-          {
-            title: accordionTitles.qa,
-            accomplishments: qaAccomplishments,
-            alias: "qaDetails",
-          },
-          {
-            title: accordionTitles.dev,
-            accomplishments: devAccomplishments,
-            alias: "devDetails",
-          },
-        ]
-
         // Both role write-ups default to closed (native <details> not open)
         roleWriteUps.forEach(({ title, accomplishments, alias }) => {
-          cy.findByText(title).closest("details").as(alias)
-          cy.get(`@${alias}`).should("not.have.attr", "open")
+          // <summary> has an implicit "button" role per the HTML-AAM spec
+          // (browsers expose it that way to AT), but aria-query - which
+          // @testing-library/cypress uses to compute implicit roles - has
+          // no summary -> button mapping, so findByRole("button", ...)
+          // never matches it. Query by text and assert the native <details>
+          // "open" attribute instead.
+          cy.findByText(title)
+            .closest("details")
+            .should("not.have.attr", "open")
+            .as(alias)
           cy.get(`@${alias}`).within(() => {
             cy.findAllByTestId("success-check").should(
               "have.length",
@@ -193,7 +198,7 @@ describe("Profile tests", () => {
           })
         })
 
-        // Clicking the summary toggles the native disclosure open. Keyboard
+        // Clicking the <summary/> toggles the native disclosure open. Keyboard
         // operability comes from the browser's native <details>/<summary>
         // activation behavior (Enter/Space), not custom JS, so there's no
         // separate keydown simulation to test here.

@@ -25,6 +25,10 @@ export interface Project {
   impactMetricStandard?: string
 }
 
+export interface ProjectCardProps extends Project {
+  index: number
+}
+
 export interface SectionProps {
   id: string
 }

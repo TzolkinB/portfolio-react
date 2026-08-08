@@ -8,6 +8,7 @@ import {
   badgeContent,
   heroContent,
   heroSocialLinks,
+  projectContent,
   skillCategories,
   statBandData,
 } from "../../src/constants/appData"
@@ -247,12 +248,28 @@ describe("Profile tests", () => {
     it(`should have projects section, ${size}`, () => {
       cy.viewport(size)
 
+      cy.checkA11y('[data-testid="projects"]')
+
       cy.findByTestId("projects").within(() => {
-        cy.findByRole("heading", { level: 2, name: "Projects" })
+        cy.findByText(projectContent.eyebrow)
+        cy.findByRole("heading", { level: 2, name: projectContent.heading })
+        cy.findByText(projectContent.caption)
 
         cy.findAllByTestId(/card-/i)
           .should("have.length", projects.length)
           .as("projectCards")
+
+        projects.forEach((project) => {
+          cy.findByTestId(`card-${project.title}`).within(() => {
+            cy.findByRole("heading", { level: 3, name: project.title })
+            cy.findByText(project.subtitle)
+            cy.findByText(project.description)
+            project.badgeText.forEach((text) => cy.findByText(text))
+            if (project.impactMetricBold && project.impactMetricStandard) {
+              cy.findByText(project.impactMetricBold)
+            }
+          })
+        })
 
         projects.forEach((project, index) => {
           buttonLinks(index, getProjectButtons(project))

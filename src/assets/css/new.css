@@ -828,110 +828,119 @@ body {
   padding: 2px 6px;
   white-space: nowrap;
 }
-/* -----PROJECTS SECTION ----- */
-.projects-list {
+/* ----- Projects ----- */
+.projects {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 60px var(--space-lg);
+}
+
+.projects-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin: 0 0 10px;
+}
+
+.projects-caption {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-dim);
+  opacity: 0.85;
+  margin: 0 0 40px;
+}
+
+.projects-grid {
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
-.card {
+.project-card {
   position: relative;
-  background: #1a2a41;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--navy-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 20px;
 }
 
-.card:hover:before {
-  opacity: 1;
-}
-
-.card:before {
-  content: "";
+.project-number {
   position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  padding: 2px;
-  background: linear-gradient(
-    135deg,
-    var(--gradient-left),
-    var(--gradient-right)
-  );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0.3;
-  transition: opacity 0.3s;
+  top: 10px;
+  right: 16px;
+  font-family: var(--font-mono);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  opacity: 0.06;
+  line-height: 1;
 }
 
-.card:hover {
-  /* border-color: rgba(0, 212, 255, 0.3); */
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0, 212, 255, 0.15);
+.project-title {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 24px 4px 0;
 }
 
-.card-subtitle {
-  color: var(--gradient-left);
+.project-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--amber);
+  opacity: 0.85;
+  margin: 0 0 12px;
+}
+
+.project-description {
+  color: var(--ink-dim);
+  font-size: 0.95rem;
+  margin: 0 0 12px;
+}
+
+.project-impact {
+  font-size: 0.9rem;
+  color: var(--ink-dim);
+  border-left: 2px solid var(--amber-dim);
+  padding-left: 12px;
+  margin: 0 0 16px;
+}
+
+.project-impact strong {
+  color: var(--amber);
+}
+
+.project-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 4px;
 }
 
 .project-link {
-  flex: 1;
-  padding: 12px;
-  border-radius: 10px;
-  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-  cursor: pointer;
+  color: var(--amber);
   text-decoration: none;
 }
 
-.card .link-primary {
-  background: linear-gradient(
-    135deg,
-    var(--gradient-left),
-    var(--gradient-right)
-  );
-  color: #1a2a41 !important;
-}
-
-.card .link-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
-}
-
-.card .link-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-}
-
-.card .link-secondary:hover {
-  border-color: var(--gradient-left);
-  color: var(--gradient-left) !important;
-}
-
-.project-badge {
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  color: var(--gradient-left);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-}
-
-.note {
-  background: rgba(255, 171, 0, 0.05);
-  border-left: 3px solid var(--gradient-right);
-  padding: 12px 16px;
-  margin-bottom: 20px;
-  border-radius: 4px;
-}
-
-.note strong {
-  color: var(--gradient-right);
+.project-link:hover {
+  color: var(--amber-hover);
+  text-decoration: underline;
 }
 
 /* ----- Footer ----- */

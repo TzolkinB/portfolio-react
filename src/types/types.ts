@@ -4,8 +4,7 @@ export interface BadgeConfig {
 
 export interface FooterLink {
   href: string
-  ariaLabel: string
-  svgPath: string
+  label: string
 }
 
 export interface FooterLinksProps {

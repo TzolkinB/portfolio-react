@@ -88,7 +88,7 @@ describe("Profile tests", () => {
   )
 
   sizes.forEach((size) => {
-    it.only(`should have an accessible nav bar with 4 links, ${size}`, () => {
+    it(`should have an accessible nav bar with 4 links, ${size}`, () => {
       cy.viewport(size)
 
       if (size != "iphone-6") {

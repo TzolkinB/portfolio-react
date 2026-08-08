@@ -22,29 +22,36 @@ export const qaAccomplishments = [
     cycles{" "}
   </>,
   <>
-    Designed and scaled a <strong>TypeScript-based Cypress framework </strong>
-    (internal NPM package) across <strong>35 repositories</strong> (from 11),
-    serving 10 engineering teams; standardized automation practices and
-    framework adoption
+    Owned and scaled a TypeScript + Cypress automation framework used by 10
+    engineering teams, expanding from 11 to 35 repositories. The adoption
+    challenge was moving teams off manual testing without disruption; I reduced
+    friction through rollout docs, reusable code examples, hands-on training,
+    and weekly office hours to accelerate onboarding and resolve maintenance
+    questions.
   </>,
   <>
-    Integrated UI automation into <strong>Gitlab CI/CD pipelines</strong>,
-    reducing release hardening time from hours to minutes and ensuring
-    on-schedule sprint deployments
+    Integrated UI automation into GitLab CI/CD pipelines to run regression
+    suites on a schedule and on-demand during release prep. Previously, manual
+    overnight runs(by an offshore team) took 2+ hours and were sometimes
+    disrupted by environment/network issues. Automating execution reduced
+    hardening time (hours → minutes) and, with scheduled runs plus manual
+    triggers, sustained a reliable 2-week release cadence.
   </>,
   <>
-    Built and scaled{" "}
-    <strong>
-      reusable Cypress (with Testing Library) commands and testing standards
-    </strong>
-    , accelerating test development by 75% and enabling consistent execution
-    across teams
+    Created Cypress + Testing Library commands and guardrails (API completion,
+    feature flags, contract-dependent flows) to eliminate divergence across
+    teams working on a shared microservice architecture. Because teams regularly
+    re-organized and new members onboarded, I emphasized clear conventions and
+    examples so engineers could contribute immediately. Result: 75% less
+    repetitive manual test work and more consistent suites.”
   </>,
   <>
-    <strong>Reduced test flakiness across 10 teams</strong> by implementing
-    mocking strategies for environmental dependencies (feature flags, API
-    contract changes) establishing common test patterns with built-in guards for
-    test stability
+    Served as the escalation point for flaky and ambiguous failures. I worked
+    directly with developers to build Cypress confidence so they would initiate
+    standard root cause triage and do a first-pass when failures looked like ‘a
+    Cypress issue’ (product vs. automation vs. network/environment vs. feature
+    flags or pipeline/Git changes). This created a clear escalation path and
+    reduced time-to-resolution.
   </>,
 ]
 

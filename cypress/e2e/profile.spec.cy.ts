@@ -4,6 +4,7 @@ import {
   devAccomplishments,
 } from "../../src/components/About"
 import {
+  aboutContent,
   badgeContent,
   heroContent,
   heroSocialLinks,
@@ -26,6 +27,33 @@ const getProjectButtons = (project: Project) => {
   }
   return buttons
 }
+
+const heroLinks = [
+  {
+    label: heroContent.ctaPrimary.label,
+    href: heroContent.ctaPrimary.href,
+  },
+  {
+    label: heroContent.ctaSecondary.label,
+    href: heroContent.ctaSecondary.href,
+  },
+  ...heroSocialLinks.map((link) => ({
+    label: link.label,
+    href: link.href,
+  })),
+]
+const roleWriteUps = [
+  {
+    title: accordionTitles.qa,
+    accomplishments: qaAccomplishments,
+    alias: "qaDetails",
+  },
+  {
+    title: accordionTitles.dev,
+    accomplishments: devAccomplishments,
+    alias: "devDetails",
+  },
+]
 
 describe("Cat easter egg", () => {
   beforeEach(() => {
@@ -60,7 +88,7 @@ describe("Profile tests", () => {
   )
 
   sizes.forEach((size) => {
-    it.only(`should have an accessible nav bar with 4 links, ${size}`, () => {
+    it(`should have an accessible nav bar with 4 links, ${size}`, () => {
       cy.viewport(size)
 
       if (size != "iphone-6") {
@@ -117,20 +145,6 @@ describe("Profile tests", () => {
             badgeContent.forEach((item) => cy.findByText(item.text))
           },
         )
-        const heroLinks = [
-          {
-            label: heroContent.ctaPrimary.label,
-            href: heroContent.ctaPrimary.href,
-          },
-          {
-            label: heroContent.ctaSecondary.label,
-            href: heroContent.ctaSecondary.href,
-          },
-          ...heroSocialLinks.map((link) => ({
-            label: link.label,
-            href: link.href,
-          })),
-        ]
 
         heroLinks.forEach((link) => {
           cy.findByRole("link", {
@@ -156,37 +170,40 @@ describe("Profile tests", () => {
       })
     })
 
-    it(`should have bullet points in about me section, ${size}`, () => {
+    it(`should have an accessible about section with expandable role write-ups, ${size}`, () => {
       cy.viewport(size)
 
+      cy.checkA11y('[data-testid="about"]')
+
       cy.findByTestId("about").within(() => {
-        cy.findByRole("heading", { level: 2, name: "About" })
-        // Both accordions default to closed (collapsed) state
-        cy.get(".accordion-item").should("have.length", 2).as("accordions")
-        cy.get("@accordions")
-          .first()
-          .within(() => {
-            cy.findByRole("button", { name: accordionTitles.qa }).should(
-              "have.class",
-              "collapsed",
-            )
+        cy.findByRole("heading", { level: 2, name: aboutContent.heading })
+
+        // Both role write-ups default to closed (native <details> not open)
+        roleWriteUps.forEach(({ title, accomplishments, alias }) => {
+          // <summary> has an implicit "button" role per the HTML-AAM spec
+          // (browsers expose it that way to AT), but aria-query - which
+          // @testing-library/cypress uses to compute implicit roles - has
+          // no summary -> button mapping, so findByRole("button", ...)
+          // never matches it. Query by text and assert the native <details>
+          // "open" attribute instead.
+          cy.findByText(title).closest("details").as(alias)
+
+          cy.get(`@${alias}`).should("not.have.attr", "open")
+
+          cy.get(`@${alias}`).within(() => {
             cy.findAllByTestId("success-check").should(
               "have.length",
-              qaAccomplishments.length,
+              accomplishments.length,
             )
           })
-        cy.get("@accordions")
-          .last()
-          .within(() => {
-            cy.findByRole("button", { name: accordionTitles.dev }).should(
-              "have.class",
-              "collapsed",
-            )
-            cy.findAllByTestId("success-check").should(
-              "have.length",
-              devAccomplishments.length,
-            )
-          })
+        })
+
+        // Clicking the <summary/> toggles the native disclosure open. Keyboard
+        // operability comes from the browser's native <details>/<summary>
+        // activation behavior (Enter/Space), not custom JS, so there's no
+        // separate keydown simulation to test here.
+        cy.findByText(accordionTitles.qa).click()
+        cy.get("@qaDetails").should("have.attr", "open")
       })
     })
 

@@ -49,6 +49,11 @@ export const heroSocialLinks = [
   { label: "github", href: "https://github.com/TzolkinB" },
 ] as const
 
+export const aboutContent = {
+  heading: "cd ./about",
+  email: "krbell4@gmail.com",
+} as const
+
 export const statBandData: readonly Stat[] = [
   { value: "8+", label: "Years Experience" },
   { value: "2+", label: "Years SDET" },

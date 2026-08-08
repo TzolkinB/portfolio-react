@@ -155,7 +155,7 @@ describe("Profile tests", () => {
           }).should("have.attr", "href", link.href)
         })
 
-        cy.get("img").should("have.attr", "src", "/paths.IMG/profile2.jpg")
+        cy.get("img").should("have.attr", "src", "/paths.IMG/profile3.jpg")
       })
     })
 

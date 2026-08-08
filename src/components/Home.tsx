@@ -1,5 +1,5 @@
 import qaResume from "../assets/img/Bell_Kimberly-Resume.pdf"
-import Me from "../assets/img/profile2.jpg"
+import Me from "../assets/img/profile3.jpg"
 import {
   badgeContent,
   DEV_MESSAGE,

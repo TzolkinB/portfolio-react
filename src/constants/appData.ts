@@ -54,6 +54,12 @@ export const aboutContent = {
   email: "krbell4@gmail.com",
 } as const
 
+export const projectContent = {
+  eyebrow: "// selected work",
+  heading: "open ./projects",
+  caption: "# projects — 4 repositories · sorted by relevance",
+} as const
+
 export const statBandData: readonly Stat[] = [
   { value: "8+", label: "Years Experience" },
   { value: "2+", label: "Years SDET" },

@@ -18,7 +18,7 @@ export const buttonLinks = (
     .eq(index)
     .within(() => {
       buttons.forEach((button) => {
-        cy.findByRole("button", { name: button.name }).should(
+        cy.findByRole("link", { name: button.name }).should(
           "have.attr",
           "href",
           button.href,

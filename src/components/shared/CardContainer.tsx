@@ -1,23 +1,19 @@
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardSubTitle,
-  MDBCardText,
-  MDBBadge,
-  MDBBtn,
-  MDBTypography,
-} from "mdb-react-ui-kit"
+import type { ProjectCardProps } from "../../types/types"
 
-import type { Project } from "../../types/types"
-
-const badge = (text: string) => (
-  <MDBBadge key={text} className="project-badge me-2" light>
-    {text}
-  </MDBBadge>
+const projectLink = (href: string, text: string) => (
+  <a
+    key={href}
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="project-link"
+  >
+    {text} <span aria-hidden="true">→</span>
+  </a>
 )
 
 const CardContainer = ({
+  index,
   title,
   subtitle,
   description,
@@ -28,47 +24,38 @@ const CardContainer = ({
   badgeText,
   impactMetricBold,
   impactMetricStandard,
-}: Project) => {
+}: ProjectCardProps) => {
+  const number = String(index + 1).padStart(2, "0")
+
   return (
-    <MDBCard>
-      <MDBCardBody data-testid={`card-${title}`}>
-        <MDBCardTitle tag="h3" className="fw-bold mb-1">
-          {title}
-        </MDBCardTitle>
-        <MDBCardSubTitle tag="small" className="mt-1 fw-bold">
-          {subtitle}
-        </MDBCardSubTitle>
-        <MDBCardText className="pt-2 fw-light text-muted">
-          {description}
-        </MDBCardText>
-        {impactMetricBold != null && impactMetricStandard != null && (
-          <MDBTypography note>
-            <strong>{impactMetricBold}</strong> {impactMetricStandard}
-          </MDBTypography>
-        )}
-        <div className="mb-4">{badgeText.map((text) => badge(text))}</div>
-        <div className="d-flex gap-3">
-          <MDBBtn
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-link link-primary fw-bold"
-          >
-            {urlText}
-          </MDBBtn>
-          {url2 != null && url2Text != null && (
-            <MDBBtn
-              href={url2}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-link link-secondary fw-bold"
-            >
-              {url2Text}
-            </MDBBtn>
-          )}
-        </div>
-      </MDBCardBody>
-    </MDBCard>
+    <div data-testid={`card-${title}`} className="project-card">
+      <span className="project-number" aria-hidden="true">
+        {number}
+      </span>
+      <h3 className="project-title">{title}</h3>
+      <p className="project-subtitle">{subtitle}</p>
+      <p className="project-description">{description}</p>
+      {impactMetricBold != null && impactMetricStandard != null && (
+        <p className="project-impact">
+          <strong>{impactMetricBold}</strong> {impactMetricStandard}
+        </p>
+      )}
+      <div
+        className="project-badges"
+        role="list"
+        aria-label={`${title} technologies`}
+      >
+        {badgeText.map((text) => (
+          <span key={text} className="tag" role="listitem">
+            {text}
+          </span>
+        ))}
+      </div>
+      <div className="project-links">
+        {projectLink(url, urlText)}
+        {url2 != null && url2Text != null && projectLink(url2, url2Text)}
+      </div>
+    </div>
   )
 }
 

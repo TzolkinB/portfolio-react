@@ -186,10 +186,10 @@ describe("Profile tests", () => {
           // no summary -> button mapping, so findByRole("button", ...)
           // never matches it. Query by text and assert the native <details>
           // "open" attribute instead.
-          cy.findByText(title)
-            .closest("details")
-            .should("not.have.attr", "open")
-            .as(alias)
+          cy.findByText(title).closest("details").as(alias)
+
+          cy.get(`@${alias}`).should("not.have.attr", "open")
+
           cy.get(`@${alias}`).within(() => {
             cy.findAllByTestId("success-check").should(
               "have.length",

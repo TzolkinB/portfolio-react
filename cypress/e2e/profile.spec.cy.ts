@@ -6,6 +6,8 @@ import {
 import {
   aboutContent,
   badgeContent,
+  footerContent,
+  footerLinks,
   heroContent,
   heroSocialLinks,
   projectContent,
@@ -277,18 +279,36 @@ describe("Profile tests", () => {
       })
     })
 
-    it(`should have footer with copyright & links, ${size}`, () => {
+    it(`should have an accessible footer with copyright & links, ${size}`, () => {
       cy.viewport(size)
       const currentYear = new Date().getFullYear()
-      cy.get("footer").contains(`${currentYear} Copyright Kim Bell`)
+
+      cy.checkA11y("footer")
+
       cy.get("footer").within(() => {
-        cy.findAllByRole("link").should("have.length", 2).as("footerLinks")
+        cy.findByRole("heading", { level: 2, name: footerContent.heading })
+        cy.contains(footerContent.privacyNotice)
+        cy.contains(`${currentYear} ${heroContent.name}`)
+
+        footerLinks.forEach((link) => {
+          cy.findByRole("link", { name: link.label }).should(
+            "have.attr",
+            "href",
+            link.href,
+          )
+        })
+
+        cy.findAllByRole("link").should("have.length", 3).as("footerLinks")
         cy.get("@footerLinks").each((link) => {
+          const href = link.prop("href")
+          if (href.startsWith("mailto:")) {
+            return
+          }
           // failOnStatusCode: false is required because LinkedIn returns 999 to
           // automated/bot traffic. 999 means their servers responded and the URL
           // is valid — they're blocking scrapers, not returning "not found".
           // We assert not 404 to confirm the link destination actually exists.
-          cy.request({ url: link.prop("href"), failOnStatusCode: false })
+          cy.request({ url: href, failOnStatusCode: false })
             .its("status")
             .should("not.eq", 404)
         })

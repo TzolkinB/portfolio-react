@@ -944,27 +944,46 @@ body {
 }
 
 /* ----- Footer ----- */
-footer {
-  height: 100px;
-  background: #0d1a2e;
+.footer {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-lg) var(--space-md);
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  text-align: center;
 }
 
-.footer-icon {
-  width: 3rem;
-  height: 3rem;
-  color: var(--gradient-left);
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm) var(--space-md);
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
 }
 
-.footer-link:hover .icon-path {
-  fill: url(#iconGradient);
+.footer-link {
+  color: var(--ink-dim);
+  text-decoration: none;
+  font-size: 0.85rem;
 }
 
-.copyright {
-  margin-left: 10%;
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: var(--amber);
 }
 
-.privacy-notice {
-  font-size: 12px;
+.footer-privacy {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  color: var(--ink-dim);
+}
+
+.footer-copyright {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-dim);
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -989,11 +1008,6 @@ footer {
 
   .stat-band-inner {
     grid-template-columns: repeat(4, 1fr);
-  }
-
-  .footer-icon {
-    width: 2.5rem;
-    height: 2.5rem;
   }
 }
 

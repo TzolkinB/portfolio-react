@@ -34,39 +34,30 @@ export function TechLink({
 
 /**
  * Footer Links component
- * @param links - Array of footer link objects containing href, ariaLabel, svgPath
- * @returns JSX anchor elements with SVG icons for footer links
- * Each link opens in a new tab and has appropriate aria-labels for accessibility
+ * @param links - Array of footer link objects containing href, label
+ * @returns JSX list of footer text links
+ * External links (GitHub, LinkedIn) open in a new tab; mailto links open the
+ * visitor's mail client in the current tab instead.
  */
 export function FooterLinks({ links }: FooterLinksProps) {
   return (
-    <div className="footer-links pe-2">
-      {links.map((link) => (
-        <a
-          key={link.href}
-          href={link.href}
-          aria-label={link.ariaLabel}
-          target="_blank"
-          rel="noreferrer"
-          className="px-2 footer-link"
-        >
-          <svg className="footer-icon" viewBox="0 0 128 128">
-            <defs>
-              <linearGradient
-                id="iconGradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="#00d4ff" />
-                <stop offset="100%" stopColor="#ffab00" />
-              </linearGradient>
-            </defs>
-            <path className="icon-path" fill="currentColor" d={link.svgPath} />
-          </svg>
-        </a>
-      ))}
-    </div>
+    <ul className="footer-links" role="list">
+      {links.map((link) => {
+        const isMailto = link.href.startsWith("mailto:")
+
+        return (
+          <li key={link.href}>
+            <a
+              href={link.href}
+              className="footer-link"
+              target={isMailto ? undefined : "_blank"}
+              rel={isMailto ? undefined : "noreferrer"}
+            >
+              {link.label}
+            </a>
+          </li>
+        )
+      })}
+    </ul>
   )
 }

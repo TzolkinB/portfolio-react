@@ -1,6 +1,6 @@
 import { BadgeConfig, Skill, SkillCategories } from "../types/types"
 
-import type { FooterLink, Stat } from "../types/types"
+import type { AboutTab, FooterLink, Stat } from "../types/types"
 
 // Developer console message
 export const DEV_MESSAGE = {
@@ -51,8 +51,16 @@ export const heroSocialLinks = [
 
 export const aboutContent = {
   heading: "cd ./about",
+  caption: "# 4 files · ~/about",
   email: "krbell4@gmail.com",
 } as const
+
+export const aboutTabs: readonly AboutTab[] = [
+  { id: "summary", filename: "summary.md" },
+  { id: "experience", filename: "experience.md" },
+  { id: "focus", filename: "focus.md" },
+  { id: "off-the-clock", filename: "off-the-clock.md" },
+] as const
 
 export const projectContent = {
   eyebrow: "// selected work",

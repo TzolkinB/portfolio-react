@@ -1,0 +1,11 @@
+# Native `<select>` fallback for About's tabs below the tablet breakpoint
+
+About's tabbed file-browser redesign (#169) needs a mobile presentation for its four-tab bar, since a horizontal row of four filename tabs (`summary.md`, `experience.md`, `focus.md`, `off-the-clock.md`) doesn't reliably fit small viewport widths. Two alternatives were considered alongside a native form control: a horizontally-scrollable tablist, and a stacked-accordion fallback that abandons the tab metaphor below the breakpoint. The scrollable tablist was rejected — the WAI-ARIA APG's scrollable-tablist guidance still leaves scroll-affordance discoverability and keyboard reachability of off-screen tabs as unresolved UX problems on touch devices, and touch target width for four crammed labels would likely fall below a usable size. The stacked-accordion fallback was rejected because it changes the interaction model entirely between breakpoints — someone switching devices mid-session would land in a differently-structured section — and duplicates markup/behavior the panels already provide.
+
+Decided: below the tablet breakpoint (`768px`, matching this codebase's existing tablet/desktop split), replace the tab bar with a native `<select>` element whose four options use the same filenames as labels; selecting an option swaps the same shared panel content the tablist controls at tablet width and up. Both controls are driven by one shared tab-data array and one shared active-panel state, so they can't drift out of sync with each other or across a viewport change.
+
+## Consequences
+
+- No custom touch/scroll interaction to build or test — the native `<select>` is fully accessible and familiar on mobile OSes for free.
+- The About section behaves differently by breakpoint (tabs vs. a dropdown) rather than uniformly, but the content and its ordering stay identical across both, so there's no functional gap — only the choice of control.
+- Both the tablist and the `<select>` stay mounted in the DOM at all viewport widths, with visibility toggled by CSS `display` rather than conditional rendering — this is what guarantees the two controls can't fall out of sync, but it means accessibility checks (`cy.checkA11y`) need to run per-viewport to actually exercise each control, rather than one assertion covering both.

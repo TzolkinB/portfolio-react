@@ -1,7 +1,9 @@
-import { aboutContent } from "../constants/appData"
+import { useRef, useState } from "react"
+
+import { aboutContent, aboutTabs } from "../constants/appData"
 import { TechLink } from "../utils/utils"
 
-import type { SectionProps } from "../types/types"
+import type { AboutTabId, SectionProps } from "../types/types"
 
 export const accordionTitles = {
   qa: "Senior SDET in Web Test Automation | Ally Financial",
@@ -109,40 +111,30 @@ const roleWriteUps = [
   },
 ]
 
-const About = ({ id }: SectionProps) => {
-  return (
-    <div id={id} data-testid={id} className="about">
-      <h2 className="prompt">
-        <span className="prompt-symbol" aria-hidden="true">
-          $
-        </span>{" "}
-        {aboutContent.heading}
-      </h2>
+const tabId = (id: AboutTabId) => `about-tab-${id}`
+const panelId = (id: AboutTabId) => `about-panel-${id}`
 
-      <p className="about-lead">
-        With 8+ years of software experience, I bring a developer&apos;s mindset
-        to quality engineering. I believe quality isn&apos;t a phase, it&apos;s
-        built in from day one, and I design automation to reduce ambiguity in
-        failures and improve feedback loops.
-      </p>
+const panelContent: Record<AboutTabId, React.ReactNode> = {
+  summary: (
+    <p className="about-lead">
+      With 8+ years of software experience, I bring a developer&apos;s
+      mindset to quality engineering. I believe quality isn&apos;t a phase,
+      it&apos;s built in from day one, and I design automation to reduce
+      ambiguity in failures and improve feedback loops.
+    </p>
+  ),
+  experience: (
+    <>
       <p className="about-lead">
         I&apos;ve built and led quality platforms end-to-end, from front-end
         understanding to automation architecture. I owned a shared Cypress +
         TypeScript automation platform used by 10 engineering teams across 35
         repositories, then helped turn regression testing into a repeatable
-        release capability by integrating suites into GitLab CI/CD. The result:
-        hardening went from hours to minutes, and my team established a clear
-        escalation path for flaky or ambiguous failures. Recently, I’ve extended
-        the same evidence-first approach into Playwright and AI-assisted QA
-        tooling.
-      </p>
-      <p className="about-lead">
-        I&apos;m especially interested in roles where testing strategy matters.
-        Where I can partner with engineering teams to design automation that
-        scales, is trusted, and reduces friction instead of creating it. I
-        thrive in environments that treat test infrastructure as production
-        code: thoughtfully engineered, maintainble, and built for long-term
-        adoption.
+        release capability by integrating suites into GitLab CI/CD. The
+        result: hardening went from hours to minutes, and my team established
+        a clear escalation path for flaky or ambiguous failures. Recently,
+        I’ve extended the same evidence-first approach into Playwright and
+        AI-assisted QA tooling.
       </p>
 
       <div className="accordion-group">
@@ -172,19 +164,133 @@ const About = ({ id }: SectionProps) => {
           </details>
         ))}
       </div>
+    </>
+  ),
+  focus: (
+    <p className="about-lead">
+      I&apos;m especially interested in roles where testing strategy matters.
+      Where I can partner with engineering teams to design automation that
+      scales, is trusted, and reduces friction instead of creating it. I
+      thrive in environments that treat test infrastructure as production
+      code: thoughtfully engineered, maintainble, and built for long-term
+      adoption.
+    </p>
+  ),
+  "off-the-clock": (
+    <p className="about-lead">
+      When I am not coding, I love to read and be outside. In fact, I often
+      use lunch breaks as an opportunity to get away from the computer and
+      take a walk. Since remote positions allow me to be closer to family, I
+      also enjoy spending time with my nieces and nephews on the weekends now
+      that I am closer to them.
+    </p>
+  ),
+}
 
-      <p className="about-lead">
-        When I am not coding, I love to read and be outside. In fact, I often
-        use lunch breaks as an opportunity to get away from the computer and
-        take a walk. Since remote positions allow me to be closer to family, I
-        also enjoy spending time with my nieces and nephews on the weekends now
-        that I am closer to them.
-      </p>
-      <p className="about-lead">
-        I am always looking for new opportunites and challenges so feel free to
-        reach out to me:{" "}
-        <a href={`mailto:${aboutContent.email}`}>{aboutContent.email}</a>
-      </p>
+const About = ({ id }: SectionProps) => {
+  const [activeTab, setActiveTab] = useState<AboutTabId>(aboutTabs[0].id)
+  const tabButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({})
+
+  const focusTab = (targetId: AboutTabId) => {
+    setActiveTab(targetId)
+    tabButtonRefs.current[targetId]?.focus()
+  }
+
+  const handleTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    const activeIndex = aboutTabs.findIndex((tab) => tab.id === activeTab)
+
+    switch (event.key) {
+      case "ArrowRight":
+        focusTab(aboutTabs[(activeIndex + 1) % aboutTabs.length].id)
+        break
+      case "ArrowLeft":
+        focusTab(
+          aboutTabs[(activeIndex - 1 + aboutTabs.length) % aboutTabs.length]
+            .id,
+        )
+        break
+      case "Home":
+        focusTab(aboutTabs[0].id)
+        break
+      case "End":
+        focusTab(aboutTabs[aboutTabs.length - 1].id)
+        break
+      default:
+        return
+    }
+
+    event.preventDefault()
+  }
+
+  return (
+    <div id={id} data-testid={id} className="about">
+      <h2 className="prompt">
+        <span className="prompt-symbol" aria-hidden="true">
+          $
+        </span>{" "}
+        {aboutContent.heading}
+      </h2>
+      <p className="about-file-count">{aboutContent.caption}</p>
+
+      <div className="about-editor">
+        <div
+          className="tab-bar"
+          role="tablist"
+          aria-label="About file tabs"
+        >
+          {aboutTabs.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              role="tab"
+              id={tabId(tab.id)}
+              aria-selected={tab.id === activeTab}
+              aria-controls={panelId(tab.id)}
+              tabIndex={tab.id === activeTab ? 0 : -1}
+              className="tab-label"
+              ref={(el) => {
+                tabButtonRefs.current[tab.id] = el
+              }}
+              onClick={() => setActiveTab(tab.id)}
+              onKeyDown={handleTabKeyDown}
+            >
+              {tab.filename}
+            </button>
+          ))}
+        </div>
+
+        <div className="about-select-wrap">
+          <select
+            className="about-select"
+            aria-label="About file"
+            value={activeTab}
+            onChange={(event) =>
+              setActiveTab(event.target.value as AboutTabId)
+            }
+          >
+            {aboutTabs.map((tab) => (
+              <option key={tab.id} value={tab.id}>
+                {tab.filename}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="about-panels">
+          {aboutTabs.map((tab) => (
+            <div
+              key={tab.id}
+              id={panelId(tab.id)}
+              role="tabpanel"
+              aria-label={tab.filename}
+              tabIndex={0}
+              hidden={activeTab !== tab.id}
+            >
+              {panelContent[tab.id]}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

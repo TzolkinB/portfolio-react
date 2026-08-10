@@ -441,7 +441,9 @@ body {
 }
 @keyframes typeStatusReply {
   to {
-    width: 21ch;
+    /* 21ch fits the text alone; the extra 1ch makes room for the nested
+       .cursor so overflow:hidden doesn't clip it off. */
+    width: calc(21ch + 1ch);
   }
 }
 @keyframes typeCat {

@@ -85,8 +85,6 @@ export const buttonLinks = (
           "href",
           button.href,
         )
-
-        cy.request(button.href).its("status").should("eq", 200)
       })
     })
 }

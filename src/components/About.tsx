@@ -1,7 +1,9 @@
-import { aboutContent } from "../constants/appData"
-import { TechLink } from "../utils/utils"
+import { useRef, useState } from "react"
 
-import type { SectionProps } from "../types/types"
+import { aboutContent, aboutTabs } from "../constants/appData"
+// import { TechLink } from "../utils/utils"
+
+import type { AboutTabId, SectionProps } from "../types/types"
 
 export const accordionTitles = {
   qa: "Senior SDET in Web Test Automation | Ally Financial",
@@ -10,16 +12,15 @@ export const accordionTitles = {
 
 export const qaAccomplishments = [
   <>
-    Led transition from <strong>100% manual to 90% automated testing</strong>{" "}
-    across 10 teams in 2 years using{" "}
-    <TechLink href="https://www.cypress.io/">Cypress</TechLink>,{" "}
+    Led transition from 100% manual to 90% automated testing across 10 teams in
+    2 years using Cypress, Testing Library, TypeScript, and Gitlab CI/CD,
+    {/* <TechLink href="https://www.cypress.io/">Cypress</TechLink>,{" "}
     <TechLink href="https://testing-library.com/docs/cypress-testing-library/intro">
       Testing-Library
     </TechLink>
     , <TechLink href="https://www.typescriptlang.org/">TypeScript</TechLink>,
-    and <TechLink href="https://docs.gitlab.com/ee/ci/">Gitlab CI/CD</TechLink>,
-    reducing regression effort and enabling consistent 2-week release
-    cycles{" "}
+    and <TechLink href="https://docs.gitlab.com/ee/ci/">Gitlab CI/CD</TechLink>, */}
+    reducing regression effort and enabling consistent 2-week release cycles.
   </>,
   <>
     Owned and scaled a TypeScript + Cypress automation framework used by 10
@@ -57,24 +58,22 @@ export const qaAccomplishments = [
 
 export const devAccomplishments = [
   <>
-    Delivered responsive frontend features across Ember and React ecosystems
-    during large-scale migration, balancing feature delivery with modernization;
-    validated work using Jest and BrowserStack prior to QA handoff
+    Delivered responsive frontend features across Ember and React during
+    large-scale migration, balancing feature work with test modernization;
+    validated by Jest and BrowserStack prior to QA handoff.
   </>,
   <>
-    <strong>Championed Cypress adoption</strong> by participating in
-    proof-of-concept, then leading training and establishing foundational
-    testing patterns that became the standard across the organization
+    Championed Cypress adoption by contributing to the proof of concept, then
+    leading training and establishing reusable test patterns that became the
+    organization standard.
   </>,
   <>
-    Lead the <strong>migration of automated tests</strong> to align with React
-    architecture, maintaining test coverage and stability during platform
-    transition
+    Led automated test migration to align with React architecture, preserving
+    regression coverage and stability during the platform transition.
   </>,
   <>
-    Leveraged Swagger for <strong>API validation</strong> during integration,
-    creating mocks and diagnosing UI issues arising from API contract
-    modifications
+    Used Swagger to validate API contracts during integration, creating mocks
+    and tracing UI failures back to contract changes.
   </>,
 ]
 
@@ -85,8 +84,7 @@ const roleWriteUps = [
     summary: (
       <>
         Architected and scaled Ally&apos;s test automation framework that
-        enabled{" "}
-        <strong>10 teams to shift from manual to automation testing</strong>. As
+        enabled 10 teams to shift from manual to automation testing. As
         technical lead and primary escalation point for framework issues, I
         partnered with product and engineering teams to align workflows and
         eliminate bottlenecks.
@@ -98,33 +96,30 @@ const roleWriteUps = [
     accomplishments: devAccomplishments,
     summary: (
       <>
-        Joined during Ally&apos;s critical{" "}
-        <strong>Ember-to-React migration</strong>, developing features across 2+
-        ecosystems while simultaneously leading the parallel effort to migrate
-        and modernize automated tests. Became the
-        <strong> subject matter expert on Cypress</strong>, training teams and
-        accelerating tool adoption across the organization.
+        Joined during Ally&apos;s critical Ember-to-React migration, delivering
+        frontend features across 2+ ecosystems while leading the parallel effort
+        to modernize automated testing. Became the organization&apos;s Cypress
+        subject matter expert, training teams and establishing shared testing
+        patterns.
       </>
     ),
   },
 ]
 
-const About = ({ id }: SectionProps) => {
-  return (
-    <div id={id} data-testid={id} className="about">
-      <h2 className="prompt">
-        <span className="prompt-symbol" aria-hidden="true">
-          $
-        </span>{" "}
-        {aboutContent.heading}
-      </h2>
+const tabId = (id: AboutTabId) => `about-tab-${id}`
+const panelId = (id: AboutTabId) => `about-panel-${id}`
 
-      <p className="about-lead">
-        With 8+ years of software experience, I bring a developer&apos;s mindset
-        to quality engineering. I believe quality isn&apos;t a phase, it&apos;s
-        built in from day one, and I design automation to reduce ambiguity in
-        failures and improve feedback loops.
-      </p>
+const panelContent: Record<AboutTabId, React.ReactNode> = {
+  summary: (
+    <p className="about-lead">
+      With 8+ years of software experience, I bring a developer&apos;s mindset
+      to quality engineering. I believe quality isn&apos;t a phase, it&apos;s
+      built in from day one, and I design automation to reduce ambiguity in
+      failures and improve feedback loops.
+    </p>
+  ),
+  experience: (
+    <>
       <p className="about-lead">
         I&apos;ve built and led quality platforms end-to-end, from front-end
         understanding to automation architecture. I owned a shared Cypress +
@@ -135,14 +130,6 @@ const About = ({ id }: SectionProps) => {
         escalation path for flaky or ambiguous failures. Recently, I’ve extended
         the same evidence-first approach into Playwright and AI-assisted QA
         tooling.
-      </p>
-      <p className="about-lead">
-        I&apos;m especially interested in roles where testing strategy matters.
-        Where I can partner with engineering teams to design automation that
-        scales, is trusted, and reduces friction instead of creating it. I
-        thrive in environments that treat test infrastructure as production
-        code: thoughtfully engineered, maintainble, and built for long-term
-        adoption.
       </p>
 
       <div className="accordion-group">
@@ -172,19 +159,124 @@ const About = ({ id }: SectionProps) => {
           </details>
         ))}
       </div>
+    </>
+  ),
+  focus: (
+    <p className="about-lead">
+      I&apos;m especially interested in roles where testing strategy matters.
+      Where I can partner with engineering teams to design automation that
+      scales, is trusted, and reduces friction instead of creating it. I thrive
+      in environments that treat test infrastructure as production code:
+      thoughtfully engineered, maintainable, and built for long-term adoption.
+    </p>
+  ),
+  "off-the-clock": (
+    <p className="about-lead">
+      When I am not coding, I love to read and be outside. In fact, I often use
+      lunch breaks as an opportunity to get away from the computer and take a
+      walk. Remote roles allowed me to move closer to my family, and I love
+      spending my weekends with my nieces and nephews.
+    </p>
+  ),
+}
 
-      <p className="about-lead">
-        When I am not coding, I love to read and be outside. In fact, I often
-        use lunch breaks as an opportunity to get away from the computer and
-        take a walk. Since remote positions allow me to be closer to family, I
-        also enjoy spending time with my nieces and nephews on the weekends now
-        that I am closer to them.
-      </p>
-      <p className="about-lead">
-        I am always looking for new opportunites and challenges so feel free to
-        reach out to me:{" "}
-        <a href={`mailto:${aboutContent.email}`}>{aboutContent.email}</a>
-      </p>
+const About = ({ id }: SectionProps) => {
+  const [activeTab, setActiveTab] = useState<AboutTabId>(aboutTabs[0].id)
+  const tabButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({})
+
+  const focusTab = (targetId: AboutTabId) => {
+    setActiveTab(targetId)
+    tabButtonRefs.current[targetId]?.focus()
+  }
+
+  const handleTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    const activeIndex = aboutTabs.findIndex((tab) => tab.id === activeTab)
+
+    switch (event.key) {
+      case "ArrowRight":
+        focusTab(aboutTabs[(activeIndex + 1) % aboutTabs.length].id)
+        break
+      case "ArrowLeft":
+        focusTab(
+          aboutTabs[(activeIndex - 1 + aboutTabs.length) % aboutTabs.length].id,
+        )
+        break
+      case "Home":
+        focusTab(aboutTabs[0].id)
+        break
+      case "End":
+        focusTab(aboutTabs[aboutTabs.length - 1].id)
+        break
+      default:
+        return
+    }
+
+    event.preventDefault()
+  }
+
+  return (
+    <div id={id} data-testid={id} className="about">
+      <h2 className="prompt">
+        <span className="prompt-symbol" aria-hidden="true">
+          $
+        </span>{" "}
+        {aboutContent.heading}
+      </h2>
+      <p className="about-file-count">{aboutContent.caption}</p>
+
+      <div className="about-editor">
+        <div className="tab-bar" role="tablist" aria-label="About file tabs">
+          {aboutTabs.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              role="tab"
+              id={tabId(tab.id)}
+              aria-selected={tab.id === activeTab}
+              aria-controls={panelId(tab.id)}
+              tabIndex={tab.id === activeTab ? 0 : -1}
+              className="tab-label"
+              ref={(el) => {
+                tabButtonRefs.current[tab.id] = el
+              }}
+              onClick={() => setActiveTab(tab.id)}
+              onKeyDown={handleTabKeyDown}
+            >
+              {tab.filename}
+            </button>
+          ))}
+        </div>
+
+        <div className="about-select-wrap">
+          <select
+            className="about-select"
+            aria-label="About file"
+            value={activeTab}
+            onChange={(event) => setActiveTab(event.target.value as AboutTabId)}
+          >
+            {aboutTabs.map((tab) => (
+              <option key={tab.id} value={tab.id}>
+                {tab.filename}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="about-panels">
+          {aboutTabs.map((tab) => (
+            <div
+              key={tab.id}
+              id={panelId(tab.id)}
+              role="tabpanel"
+              aria-label={tab.filename}
+              tabIndex={0}
+              hidden={activeTab !== tab.id}
+            >
+              {panelContent[tab.id]}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

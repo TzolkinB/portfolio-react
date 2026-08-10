@@ -1,3 +1,10 @@
+export type AboutTabId = "summary" | "experience" | "focus" | "off-the-clock"
+
+export interface AboutTab {
+  id: AboutTabId
+  filename: string
+}
+
 export interface BadgeConfig {
   text: string
 }

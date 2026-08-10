@@ -1,8 +1,7 @@
 import { useState } from "react"
 
 import qaResume from "../../assets/img/Bell_Kimberly-Resume.pdf"
-
-import CatEasterEgg from "./CatEasterEgg"
+import Whiskers from "../../assets/img/W-white.png"
 
 const navLink = (name: string, link: string) => (
   <li>
@@ -18,8 +17,8 @@ const AppBar = () => {
 
   return (
     <nav className="nav">
-      <CatEasterEgg />
       <a className="logo" href="/">
+        <img src={Whiskers} alt="Kimberly Bell logo" className="logo-img" />
         kim<span>bell</span>.me
       </a>
       <button

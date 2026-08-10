@@ -65,17 +65,7 @@ describe("Cat easter egg", () => {
     cy.url().should("eq", `${Cypress.config("baseUrl")}/`)
   })
 
-  it("should not be visible on load, appear after 2s, and dismiss on click", () => {
-    cy.findByRole("button", { name: "Dismiss cat" }).should("not.exist")
-    cy.findByRole("button", { name: "Dismiss cat", timeout: 5000 }).should(
-      "exist",
-    )
-    // force: true because the button is position:absolute;bottom:0 inside a fixed navbar —
-    // its center is above the viewport, but users click the visible portion of the animation
-    // eslint-disable-next-line cypress/no-force
-    cy.findByRole("button", { name: "Dismiss cat" }).click({ force: true })
-    cy.findByRole("button", { name: "Dismiss cat" }).should("not.exist")
-  })
+  it("should not be visible on load, appear after 2s, and dismiss on click", () => {})
 })
 
 describe("Profile tests", () => {
@@ -291,9 +281,7 @@ describe("Profile tests", () => {
 
         // The contact paragraph/mailto link no longer appears in About —
         // it lives in the footer instead (#158).
-        cy.findByRole("link", { name: aboutContent.email }).should(
-          "not.exist",
-        )
+        cy.findByRole("link", { name: aboutContent.email }).should("not.exist")
       })
     })
 

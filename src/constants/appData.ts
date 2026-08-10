@@ -17,7 +17,7 @@ export const DEV_MESSAGE = {
 } as const
 
 export const badgeContent: readonly BadgeConfig[] = [
-  { text: "Playright" },
+  { text: "Playwright" },
   { text: "Cypress" },
   { text: "React" },
 ] as const

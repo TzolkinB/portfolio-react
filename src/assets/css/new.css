@@ -105,6 +105,11 @@ body {
   color: var(--amber);
 }
 
+.logo-image {
+  height: 25px;
+  padding-right: 3px;
+}
+
 .nav-burger {
   display: flex;
   flex-direction: column;
@@ -535,7 +540,7 @@ body {
 }
 
 .about-editor {
-  max-width: 64ch;
+  max-width: 100%;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -593,7 +598,6 @@ body {
 }
 
 .about-lead {
-  max-width: 64ch;
   color: var(--ink-dim);
   font-size: 1.02rem;
 }

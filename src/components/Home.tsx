@@ -124,9 +124,9 @@ function Home() {
           </div>
         </div>
       </div>
+      <Projects id="projects" />
       <About id="about" />
       <Skills id="skills" />
-      <Projects id="projects" />
     </div>
   )
 }

@@ -7,6 +7,7 @@ import {
   aboutContent,
   aboutTabs,
   badgeContent,
+  easterEggContent,
   footerContent,
   footerLinks,
   heroContent,
@@ -18,54 +19,38 @@ import {
 import projects from "../../src/constants/projectsData"
 import { capitalizeFirstLetter } from "../../src/utils/utils"
 
-import { sizes, anchorLinks, buttonLinks } from "./commonMethods"
-
-import type { Project } from "../../src/types/types"
-
-const getProjectButtons = (project: Project) => {
-  const buttons: { name: string; href: string }[] = [
-    { name: project.urlText, href: project.url },
-  ]
-  if (project.url2 && project.url2Text) {
-    buttons.push({ name: project.url2Text, href: project.url2 })
-  }
-  return buttons
-}
-
-const heroLinks = [
-  {
-    label: heroContent.ctaPrimary.label,
-    href: heroContent.ctaPrimary.href,
-  },
-  {
-    label: heroContent.ctaSecondary.label,
-    href: heroContent.ctaSecondary.href,
-  },
-  ...heroSocialLinks.map((link) => ({
-    label: link.label,
-    href: link.href,
-  })),
-]
-const roleWriteUps = [
-  {
-    title: accordionTitles.qa,
-    accomplishments: qaAccomplishments,
-    alias: "qaDetails",
-  },
-  {
-    title: accordionTitles.dev,
-    accomplishments: devAccomplishments,
-    alias: "devDetails",
-  },
-]
+import {
+  sizes,
+  anchorLinks,
+  buttonLinks,
+  heroLinks,
+  getProjectButtons,
+  roleWriteUps,
+} from "./commonMethods"
 
 describe("Cat easter egg", () => {
   beforeEach(() => {
     cy.visit("/")
     cy.url().should("eq", `${Cypress.config("baseUrl")}/`)
+    cy.injectAxe()
   })
 
-  it("should not be visible on load, appear after 2s, and dismiss on click", () => {})
+  it("should reveal an ASCII cat in the terminal output when the terminal card is clicked", () => {
+    cy.findByTestId("cat-easter-egg").should("not.exist")
+
+    cy.findByRole("button", { name: "Reveal terminal easter egg" }).click()
+
+    cy.findByTestId("cat-easter-egg").within(() => {
+      cy.findByText(easterEggContent.prompt)
+      // Raw selector + .should("have.text", ...) instead of findByText: the
+      // multi-line <pre> art has whitespace/newlines that Testing Library's
+      // default normalizer collapses before matching, so an exact
+      // multi-line string never matches via findByText.
+      cy.get(".ascii-cat").should("have.text", easterEggContent.art)
+    })
+
+    cy.checkA11y('[data-testid="home"]')
+  })
 })
 
 describe("Profile tests", () => {
@@ -140,11 +125,7 @@ describe("Profile tests", () => {
           },
         )
 
-        heroLinks.forEach((link) => {
-          cy.findByRole("link", {
-            name: link.label,
-          }).should("have.attr", "href", link.href)
-        })
+        heroLinks(heroContent, heroSocialLinks)
 
         cy.get("img").should("have.attr", "src", "/paths.IMG/profile3.jpg")
       })
@@ -223,7 +204,11 @@ describe("Profile tests", () => {
           if (tab.id === "experience") {
             // Both role write-ups default to closed (native <details> not
             // open), same accessible structure as before, now nested here.
-            roleWriteUps.forEach(({ title, accomplishments, alias }) => {
+            roleWriteUps(
+              accordionTitles,
+              qaAccomplishments,
+              devAccomplishments,
+            ).forEach(({ title, accomplishments, alias }) => {
               // <summary> has an implicit "button" role per the HTML-AAM
               // spec (browsers expose it that way to AT), but aria-query -
               // which @testing-library/cypress uses to compute implicit

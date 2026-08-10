@@ -38,9 +38,9 @@ const AppBar = () => {
         data-testid="nav-links"
         className={`nav-links${openNav ? " open" : ""}`}
       >
+        {navLink("Projects", "#projects")}
         {navLink("About", "#about")}
         {navLink("Skills", "#skills")}
-        {navLink("Projects", "#projects")}
         <li>
           <a href={qaResume} target="_blank" rel="noopener noreferrer">
             <span aria-hidden="true">./</span>Resume

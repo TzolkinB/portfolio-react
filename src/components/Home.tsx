@@ -1,8 +1,11 @@
+import { useState } from "react"
+
 import qaResume from "../assets/img/Bell_Kimberly-Resume.pdf"
 import Me from "../assets/img/profile3.jpg"
 import {
   badgeContent,
   DEV_MESSAGE,
+  easterEggContent,
   heroContent,
   heroSocialLinks,
   heroTerminal,
@@ -13,8 +16,25 @@ import About from "./About"
 import Projects from "./Projects"
 import Skills from "./Skills"
 
+import type { KeyboardEvent } from "react"
+
 function Home() {
   console.log(DEV_MESSAGE.text, DEV_MESSAGE.styles)
+
+  const [catRevealed, setCatRevealed] = useState(false)
+
+  const handleReveal = () => {
+    if (catRevealed) return
+    setCatRevealed(true)
+  }
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault()
+      handleReveal()
+    }
+  }
+
   return (
     <div className="page">
       <div id="home" data-testid="home" className="hero">
@@ -67,7 +87,14 @@ function Home() {
             </div>
           </div>
 
-          <div className="terminal">
+          <div
+            className="terminal"
+            role="button"
+            tabIndex={0}
+            aria-label="Reveal terminal easter egg"
+            onClick={handleReveal}
+            onKeyDown={handleKeyDown}
+          >
             <div className="terminal-bar">
               <span className="dot" aria-hidden="true" />
               <span className="dot" aria-hidden="true" />
@@ -103,8 +130,19 @@ function Home() {
               </span>
               <span className="type-line tl-status-reply output">
                 {heroTerminal.statusOutput}
-                <span className="cursor" aria-hidden="true" />
+                {!catRevealed && <span className="cursor" aria-hidden="true" />}
               </span>
+              {catRevealed && (
+                <div data-testid="cat-easter-egg">
+                  <span className="type-line tl-cat">
+                    {easterEggContent.prompt}
+                  </span>
+                  <pre className="ascii-cat output">
+                    {easterEggContent.art}
+                    <span className="cursor" aria-hidden="true" />
+                  </pre>
+                </div>
+              )}
             </div>
           </div>
         </div>

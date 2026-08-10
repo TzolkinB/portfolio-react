@@ -7,6 +7,7 @@ import {
   aboutContent,
   aboutTabs,
   badgeContent,
+  easterEggContent,
   footerContent,
   footerLinks,
   heroContent,
@@ -63,9 +64,21 @@ describe("Cat easter egg", () => {
   beforeEach(() => {
     cy.visit("/")
     cy.url().should("eq", `${Cypress.config("baseUrl")}/`)
+    cy.injectAxe()
   })
 
-  it("should not be visible on load, appear after 2s, and dismiss on click", () => {})
+  it("should reveal an ASCII cat in the terminal output when the terminal card is clicked", () => {
+    cy.findByTestId("cat-easter-egg").should("not.exist")
+
+    cy.findByRole("button", { name: "Reveal terminal easter egg" }).click()
+
+    cy.findByTestId("cat-easter-egg").within(() => {
+      cy.findByText(easterEggContent.prompt)
+      cy.findByText(easterEggContent.art)
+    })
+
+    cy.checkA11y('[data-testid="home"]')
+  })
 })
 
 describe("Profile tests", () => {

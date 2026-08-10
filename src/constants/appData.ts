@@ -44,6 +44,16 @@ export const heroTerminal = {
   statusOutput: "→ open to remote work",
 } as const
 
+// Revealed by clicking the terminal card. `art` is a generic stand-in —
+// swap it for hand-drawn ASCII art.
+export const easterEggContent = {
+  prompt: "$ cat easter_egg.txt",
+  art: `
+   /\\_/\\
+  (=^.^=)   "No bugs here."
+   (")(")_/`,
+} as const
+
 export const heroSocialLinks = [
   { label: "linkedin", href: "https://www.linkedin.com/in/kimbell4" },
   { label: "github", href: "https://github.com/TzolkinB" },

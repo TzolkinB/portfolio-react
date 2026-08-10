@@ -309,6 +309,12 @@ body {
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.terminal:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
 }
 
 .terminal-bar {
@@ -347,6 +353,21 @@ body {
   min-height: 190px;
 }
 
+.ascii-cat {
+  margin: 0 0 9px;
+  font-family: var(--font-mono);
+  color: var(--amber);
+  white-space: pre;
+  opacity: 0;
+  animation: catReveal 0.25s ease 0.35s forwards;
+}
+
+@keyframes catReveal {
+  to {
+    opacity: 1;
+  }
+}
+
 .type-line {
   white-space: nowrap;
   overflow: hidden;
@@ -381,6 +402,11 @@ body {
 }
 .tl-status-reply {
   animation: typeStatusReply 0.5s steps(21) 3.45s forwards;
+}
+/* Mounted on click, not page load, so no fixed offset delay — it should
+   start typing as soon as the cat reveal appears. */
+.tl-cat {
+  animation: typeCat 0.35s steps(20) forwards;
 }
 
 @keyframes typeWhoami {
@@ -418,10 +444,15 @@ body {
     width: 21ch;
   }
 }
+@keyframes typeCat {
+  to {
+    width: 20ch;
+  }
+}
 
 .cursor {
   display: inline-block;
-  width: 8px;
+  width: 0.85em;
   height: 1em;
   background: var(--amber);
   vertical-align: text-bottom;
@@ -1120,36 +1151,5 @@ button:focus-visible {
     animation-delay: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-/* ---- Cat Easter Egg ---- */
-.cat-easter-egg {
-  position: absolute;
-  left: 3.75rem;
-  bottom: 0;
-  cursor: pointer;
-  z-index: 999;
-  padding: 0;
-  border: none;
-  background: none;
-}
-
-@keyframes catFadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.cat-fadeout {
-  animation: catFadeOut 0.4s ease-out forwards;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cat-easter-egg {
-    display: none;
   }
 }

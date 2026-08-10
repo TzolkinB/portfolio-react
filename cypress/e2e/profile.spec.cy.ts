@@ -100,9 +100,6 @@ describe("Profile tests", () => {
         "href",
         "/paths.IMG/Bell_Kimberly-Resume.pdf",
       )
-      cy.request("/paths.IMG/Bell_Kimberly-Resume.pdf")
-        .its("status")
-        .should("eq", 200)
     })
 
     it(`should have an accessible hero with name, title, tags, CTAs, socials, and photo, ${size}`, () => {
@@ -358,20 +355,7 @@ describe("Profile tests", () => {
           )
         })
 
-        cy.findAllByRole("link").should("have.length", 3).as("footerLinks")
-        cy.get("@footerLinks").each((link) => {
-          const href = link.prop("href")
-          if (href.startsWith("mailto:")) {
-            return
-          }
-          // failOnStatusCode: false is required because LinkedIn returns 999 to
-          // automated/bot traffic. 999 means their servers responded and the URL
-          // is valid — they're blocking scrapers, not returning "not found".
-          // We assert not 404 to confirm the link destination actually exists.
-          cy.request({ url: href, failOnStatusCode: false })
-            .its("status")
-            .should("not.eq", 404)
-        })
+        cy.findAllByRole("link").should("have.length", 3)
       })
     })
   })

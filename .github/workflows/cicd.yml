@@ -18,7 +18,7 @@ name: CI/CD
   push:
     branches: ["master"]
   pull_request:
-    branches: ["master", "feature/terminal-redesign"]
+    branches: ["master"]
   schedule:
     - cron: "0 3 * * 0"
   # Manual trigger option - appears as separate job in UI because it has no dependencies

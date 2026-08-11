@@ -1,5 +1,4 @@
-import { MDBTypography } from "mdb-react-ui-kit"
-
+import { projectContent } from "../constants/appData"
 import projects from "../constants/projectsData"
 
 import Card from "./shared/CardContainer"
@@ -8,18 +7,19 @@ import type { SectionProps } from "../types/types"
 
 function Projects({ id }: SectionProps): JSX.Element {
   return (
-    <div id={id} data-testid={id} className="py-5 px-4">
-      <hr />
-      <MDBTypography tag="h2" className="text-center py-2">
-        Projects
-      </MDBTypography>
-      <hr />
-      <div className="projects-list">
-        {projects.map((project) => (
-          <div key={project.title}>
-            {}
-            <Card {...project} />
-          </div>
+    <div id={id} data-testid={id} className="projects">
+      <p className="projects-eyebrow">{projectContent.eyebrow}</p>
+      <h2 className="prompt">
+        <span className="prompt-symbol" aria-hidden="true">
+          $
+        </span>{" "}
+        {projectContent.heading}
+      </h2>
+      <p className="projects-caption">{projectContent.caption}</p>
+
+      <div className="projects-grid">
+        {projects.map((project, index) => (
+          <Card key={project.title} index={index} {...project} />
         ))}
       </div>
     </div>

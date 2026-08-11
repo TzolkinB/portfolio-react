@@ -145,6 +145,10 @@ module.exports = [
       ...cypress.configs.recommended.rules,
       "cypress/no-unnecessary-waiting": "error",
       "cypress/no-force": "warn",
+      // Cypress's own TS setup requires `declare global { namespace Cypress {...} }`
+      // to augment Chainable with custom commands — allowDeclarations keeps
+      // no-namespace banned everywhere else while permitting that ambient form.
+      "@typescript-eslint/no-namespace": ["error", { allowDeclarations: true }],
     },
   },
 

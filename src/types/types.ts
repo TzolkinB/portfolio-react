@@ -1,19 +1,22 @@
+export type AboutTabId = "summary" | "experience" | "focus" | "off-the-clock"
+
+export interface AboutTab {
+  id: AboutTabId
+  filename: string
+}
+
 export interface BadgeConfig {
-  icon: string
   text: string
 }
 
-
 export interface FooterLink {
   href: string
-  ariaLabel: string
-  svgPath: string
+  label: string
 }
 
 export interface FooterLinksProps {
   links: readonly FooterLink[]
 }
-
 
 export interface Project {
   title: string
@@ -26,6 +29,10 @@ export interface Project {
   badgeText: string[]
   impactMetricBold?: string
   impactMetricStandard?: string
+}
+
+export interface ProjectCardProps extends Project {
+  index: number
 }
 
 export interface SectionProps {
@@ -42,6 +49,7 @@ export interface Skill {
 
 export interface SkillCategory {
   icon: string
+  kicker: string
   skills: Skill[]
 }
 
@@ -49,13 +57,7 @@ export interface SkillCategories {
   [categoryName: string]: SkillCategory
 }
 
-export interface SocialLink {
-  href: string
-  icon: string
+export interface Stat {
+  value: string
   label: string
-  backgroundColor: string
-}
-
-export interface SocialLinksProps {
-  links: SocialLink[]
 }

@@ -98,9 +98,6 @@ export const footerLinks: readonly FooterLink[] = [
   { href: "https://github.com/TzolkinB", label: "github.com/TzolkinB" },
 ] as const
 
-export const DEVICON_BASE_URL =
-  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons"
-
 export const skillCategories: SkillCategories = {
   frontend: {
     icon: "🎨",

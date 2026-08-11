@@ -28,7 +28,7 @@ export const heroContent = {
   title: "senior sdet & frontend developer",
   ctaPrimary: { label: "see projects", href: "#projects" },
   ctaSecondary: {
-    label: "view résumé",
+    label: "view resume",
     href: "/paths.IMG/Bell_Kimberly-Resume.pdf",
   },
 } as const

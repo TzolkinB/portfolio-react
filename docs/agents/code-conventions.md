@@ -40,7 +40,7 @@ Treated as a first-class convention, not an afterthought — `role`, `aria-label
 
 ## CSS
 
-Single stylesheet, `src/assets/css/new.css`, mobile-first (base styles unqualified, breakpoints layered on top), organized under `/* ===== SECTION ===== */` banner comments (`TYPOGRAPHY & COLORS`, `COMPONENTS`, per-component `/* ---- Name ---- */` subsections). Palette and repeated values are CSS custom properties on `body`/`:root` (`--gradient-left`, `--gradient-right`, `--hr-line-offset`), not hardcoded hex scattered through rules.
+Single stylesheet, `src/assets/css/new.css`, mobile-first (base styles unqualified, breakpoints layered on top), organized under `/* ===== SECTION ===== */` banner comments (`TYPOGRAPHY & COLORS`, `COMPONENTS`, per-component `/* ---- Name ---- */` subsections). Palette and repeated values are CSS custom properties on `body`/`:root` (`--amber`, `--radius-sm`, `--space-md`), not hardcoded hex scattered through rules.
 
 **Breakpoints**: base/unqualified rules = mobile (0–767px). Tablet = `@media screen and (min-width: 768px)`. Desktop = `@media screen and (min-width: 1100px)`. Both live consolidated in one `/* ===== RESPONSIVE DESIGN ===== */` section near the bottom of the file (further split into `/* TABLET (...) */` and `/* DESKTOP (...) */` comment blocks), overriding specific selectors — not as a `@media` block inline next to each component's own rules. Every new component/ticket should get base styles written mobile-first in its own section, then any tablet/desktop overrides added as selectors in that shared bottom section.
 

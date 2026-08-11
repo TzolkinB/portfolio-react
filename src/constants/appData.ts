@@ -4,7 +4,7 @@ import type { AboutTab, FooterLink, Stat } from "../types/types"
 
 // Developer console message
 export const DEV_MESSAGE = {
-  text: "👋 Thank you for visiting my site! If you like my credentials and are looking for an SDET with expertise in test automation, DM me. Let's discuss!",
+  text: "%c👋 Thank you for visiting my site! If you like my credentials and are looking for an SDET with expertise in test automation, DM me. Let's discuss!",
   styles: [
     "font-size: 12px",
     "font-family: monospace",

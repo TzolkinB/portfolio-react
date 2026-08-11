@@ -5,7 +5,7 @@ import Card from "./shared/CardContainer"
 
 import type { SectionProps } from "../types/types"
 
-function Projects({ id }: SectionProps): JSX.Element {
+function Projects({ id }: SectionProps): React.JSX.Element {
   return (
     <div id={id} data-testid={id} className="projects">
       <p className="projects-eyebrow">{projectContent.eyebrow}</p>

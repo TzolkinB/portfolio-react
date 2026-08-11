@@ -28,7 +28,7 @@ export const heroContent = {
   title: "senior sdet & frontend developer",
   ctaPrimary: { label: "see projects", href: "#projects" },
   ctaSecondary: {
-    label: "view résumé",
+    label: "view resume",
     href: "/paths.IMG/Bell_Kimberly-Resume.pdf",
   },
 } as const
@@ -97,9 +97,6 @@ export const footerLinks: readonly FooterLink[] = [
   },
   { href: "https://github.com/TzolkinB", label: "github.com/TzolkinB" },
 ] as const
-
-export const DEVICON_BASE_URL =
-  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons"
 
 export const skillCategories: SkillCategories = {
   frontend: {

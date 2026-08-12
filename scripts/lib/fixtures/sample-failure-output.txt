@@ -1,0 +1,31 @@
+
+  Running:  profile.spec.cy.ts                                                        (1 of 2)
+
+
+  Profile Page
+    1) should display the correct number of stat cards
+
+
+  0 passing (2s)
+  1 failing
+
+  1) Profile Page
+       should display the correct number of stat cards:
+     AssertionError: Timed out retrying after 4000ms: expected '5' to equal '6'
+      at Context.eval (cypress/e2e/profile.spec.cy.ts:45:12)
+
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        1                                                                              │
+  │ Passing:      0                                                                              │
+  │ Failing:      1                                                                              │
+  │ Pending:      0                                                                              │
+  │ Skipped:      0                                                                              │
+  │ Screenshots:  1                                                                              │
+  │ Video:        false                                                                          │
+  │ Duration:     2 seconds                                                                      │
+  │ Spec Ran:     profile.spec.cy.ts                                                             │
+  └────────────────────────────────────────────────────────────────────────────────────────────┘

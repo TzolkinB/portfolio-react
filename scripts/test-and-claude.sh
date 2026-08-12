@@ -1,5 +1,9 @@
 #!/bin/bash
 
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=./lib/parse-cypress-failure.sh
+source "$DIR/lib/parse-cypress-failure.sh"
+
 # Color codes
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -21,24 +25,18 @@ fi
 echo -e "${RED}❌ Tests failed${NC}"
 echo ""
 
-# Extract the first failing test name
-TEST_NAME=$(echo "$OUTPUT" | grep -E '1\) ' | grep -o 'should.*' | head -1)
-
-# Extract error message (AssertionError or similar)
-ERROR_LINE=$(echo "$OUTPUT" | grep -E 'AssertionError|Error:' | head -1 | xargs)
-
-# Extract line number from the error context
-LINE_NUM=$(echo "$OUTPUT" | grep 'profile\.spec\.cy\.ts:' | sed -E 's/.*profile\.spec\.cy\.ts:([0-9]+).*/\1/' | head -1)
-
-# File path
-FILE_PATH="cypress/e2e/profile.spec.cy.ts"
+# Extract test name, error, file path, and line number (works for any *.spec.cy.ts,
+# not just profile's) plus the real failure block, via the sourced parser
+parse_cypress_failure "$OUTPUT"
 
 # Build Claude Code prompt
 PROMPT="Test: $TEST_NAME
 Error: $ERROR_LINE
 File: $FILE_PATH:$LINE_NUM
-Context: Tests expect hardcoded counts but component data changed
-Fix: Import actual data from src/ components instead of hardcoding
+
+Full failure output:
+$FIRST_FAILURE
+
 Run test after."
 
 # Copy to clipboard

@@ -7,15 +7,16 @@
 
 :root {
   /* Colors */
-  --navy: #0e1630;
-  --navy-panel: #141d3f;
-  --ink: #f3f1ea;
-  --ink-dim: rgba(243, 241, 234, 0.6);
-  --amber: #f2a93b;
+  /* --navy: #0e1630; */
+  --navy: #2e3440;
+  --navy-panel: #3b4252;
+  --ink: #eceff4;
+  --ink-dim: rgba(243, 241, 234, 0.7);
+  /* --amber: #f2a93b; */
+  --amber: #70e2ec;
   --amber-dim: rgba(242, 169, 59, 0.35);
   --amber-hover: #ffc266;
   --line: rgba(242, 169, 59, 0.18);
-  --nav-bg: rgba(14, 22, 48, 0.9);
   /* Layout */
   --maxw: 1080px;
   --radius-sm: 2px;
@@ -56,7 +57,6 @@ body {
   justify-content: space-between;
   gap: var(--space-md);
   padding: var(--space-md) var(--space-lg);
-  background: var(--nav-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   font-family: var(--font-mono);

@@ -16,6 +16,17 @@ The Cypress native binary intermittently fails to install correctly in this sand
 - A single successful run doesn't mean it's "fixed" — this has recurred within the same day before.
 - If it needs to run manually, Docker is the fallback (see below).
 
+### Before opening a PR: confirm it's really #162, not a regression
+
+CI can't observe this local sandbox directly, so it can't tell you whether the stub-binary bug itself is fixed. What it *can* do is confirm the test suite is healthy elsewhere, which is enough to tell the known issue apart from a real failure:
+
+1. If `.husky/pre-push` (or `npx cypress verify`) fails with the "bad option" / "--smoke-test" / "--ping=..." signature, check the latest weekly scheduled run of `cicd.yml` (Sundays 3am, runs the full suite against production via the `cypress/included` Docker image):
+   ```bash
+   gh run list --workflow=cicd.yml --event schedule --limit 1
+   ```
+2. If that run is green, treat the local pre-push failure as issue #162 — push with `git push --no-verify`.
+3. If that run is also red, don't assume it's the known issue. Pull the logs (`gh run view --log-failed`) and investigate as a real regression before overriding the hook.
+
 ## Replicating CI locally with Docker
 
 ```bash

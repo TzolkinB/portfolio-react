@@ -17,7 +17,7 @@ import {
   statBandData,
 } from "../../src/constants/appData"
 import projects from "../../src/constants/projectsData"
-import { capitalizeFirstLetter } from "../../src/utils/utils"
+import { capitalizeFirstLetter, formatSkillYears } from "../../src/utils/utils"
 
 import {
   sizes,
@@ -298,7 +298,7 @@ describe("Profile tests", () => {
         allSkills.forEach((skill) => {
           cy.findByTestId(`skill-${skill.name}`).within(() => {
             cy.findByText(capitalizeFirstLetter(skill.name))
-            cy.findByText(`${skill.years} years`)
+            cy.findByText(formatSkillYears(skill.years))
           })
         })
       })
@@ -312,7 +312,9 @@ describe("Profile tests", () => {
       cy.findByTestId("projects").within(() => {
         cy.findByText(projectContent.eyebrow)
         cy.findByRole("heading", { level: 2, name: projectContent.heading })
-        cy.findByText(projectContent.caption)
+        cy.findByText(
+          `${projectContent.captionPrefix}${projects.length}${projectContent.captionSuffix}`,
+        )
 
         cy.findAllByTestId(/card-/i)
           .should("have.length", projects.length)

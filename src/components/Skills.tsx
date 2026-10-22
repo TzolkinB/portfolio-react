@@ -1,5 +1,5 @@
 import { skillCategories } from "../constants/appData"
-import { capitalizeFirstLetter } from "../utils/utils"
+import { capitalizeFirstLetter, formatSkillYears } from "../utils/utils"
 
 import type { SectionProps, Skill } from "../types/types"
 
@@ -64,7 +64,9 @@ function Skills({ id }: SectionProps) {
                       <span className="skill-name">
                         {capitalizeFirstLetter(skill.name)}
                       </span>
-                      <span className="skill-years">{skill.years} years</span>
+                      <span className="skill-years">
+                        {formatSkillYears(skill.years)}
+                      </span>
                     </div>
                   ))}
                 </div>

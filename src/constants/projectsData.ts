@@ -2,15 +2,15 @@ import type { Project } from "../types/types"
 
 const projects: Project[] = [
   {
-    title: "Playwright Test Collection",
-    subtitle: "Test Automation • TypeScript",
+    title: "Skills Repo",
+    subtitle: "Claude Code Skills • Automation",
     description:
-      "Focuses on conversion from Cypress to Playwright with TypeScript enhancements",
-    url: "https://github.com/TzolkinB/playwright-test-collection",
+      "Collection of custom Claude Code skills for automating SDET workflows, code review, and test generation.",
+    url: "https://github.com/TzolkinB/skills",
     urlText: "Github Repo",
-    badgeText: ["Playwright", "TypeScript", "API Testing", "UI Testing"],
-    impactMetricBold: "Cross-browser testing",
-    impactMetricStandard: "with fixtures and helper utilities",
+    badgeText: ["Claude Code", "Skills", "Automation"],
+    impactMetricBold: "Reusable skill library",
+    impactMetricStandard: "for Claude Code workflows",
   },
   {
     title: "Data-driven Playwright",
@@ -22,6 +22,17 @@ const projects: Project[] = [
     badgeText: ["Playwright", "TypeScript", "UI Testing"],
     impactMetricBold: "Scalable test suite",
     impactMetricStandard: "with JSON-based test data",
+  },
+  {
+    title: "Playwright Test Collection",
+    subtitle: "Test Automation • TypeScript",
+    description:
+      "Focuses on conversion from Cypress to Playwright with TypeScript enhancements",
+    url: "https://github.com/TzolkinB/playwright-test-collection",
+    urlText: "Github Repo",
+    badgeText: ["Playwright", "TypeScript", "API Testing", "UI Testing"],
+    impactMetricBold: "Cross-browser testing",
+    impactMetricStandard: "with fixtures and helper utilities",
   },
   {
     title: "Cypress Test Collection",

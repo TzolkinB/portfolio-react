@@ -52,6 +52,7 @@ export const easterEggContent = {
    /\\_/\\
   (=^.^=)   "No bugs here."
    (")(")_/`,
+  description: 'An ASCII cat appears, saying "No bugs here."',
 } as const
 
 export const heroSocialLinks = [

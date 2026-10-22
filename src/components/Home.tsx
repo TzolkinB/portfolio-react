@@ -16,8 +16,6 @@ import About from "./About"
 import Projects from "./Projects"
 import Skills from "./Skills"
 
-import type { KeyboardEvent } from "react"
-
 function Home() {
   console.log(DEV_MESSAGE.text, DEV_MESSAGE.styles)
 
@@ -26,13 +24,6 @@ function Home() {
   const handleReveal = () => {
     if (catRevealed) return
     setCatRevealed(true)
-  }
-
-  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault()
-      handleReveal()
-    }
   }
 
   return (
@@ -87,18 +78,11 @@ function Home() {
             </div>
           </div>
 
-          <div
-            className="terminal"
-            role="button"
-            tabIndex={0}
-            aria-label="Reveal terminal easter egg"
-            onClick={handleReveal}
-            onKeyDown={handleKeyDown}
-          >
+          <div className="terminal" aria-hidden="true" onClick={handleReveal}>
             <div className="terminal-bar">
-              <span className="dot" aria-hidden="true" />
-              <span className="dot" aria-hidden="true" />
-              <span className="dot" aria-hidden="true" />
+              <span className="dot" />
+              <span className="dot" />
+              <span className="dot" />
               <span className="path">{heroTerminal.path}</span>
             </div>
             <div className="terminal-body">
@@ -120,7 +104,7 @@ function Home() {
               <div className="terminal-photo-frame">
                 <img
                   src={Me}
-                  alt="Kim Bell - Senior SDET and Frontend Developer"
+                  alt=""
                   className="terminal-photo"
                   loading="eager"
                 />
@@ -130,7 +114,7 @@ function Home() {
               </span>
               <span className="type-line tl-status-reply output">
                 {heroTerminal.statusOutput}
-                {!catRevealed && <span className="cursor" aria-hidden="true" />}
+                {!catRevealed && <span className="cursor" />}
               </span>
               {catRevealed && (
                 <div data-testid="cat-easter-egg">
@@ -139,11 +123,21 @@ function Home() {
                   </span>
                   <pre className="ascii-cat output">
                     {easterEggContent.art}
-                    <span className="cursor" aria-hidden="true" />
+                    <span className="cursor" />
                   </pre>
                 </div>
               )}
             </div>
+          </div>
+          <button
+            type="button"
+            className="sr-only"
+            onClick={handleReveal}
+          >
+            Reveal terminal easter egg
+          </button>
+          <div className="sr-only" role="status" aria-live="polite">
+            {catRevealed ? easterEggContent.description : ""}
           </div>
         </div>
 

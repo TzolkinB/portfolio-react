@@ -15,7 +15,11 @@ function Projects({ id }: SectionProps): React.JSX.Element {
         </span>{" "}
         {projectContent.heading}
       </h2>
-      <p className="projects-caption">{projectContent.caption}</p>
+      <p className="projects-caption">
+        {projectContent.captionPrefix}
+        {projects.length}
+        {projectContent.captionSuffix}
+      </p>
 
       <div className="projects-grid">
         {projects.map((project, index) => (

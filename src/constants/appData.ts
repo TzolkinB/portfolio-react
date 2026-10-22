@@ -75,7 +75,8 @@ export const aboutTabs: readonly AboutTab[] = [
 export const projectContent = {
   eyebrow: "// selected work",
   heading: "open ./projects",
-  caption: "# projects — 4 repositories · sorted by relevance",
+  captionPrefix: "# projects — ",
+  captionSuffix: " repositories · sorted by relevance",
 } as const
 
 export const statBandData: readonly Stat[] = [

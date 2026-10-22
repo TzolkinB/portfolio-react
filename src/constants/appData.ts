@@ -189,6 +189,11 @@ export const skillCategories: SkillCategories = {
         isCore: false,
         iconPath: "json/json-original.svg",
       },
+      {
+        name: "voiceover",
+        years: "3+",
+        isCore: false,
+      },
     ] as Skill[],
   },
   tooling_cicd: {
@@ -257,6 +262,22 @@ export const skillCategories: SkillCategories = {
         years: "4",
         isCore: false,
         iconPath: "webpack/webpack-original.svg",
+      },
+    ] as Skill[],
+  },
+  ai_assisted_qa: {
+    icon: "🤖",
+    kicker: "ai",
+    skills: [
+      {
+        name: "Claude Code",
+        years: "1",
+        isCore: true,
+      },
+      {
+        name: "GitHub Copilot",
+        years: "1",
+        isCore: true,
       },
     ] as Skill[],
   },

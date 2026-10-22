@@ -13,6 +13,15 @@ export function capitalizeFirstLetter(string: string): string {
 }
 
 /**
+ * Formats a skill's years of experience with correct pluralization
+ * @param years - Years value (e.g., "1", "2+")
+ * @returns Formatted string, e.g. "1 year" or "2+ years"
+ */
+export function formatSkillYears(years: string): string {
+  return `${years} ${years === "1" ? "year" : "years"}`
+}
+
+/**
  * Tech Link component
  * @param href - URL to link to
  * @param children - Link content (e.g., icon or text)

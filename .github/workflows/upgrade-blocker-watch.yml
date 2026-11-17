@@ -1,0 +1,55 @@
+---
+# Watches upstream blockers for the ESLint 10 / TypeScript 7 Dependabot PRs and the picomatch
+# audit advisory. Comments on the tracking issue (#204) when a blocker clears, so the block
+# can't be forgotten. See the issue for context.
+name: Upgrade blocker watch
+
+"on":
+  schedule:
+    - cron: "0 14 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  TRACKING_ISSUE: 204
+
+jobs:
+  check:
+    name: Check peer ranges
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v7
+        with:
+          node-version: 20
+
+      - name: Install semver in a temp dir
+        run: |
+          mkdir "$RUNNER_TEMP/semver"
+          npm install --prefix "$RUNNER_TEMP/semver" semver@7.7.2 --silent
+          echo "SEMVER_DIR=$RUNNER_TEMP/semver" >> "$GITHUB_ENV"
+
+      - name: Check blockers
+        run: node .github/scripts/check-upgrade-blockers.mjs | tee "$RUNNER_TEMP/blockers.tsv"
+
+      # One comment per package, ever (marker prevents repeats on later weekly runs).
+      - name: Comment on tracking issue for newly cleared blockers
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          while IFS=$'\t' read -r pkg status version detail hint; do
+            [ "$status" = "cleared" ] || continue
+            marker="<!-- blocker-cleared:$pkg -->"
+            if gh issue view "$TRACKING_ISSUE" --json comments --jq '.comments[].body' | grep -qF "$marker"; then
+              continue
+            fi
+            gh issue comment "$TRACKING_ISSUE" --body "$marker
+          **$pkg@$version** looks unblocked ($detail).
+          $hint"
+          done < "$RUNNER_TEMP/blockers.tsv"
